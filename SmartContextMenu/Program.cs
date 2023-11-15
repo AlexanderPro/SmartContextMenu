@@ -8,8 +8,6 @@ namespace SmartContextMenu
 {
     static class Program
     {
-        private static Mutex _mutex;
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,7 +17,7 @@ namespace SmartContextMenu
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
-            _mutex = new Mutex(false, AssemblyUtils.AssemblyTitle, out var createNew);
+            var mutex = new Mutex(false, AssemblyUtils.AssemblyTitle, out var createNew);
             if (!createNew)
             {
                 return;
@@ -33,7 +31,7 @@ namespace SmartContextMenu
         static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
-            ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
+            ex ??= new Exception("OnCurrentDomainUnhandledException");
             OnThreadException(sender, new ThreadExceptionEventArgs(ex));
         }
 
