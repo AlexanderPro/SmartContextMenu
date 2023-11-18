@@ -104,10 +104,11 @@
     <Compile Include="ProcessInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\ApplicationSettingsFile.cs" />
     <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
-    <Compile Include="Settings\SmartContextMenuSettings.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
