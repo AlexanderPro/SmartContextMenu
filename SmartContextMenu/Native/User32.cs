@@ -43,8 +43,11 @@ namespace SmartContextMenu.Native
         [DllImport("user32.dll")]
         public static extern IntPtr GetSystemMenu(IntPtr handle, bool revert);
 
+        [DllImport("User32.dll")]
+        public static extern uint EnableMenuItem(IntPtr hMenu, int itemId, int uEnable);
+
         [DllImport("user32.dll")]
-        public static extern IntPtr GetMenu(IntPtr handle);
+        public static extern int GetMenuState(IntPtr hMenu, int itemId, int uFlags);
 
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(int key);
@@ -66,7 +69,7 @@ namespace SmartContextMenu.Native
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetWindowInfo([In] IntPtr hWnd, [In, Out] ref WindowInfo rect);
+        public static extern bool GetWindowInfo([In] IntPtr hWnd, [In, Out] ref WindowInfo info);
 
         [DllImport("user32.dll")]
         public static extern IntPtr CreateMenu();

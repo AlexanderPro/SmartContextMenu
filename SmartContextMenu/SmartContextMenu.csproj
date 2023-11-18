@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,6 +44,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationClientsideProviders" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoStarter.cs" />
@@ -50,6 +55,8 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\PriorityClassExtensions.cs" />
+    <Compile Include="Extensions\PriorityExtensions.cs" />
+    <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -64,24 +71,37 @@
     <Compile Include="Hooks\VirtualKey.cs" />
     <Compile Include="Hooks\VirtualKeyModifier.cs" />
     <Compile Include="Native\Constants.cs" />
+    <Compile Include="Native\Dwmapi.cs" />
+    <Compile Include="Native\Enums\AccentState.cs" />
+    <Compile Include="Native\Enums\DpiAwarenessContext.cs" />
+    <Compile Include="Native\Enums\DwmBB.cs" />
+    <Compile Include="Native\Enums\LayeredWindow.cs" />
     <Compile Include="Native\Enums\Priority.cs" />
     <Compile Include="Native\Enums\PriorityClass.cs" />
     <Compile Include="Native\Enums\ProcessAccess.cs" />
+    <Compile Include="Native\Enums\ProcessDpiAwareness.cs" />
     <Compile Include="Native\Enums\ThreadAccess.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
+    <Compile Include="Native\Enums\WindowShowStyle.cs" />
     <Compile Include="Native\Kernel32.cs" />
+    <Compile Include="Native\Ntdll.cs" />
+    <Compile Include="Native\SHCore.cs" />
+    <Compile Include="Native\Structs\AccentPolicy.cs" />
     <Compile Include="Native\Structs\ConsoleScreenBufferInfo.cs" />
     <Compile Include="Native\Structs\Coord.cs" />
+    <Compile Include="Native\Structs\DwmBlurBehind.cs" />
     <Compile Include="Native\Structs\KeyboardLLHookStruct.cs" />
     <Compile Include="Native\Structs\MonitorInfo.cs" />
     <Compile Include="Native\Structs\MouseLLHookStruct.cs" />
     <Compile Include="Native\Structs\Point.cs" />
+    <Compile Include="Native\Structs\ProcessBasicInformation.cs" />
     <Compile Include="Native\Structs\Rect.cs" />
     <Compile Include="Native\Structs\SmallRect.cs" />
     <Compile Include="Native\Structs\TitlebarInfo.cs" />
     <Compile Include="Native\Structs\WindowCompositionAttributeData.cs" />
     <Compile Include="Native\Structs\WindowInfo.cs" />
     <Compile Include="Native\User32.cs" />
+    <Compile Include="ProcessInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\MenuItem.cs" />
@@ -92,7 +112,12 @@
     <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="Utils\FileUtils.cs" />
+    <Compile Include="Utils\SystemUtils.cs" />
+    <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="Win32Window.cs" />
+    <Compile Include="Window.cs" />
+    <Compile Include="WindowAlignment.cs" />
+    <Compile Include="WindowDetails.cs" />
     <Compile Include="WindowSizerType.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

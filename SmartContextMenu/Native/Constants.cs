@@ -2,6 +2,19 @@
 {
     static class Constants
     {
+        // Menu
+        public const int MF_UNCHECKED = 0x00000000;
+        public const int MF_STRING = 0x00000000;
+        public const int MF_ENABLED = 0x00000000;
+        public const int MF_GRAYED = 0x00000001;
+        public const int MF_DISABLED = 0x00000002;
+        public const int MF_CHECKED = 0x00000008;
+        public const int MF_POPUP = 0x00000010;
+        public const int MF_BYCOMMAND = 0x00000000;
+        public const int MF_BYPOSITION = 0x00000400;
+        public const int MF_SEPARATOR = 0x00000800;
+        public const int SC_CLOSE = 0xF060;
+
         // GetWindow
         public const int GW_HWNDFIRST = 0;
         public const int GW_OWNER = 4;
@@ -71,9 +84,9 @@
         public const uint SMTO_NOTIMEOUTIFNOTHUNG = 0x0008;
 
         // GetAncestorFlags
-        public const uint GetParent = 1;
-        public const uint GetRoot = 2;
-        public const uint GetRootOwner = 3;
+        public const int GetParent = 1;
+        public const int GetRoot = 2;
+        public const int GetRootOwner = 3;
 
         public const int ICON_SMALL = 0;
         public const int ICON_BIG = 1;
@@ -89,5 +102,21 @@
         public const int WH_KEYBOARD_LL = 0x0D;
         public const int WH_MOUSE_LL = 0x0E;
         public const uint HC_ACTION = 0;
+
+        public const int PROCESS_TERMINATE = 0x0001;
+        public const int PROCESS_SET_INFORMATION = 0x0200;
+        public const int PROCESS_QUERY_INFORMATION = 0x0400;
+        public const int PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
+        public const int PROCESS_VM_READ = 0x10;
+
+        public const int STD_OUTPUT_HANDLE = -11;
+
+        public const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
+        public const int CREATE_NO_WINDOW = 0x08000000;
+        public const int STARTF_USESHOWWINDOW = 0x00000001;
+
+        public const int STATE_SYSTEM_INVISIBLE = 0x00008000;
+        public const int SE_PRIVILEGE_ENABLED = 0x02;
+        public const int SEND_CHILD_HANDLE = 1;
     }
 }
