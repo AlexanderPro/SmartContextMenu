@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private ApplicationSettings _settings;
+
+        public MainForm(ApplicationSettings settings)
         {
             InitializeComponent();
+            _settings = settings;
         }
 
         protected override void OnLoad(EventArgs e)

@@ -89,10 +89,7 @@ namespace SmartContextMenu
                 int style = GetWindowLong(Handle, GWL_EXSTYLE);
                 bool isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
-                uint key;
-                Byte alpha;
-                uint flags;
-                GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                GetLayeredWindowAttributes(Handle, out _, out var alpha, out _);
                 int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
             }
@@ -221,10 +218,7 @@ namespace SmartContextMenu
 
             try
             {
-                uint key;
-                Byte alpha;
-                uint flags;
-                var result = GetLayeredWindowAttributes(Handle, out key, out alpha, out flags);
+                var result = GetLayeredWindowAttributes(Handle, out var key, out var alpha, out var flags);
                 var layeredWindow = (LayeredWindow)flags;
                 info.LWA_ALPHA = layeredWindow.HasFlag(LayeredWindow.LWA_ALPHA);
                 info.LWA_COLORKEY = layeredWindow.HasFlag(LayeredWindow.LWA_COLORKEY);

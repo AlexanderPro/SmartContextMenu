@@ -50,8 +50,7 @@ namespace SmartContextMenu.Extensions
         public static Process GetParentProcess(this Process process)
         {
             var pbi = new ProcessBasicInformation();
-            int returnLength;
-            var status = NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out returnLength);
+            var status = NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out _);
             if (status != 0)
             {
                 return null;
@@ -91,7 +90,7 @@ namespace SmartContextMenu.Extensions
                     continue;
                 }
 
-                var suspendCount = 0;
+                int suspendCount;
                 do
                 {
                     suspendCount = ResumeThread(pOpenThread);

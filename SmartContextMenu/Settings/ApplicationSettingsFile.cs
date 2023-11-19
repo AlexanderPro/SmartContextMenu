@@ -156,17 +156,17 @@ namespace SmartContextMenu.Settings
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
             {
-                settings.LanguageName = "zh_cn";
+                settings.LanguageName = "zh-CN";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
             {
-                settings.LanguageName = "zh_tw";
+                settings.LanguageName = "zh-TW";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")
             {
-                settings.LanguageName = "ja";
+                settings.LanguageName = "ja-JP";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP"))
@@ -176,22 +176,22 @@ namespace SmartContextMenu.Settings
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
             {
-                settings.LanguageName = "ru";
+                settings.LanguageName = "ru-RU";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "de-DE")
             {
-                settings.LanguageName = "de";
+                settings.LanguageName = "de-DE";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "fr-FR")
             {
-                settings.LanguageName = "fr";
+                settings.LanguageName = "fr-FR";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "hu-HU")
             {
-                settings.LanguageName = "hu";
+                settings.LanguageName = "hu-HU";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "it-IT" ||

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Threading;
 using SmartContextMenu.Forms;
 using SmartContextMenu.Utils;
+using SmartContextMenu.Settings;
 
 namespace SmartContextMenu
 {
@@ -25,7 +26,7 @@ namespace SmartContextMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(new ApplicationSettings()));
         }
 
         static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)

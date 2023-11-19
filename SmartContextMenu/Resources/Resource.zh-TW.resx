@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="separator" xml:space="preserve">
+    <value>分隔線</value>
+  </data>
+  <data name="information" xml:space="preserve">
+    <value>資訊</value>
+  </data>
+  <data name="roll_up" xml:space="preserve">
+    <value>縮合</value>
+  </data>
+  <data name="aero_glass" xml:space="preserve">
+    <value>Aero 半透明效果</value>
+  </data>
+  <data name="always_on_top" xml:space="preserve">
+    <value>視窗置頂</value>
+  </data>
+  <data name="send_to_bottom" xml:space="preserve">
+    <value>移至最底層</value>
+  </data>
+  <data name="save_screenshot" xml:space="preserve">
+    <value>儲存視窗擷圖</value>
+  </data>
+  <data name="open_file_in_explorer" xml:space="preserve">
+    <value>在檔案總管中開啟檔案</value>
+  </data>
+  <data name="clipboard" xml:space="preserve">
+    <value>剪貼簿</value>
+  </data>
+  <data name="copy_screenshot" xml:space="preserve">
+    <value>複製窗口截圖</value>
+  </data>
+  <data name="copy_window_text" xml:space="preserve">
+    <value>複製視窗文字</value>
+  </data>
+  <data name="copy_window_title" xml:space="preserve">
+    <value>複製視窗標題</value>
+  </data>
+  <data name="copy_full_process_path" xml:space="preserve">
+    <value>複製完整的處理程序路徑</value>
+  </data>
+  <data name="clear_clipboard" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="drag_by_mouse" xml:space="preserve">
+    <value>透過滑鼠拖曳</value>
+  </data>
+  <data name="hide_for_alt_tab" xml:space="preserve">
+    <value>在 Alt+Tab 中隱藏</value>
+  </data>
+  <data name="click_through" xml:space="preserve">
+    <value>點擊窗口</value>
+  </data>
+  <data name="size" xml:space="preserve">
+    <value>調整視窗大小</value>
+  </data>
+  <data name="size_default" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="size_custom" xml:space="preserve">
+    <value>自訂...</value>
+  </data>
+  <data name="move_to" xml:space="preserve">
+    <value>移動到</value>
+  </data>
+  <data name="monitor" xml:space="preserve">
+    <value>顯示器</value>
+  </data>
+  <data name="alignment" xml:space="preserve">
+    <value>對齊</value>
+  </data>
+  <data name="align_top_left" xml:space="preserve">
+    <value>左上角</value>
+  </data>
+  <data name="align_top_center" xml:space="preserve">
+    <value>上方置中</value>
+  </data>
+  <data name="align_top_right" xml:space="preserve">
+    <value>右上角</value>
+  </data>
+  <data name="align_middle_left" xml:space="preserve">
+    <value>中間靠左</value>
+  </data>
+  <data name="align_middle_center" xml:space="preserve">
+    <value>中間置中</value>
+  </data>
+  <data name="align_middle_right" xml:space="preserve">
+    <value>中間靠右</value>
+  </data>
+  <data name="align_bottom_left" xml:space="preserve">
+    <value>左下角</value>
+  </data>
+  <data name="align_bottom_center" xml:space="preserve">
+    <value>下方置中</value>
+  </data>
+  <data name="align_bottom_right" xml:space="preserve">
+    <value>右下角</value>
+  </data>
+  <data name="align_center_horizontally" xml:space="preserve">
+    <value>水平置中</value>
+  </data>
+  <data name="align_center_vertically" xml:space="preserve">
+    <value>垂直置中</value>
+  </data>
+  <data name="align_default" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="align_custom" xml:space="preserve">
+    <value>自訂...</value>
+  </data>
+  <data name="transparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="trans_opaque" xml:space="preserve">
+    <value> (不透明)</value>
+  </data>
+  <data name="trans_invisible" xml:space="preserve">
+    <value> (不可見)</value>
+  </data>
+  <data name="trans_default" xml:space="preserve">
+    <value>預設</value>
+  </data>
+  <data name="trans_custom" xml:space="preserve">
+    <value>自訂...</value>
+  </data>
+  <data name="priority" xml:space="preserve">
+    <value>優先順序</value>
+  </data>
+  <data name="priority_real_time" xml:space="preserve">
+    <value>即時: 24</value>
+  </data>
+  <data name="priority_high" xml:space="preserve">
+    <value>高: 13</value>
+  </data>
+  <data name="priority_above_normal" xml:space="preserve">
+    <value>高於標準: 10</value>
+  </data>
+  <data name="priority_normal" xml:space="preserve">
+    <value>標準: 8</value>
+  </data>
+  <data name="priority_below_normal" xml:space="preserve">
+    <value>低於標準: 6</value>
+  </data>
+  <data name="priority_idle" xml:space="preserve">
+    <value>閒置: 4</value>
+  </data>
+  <data name="system_tray" xml:space="preserve">
+    <value>系統匣</value>
+  </data>
+  <data name="minimize_to_systemtray" xml:space="preserve">
+    <value>最小化到系統匣</value>
+  </data>
+  <data name="minimize_always_to_systemtray" xml:space="preserve">
+    <value>始終最小化到系統匣</value>
+  </data>
+  <data name="suspend_to_systemtray" xml:space="preserve">
+    <value>暫止並最小化到系統匣</value>
+  </data>
+  <data name="other_windows" xml:space="preserve">
+    <value>其他視窗</value>
+  </data>
+  <data name="minimize_other_windows" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="close_other_windows" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="start_program" xml:space="preserve">
+    <value>啟動程式</value>
+  </data>
+  <data name="save_selected_items" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="dimmer" xml:space="preserve">
+    <value>窗戶調光器</value>
+  </data>
+  <data name="dimmer_on" xml:space="preserve">
+    <value>在</value>
+  </data>
+  <data name="dimmer_off" xml:space="preserve">
+    <value>離開</value>
+  </data>
+  <data name="buttons" xml:space="preserve">
+    <value>鈕扣</value>
+  </data>
+  <data name="disable_minimize_button" xml:space="preserve">
+    <value>禁用"最小化"按鈕</value>
+  </data>
+  <data name="disable_maximize_button" xml:space="preserve">
+    <value>禁用"最大化"按鈕</value>
+  </data>
+  <data name="disable_close_button" xml:space="preserve">
+    <value>禁用"關閉"按鈕</value>
+  </data>
+  <data name="grp_window" xml:space="preserve">
+    <value>視窗</value>
+  </data>
+  <data name="grp_process" xml:space="preserve">
+    <value>處理程序</value>
+  </data>
+  <data name="lbl_get_window_text" xml:space="preserve">
+    <value>GetWindowText:</value>
+  </data>
+  <data name="lbl_wm_gettext" xml:space="preserve">
+    <value>WM_GETTEXT:</value>
+  </data>
+  <data name="lbl_get_class_name" xml:space="preserve">
+    <value>GetClassName:</value>
+  </data>
+  <data name="lbl_real_get_window_class" xml:space="preserve">
+    <value>RealGetWindowClass:</value>
+  </data>
+  <data name="lbl_font_name" xml:space="preserve">
+    <value>字型名稱:</value>
+  </data>
+  <data name="lbl_window_handle" xml:space="preserve">
+    <value>視窗控制代碼:</value>
+  </data>
+  <data name="lbl_parent_window_handle" xml:space="preserve">
+    <value>父視窗控制代碼:</value>
+  </data>
+  <data name="lbl_window_size" xml:space="preserve">
+    <value>視窗大小:</value>
+  </data>
+  <data name="lbl_window_position" xml:space="preserve">
+    <value>視窗位置:</value>
+  </data>
+  <data name="lbl_extended_frame_bounds" xml:space="preserve">
+    <value>Extended Frame Bounds:</value>
+  </data>
+  <data name="lbl_instance" xml:space="preserve">
+    <value>實例:</value>
+  </data>
+  <data name="lbl_process_id" xml:space="preserve">
+    <value>處理程序 ID:</value>
+  </data>
+  <data name="lbl_thread_id" xml:space="preserve">
+    <value>執行緒 ID:</value>
+  </data>
+  <data name="lbl_gcl_wnd_proc" xml:space="preserve">
+    <value>GCL_WNDPROC:</value>
+  </data>
+  <data name="lbl_dwl_dlg_proc" xml:space="preserve">
+    <value>DWL_DLGPROC:</value>
+  </data>
+  <data name="lbl_gwl_style" xml:space="preserve">
+    <value>GWL_STYLE:</value>
+  </data>
+  <data name="lbl_gcl_style" xml:space="preserve">
+    <value>GCL_STYLE:</value>
+  </data>
+  <data name="lbl_gwl_exstyle" xml:space="preserve">
+    <value>GWL_EXSTYLE:</value>
+  </data>
+  <data name="lbl_windowinfo_exstyle" xml:space="preserve">
+    <value>WindowInfo.ExStyle:</value>
+  </data>
+  <data name="lbl_lwa_alpha" xml:space="preserve">
+    <value>LWA_ALPHA:</value>
+  </data>
+  <data name="lbl_lwa_colorkey" xml:space="preserve">
+    <value>LWA_COLORKEY:</value>
+  </data>
+  <data name="lbl_gwl_userdata" xml:space="preserve">
+    <value>GWL_USERDATA:</value>
+  </data>
+  <data name="lbl_dwl_user" xml:space="preserve">
+    <value>DWL_USER:</value>
+  </data>
+  <data name="lbl_full_path" xml:space="preserve">
+    <value>完整路徑:</value>
+  </data>
+  <data name="lbl_command_line" xml:space="preserve">
+    <value>命令行:</value>
+  </data>
+  <data name="lbl_started_at" xml:space="preserve">
+    <value>開始於:</value>
+  </data>
+  <data name="lbl_owner" xml:space="preserve">
+    <value>擁有者:</value>
+  </data>
+  <data name="lbl_threads" xml:space="preserve">
+    <value>執行緒:</value>
+  </data>
+  <data name="lbl_working_set_size" xml:space="preserve">
+    <value>工作集大小:</value>
+  </data>
+  <data name="lbl_parent" xml:space="preserve">
+    <value>父級:</value>
+  </data>
+  <data name="lbl_priority" xml:space="preserve">
+    <value>優先順序:</value>
+  </data>
+  <data name="lbl_handles" xml:space="preserve">
+    <value>控制代碼:</value>
+  </data>
+  <data name="lbl_virtual_size" xml:space="preserve">
+    <value>虛擬大小:</value>
+  </data>
+  <data name="lbl_product_name" xml:space="preserve">
+    <value>產品名稱:</value>
+  </data>
+  <data name="lbl_copyright" xml:space="preserve">
+    <value>版權所有:</value>
+  </data>
+  <data name="lbl_file_version" xml:space="preserve">
+    <value>檔案版本:</value>
+  </data>
+  <data name="lbl_product_version" xml:space="preserve">
+    <value>產品版本:</value>
+  </data>
+  <data name="information_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="save_screenshot_title" xml:space="preserve">
+    <value>儲存視窗擷圖</value>
+  </data>
+  <data name="save_screenshot_filename" xml:space="preserve">
+    <value>WindowScreenshot</value>
+  </data>
+  <data name="save_screenshot_default_ext" xml:space="preserve">
+    <value>bmp</value>
+  </data>
+  <data name="save_screenshot_filter" xml:space="preserve">
+    <value>點陣圖影像 (*.bmp)|*.bmp|GIF 影像 (*.gif)|*.gif|JPEG 影像(*.jpeg)|*.jpeg|PNG 影像(*.png)|*.png|TIFF 影像(*.tiff)|*.tiff|WMF 影像(*.wmf)|*.wmf</value>
+  </data>
+  <data name="size_form" xml:space="preserve">
+    <value>設定尺寸</value>
+  </data>
+  <data name="size_btn_apply" xml:space="preserve">
+    <value>套用</value>
+  </data>
+  <data name="lbl_size_form_height" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="lbl_size_form_width" xml:space="preserve">
+    <value>寬度:</value>
+  </data>
+  <data name="lbl_size_form_top" xml:space="preserve">
+    <value>頂部:</value>
+  </data>
+  <data name="lbl_size_form_left" xml:space="preserve">
+    <value>左側:</value>
+  </data>
+  <data name="trans_form" xml:space="preserve">
+    <value>設定透明度</value>
+  </data>
+  <data name="trans_btn_apply" xml:space="preserve">
+    <value>套用</value>
+  </data>
+  <data name="align_form" xml:space="preserve">
+    <value>設定位置</value>
+  </data>
+  <data name="align_btn_apply" xml:space="preserve">
+    <value>套用</value>
+  </data>
+  <data name="lbl_top" xml:space="preserve">
+    <value>頂部:</value>
+  </data>
+  <data name="lbl_left" xml:space="preserve">
+    <value>左側:</value>
+  </data>
+  <data name="mi_restore" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="mi_restore_windows" xml:space="preserve">
+    <value>復原</value>
+  </data>
+  <data name="mi_close" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="mi_auto_start" xml:space="preserve">
+    <value>自動啟動程式</value>
+  </data>
+  <data name="mi_settings" xml:space="preserve">
+    <value>設定...</value>
+  </data>
+  <data name="mi_about" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="mi_exit" xml:space="preserve">
+    <value>退出</value>
+  </data>
+  <data name="about_form" xml:space="preserve">
+    <value>關於 </value>
+  </data>
+  <data name="about_btn_ok" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="settings_form" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="tab_settings_general" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="grpb_process_exclusions" xml:space="preserve">
+    <value>處理程序排除</value>
+  </data>
+  <data name="clm_process_exclusion_name" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="clm_process_exclusion_edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="clm_process_exclusion_delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="btn_process_exclusion_up" xml:space="preserve">
+    <value>將處理程序上移</value>
+  </data>
+  <data name="btn_process_exclusion_down" xml:space="preserve">
+    <value>將處理程序下移</value>
+  </data>
+  <data name="btn_add_process_exclusion" xml:space="preserve">
+    <value>加入處理程序名稱</value>
+  </data>
+  <data name="tab_settings_menu" xml:space="preserve">
+    <value>選單</value>
+  </data>
+  <data name="grpb_start_program" xml:space="preserve">
+    <value>啟動程式選單項目</value>
+  </data>
+  <data name="clm_start_program_title" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="clm_start_program_path" xml:space="preserve">
+    <value>檔案名稱</value>
+  </data>
+  <data name="clm_start_program_arguments" xml:space="preserve">
+    <value>參數</value>
+  </data>
+  <data name="clm_start_program_edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="clm_start_program_delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="btn_start_program_up" xml:space="preserve">
+    <value>將程式上移</value>
+  </data>
+  <data name="btn_start_program_down" xml:space="preserve">
+    <value>將程式下移</value>
+  </data>
+  <data name="btn_add_start_program" xml:space="preserve">
+    <value>加入啟動程式</value>
+  </data>
+  <data name="settings_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="settings_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="grpb_window_size" xml:space="preserve">
+    <value>視窗大小選單項目</value>
+  </data>
+  <data name="window_size_form" xml:space="preserve">
+    <value>視窗大小</value>
+  </data>
+  <data name="window_size_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="window_size_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="clm_window_size_title" xml:space="preserve">
+    <value>標題</value>
+  </data>
+  <data name="clm_window_size_width" xml:space="preserve">
+    <value>寬度</value>
+  </data>
+  <data name="clm_window_size_height" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="clm_window_size_top" xml:space="preserve">
+    <value>頂部</value>
+  </data>
+  <data name="clm_window_size_left" xml:space="preserve">
+    <value>左側</value>
+  </data>
+  <data name="clm_window_size_edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="clm_window_size_delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="lbl_window_size_title" xml:space="preserve">
+    <value>標題:</value>
+  </data>
+  <data name="lbl_window_size_width" xml:space="preserve">
+    <value>寬度:</value>
+  </data>
+  <data name="lbl_window_size_height" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="lbl_window_size_top" xml:space="preserve">
+    <value>頂部:</value>
+  </data>
+  <data name="lbl_window_size_left" xml:space="preserve">
+    <value>左側:</value>
+  </data>
+  <data name="lbl_window_size_key1" xml:space="preserve">
+    <value>鍵 1:</value>
+  </data>
+  <data name="lbl_window_size_key2" xml:space="preserve">
+    <value>鍵 2:</value>
+  </data>
+  <data name="lbl_window_size_key3" xml:space="preserve">
+    <value>鍵 3:</value>
+  </data>
+  <data name="btn_window_size_up" xml:space="preserve">
+    <value>將選單項目上移</value>
+  </data>
+  <data name="btn_window_size_down" xml:space="preserve">
+    <value>將選單項目下移</value>
+  </data>
+  <data name="btn_add_window_size" xml:space="preserve">
+    <value>加入</value>
+  </data>
+  <data name="btn_menu_item_up" xml:space="preserve">
+    <value>將選單項目上移</value>
+  </data>
+  <data name="btn_menu_item_down" xml:space="preserve">
+    <value>將選單項目下移</value>
+  </data>
+  <data name="process_name_form" xml:space="preserve">
+    <value>處理程序排除</value>
+  </data>
+  <data name="process_lbl_file_name" xml:space="preserve">
+    <value>檔案名稱:</value>
+  </data>
+  <data name="process_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="process_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="process_browse_file_filter" xml:space="preserve">
+    <value>可執行檔案 (*.exe)|*.exe|所有檔案 (*.*)|*.*</value>
+  </data>
+  <data name="start_program_form" xml:space="preserve">
+    <value>啟動程式</value>
+  </data>
+  <data name="start_program_lbl_title" xml:space="preserve">
+    <value>標題:</value>
+  </data>
+  <data name="start_program_lbl_file_name" xml:space="preserve">
+    <value>檔案名稱:</value>
+  </data>
+  <data name="start_program_lbl_arguments" xml:space="preserve">
+    <value>參數:</value>
+  </data>
+  <data name="start_program_lbl_runas" xml:space="preserve">
+    <value>執行方式:</value>
+  </data>
+  <data name="start_program_lbl_begin" xml:space="preserve">
+    <value>開始:</value>
+  </data>
+  <data name="start_program_lbl_end" xml:space="preserve">
+    <value>結尾:</value>
+  </data>
+  <data name="start_program_show_window" xml:space="preserve">
+    <value>顯示視窗</value>
+  </data>
+  <data name="start_program_use_window_working_directory" xml:space="preserve">
+    <value>使用視窗工作目錄</value>
+  </data>
+  <data name="start_program_parameter" xml:space="preserve">
+    <value>參數</value>
+  </data>
+  <data name="start_program_normal" xml:space="preserve">
+    <value>以普通帳號執行</value>
+  </data>
+  <data name="start_program_administrator" xml:space="preserve">
+    <value>以管理員帳號執行</value>
+  </data>
+  <data name="start_program_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="start_program_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="start_program_browse_file_filter" xml:space="preserve">
+    <value>可執行檔案 (*.exe)|*.exe|所有檔案 (*.*)|*.*</value>
+  </data>
+  <data name="grpb_language" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="message_box_attention_title" xml:space="preserve">
+    <value>注意</value>
+  </data>
+  <data name="message_box_attention_content" xml:space="preserve">
+    <value>您應該手動重新啟動應用程式以使設定生效。</value>
+  </data>
+  <data name="hotkeys_form" xml:space="preserve">
+    <value>快速鍵</value>
+  </data>
+  <data name="hotkeys_lbl_key1" xml:space="preserve">
+    <value>鍵 1</value>
+  </data>
+  <data name="hotkeys_lbl_key2" xml:space="preserve">
+    <value>鍵 2</value>
+  </data>
+  <data name="hotkeys_lbl_key3" xml:space="preserve">
+    <value>鍵 3</value>
+  </data>
+  <data name="hotkeys_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="hotkeys_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="tab_settings_hotkeys" xml:space="preserve">
+    <value>快速鍵</value>
+  </data>
+  <data name="clm_hotkeys_name" xml:space="preserve">
+    <value>名稱</value>
+  </data>
+  <data name="clm_hotkeys_show_tooltip" xml:space="preserve">
+    <value>顯示選單項目</value>
+  </data>
+  <data name="tab_settings_menu_start" xml:space="preserve">
+    <value>選單 (啟動程式)</value>
+  </data>
+  <data name="tab_settings_menu_size" xml:space="preserve">
+    <value>選單 (調整視窗大小)</value>
+  </data>
+  <data name="tab_settings_menu_save" xml:space="preserve">
+    <value>選單 (儲存)</value>
+  </data>
+  <data name="tab_settings_menu_dimmer" xml:space="preserve">
+    <value>選單 (窗戶調光器)</value>
+  </data>
+  <data name="grpb_dimmer_color" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="grpb_dimmer_transparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="grpb_closer" xml:space="preserve">
+    <value>透過滑鼠按一下關閉視窗</value>
+  </data>
+  <data name="closer_button_name" xml:space="preserve">
+    <value>設定...</value>
+  </data>
+  <data name="closer_form" xml:space="preserve">
+    <value>設定.</value>
+  </data>
+  <data name="closer_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="closer_btn_cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="closer_lbl_key1" xml:space="preserve">
+    <value>鍵 1</value>
+  </data>
+  <data name="closer_lbl_key2" xml:space="preserve">
+    <value>鍵 2</value>
+  </data>
+  <data name="closer_lbl_mouse_button" xml:space="preserve">
+    <value>滑鼠按鈕</value>
+  </data>
+  <data name="closer_lbl_action" xml:space="preserve">
+    <value>動作</value>
+  </data>
+  <data name="closer_close_window" xml:space="preserve">
+    <value>關閉視窗</value>
+  </data>
+  <data name="closer_kill_process" xml:space="preserve">
+    <value>終止處理程序</value>
+  </data>
+  <data name="closer_close_foreground_window" xml:space="preserve">
+    <value>關閉前台視窗</value>
+  </data>
+  <data name="closer_close_window_under_cursor" xml:space="preserve">
+    <value>關閉游標下的視窗</value>
+  </data>
+  <data name="closer_kill_process_with_foreground_window" xml:space="preserve">
+    <value>終止帶有前台視窗的處理程序</value>
+  </data>
+  <data name="closer_kill_process_with_window_under_cursor" xml:space="preserve">
+    <value>終止游標下視窗的處理程序</value>
+  </data>
+  <data name="grpb_sizer" xml:space="preserve">
+    <value>如何設定視窗大小</value>
+  </data>
+  <data name="grpb_display" xml:space="preserve">
+    <value>顯示</value>
+  </data>
+  <data name="chk_enable_high_dpi" xml:space="preserve">
+    <value>啟用高 DPI 顯示</value>
+  </data>
+  <data name="sizer_window_with_margins" xml:space="preserve">
+    <value>有邊界的視窗</value>
+  </data>
+  <data name="sizer_window_without_margins" xml:space="preserve">
+    <value>沒有邊界的視窗</value>
+  </data>
+  <data name="sizer_window_client_area" xml:space="preserve">
+    <value>視窗工作區</value>
+  </data>
+  <data name="parameter_btn_apply" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="parameter_form" xml:space="preserve">
+    <value>輸入參數</value>
+  </data>
+</root>
