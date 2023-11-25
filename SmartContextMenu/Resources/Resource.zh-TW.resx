@@ -285,18 +285,6 @@
   <data name="start_program" xml:space="preserve">
     <value>啟動程式</value>
   </data>
-  <data name="save_selected_items" xml:space="preserve">
-    <value>儲存</value>
-  </data>
-  <data name="dimmer" xml:space="preserve">
-    <value>窗戶調光器</value>
-  </data>
-  <data name="dimmer_on" xml:space="preserve">
-    <value>在</value>
-  </data>
-  <data name="dimmer_off" xml:space="preserve">
-    <value>離開</value>
-  </data>
   <data name="buttons" xml:space="preserve">
     <value>鈕扣</value>
   </data>
@@ -510,27 +498,6 @@
   <data name="tab_settings_general" xml:space="preserve">
     <value>一般</value>
   </data>
-  <data name="grpb_process_exclusions" xml:space="preserve">
-    <value>處理程序排除</value>
-  </data>
-  <data name="clm_process_exclusion_name" xml:space="preserve">
-    <value>檔案名稱</value>
-  </data>
-  <data name="clm_process_exclusion_edit" xml:space="preserve">
-    <value>編輯</value>
-  </data>
-  <data name="clm_process_exclusion_delete" xml:space="preserve">
-    <value>刪除</value>
-  </data>
-  <data name="btn_process_exclusion_up" xml:space="preserve">
-    <value>將處理程序上移</value>
-  </data>
-  <data name="btn_process_exclusion_down" xml:space="preserve">
-    <value>將處理程序下移</value>
-  </data>
-  <data name="btn_add_process_exclusion" xml:space="preserve">
-    <value>加入處理程序名稱</value>
-  </data>
   <data name="tab_settings_menu" xml:space="preserve">
     <value>選單</value>
   </data>
@@ -740,63 +707,6 @@
   </data>
   <data name="tab_settings_menu_size" xml:space="preserve">
     <value>選單 (調整視窗大小)</value>
-  </data>
-  <data name="tab_settings_menu_save" xml:space="preserve">
-    <value>選單 (儲存)</value>
-  </data>
-  <data name="tab_settings_menu_dimmer" xml:space="preserve">
-    <value>選單 (窗戶調光器)</value>
-  </data>
-  <data name="grpb_dimmer_color" xml:space="preserve">
-    <value>顏色</value>
-  </data>
-  <data name="grpb_dimmer_transparency" xml:space="preserve">
-    <value>透明度</value>
-  </data>
-  <data name="grpb_closer" xml:space="preserve">
-    <value>透過滑鼠按一下關閉視窗</value>
-  </data>
-  <data name="closer_button_name" xml:space="preserve">
-    <value>設定...</value>
-  </data>
-  <data name="closer_form" xml:space="preserve">
-    <value>設定.</value>
-  </data>
-  <data name="closer_btn_apply" xml:space="preserve">
-    <value>確定</value>
-  </data>
-  <data name="closer_btn_cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="closer_lbl_key1" xml:space="preserve">
-    <value>鍵 1</value>
-  </data>
-  <data name="closer_lbl_key2" xml:space="preserve">
-    <value>鍵 2</value>
-  </data>
-  <data name="closer_lbl_mouse_button" xml:space="preserve">
-    <value>滑鼠按鈕</value>
-  </data>
-  <data name="closer_lbl_action" xml:space="preserve">
-    <value>動作</value>
-  </data>
-  <data name="closer_close_window" xml:space="preserve">
-    <value>關閉視窗</value>
-  </data>
-  <data name="closer_kill_process" xml:space="preserve">
-    <value>終止處理程序</value>
-  </data>
-  <data name="closer_close_foreground_window" xml:space="preserve">
-    <value>關閉前台視窗</value>
-  </data>
-  <data name="closer_close_window_under_cursor" xml:space="preserve">
-    <value>關閉游標下的視窗</value>
-  </data>
-  <data name="closer_kill_process_with_foreground_window" xml:space="preserve">
-    <value>終止帶有前台視窗的處理程序</value>
-  </data>
-  <data name="closer_kill_process_with_window_under_cursor" xml:space="preserve">
-    <value>終止游標下視窗的處理程序</value>
   </data>
   <data name="grpb_sizer" xml:space="preserve">
     <value>如何設定視窗大小</value>
