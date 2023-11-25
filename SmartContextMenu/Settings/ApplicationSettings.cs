@@ -35,7 +35,7 @@ namespace SmartContextMenu.Settings
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
-            LanguageName = "";
+            LanguageName = string.Empty;
             MenuItems = new MenuItems();
         }
 
