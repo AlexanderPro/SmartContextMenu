@@ -147,7 +147,7 @@ namespace SmartContextMenu.Settings
             }
 
             var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
-            var languageName = "";
+            var languageName = string.Empty;
             if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
                 languageName = languageElement.Attribute("name").Value.ToLower().Trim();
