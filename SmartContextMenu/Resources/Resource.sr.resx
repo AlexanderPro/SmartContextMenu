@@ -285,18 +285,6 @@
   <data name="start_program" xml:space="preserve">
     <value>Покренути програм</value>
   </data>
-  <data name="save_selected_items" xml:space="preserve">
-    <value>Сачувати</value>
-  </data>
-  <data name="dimmer" xml:space="preserve">
-    <value>Затамњивач прозора</value>
-  </data>
-  <data name="dimmer_on" xml:space="preserve">
-    <value>Укључити</value>
-  </data>
-  <data name="dimmer_off" xml:space="preserve">
-    <value>Искључити</value>
-  </data>
   <data name="buttons" xml:space="preserve">
     <value>Дугмад</value>
   </data>
@@ -510,27 +498,6 @@
   <data name="tab_settings_general" xml:space="preserve">
     <value>Опште</value>
   </data>
-  <data name="grpb_process_exclusions" xml:space="preserve">
-    <value>Изузимања процеса</value>
-  </data>
-  <data name="clm_process_exclusion_name" xml:space="preserve">
-    <value>Име датотеке</value>
-  </data>
-  <data name="clm_process_exclusion_edit" xml:space="preserve">
-    <value>Уреди</value>
-  </data>
-  <data name="clm_process_exclusion_delete" xml:space="preserve">
-    <value>Обриши</value>
-  </data>
-  <data name="btn_process_exclusion_up" xml:space="preserve">
-    <value>Премести на горе</value>
-  </data>
-  <data name="btn_process_exclusion_down" xml:space="preserve">
-    <value>Премести на доле</value>
-  </data>
-  <data name="btn_add_process_exclusion" xml:space="preserve">
-    <value>Додај име процеса</value>
-  </data>
   <data name="tab_settings_menu" xml:space="preserve">
     <value>Мени</value>
   </data>
@@ -740,57 +707,6 @@
   </data>
   <data name="tab_settings_menu_size" xml:space="preserve">
     <value>Мени (Промени величину)</value>
-  </data>
-  <data name="tab_settings_menu_save" xml:space="preserve">
-    <value>Мени (Сачувати)</value>
-  </data>
-  <data name="tab_settings_menu_dimmer" xml:space="preserve">
-    <value>Мени (Затамњивач прозора)</value>
-  </data>
-  <data name="grpb_dimmer_color" xml:space="preserve">
-    <value>Боја</value>
-  </data>
-  <data name="grpb_dimmer_transparency" xml:space="preserve">
-    <value>Провидност</value>
-  </data>
-  <data name="grpb_closer" xml:space="preserve">
-    <value>Затворите прозор кликом миша</value>
-  </data>
-  <data name="closer_button_name" xml:space="preserve">
-    <value>Подешавања...</value>
-  </data>
-  <data name="closer_form" xml:space="preserve">
-    <value>Подешавања</value>
-  </data>
-  <data name="closer_btn_apply" xml:space="preserve">
-    <value>У реду</value>
-  </data>
-  <data name="closer_btn_cancel" xml:space="preserve">
-    <value>Откажи</value>
-  </data>
-  <data name="closer_lbl_key1" xml:space="preserve">
-    <value>Типак 1</value>
-  </data>
-  <data name="closer_lbl_key2" xml:space="preserve">
-    <value>Типак 2</value>
-  </data>
-  <data name="closer_lbl_mouse_button" xml:space="preserve">
-    <value>Дугме миша</value>
-  </data>
-  <data name="closer_lbl_action" xml:space="preserve">
-    <value>Поступак</value>
-  </data>
-  <data name="closer_close_foreground_window" xml:space="preserve">
-    <value>Затворите прозор у првом плану</value>
-  </data>
-  <data name="closer_close_window_under_cursor" xml:space="preserve">
-    <value>Затворите прозор испод курсора</value>
-  </data>
-  <data name="closer_kill_process_with_foreground_window" xml:space="preserve">
-    <value>Процес убијања помоћу прозора у првом плану</value>
-  </data>
-  <data name="closer_kill_process_with_window_under_cursor" xml:space="preserve">
-    <value>Процес убијања помоћу прозора испод курсора</value>
   </data>
   <data name="grpb_sizer" xml:space="preserve">
     <value>Како поставити величину прозора</value>

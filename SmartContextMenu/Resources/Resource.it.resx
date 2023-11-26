@@ -285,18 +285,6 @@
   <data name="start_program" xml:space="preserve">
     <value>Start Program</value>
   </data>
-  <data name="save_selected_items" xml:space="preserve">
-    <value>Salva impostazioni</value>
-  </data>
-  <data name="dimmer" xml:space="preserve">
-    <value>Dimmer</value>
-  </data>
-  <data name="dimmer_on" xml:space="preserve">
-    <value>Acceso</value>
-  </data>
-  <data name="dimmer_off" xml:space="preserve">
-    <value>Spento</value>
-  </data>
   <data name="buttons" xml:space="preserve">
     <value>Bottoni</value>
   </data>
@@ -510,27 +498,6 @@
   <data name="tab_settings_general" xml:space="preserve">
     <value>Generali</value>
   </data>
-  <data name="grpb_process_exclusions" xml:space="preserve">
-    <value>Processi esclusi</value>
-  </data>
-  <data name="clm_process_exclusion_name" xml:space="preserve">
-    <value>Nome file</value>
-  </data>
-  <data name="clm_process_exclusion_edit" xml:space="preserve">
-    <value>Modifica</value>
-  </data>
-  <data name="clm_process_exclusion_delete" xml:space="preserve">
-    <value>Cancella</value>
-  </data>
-  <data name="btn_process_exclusion_up" xml:space="preserve">
-    <value>Sposta in alto processo</value>
-  </data>
-  <data name="btn_process_exclusion_down" xml:space="preserve">
-    <value>Sposta in basso processo</value>
-  </data>
-  <data name="btn_add_process_exclusion" xml:space="preserve">
-    <value>Aggiungi nome processo</value>
-  </data>
   <data name="tab_settings_menu" xml:space="preserve">
     <value>Menu</value>
   </data>
@@ -740,63 +707,6 @@
   </data>
   <data name="tab_settings_menu_size" xml:space="preserve">
     <value>Menu (ridimensiona)</value>
-  </data>
-  <data name="tab_settings_menu_save" xml:space="preserve">
-    <value>Menu (salva)</value>
-  </data>
-  <data name="tab_settings_menu_dimmer" xml:space="preserve">
-    <value>Menu (dimmer)</value>
-  </data>
-  <data name="grpb_dimmer_color" xml:space="preserve">
-    <value>Colore</value>
-  </data>
-  <data name="grpb_dimmer_transparency" xml:space="preserve">
-    <value>Trasparenza</value>
-  </data>
-  <data name="grpb_closer" xml:space="preserve">
-    <value>Chiudi finestra con il pulsante del mouse</value>
-  </data>
-  <data name="closer_button_name" xml:space="preserve">
-    <value>Impostazioni...</value>
-  </data>
-  <data name="closer_form" xml:space="preserve">
-    <value>Impostazioni</value>
-  </data>
-  <data name="closer_btn_apply" xml:space="preserve">
-    <value>Ok</value>
-  </data>
-  <data name="closer_btn_cancel" xml:space="preserve">
-    <value>Cancella</value>
-  </data>
-  <data name="closer_lbl_key1" xml:space="preserve">
-    <value>Tasto 1</value>
-  </data>
-  <data name="closer_lbl_key2" xml:space="preserve">
-    <value>Tasto 2</value>
-  </data>
-  <data name="closer_lbl_mouse_button" xml:space="preserve">
-    <value>Pulsante del mouse</value>
-  </data>
-  <data name="closer_lbl_action" xml:space="preserve">
-    <value>Azione</value>
-  </data>
-  <data name="closer_close_window" xml:space="preserve">
-    <value>Chiudi finestra</value>
-  </data>
-  <data name="closer_kill_process" xml:space="preserve">
-    <value>Termina processo</value>
-  </data>
-  <data name="closer_close_foreground_window" xml:space="preserve">
-    <value>Chiudi finestra in primo piano</value>
-  </data>
-  <data name="closer_close_window_under_cursor" xml:space="preserve">
-    <value>Chiudi finestra sotto al cursore</value>
-  </data>
-  <data name="closer_kill_process_with_foreground_window" xml:space="preserve">
-    <value>Termina processo con finestra in primo piano</value>
-  </data>
-  <data name="closer_kill_process_with_window_under_cursor" xml:space="preserve">
-    <value>Termina processo con finestra sotto al cursore</value>
   </data>
   <data name="grpb_sizer" xml:space="preserve">
     <value>Come impostare dimensioni finestre</value>
