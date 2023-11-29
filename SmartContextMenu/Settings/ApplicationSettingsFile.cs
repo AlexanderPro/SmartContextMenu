@@ -13,41 +13,71 @@ namespace SmartContextMenu.Settings
 {
     class ApplicationSettingsFile
     {
-        public static FileInfo GetCurrentDirectoryFile()
+        public static ApplicationSettings Read()
+        {
+            if (GetCurrentDirectoryFile().Exists)
+            {
+                return ReadFromCurrentDirectoryFile();
+            }
+            else if (GetProfileFile().Exists)
+            {
+                return ReadFromProfileFile();
+            }
+            else
+            {
+                var settings = ReadFromResources();
+                SaveToProfileFile(settings);
+                return settings;
+            }
+        }
+
+        public static void Save(ApplicationSettings settings)
+        {
+            if (GetCurrentDirectoryFile().Exists)
+            {
+                SaveToCurrentDirectoryFile(settings);
+            }
+            else
+            {
+                SaveToProfileFile(settings);
+            }
+        }
+
+        private static FileInfo GetCurrentDirectoryFile()
         {
             var fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, $"{AssemblyUtils.AssemblyTitle}.xml");
             return new FileInfo(fileName);
         }
 
-        public static FileInfo GetProfileFile()
+        private static FileInfo GetProfileFile()
         {
             var directoryName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AssemblyUtils.AssemblyTitle, AssemblyUtils.AssemblyProductVersion);
             var fileName = Path.Combine(directoryName, $"{AssemblyUtils.AssemblyTitle}.xml");
             return new FileInfo(fileName);
         }
 
-        public static ApplicationSettings ReadFromProfileFile()
+        private static ApplicationSettings ReadFromProfileFile()
         {
             var fileInfo = GetProfileFile();
             using var stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             return Read(stream);
         }
 
-        public static ApplicationSettings ReadFromCurrentDirectoryFile()
+        private static ApplicationSettings ReadFromCurrentDirectoryFile()
         {
             var fileInfo = GetCurrentDirectoryFile();
             using var stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             return Read(stream);
         }
 
-        public static ApplicationSettings ReadFromApplicationResources()
+        private static ApplicationSettings ReadFromResources()
         {
             var resourceName = $"SmartContextMenu.{AssemblyUtils.AssemblyTitle}.xml";
             using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
             return Read(stream);
         }
 
-        public static void SaveToProfileFile(ApplicationSettings settings)
+        private static void SaveToProfileFile(ApplicationSettings settings)
         {
             var fileInfo = GetProfileFile();
             if (!Directory.Exists(fileInfo.Directory.FullName))
@@ -57,7 +87,7 @@ namespace SmartContextMenu.Settings
             Save(fileInfo.FullName, settings);
         }
 
-        public static void SaveToCurrentDirectoryFile(ApplicationSettings settings)
+        private static void SaveToCurrentDirectoryFile(ApplicationSettings settings)
         {
             var fileInfo = GetCurrentDirectoryFile();
             Save(fileInfo.FullName, settings);

@@ -3,7 +3,6 @@ using System.Text;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using SmartContextMenu.Utils;
 using SmartContextMenu.Native;
 using SmartContextMenu.Native.Enums;
 using SmartContextMenu.Native.Structs;
