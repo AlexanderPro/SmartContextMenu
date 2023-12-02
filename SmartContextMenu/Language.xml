@@ -59,9 +59,6 @@
       <item name="close_other_windows" value="Close" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Save" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="On" />
-      <item name="dimmer_off" value="Off" />
       <item name="buttons" value="Buttons" />
       <item name="disable_minimize_button" value="Disable &quot;Minimize&quot; Button" />
       <item name="disable_maximize_button" value="Disable &quot;Maximize&quot; Button" />
@@ -211,24 +208,6 @@
       <item name="tab_settings_menu_start" value="Menu (Start Program)" />
       <item name="tab_settings_menu_size" value="Menu (Resize)" />
       <item name="tab_settings_menu_save" value="Menu (Save)" />
-      <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
-      <item name="grpb_dimmer_color" value="Color" />
-      <item name="grpb_dimmer_transparency" value="Transparency" />
-      <item name="grpb_closer" value="Close Window By Mouse Click" />
-      <item name="closer_button_name" value="Settings..." />
-      <item name="closer_form" value="Settings" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Cancel" />
-      <item name="closer_lbl_key1" value="Key 1" />
-      <item name="closer_lbl_key2" value="Key 2" />
-      <item name="closer_lbl_mouse_button" value="Mouse Button" />
-      <item name="closer_lbl_action" value="Action" />
-      <item name="closer_close_window" value="Close window" />
-      <item name="closer_kill_process" value="Kill process" />
-      <item name="closer_close_foreground_window" value="Close foreground window" />
-      <item name="closer_close_window_under_cursor" value="Close window under cursor" />
-      <item name="closer_kill_process_with_foreground_window" value="Kill process with foreground window" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Kill process with window under cursor" />
       <item name="grpb_sizer" value="How to set window size" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -296,9 +275,6 @@
       <item name="close_other_windows" value="Schlieβen" />
       <item name="start_program" value="Programm ausführen" />
       <item name="save_selected_items" value="Speichern" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="Ein" />
-      <item name="dimmer_off" value="Aus" />
       <item name="buttons" value="Tasten" />
       <item name="disable_minimize_button" value="Deaktivieren &quot;Minimieren&quot;" />
       <item name="disable_maximize_button" value="Deaktivieren &quot;Maximieren&quot;" />
@@ -448,23 +424,6 @@
       <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
       <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
       <item name="tab_settings_menu_save" value="Menü (Speichern)" />
-      <item name="tab_settings_menu_dimmer" value="Menü (Dimmer)" />
-      <item name="grpb_dimmer_color" value="Farbe" />
-      <item name="grpb_dimmer_transparency" value="Transparenz" />
-      <item name="grpb_closer" value="Close Window By Mouse Click" />
-      <item name="grpb_closer" value="Fenster per Mausklick schließen" />
-      <item name="closer_button_name" value="Einstellungen..." />
-      <item name="closer_form" value="Einstellungen" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Abbrechen" />
-      <item name="closer_lbl_key1" value="Taste 1" />
-      <item name="closer_lbl_key2" value="Taste 2" />
-      <item name="closer_lbl_mouse_button" value="Maustaste" />
-      <item name="closer_lbl_action" value="Aktion" />
-      <item name="closer_close_foreground_window" value="Vordergrundfenster schließen" />
-      <item name="closer_close_window_under_cursor" value="Fenster unter Cursor schließen" />
-      <item name="closer_kill_process_with_foreground_window" value="Prozess mit Vordergrundfenster beenden" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Prozess mit Fenster unter Cursor beenden" />
       <item name="grpb_sizer" value="Fenstergröße einstellen window" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -532,9 +491,6 @@
       <item name="close_other_windows" value="关闭" />
       <item name="start_program" value="启动" />
       <item name="save_selected_items" value="保存设置" />
-      <item name="dimmer" value="突出窗口操作" />
-      <item name="dimmer_on" value="开" />
-      <item name="dimmer_off" value="关" />
       <item name="buttons" value="按钮操作" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按钮" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按钮" />
@@ -684,22 +640,6 @@
       <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
       <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
       <item name="tab_settings_menu_save" value="菜单 (保存)" />
-      <item name="tab_settings_menu_dimmer" value="菜单 (窗户调光器)" />
-      <item name="grpb_dimmer_color" value="颜色" />
-      <item name="grpb_dimmer_transparency" value="透明度" />
-      <item name="grpb_closer" value="通过鼠标单击关闭窗口" />
-      <item name="closer_button_name" value="设置..." />
-      <item name="closer_form" value="设置." />
-      <item name="closer_btn_apply" value="确定" />
-      <item name="closer_btn_cancel" value="取消" />
-      <item name="closer_lbl_key1" value="键 1" />
-      <item name="closer_lbl_key2" value="键 2" />
-      <item name="closer_lbl_mouse_button" value="鼠标按钮" />
-      <item name="closer_lbl_action" value="动作" />
-      <item name="closer_close_foreground_window" value="关闭前台窗口" />
-      <item name="closer_close_window_under_cursor" value="关闭光标下的窗口" />
-      <item name="closer_kill_process_with_foreground_window" value="终止带有前台窗口的进程" />
-      <item name="closer_kill_process_with_window_under_cursor" value="终止光标下窗口的进程" />
       <item name="grpb_sizer" value="如何设置窗口大小" />
       <item name="grpb_display" value="显示" />
       <item name="chk_enable_high_dpi" value="启用高 DPI 显示" />
@@ -767,9 +707,6 @@
       <item name="close_other_windows" value="關閉" />
       <item name="start_program" value="啟動程式" />
       <item name="save_selected_items" value="儲存" />
-      <item name="dimmer" value="窗戶調光器" />
-      <item name="dimmer_on" value="在" />
-      <item name="dimmer_off" value="離開" />
       <item name="buttons" value="鈕扣" />
       <item name="disable_minimize_button" value="禁用&quot;最小化&quot;按鈕" />
       <item name="disable_maximize_button" value="禁用&quot;最大化&quot;按鈕" />
@@ -919,24 +856,6 @@
       <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
       <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
       <item name="tab_settings_menu_save" value="選單 (儲存)" />
-      <item name="tab_settings_menu_dimmer" value="選單 (窗戶調光器)" />
-      <item name="grpb_dimmer_color" value="顏色" />
-      <item name="grpb_dimmer_transparency" value="透明度" />
-      <item name="grpb_closer" value="透過滑鼠按一下關閉視窗" />
-      <item name="closer_button_name" value="設定..." />
-      <item name="closer_form" value="設定." />
-      <item name="closer_btn_apply" value="確定" />
-      <item name="closer_btn_cancel" value="取消" />
-      <item name="closer_lbl_key1" value="鍵 1" />
-      <item name="closer_lbl_key2" value="鍵 2" />
-      <item name="closer_lbl_mouse_button" value="滑鼠按鈕" />
-      <item name="closer_lbl_action" value="動作" />
-      <item name="closer_close_window" value="關閉視窗" />
-      <item name="closer_kill_process" value="終止處理程序" />
-      <item name="closer_close_foreground_window" value="關閉前台視窗" />
-      <item name="closer_close_window_under_cursor" value="關閉游標下的視窗" />
-      <item name="closer_kill_process_with_foreground_window" value="終止帶有前台視窗的處理程序" />
-      <item name="closer_kill_process_with_window_under_cursor" value="終止游標下視窗的處理程序" />
       <item name="grpb_sizer" value="如何設定視窗大小" />
       <item name="grpb_display" value="顯示" />
       <item name="chk_enable_high_dpi" value="啟用高 DPI 顯示" />
@@ -1004,9 +923,6 @@
       <item name="close_other_windows" value="閉じる" />
       <item name="start_program" value="起動プログラム" />
       <item name="save_selected_items" value="保存" />
-      <item name="dimmer" value="窓の調光器" />
-      <item name="dimmer_on" value="の上" />
-      <item name="dimmer_off" value="オフ" />
       <item name="buttons" value="ボタン" />
       <item name="disable_minimize_button" value="「最小化」ボタンを無効にする" />
       <item name="disable_maximize_button" value="「最大化」ボタンを無効にする" />
@@ -1156,22 +1072,6 @@
       <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
       <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
       <item name="tab_settings_menu_save" value="メニュー (保存)" />
-      <item name="tab_settings_menu_dimmer" value="メニュー (窓の調光器)" />
-      <item name="grpb_dimmer_color" value="色" />
-      <item name="grpb_dimmer_transparency" value="透明度" />
-      <item name="grpb_closer" value="マウスクリックでウィンドウを閉じる" />
-      <item name="closer_button_name" value="設定..." />
-      <item name="closer_form" value="設定" />
-      <item name="closer_btn_apply" value="OK" />
-      <item name="closer_btn_cancel" value="キャンセル" />
-      <item name="closer_lbl_key1" value="キー 1" />
-      <item name="closer_lbl_key2" value="キー 2" />
-      <item name="closer_lbl_mouse_button" value="マウスボタン" />
-      <item name="closer_lbl_action" value="アクション" />
-      <item name="closer_close_foreground_window" value="前景ウィンドウを閉じる" />
-      <item name="closer_close_window_under_cursor" value="カーソルの下のウィンドウを閉じる" />
-      <item name="closer_kill_process_with_foreground_window" value="フォアグラウンドウィンドウでプロセスを強制終了します" />
-      <item name="closer_kill_process_with_window_under_cursor" value="カーソルの下のウィンドウでプロセスを強制終了します" />
       <item name="grpb_sizer" value="ウィンドウサイズの設定方法" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -1239,9 +1139,6 @@
       <item name="close_other_windows" value="다른 창 닫기" />
       <item name="start_program" value="프로그램 실행" />
       <item name="save_selected_items" value="저장" />
-      <item name="dimmer" value="창 조광기" />
-      <item name="dimmer_on" value="~에" />
-      <item name="dimmer_off" value="끄다" />
       <item name="buttons" value="버튼" />
       <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 비활성화" />
       <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 비활성화" />
@@ -1391,24 +1288,6 @@
       <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
       <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
       <item name="tab_settings_menu_save" value="메뉴 (저장)" />
-      <item name="tab_settings_menu_dimmer" value="메뉴 (창 조광기)" />
-      <item name="grpb_dimmer_color" value="색상" />
-      <item name="grpb_dimmer_transparency" value="투명도" />
-      <item name="grpb_closer" value="마우스 클릭으로 창 닫기" />
-      <item name="closer_button_name" value="설정..." />
-      <item name="closer_form" value="설정" />
-      <item name="closer_btn_apply" value="확인" />
-      <item name="closer_btn_cancel" value="취소" />
-      <item name="closer_lbl_key1" value="키 1" />
-      <item name="closer_lbl_key2" value="키 2" />
-      <item name="closer_lbl_mouse_button" value="마우스 버튼" />
-      <item name="closer_lbl_action" value="동작" />
-      <item name="closer_close_window" value="창 닫기" />
-      <item name="closer_kill_process" value="프로세스 종료" />
-      <item name="closer_close_foreground_window" value="전경 창 닫기" />
-      <item name="closer_close_window_under_cursor" value="커서 아래 창 닫기" />
-      <item name="closer_kill_process_with_foreground_window" value="전경 창과 함께 프로세스 종료" />
-      <item name="closer_kill_process_with_window_under_cursor" value="커서 아래 창과 함께 프로세스 종료" />
       <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
       <item name="grpb_display" value="표시" />
       <item name="chk_enable_high_dpi" value="높은 DPI 사용" />
@@ -1476,9 +1355,6 @@
       <item name="close_other_windows" value="Закрыть" />
       <item name="start_program" value="Пуск" />
       <item name="save_selected_items" value="Сохранить" />
-      <item name="dimmer" value="Затемнение" />
-      <item name="dimmer_on" value="Включить" />
-      <item name="dimmer_off" value="Выключить" />
       <item name="buttons" value="Кнопки" />
       <item name="disable_minimize_button" value="Отключить кнопку минимизации окна" />
       <item name="disable_maximize_button" value="Отключить кнопку развертывания окна" />
@@ -1628,22 +1504,6 @@
       <item name="tab_settings_menu_start" value="Меню (Пуск)" />
       <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
       <item name="tab_settings_menu_save" value="Меню (Сохранить)" />
-      <item name="tab_settings_menu_dimmer" value="Меню (Затемнение)" />
-      <item name="grpb_dimmer_color" value="Цвет" />
-      <item name="grpb_dimmer_transparency" value="Прозрачность" />
-      <item name="grpb_closer" value="Закрытие окна кнопкой мышки" />
-      <item name="closer_button_name" value="Настройки..." />
-      <item name="closer_form" value="Настройки" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Cancel" />
-      <item name="closer_lbl_key1" value="Клавиша 1" />
-      <item name="closer_lbl_key2" value="Клавиша 2" />
-      <item name="closer_lbl_mouse_button" value="Кнопка мышки" />
-      <item name="closer_lbl_action" value="Действие" />
-      <item name="closer_close_foreground_window" value="Закрыть переднее окно" />
-      <item name="closer_close_window_under_cursor" value="Закрыть окно под курсором" />
-      <item name="closer_kill_process_with_foreground_window" value="Убить процесс с передним окном" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Убить процесс с окном под курсором" />
       <item name="grpb_sizer" value="Как устанавливать размер окна" />
       <item name="grpb_display" value="Экран" />
       <item name="chk_enable_high_dpi" value="Включить поддержку High DPI" />
@@ -1711,9 +1571,6 @@
       <item name="close_other_windows" value="Затвори" />
       <item name="start_program" value="Покренути програм" />
       <item name="save_selected_items" value="Сачувати" />
-      <item name="dimmer" value="Затамњивач прозора" />
-      <item name="dimmer_on" value="Укључити" />
-      <item name="dimmer_off" value="Искључити" />
       <item name="buttons" value="Дугмад" />
       <item name="disable_minimize_button" value="Онемогућите дугме &quot;Минимизирај&quot;" />
       <item name="disable_maximize_button" value="Онемогућите дугме &quot;Максимирај&quot;" />
@@ -1863,22 +1720,6 @@
       <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
       <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
       <item name="tab_settings_menu_save" value="Мени (Сачувати)" />
-      <item name="tab_settings_menu_dimmer" value="Мени (Затамњивач прозора)" />
-      <item name="grpb_dimmer_color" value="Боја" />
-      <item name="grpb_dimmer_transparency" value="Провидност" />
-      <item name="grpb_closer" value="Затворите прозор кликом миша" />
-      <item name="closer_button_name" value="Подешавања..." />
-      <item name="closer_form" value="Подешавања" />
-      <item name="closer_btn_apply" value="У реду" />
-      <item name="closer_btn_cancel" value="Откажи" />
-      <item name="closer_lbl_key1" value="Типак 1" />
-      <item name="closer_lbl_key2" value="Типак 2" />
-      <item name="closer_lbl_mouse_button" value="Дугме миша" />
-      <item name="closer_lbl_action" value="Поступак" />
-      <item name="closer_close_foreground_window" value="Затворите прозор у првом плану" />
-      <item name="closer_close_window_under_cursor" value="Затворите прозор испод курсора" />
-      <item name="closer_kill_process_with_foreground_window" value="Процес убијања помоћу прозора у првом плану" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Процес убијања помоћу прозора испод курсора" />
       <item name="grpb_sizer" value="Како поставити величину прозора" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -1946,9 +1787,6 @@
       <item name="close_other_windows" value="Fechar" />
       <item name="start_program" value="Executar programa" />
       <item name="save_selected_items" value="Salvar" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="On" />
-      <item name="dimmer_off" value="Off" />
       <item name="buttons" value="Botões" />
       <item name="disable_minimize_button" value="Desativar o botão &quot;Minimizar&quot;" />
       <item name="disable_maximize_button" value="Desativar o botão &quot;Maximizar&quot;" />
@@ -2098,22 +1936,6 @@
       <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
       <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
       <item name="tab_settings_menu_save" value="Menu (Salvar)" />
-      <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
-      <item name="grpb_dimmer_color" value="Cor" />
-      <item name="grpb_dimmer_transparency" value="Transparência" />
-      <item name="grpb_closer" value="Fechar janela com clique do mouse" />
-      <item name="closer_button_name" value="Configuração..." />
-      <item name="closer_form" value="Configuração" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Cancelar" />
-      <item name="closer_lbl_key1" value="Key 1" />
-      <item name="closer_lbl_key2" value="Key 2" />
-      <item name="closer_lbl_mouse_button" value="Botão do mouse" />
-      <item name="closer_lbl_action" value="Comando" />
-      <item name="closer_close_foreground_window" value="Fechar janela de primeiro plano" />
-      <item name="closer_close_window_under_cursor" value="Fechar a janela sob o cursor" />
-      <item name="closer_kill_process_with_foreground_window" value="Encerrar executável com janela em primeiro plano" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Encerrar executável com janela sob o cursor" />
       <item name="grpb_sizer" value="Como definir o tamanho da janela" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -2181,9 +2003,6 @@
       <item name="close_other_windows" value="Chiudile" />
       <item name="start_program" value="Start Program" />
       <item name="save_selected_items" value="Salva impostazioni" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="Acceso" />
-      <item name="dimmer_off" value="Spento" />
       <item name="buttons" value="Bottoni" />
       <item name="disable_minimize_button" value="Disabilita il pulsante &quot;Riduci a icona&quot;" />
       <item name="disable_maximize_button" value="Disabilita il pulsante &quot;Ingrandisci&quot;" />
@@ -2333,24 +2152,6 @@
       <item name="tab_settings_menu_start" value="Menu (avvia programma)" />
       <item name="tab_settings_menu_size" value="Menu (ridimensiona)" />
       <item name="tab_settings_menu_save" value="Menu (salva)" />
-      <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
-      <item name="grpb_dimmer_color" value="Colore" />
-      <item name="grpb_dimmer_transparency" value="Trasparenza" />
-      <item name="grpb_closer" value="Chiudi finestra con il pulsante del mouse" />
-      <item name="closer_button_name" value="Impostazioni..." />
-      <item name="closer_form" value="Impostazioni" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Cancella" />
-      <item name="closer_lbl_key1" value="Tasto 1" />
-      <item name="closer_lbl_key2" value="Tasto 2" />
-      <item name="closer_lbl_mouse_button" value="Pulsante del mouse" />
-      <item name="closer_lbl_action" value="Azione" />
-      <item name="closer_close_window" value="Chiudi finestra" />
-      <item name="closer_kill_process" value="Termina processo" />
-      <item name="closer_close_foreground_window" value="Chiudi finestra in primo piano" />
-      <item name="closer_close_window_under_cursor" value="Chiudi finestra sotto al cursore" />
-      <item name="closer_kill_process_with_foreground_window" value="Termina processo con finestra in primo piano" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Termina processo con finestra sotto al cursore" />
       <item name="grpb_sizer" value="Come impostare dimensioni finestre" />
       <item name="grpb_display" value="Display" />
       <item name="chk_enable_high_dpi" value="Abilita DPI alti" />
@@ -2418,9 +2219,6 @@
       <item name="close_other_windows" value="Fermer les autres fenêtres" />
       <item name="start_program" value="Démarrer programme" />
       <item name="save_selected_items" value="Sauvegarder les élements sélectionnés" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="Sur" />
-      <item name="dimmer_off" value="Désactivé" />
       <item name="buttons" value="Boutons" />
       <item name="disable_minimize_button" value="Désactiver le bouton &quot;Réduire&quot;" />
       <item name="disable_maximize_button" value="Désactiver le bouton &quot;Agrandir&quot;" />
@@ -2570,24 +2368,6 @@
       <item name="tab_settings_menu_start" value="Menu (lancer le programme)" />
       <item name="tab_settings_menu_size" value="Menu (redimensionner)" />
       <item name="tab_settings_menu_save" value="Menu (enregistrer)" />
-      <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
-      <item name="grpb_dimmer_color" value="Couleur" />
-      <item name="grpb_dimmer_transparency" value="Trasparence" />
-      <item name="grpb_closer" value="Fermer la fenêtre avec le bouton de la souris" />
-      <item name="closer_button_name" value="Paramètres..." />
-      <item name="closer_form" value="Paramètres" />
-      <item name="closer_btn_apply" value="Ok" />
-      <item name="closer_btn_cancel" value="Annuler" />
-      <item name="closer_lbl_key1" value="Clé 1" />
-      <item name="closer_lbl_key2" value="Clé 2" />
-      <item name="closer_lbl_mouse_button" value="Bouton de la souris" />
-      <item name="closer_lbl_action" value="Action" />
-      <item name="closer_close_window" value="Fermer la fenêtre" />
-      <item name="closer_kill_process" value="Tuer le processus" />
-      <item name="closer_close_foreground_window" value="Fermer la fenêtre au premier plan" />
-      <item name="closer_close_window_under_cursor" value="Fermer la fenêtre sous le curseur" />
-      <item name="closer_kill_process_with_foreground_window" value="Terminer le processus de la fenêtre au premier plan" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Terminer le processus de la fenêtre sous le curseur" />
       <item name="grpb_sizer" value="Comment définir la taille des fenêtres" />
       <item name="grpb_display" value="Affichage" />
       <item name="chk_enable_high_dpi" value="Activer le DPI élevé" />
@@ -2655,9 +2435,6 @@
       <item name="close_other_windows" value="Bezár" />
       <item name="start_program" value="Programindítás" />
       <item name="save_selected_items" value="Mentés" />
-      <item name="dimmer" value="Dimmer" />
-      <item name="dimmer_on" value="Be" />
-      <item name="dimmer_off" value="Ki" />
       <item name="buttons" value="Gombok" />
       <item name="disable_minimize_button" value="Tiltsa le a &quot;Kis méret&quot; gombot" />
       <item name="disable_maximize_button" value="Tiltsa le a &quot;Maximálás&quot; gombot" />
@@ -2807,24 +2584,6 @@
       <item name="tab_settings_menu_start" value="Menü (programindítás hozzáadása)" />
       <item name="tab_settings_menu_size" value="Menü (átméretezés)" />
       <item name="tab_settings_menu_save" value="Menü (mentés)" />
-      <item name="tab_settings_menu_dimmer" value="Menü (dimmer)" />
-      <item name="grpb_dimmer_color" value="Szín" />
-      <item name="grpb_dimmer_transparency" value="Átláthatóság" />
-      <item name="grpb_closer" value="Ablak bezárása egérkattintással" />
-      <item name="closer_button_name" value="Beállítások..." />
-      <item name="closer_form" value="Beállítások" />
-      <item name="closer_btn_apply" value="OK" />
-      <item name="closer_btn_cancel" value="Mégse" />
-      <item name="closer_lbl_key1" value="1. kulcs" />
-      <item name="closer_lbl_key2" value="2. kulcs" />
-      <item name="closer_lbl_mouse_button" value="Egérgomb" />
-      <item name="closer_lbl_action" value="Akció" />
-      <item name="closer_close_window" value="Ablak bezárása" />
-      <item name="closer_kill_process" value="Folyamat leállítása" />
-      <item name="closer_close_foreground_window" value="Elől lévő ablak bezázárása" />
-      <item name="closer_close_window_under_cursor" value="Hátul lévő nablak bezárása" />
-      <item name="closer_kill_process_with_foreground_window" value="Fejezze be a folyamatot az elől lévő ablakban" />
-      <item name="closer_kill_process_with_window_under_cursor" value="Fejezze be a folyamatot a kurzor alatti ablakban" />
       <item name="grpb_sizer" value="Hogyan állítsuk be az ablak méretét" />
       <item name="grpb_display" value="Kijelző" />
       <item name="chk_enable_high_dpi" value="Magas DPI engedélyezése" />
