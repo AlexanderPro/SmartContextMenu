@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Resources;
-using System.Reflection;
 using System.Windows.Forms;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
@@ -14,9 +12,9 @@ namespace SmartContextMenu.Forms
         public AboutForm(ApplicationSettings settings)
         {
             InitializeComponent();
-            var resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
-            btnOk.Text = resourceManager.GetString("about_btn_ok");
-            Text = resourceManager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
+            var languageManager = new LanguageManager(settings.LanguageName);
+            btnOk.Text = languageManager.GetString("about_btn_ok");
+            Text = languageManager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
             lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright}-{DateTime.Now.Year} {AssemblyUtils.AssemblyCompany}";
             linkUrl.Text = URL_SMART_CONTEXT_MENU;

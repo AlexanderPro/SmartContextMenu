@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Resources;
 using System.Windows.Forms;
-using System.Reflection;
 using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
@@ -13,15 +11,15 @@ namespace SmartContextMenu.Forms
         public ParameterForm(ApplicationSettings settings, string parameter)
         {
             InitializeComponent();
-            var resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
-            InitializeControls(resourceManager, parameter);
+            var languageManager = new LanguageManager(settings.LanguageName);
+            InitializeControls(languageManager, parameter);
         }
 
-        private void InitializeControls(ResourceManager resourceManager, string parameter)
+        private void InitializeControls(LanguageManager languageManager, string parameter)
         {
             lblParameter.Text = parameter;
-            btnApply.Text = resourceManager.GetString("parameter_btn_apply");
-            Text = resourceManager.GetString("parameter_form");
+            btnApply.Text = languageManager.GetString("parameter_btn_apply");
+            Text = languageManager.GetString("parameter_form");
             DialogResult = DialogResult.Cancel;
         }
 

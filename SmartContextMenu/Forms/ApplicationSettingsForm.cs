@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
-using System.Resources;
-using System.Reflection;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Controls;
 
@@ -12,56 +10,56 @@ namespace SmartContextMenu.Forms
     public partial class SettingsForm : Form
     {
         private ApplicationSettings _settings;
-        private ResourceManager _resourceManager;
+        private LanguageManager _languageManager;
 
         public event EventHandler<EventArgs<ApplicationSettings>> OkClick;
 
         public SettingsForm(ApplicationSettings settings)
         {
             _settings = settings;
-            _resourceManager = new ResourceManager($"SmartContextMenu.Resource.{_settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
+            _languageManager = new LanguageManager(_settings.LanguageName);
             InitializeComponent();
             InitializeControls();
         }
 
         private void InitializeControls()
         {
-            tabpGeneral.Text = _resourceManager.GetString("tab_settings_general");
-            tabpMenuStart.Text = _resourceManager.GetString("tab_settings_menu_start");
-            tabpMenuSize.Text = _resourceManager.GetString("tab_settings_menu_size");
-            tabpMenu.Text = _resourceManager.GetString("tab_settings_menu");
-            grpbLanguage.Text = _resourceManager.GetString("grpb_language");
-            grpbMouseHotkeys.Text = _resourceManager.GetString("grpb_process_exclusions");
-            grpbStartProgram.Text = _resourceManager.GetString("grpb_start_program");
-            grpbWindowSize.Text = _resourceManager.GetString("grpb_window_size");
-            grpbSizer.Text = _resourceManager.GetString("grpb_sizer");
-            grpbDisplay.Text = _resourceManager.GetString("grpb_display");
-            chkEnableHighDPI.Text = _resourceManager.GetString("chk_enable_high_dpi");
-            clmStartProgramTitle.HeaderText = _resourceManager.GetString("clm_start_program_title");
-            clmStartProgramPath.HeaderText = _resourceManager.GetString("clm_start_program_path");
-            clmStartProgramArguments.HeaderText = _resourceManager.GetString("clm_start_program_arguments");
-            clmStartProgramEdit.ToolTipText = _resourceManager.GetString("clm_start_program_edit");
-            clmStartProgramDelete.ToolTipText = _resourceManager.GetString("clm_start_program_delete");
-            clmWindowSizeTitle.HeaderText = _resourceManager.GetString("clm_window_size_title");
-            clmWindowSizeLeft.HeaderText = _resourceManager.GetString("clm_window_size_left");
-            clmWindowSizeTop.HeaderText = _resourceManager.GetString("clm_window_size_top");
-            clmWindowSizeWidth.HeaderText = _resourceManager.GetString("clm_window_size_width");
-            clmWindowSizeHeight.HeaderText = _resourceManager.GetString("clm_window_size_height");
-            clmWindowSizeEdit.ToolTipText = _resourceManager.GetString("clm_window_size_edit");
-            clmWindowSizeDelete.ToolTipText = _resourceManager.GetString("clm_window_size_delete");
-            clmnMenuItemName.HeaderText = _resourceManager.GetString("clm_hotkeys_name");
-            clmnHotkeys.HeaderText = _resourceManager.GetString("clm_hotkeys_keys");
-            toolTipAddProcessName.SetToolTip(btnAddStartProgram, _resourceManager.GetString("btn_add_start_program"));
-            toolTipAddProcessName.SetToolTip(btnStartProgramDown, _resourceManager.GetString("btn_start_program_down"));
-            toolTipAddProcessName.SetToolTip(btnStartProgramUp, _resourceManager.GetString("btn_start_program_up"));
-            toolTipAddProcessName.SetToolTip(btnAddWindowSize, _resourceManager.GetString("btn_add_window_size"));
-            toolTipAddProcessName.SetToolTip(btnWindowSizeDown, _resourceManager.GetString("btn_window_size_down"));
-            toolTipAddProcessName.SetToolTip(btnWindowSizeUp, _resourceManager.GetString("btn_window_size_up"));
-            toolTipAddProcessName.SetToolTip(btnMenuItemDown, _resourceManager.GetString("btn_menu_item_down"));
-            toolTipAddProcessName.SetToolTip(btnMenuItemUp, _resourceManager.GetString("btn_menu_item_up"));
-            btnApply.Text = _resourceManager.GetString("settings_btn_apply");
-            btnCancel.Text = _resourceManager.GetString("settings_btn_cancel");
-            Text = _resourceManager.GetString("settings_form");
+            tabpGeneral.Text = _languageManager.GetString("tab_settings_general");
+            tabpMenuStart.Text = _languageManager.GetString("tab_settings_menu_start");
+            tabpMenuSize.Text = _languageManager.GetString("tab_settings_menu_size");
+            tabpMenu.Text = _languageManager.GetString("tab_settings_menu");
+            grpbLanguage.Text = _languageManager.GetString("grpb_language");
+            grpbMouseHotkeys.Text = _languageManager.GetString("grpb_process_exclusions");
+            grpbStartProgram.Text = _languageManager.GetString("grpb_start_program");
+            grpbWindowSize.Text = _languageManager.GetString("grpb_window_size");
+            grpbSizer.Text = _languageManager.GetString("grpb_sizer");
+            grpbDisplay.Text = _languageManager.GetString("grpb_display");
+            chkEnableHighDPI.Text = _languageManager.GetString("chk_enable_high_dpi");
+            clmStartProgramTitle.HeaderText = _languageManager.GetString("clm_start_program_title");
+            clmStartProgramPath.HeaderText = _languageManager.GetString("clm_start_program_path");
+            clmStartProgramArguments.HeaderText = _languageManager.GetString("clm_start_program_arguments");
+            clmStartProgramEdit.ToolTipText = _languageManager.GetString("clm_start_program_edit");
+            clmStartProgramDelete.ToolTipText = _languageManager.GetString("clm_start_program_delete");
+            clmWindowSizeTitle.HeaderText = _languageManager.GetString("clm_window_size_title");
+            clmWindowSizeLeft.HeaderText = _languageManager.GetString("clm_window_size_left");
+            clmWindowSizeTop.HeaderText = _languageManager.GetString("clm_window_size_top");
+            clmWindowSizeWidth.HeaderText = _languageManager.GetString("clm_window_size_width");
+            clmWindowSizeHeight.HeaderText = _languageManager.GetString("clm_window_size_height");
+            clmWindowSizeEdit.ToolTipText = _languageManager.GetString("clm_window_size_edit");
+            clmWindowSizeDelete.ToolTipText = _languageManager.GetString("clm_window_size_delete");
+            clmnMenuItemName.HeaderText = _languageManager.GetString("clm_hotkeys_name");
+            clmnHotkeys.HeaderText = _languageManager.GetString("clm_hotkeys_keys");
+            toolTipAddProcessName.SetToolTip(btnAddStartProgram, _languageManager.GetString("btn_add_start_program"));
+            toolTipAddProcessName.SetToolTip(btnStartProgramDown, _languageManager.GetString("btn_start_program_down"));
+            toolTipAddProcessName.SetToolTip(btnStartProgramUp, _languageManager.GetString("btn_start_program_up"));
+            toolTipAddProcessName.SetToolTip(btnAddWindowSize, _languageManager.GetString("btn_add_window_size"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeDown, _languageManager.GetString("btn_window_size_down"));
+            toolTipAddProcessName.SetToolTip(btnWindowSizeUp, _languageManager.GetString("btn_window_size_up"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemDown, _languageManager.GetString("btn_menu_item_down"));
+            toolTipAddProcessName.SetToolTip(btnMenuItemUp, _languageManager.GetString("btn_menu_item_up"));
+            btnApply.Text = _languageManager.GetString("settings_btn_apply");
+            btnCancel.Text = _languageManager.GetString("settings_btn_cancel");
+            Text = _languageManager.GetString("settings_form");
 
             foreach (var item in _settings.MenuItems.WindowSizeItems)
             {
@@ -74,8 +72,8 @@ namespace SmartContextMenu.Forms
                 row.Cells[3].Value = item.Width.ToString();
                 row.Cells[4].Value = item.Height.ToString();
                 row.Cells[5].Value = item.ToString();
-                row.Cells[6].ToolTipText = _resourceManager.GetString("clm_window_size_edit");
-                row.Cells[7].ToolTipText = _resourceManager.GetString("clm_window_size_delete");
+                row.Cells[6].ToolTipText = _languageManager.GetString("clm_window_size_edit");
+                row.Cells[7].ToolTipText = _languageManager.GetString("clm_window_size_delete");
             }
 
             foreach (var item in _settings.MenuItems.StartProgramItems)
@@ -86,8 +84,8 @@ namespace SmartContextMenu.Forms
                 row.Cells[0].Value = cloneItem.Title;
                 row.Cells[1].Value = cloneItem.FileName;
                 row.Cells[2].Value = cloneItem.Arguments;
-                row.Cells[3].ToolTipText = _resourceManager.GetString("clm_start_program_edit");
-                row.Cells[4].ToolTipText = _resourceManager.GetString("clm_start_program_delete");
+                row.Cells[3].ToolTipText = _languageManager.GetString("clm_start_program_edit");
+                row.Cells[4].ToolTipText = _languageManager.GetString("clm_start_program_delete");
                 row.Tag = cloneItem;
             }
 
@@ -113,9 +111,9 @@ namespace SmartContextMenu.Forms
             cmbLanguage.DataSource = languageItems;
             cmbLanguage.SelectedValue = _settings.LanguageName;
 
-            cmbSizer.Items.Add(_resourceManager.GetString("sizer_window_with_margins"));
-            cmbSizer.Items.Add(_resourceManager.GetString("sizer_window_without_margins"));
-            cmbSizer.Items.Add(_resourceManager.GetString("sizer_window_client_area"));
+            cmbSizer.Items.Add(_languageManager.GetString("sizer_window_with_margins"));
+            cmbSizer.Items.Add(_languageManager.GetString("sizer_window_without_margins"));
+            cmbSizer.Items.Add(_languageManager.GetString("sizer_window_client_area"));
             cmbSizer.SelectedIndex = (int)_settings.Sizer;
             chkEnableHighDPI.Checked = _settings.EnableHighDPI;
 
@@ -280,8 +278,8 @@ namespace SmartContextMenu.Forms
                 row.Cells[0].Value = dialog.MenuItem.Title;
                 row.Cells[1].Value = dialog.MenuItem.FileName;
                 row.Cells[2].Value = dialog.MenuItem.Arguments;
-                row.Cells[3].ToolTipText = _resourceManager.GetString("clm_start_program_edit");
-                row.Cells[4].ToolTipText = _resourceManager.GetString("clm_start_program_delete");
+                row.Cells[3].ToolTipText = _languageManager.GetString("clm_start_program_edit");
+                row.Cells[4].ToolTipText = _languageManager.GetString("clm_start_program_delete");
                 row.Tag = dialog.MenuItem;
             }
         }
@@ -299,8 +297,8 @@ namespace SmartContextMenu.Forms
                 row.Cells[3].Value = dialog.MenuItem.Width.ToString();
                 row.Cells[4].Value = dialog.MenuItem.Height.ToString();
                 row.Cells[5].Value = dialog.MenuItem.ToString();
-                row.Cells[6].ToolTipText = _resourceManager.GetString("clm_window_size_edit");
-                row.Cells[7].ToolTipText = _resourceManager.GetString("clm_window_size_delete");
+                row.Cells[6].ToolTipText = _languageManager.GetString("clm_window_size_edit");
+                row.Cells[7].ToolTipText = _languageManager.GetString("clm_window_size_delete");
                 row.Tag = dialog.MenuItem;
             }
         }
@@ -479,24 +477,24 @@ namespace SmartContextMenu.Forms
                     var row = gridView.Rows[index];
                     //var id = MenuItemId.GetId(item.Name);
                     //var title = GetTransparencyTitle(id);
-                    //title = title != null ? title : _resourceManager.GetString(item.Name);
+                    //title = title != null ? title : _languageManager.GetString(item.Name);
                     //row.Tag = item;
                     //row.Cells[0].Value = title;
                     //row.Cells[1].Value = item == null ? "" : item.ToString();
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
-                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _resourceManager.GetString("clm_hotkeys_show_tooltip");
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                 }
 
                 if (item.Type == MenuItemType.Separator)
                 {
                     var index = gridView.Rows.Add();
                     var row = gridView.Rows[index];
-                    var title = _resourceManager.GetString("separator");
+                    var title = _languageManager.GetString("separator");
                     row.Tag = item;
                     row.Cells[0].Value = title;
                     row.Cells[1].Value = item == null ? "" : item.ToString();
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
-                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _resourceManager.GetString("clm_hotkeys_show_tooltip");
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                 }
 
                 if (item.Type == MenuItemType.Group)
@@ -504,10 +502,10 @@ namespace SmartContextMenu.Forms
                     var index = gridView.Rows.Add();
                     var row = gridView.Rows[index];
                     row.Tag = item;
-                    row.Cells[0].Value = _resourceManager.GetString(item.Name);
+                    row.Cells[0].Value = _languageManager.GetString(item.Name);
                     row.ReadOnly = true;
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
-                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _resourceManager.GetString("clm_hotkeys_show_tooltip");
+                    ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                     ((DataGridViewDisableButtonCell)row.Cells[3]).Enabled = false;
 
                     foreach (var subItem in item.Items)
@@ -518,12 +516,12 @@ namespace SmartContextMenu.Forms
                             var subItemRow = gridView.Rows[subItemIndex];
                             //var id = MenuItemId.GetId(subItem.Name);
                             //var title = GetTransparencyTitle(id);
-                            //title = title != null ? title : _resourceManager.GetString(subItem.Name);
+                            //title = title != null ? title : _languageManager.GetString(subItem.Name);
                             //subItemRow.Tag = subItem;
                             //subItemRow.Cells[0].Value = title;
                             //subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
-                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = _resourceManager.GetString("clm_hotkeys_show_tooltip");
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                             var padding = subItemRow.Cells[0].Style.Padding;
                             subItemRow.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
                         }
@@ -532,12 +530,12 @@ namespace SmartContextMenu.Forms
                         {
                             var subItemIndex = gridView.Rows.Add();
                             var subItemRow = gridView.Rows[subItemIndex];
-                            var title = _resourceManager.GetString("separator");
+                            var title = _languageManager.GetString("separator");
                             subItemRow.Tag = subItem;
                             subItemRow.Cells[0].Value = title;
                             subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
-                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = _resourceManager.GetString("clm_hotkeys_show_tooltip");
+                            ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                             var padding = subItemRow.Cells[0].Style.Padding;
                             subItemRow.Cells[0].Style.Padding = new Padding(20, padding.Top, padding.Right, padding.Bottom);
                         }
@@ -548,7 +546,7 @@ namespace SmartContextMenu.Forms
 
         private string GetTransparencyTitle(int id) => id switch
         {
-            /*MenuItemId.SC_TRANS_00 => "0%" + _resourceManager.GetString("trans_opaque"),
+            /*MenuItemId.SC_TRANS_00 => "0%" + _languageManager.GetString("trans_opaque"),
             MenuItemId.SC_TRANS_10 => "10%",
             MenuItemId.SC_TRANS_20 => "20%",
             MenuItemId.SC_TRANS_30 => "30%",
@@ -558,7 +556,7 @@ namespace SmartContextMenu.Forms
             MenuItemId.SC_TRANS_70 => "70%",
             MenuItemId.SC_TRANS_80 => "80%",
             MenuItemId.SC_TRANS_90 => "90%",
-            MenuItemId.SC_TRANS_100 => "100%" + _resourceManager.GetString("trans_invisible"),*/
+            MenuItemId.SC_TRANS_100 => "100%" + _languageManager.GetString("trans_invisible"),*/
             _ => string.Empty
         };
 

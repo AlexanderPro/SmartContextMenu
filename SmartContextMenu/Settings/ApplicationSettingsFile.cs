@@ -186,17 +186,17 @@ namespace SmartContextMenu.Settings
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
             {
-                settings.LanguageName = "zh-CN";
+                settings.LanguageName = "zh_cn";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
             {
-                settings.LanguageName = "zh-TW";
+                settings.LanguageName = "zh_tw";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")
             {
-                settings.LanguageName = "ja-JP";
+                settings.LanguageName = "ja";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP"))
@@ -206,22 +206,22 @@ namespace SmartContextMenu.Settings
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
             {
-                settings.LanguageName = "ru-RU";
+                settings.LanguageName = "ru";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "de-DE")
             {
-                settings.LanguageName = "de-DE";
+                settings.LanguageName = "de";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "fr-FR")
             {
-                settings.LanguageName = "fr-FR";
+                settings.LanguageName = "fr";
             }
 
             if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "hu-HU")
             {
-                settings.LanguageName = "hu-HU";
+                settings.LanguageName = "hu";
             }
 
             if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "it-IT" ||
@@ -246,7 +246,7 @@ namespace SmartContextMenu.Settings
                 settings.LanguageName = "sr";
             }
 
-            if (languageName == string.Empty)
+            if (string.IsNullOrEmpty(settings.LanguageName))
             {
                 settings.LanguageName = "en";
             }

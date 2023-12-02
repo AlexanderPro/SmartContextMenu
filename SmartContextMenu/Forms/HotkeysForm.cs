@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
-using System.Resources;
 using System.Windows.Forms;
-using System.Reflection;
 using SmartContextMenu.Hooks;
 using SmartContextMenu.Extensions;
 using SmartContextMenu.Settings;
@@ -18,18 +16,18 @@ namespace SmartContextMenu.Forms
         {
             InitializeComponent();
             MenuItem = menuItem;
-            var resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
-            InitializeControls(resourceManager, menuItem);
+            var languageManager = new LanguageManager(settings.LanguageName);
+            InitializeControls(languageManager, menuItem);
         }
 
-        private void InitializeControls(ResourceManager resourceManager, Settings.MenuItem menuItem)
+        private void InitializeControls(LanguageManager languageManager, Settings.MenuItem menuItem)
         {
-            Text = resourceManager.GetString("hotkeys_form");
-            btnApply.Text = resourceManager.GetString("hotkeys_btn_apply");
-            btnCancel.Text = resourceManager.GetString("hotkeys_btn_cancel");
-            lblKey1.Text = resourceManager.GetString("hotkeys_lbl_key1");
-            lblKey2.Text = resourceManager.GetString("hotkeys_lbl_key2");
-            lblKey3.Text = resourceManager.GetString("hotkeys_lbl_key3");
+            Text = languageManager.GetString("hotkeys_form");
+            btnApply.Text = languageManager.GetString("hotkeys_btn_apply");
+            btnCancel.Text = languageManager.GetString("hotkeys_btn_cancel");
+            lblKey1.Text = languageManager.GetString("hotkeys_lbl_key1");
+            lblKey2.Text = languageManager.GetString("hotkeys_lbl_key2");
+            lblKey3.Text = languageManager.GetString("hotkeys_lbl_key3");
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";

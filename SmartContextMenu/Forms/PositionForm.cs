@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Resources;
 using System.Windows.Forms;
-using System.Reflection;
 using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
@@ -15,16 +13,16 @@ namespace SmartContextMenu.Forms
         public PositionForm(ApplicationSettings settings, Window window)
         {
             InitializeComponent();
-            var resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
-            InitializeControls(resourceManager, window);
+            var languageManager = new LanguageManager(settings.LanguageName);
+            InitializeControls(languageManager, window);
         }
 
-        private void InitializeControls(ResourceManager resourceManager, Window window)
+        private void InitializeControls(LanguageManager languageManager, Window window)
         {
-            lblLeft.Text = resourceManager.GetString("lbl_left");
-            lblTop.Text = resourceManager.GetString("lbl_top");
-            btnApply.Text = resourceManager.GetString("align_btn_apply");
-            Text = resourceManager.GetString("align_form");
+            lblLeft.Text = languageManager.GetString("lbl_left");
+            lblTop.Text = languageManager.GetString("lbl_top");
+            btnApply.Text = languageManager.GetString("align_btn_apply");
+            Text = languageManager.GetString("align_form");
 
             var left = window.Size.Left;
             var top = window.Size.Top;

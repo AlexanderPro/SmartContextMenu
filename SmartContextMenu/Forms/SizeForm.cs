@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Resources;
 using System.Windows.Forms;
-using System.Reflection;
 using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
@@ -19,18 +17,18 @@ namespace SmartContextMenu.Forms
         public SizeForm(ApplicationSettings settings, Window window)
         {
             InitializeComponent();
-            var resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
-            InitializeControls(resourceManager, window);
+            var languageManager = new LanguageManager(settings.LanguageName);
+            InitializeControls(languageManager, window);
         }
 
-        private void InitializeControls(ResourceManager resourceManager, Window window)
+        private void InitializeControls(LanguageManager languageManager, Window window)
         {
-            lblLeft.Text = resourceManager.GetString("lbl_size_form_left");
-            lblTop.Text = resourceManager.GetString("lbl_size_form_top");
-            lblWidth.Text = resourceManager.GetString("lbl_size_form_width");
-            lblHeight.Text = resourceManager.GetString("lbl_size_form_height");
-            btnApply.Text = resourceManager.GetString("size_btn_apply");
-            Text = resourceManager.GetString("size_form");
+            lblLeft.Text = languageManager.GetString("lbl_size_form_left");
+            lblTop.Text = languageManager.GetString("lbl_size_form_top");
+            lblWidth.Text = languageManager.GetString("lbl_size_form_width");
+            lblHeight.Text = languageManager.GetString("lbl_size_form_height");
+            btnApply.Text = languageManager.GetString("size_btn_apply");
+            Text = languageManager.GetString("size_form");
 
             var left = window.Size.Left;
             var top = window.Size.Top;

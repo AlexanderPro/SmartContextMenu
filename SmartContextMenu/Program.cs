@@ -5,8 +5,6 @@ using System.Threading;
 using System.Linq;
 using System.IO;
 using System.Drawing.Imaging;
-using System.Resources;
-using System.Reflection;
 using SmartContextMenu.Forms;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -328,17 +326,17 @@ namespace SmartContextMenu
                 //Save Screenshot
                 if (сommandLineParser.HasToggle("s") || сommandLineParser.HasToggle("savescreenshot"))
                 {
-                    var resourceManager = new ResourceManager($"SmartContextMenu.Resources.{settings.LanguageName}", Assembly.GetExecutingAssembly());
+                    var languageManager = new LanguageManager(settings.LanguageName);
                     var bitmap = WindowUtils.PrintWindow(window.Handle);
                     var dialog = new SaveFileDialog
                     {
                         OverwritePrompt = true,
                         ValidateNames = true,
-                        Title = resourceManager.GetString("save_screenshot_title"),
-                        FileName = resourceManager.GetString("save_screenshot_filename"),
-                        DefaultExt = resourceManager.GetString("save_screenshot_default_ext"),
+                        Title = languageManager.GetString("save_screenshot_title"),
+                        FileName = languageManager.GetString("save_screenshot_filename"),
+                        DefaultExt = languageManager.GetString("save_screenshot_default_ext"),
                         RestoreDirectory = false,
-                        Filter = resourceManager.GetString("save_screenshot_filter")
+                        Filter = languageManager.GetString("save_screenshot_filter")
                     };
                     if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
                     {

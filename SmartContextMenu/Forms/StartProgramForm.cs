@@ -1,36 +1,34 @@
 ﻿using System;
 using System.IO;
-using System.Resources;
 using System.Windows.Forms;
-using System.Reflection;
 using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
     public partial class StartProgramForm : Form
     {
-        private readonly ResourceManager _resourceManager;
+        private readonly LanguageManager _languageManager;
         public StartProgramMenuItem MenuItem { get; private set; }
 
         public StartProgramForm(ApplicationSettings settings, StartProgramMenuItem menuItem)
         {
-            _resourceManager = new ResourceManager($"SmartContextMenu.Resource.{settings.LanguageName}.resx", Assembly.GetExecutingAssembly());
+            _languageManager = new LanguageManager(settings.LanguageName);
             InitializeComponent();
             InitializeControls(menuItem);
         }
 
         private void InitializeControls(StartProgramMenuItem menuItem)
         {
-            lblTitle.Text = _resourceManager.GetString("start_program_lbl_title");
-            btnApply.Text = _resourceManager.GetString("start_program_btn_apply");
-            btnCancel.Text = _resourceManager.GetString("start_program_btn_cancel");
-            lblFileName.Text = _resourceManager.GetString("start_program_lbl_file_name");
-            lblArguments.Text = _resourceManager.GetString("start_program_lbl_arguments");
-            lblBegin.Text = _resourceManager.GetString("start_program_lbl_begin");
-            lblEnd.Text = _resourceManager.GetString("start_program_lbl_end");
-            chkShowWindow.Text = _resourceManager.GetString("start_program_show_window");
-            chkUseWindowWorkingDirectory.Text = _resourceManager.GetString("start_program_use_window_working_directory");
-            Text = _resourceManager.GetString("start_program_form");
+            lblTitle.Text = _languageManager.GetString("start_program_lbl_title");
+            btnApply.Text = _languageManager.GetString("start_program_btn_apply");
+            btnCancel.Text = _languageManager.GetString("start_program_btn_cancel");
+            lblFileName.Text = _languageManager.GetString("start_program_lbl_file_name");
+            lblArguments.Text = _languageManager.GetString("start_program_lbl_arguments");
+            lblBegin.Text = _languageManager.GetString("start_program_lbl_begin");
+            lblEnd.Text = _languageManager.GetString("start_program_lbl_end");
+            chkShowWindow.Text = _languageManager.GetString("start_program_show_window");
+            chkUseWindowWorkingDirectory.Text = _languageManager.GetString("start_program_use_window_working_directory");
+            Text = _languageManager.GetString("start_program_form");
             if (menuItem != null)
             {
                 txtTitle.Text = menuItem.Title;
@@ -38,7 +36,7 @@ namespace SmartContextMenu.Forms
                 txtArguments.Text = menuItem.Arguments;
                 txtBegin.Text = menuItem.BeginParameter;
                 txtEnd.Text = menuItem.EndParameter;
-                txtParameter.Text = $"{menuItem.BeginParameter}{_resourceManager.GetString("start_program_parameter")}{menuItem.EndParameter}";
+                txtParameter.Text = $"{menuItem.BeginParameter}{_languageManager.GetString("start_program_parameter")}{menuItem.EndParameter}";
                 chkShowWindow.Checked = menuItem.ShowWindow;
                 chkUseWindowWorkingDirectory.Checked = menuItem.UseWindowWorkingDirectory;
             }
@@ -54,12 +52,12 @@ namespace SmartContextMenu.Forms
 
         private void BeginParameterTextChanged(object sender, EventArgs e)
         {
-            txtParameter.Text = $"{txtBegin.Text}{_resourceManager.GetString("start_program_parameter")}{txtEnd.Text}";
+            txtParameter.Text = $"{txtBegin.Text}{_languageManager.GetString("start_program_parameter")}{txtEnd.Text}";
         }
 
         private void EndParameterTextChanged(object sender, EventArgs e)
         {
-            txtParameter.Text = $"{txtBegin.Text}{_resourceManager.GetString("start_program_parameter")}{txtEnd.Text}";
+            txtParameter.Text = $"{txtBegin.Text}{_languageManager.GetString("start_program_parameter")}{txtEnd.Text}";
         }
 
         private void ButtonBrowseFileClick(object sender, EventArgs e)
@@ -67,7 +65,7 @@ namespace SmartContextMenu.Forms
             var dialog = new OpenFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = _resourceManager.GetString("start_program_browse_file_filter")
+                Filter = _languageManager.GetString("start_program_browse_file_filter")
             };
 
             if (File.Exists(txtFileName.Text))

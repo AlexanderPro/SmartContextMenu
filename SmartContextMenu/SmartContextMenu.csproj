@@ -138,6 +138,7 @@
     <Compile Include="Hooks\MouseHook.cs" />
     <Compile Include="Hooks\VirtualKey.cs" />
     <Compile Include="Hooks\VirtualKeyModifier.cs" />
+    <Compile Include="LanguageManager.cs" />
     <Compile Include="Native\Constants.cs" />
     <Compile Include="Native\Dwmapi.cs" />
     <Compile Include="Native\Enums\AccentState.cs" />
@@ -223,20 +224,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Resource.de-DE.resx" />
-    <EmbeddedResource Include="Resources\Resource.en.resx" />
-    <EmbeddedResource Include="Resources\Resource.fr-FR.resx" />
-    <EmbeddedResource Include="Resources\Resource.hu-HU.resx" />
-    <EmbeddedResource Include="Resources\Resource.it.resx" />
-    <EmbeddedResource Include="Resources\Resource.ja-JP.resx" />
-    <EmbeddedResource Include="Resources\Resource.ko.resx" />
-    <EmbeddedResource Include="Resources\Resource.pt.resx" />
-    <EmbeddedResource Include="Resources\Resource.ru-RU.resx" />
-    <EmbeddedResource Include="Resources\Resource.sr.resx" />
-    <EmbeddedResource Include="Resources\Resource.zh-CN.resx" />
-    <EmbeddedResource Include="Resources\Resource.zh-TW.resx" />
+    <EmbeddedResource Include="Language.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="SmartContextMenu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
