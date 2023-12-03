@@ -7,14 +7,14 @@ using SmartContextMenu.Controls;
 
 namespace SmartContextMenu.Forms
 {
-    public partial class SettingsForm : Form
+    public partial class ApplicationSettingsForm : Form
     {
         private ApplicationSettings _settings;
         private LanguageManager _languageManager;
 
         public event EventHandler<EventArgs<ApplicationSettings>> OkClick;
 
-        public SettingsForm(ApplicationSettings settings)
+        public ApplicationSettingsForm(ApplicationSettings settings)
         {
             _settings = settings;
             _languageManager = new LanguageManager(_settings.LanguageName);
@@ -425,7 +425,7 @@ namespace SmartContextMenu.Forms
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = cmbLanguage.SelectedValue == null ? string.Empty : cmbLanguage.SelectedValue.ToString();
 
-            if (!_settings.Equals(_settings))
+            if (!settings.Equals(_settings))
             {
                 OkClick?.Invoke(this, new EventArgs<ApplicationSettings>(settings));
             }
@@ -475,12 +475,11 @@ namespace SmartContextMenu.Forms
                 {
                     var index = gridView.Rows.Add();
                     var row = gridView.Rows[index];
-                    //var id = MenuItemId.GetId(item.Name);
-                    //var title = GetTransparencyTitle(id);
-                    //title = title != null ? title : _languageManager.GetString(item.Name);
-                    //row.Tag = item;
-                    //row.Cells[0].Value = title;
-                    //row.Cells[1].Value = item == null ? "" : item.ToString();
+                    var title = GetTransparencyTitle(item.Name);
+                    title = title != null ? title : _languageManager.GetString(item.Name);
+                    row.Tag = item;
+                    row.Cells[0].Value = title;
+                    row.Cells[1].Value = item == null ? string.Empty : item.ToString();
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
                     ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                 }
@@ -492,7 +491,7 @@ namespace SmartContextMenu.Forms
                     var title = _languageManager.GetString("separator");
                     row.Tag = item;
                     row.Cells[0].Value = title;
-                    row.Cells[1].Value = item == null ? "" : item.ToString();
+                    row.Cells[1].Value = item == null ? string.Empty : item.ToString();
                     ((DataGridViewCheckBoxCell)row.Cells[2]).Value = item.Show;
                     ((DataGridViewCheckBoxCell)row.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                 }
@@ -514,12 +513,11 @@ namespace SmartContextMenu.Forms
                         {
                             var subItemIndex = gridView.Rows.Add();
                             var subItemRow = gridView.Rows[subItemIndex];
-                            //var id = MenuItemId.GetId(subItem.Name);
-                            //var title = GetTransparencyTitle(id);
-                            //title = title != null ? title : _languageManager.GetString(subItem.Name);
-                            //subItemRow.Tag = subItem;
-                            //subItemRow.Cells[0].Value = title;
-                            //subItemRow.Cells[1].Value = subItem == null ? "" : subItem.ToString();
+                            var title = GetTransparencyTitle(subItem.Name);
+                            title = title != null ? title : _languageManager.GetString(subItem.Name);
+                            subItemRow.Tag = subItem;
+                            subItemRow.Cells[0].Value = title;
+                            subItemRow.Cells[1].Value = subItem == null ? string.Empty : subItem.ToString();
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).Value = subItem.Show;
                             ((DataGridViewCheckBoxCell)subItemRow.Cells[2]).ToolTipText = _languageManager.GetString("clm_hotkeys_show_tooltip");
                             var padding = subItemRow.Cells[0].Style.Padding;
@@ -544,20 +542,20 @@ namespace SmartContextMenu.Forms
             }
         }
 
-        private string GetTransparencyTitle(int id) => id switch
+        private string GetTransparencyTitle(string name) => name switch
         {
-            /*MenuItemId.SC_TRANS_00 => "0%" + _languageManager.GetString("trans_opaque"),
-            MenuItemId.SC_TRANS_10 => "10%",
-            MenuItemId.SC_TRANS_20 => "20%",
-            MenuItemId.SC_TRANS_30 => "30%",
-            MenuItemId.SC_TRANS_40 => "40%",
-            MenuItemId.SC_TRANS_50 => "50%",
-            MenuItemId.SC_TRANS_60 => "60%",
-            MenuItemId.SC_TRANS_70 => "70%",
-            MenuItemId.SC_TRANS_80 => "80%",
-            MenuItemId.SC_TRANS_90 => "90%",
-            MenuItemId.SC_TRANS_100 => "100%" + _languageManager.GetString("trans_invisible"),*/
-            _ => string.Empty
+            "trans_opaque" => $"0%{_languageManager.GetString("trans_opaque")}",
+            "trans_10" => "10%",
+            "trans_20" => "20%",
+            "trans_30" => "30%",
+            "trans_40" => "40%",
+            "trans_50" => "50%",
+            "trans_60" => "60%",
+            "trans_70" => "70%",
+            "trans_80" => "80%",
+            "trans_90" => "90%",
+            "trans_invisible" => $"100%{_languageManager.GetString("trans_invisible")}",
+            _ => null
         };
 
         private IList<Settings.MenuItem> FindList(IList<Settings.MenuItem> list, Settings.MenuItem element)

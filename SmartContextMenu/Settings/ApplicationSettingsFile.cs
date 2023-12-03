@@ -99,7 +99,7 @@ namespace SmartContextMenu.Settings
             var document = XDocument.Load(stream);
 
             settings.MenuItems.WindowSizeItems = document
-                .XPathSelectElements("/smartSystemMenu/menuItems/windowSizeItems/item")
+                .XPathSelectElements("/smartContextMenu/menuItems/windowSizeItems/item")
                 .Select(x => new WindowSizeMenuItem
                 {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
@@ -114,7 +114,7 @@ namespace SmartContextMenu.Settings
                 .ToList();
 
             settings.MenuItems.StartProgramItems = document
-                .XPathSelectElements("/smartSystemMenu/menuItems/startProgramItems/item")
+                .XPathSelectElements("/smartContextMenu/menuItems/startProgramItems/item")
                 .Select(x => new StartProgramMenuItem
                 {
                     Title = x.Attribute("title") != null ? x.Attribute("title").Value : "",
@@ -128,7 +128,7 @@ namespace SmartContextMenu.Settings
                 .ToList();
 
             settings.MenuItems.Items = document
-                .XPathSelectElements("/smartSystemMenu/menuItems/items/item")
+                .XPathSelectElements("/smartContextMenu/menuItems/items/item")
                 .Select(x => {
                     var menuItem = new MenuItem
                     {
@@ -154,29 +154,29 @@ namespace SmartContextMenu.Settings
                 })
                 .ToList();
 
-            var hotKeysElement = document.XPathSelectElement("/smartSystemMenu/hotKeys");
+            var hotKeysElement = document.XPathSelectElement("/smartContextMenu/hotKeys");
             settings.Key1 = hotKeysElement.Attribute("key1") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(hotKeysElement.Attribute("key1").Value) : VirtualKeyModifier.None;
             settings.Key2 = hotKeysElement.Attribute("key2") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(hotKeysElement.Attribute("key2").Value) : VirtualKeyModifier.None;
             settings.Key3 = hotKeysElement.Attribute("key3") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key3").Value) ? (VirtualKey)int.Parse(hotKeysElement.Attribute("key3").Value) : VirtualKey.None;
             settings.Key4 = hotKeysElement.Attribute("key4") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key4").Value) ? (VirtualKey)int.Parse(hotKeysElement.Attribute("key4").Value) : VirtualKey.None;
             settings.MouseButton = hotKeysElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(hotKeysElement.Attribute("mouseButton").Value) : MouseButton.None;
 
-            var sizerElement = document.XPathSelectElement("/smartSystemMenu/sizer");
+            var sizerElement = document.XPathSelectElement("/smartContextMenu/sizer");
             settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
 
-            var systemTrayIconElement = document.XPathSelectElement("/smartSystemMenu/systemTrayIcon");
+            var systemTrayIconElement = document.XPathSelectElement("/smartContextMenu/systemTrayIcon");
             if (systemTrayIconElement != null && systemTrayIconElement.Attribute("show") != null && systemTrayIconElement.Attribute("show").Value != null && systemTrayIconElement.Attribute("show").Value.ToLower() == "false")
             {
                 settings.ShowSystemTrayIcon = false;
             }
 
-            var displayElement = document.XPathSelectElement("/smartSystemMenu/display");
+            var displayElement = document.XPathSelectElement("/smartContextMenu/display");
             if (displayElement != null && displayElement.Attribute("highDPI") != null && displayElement.Attribute("highDPI").Value != null && displayElement.Attribute("highDPI").Value.ToLower() == "true")
             {
                 settings.EnableHighDPI = true;
             }
 
-            var languageElement = document.XPathSelectElement("/smartSystemMenu/language");
+            var languageElement = document.XPathSelectElement("/smartContextMenu/language");
             var languageName = string.Empty;
             if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
             {
@@ -257,7 +257,7 @@ namespace SmartContextMenu.Settings
         private static void Save(string fileName, ApplicationSettings settings)
         {
             var document = new XDocument();
-            document.Add(new XElement("smartSystemMenu",
+            document.Add(new XElement("smartContextMenu",
                                  new XElement("menuItems",
                                      new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("type", x.Type.ToString()),

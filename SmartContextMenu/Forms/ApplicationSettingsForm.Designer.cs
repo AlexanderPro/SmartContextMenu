@@ -1,8 +1,6 @@
-﻿using SmartContextMenu.Controls;
-
-namespace SmartContextMenu.Forms
+﻿namespace SmartContextMenu.Forms
 {
-    partial class SettingsForm
+    partial class ApplicationSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -185,6 +183,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnMenuItemDown
             // 
+            this.btnMenuItemDown.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowDown;
+            this.btnMenuItemDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMenuItemDown.Location = new System.Drawing.Point(504, 339);
             this.btnMenuItemDown.Name = "btnMenuItemDown";
             this.btnMenuItemDown.Size = new System.Drawing.Size(31, 23);
@@ -194,6 +194,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnMenuItemUp
             // 
+            this.btnMenuItemUp.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowUp;
+            this.btnMenuItemUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMenuItemUp.Location = new System.Drawing.Point(467, 339);
             this.btnMenuItemUp.Name = "btnMenuItemUp";
             this.btnMenuItemUp.Size = new System.Drawing.Size(31, 23);
@@ -305,6 +307,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnWindowSizeDown
             // 
+            this.btnWindowSizeDown.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowDown;
+            this.btnWindowSizeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnWindowSizeDown.Location = new System.Drawing.Point(450, 268);
             this.btnWindowSizeDown.Name = "btnWindowSizeDown";
             this.btnWindowSizeDown.Size = new System.Drawing.Size(31, 23);
@@ -314,6 +318,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnWindowSizeUp
             // 
+            this.btnWindowSizeUp.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowUp;
+            this.btnWindowSizeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnWindowSizeUp.Location = new System.Drawing.Point(413, 268);
             this.btnWindowSizeUp.Name = "btnWindowSizeUp";
             this.btnWindowSizeUp.Size = new System.Drawing.Size(31, 23);
@@ -453,6 +459,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnStartProgramDown
             // 
+            this.btnStartProgramDown.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowDown;
+            this.btnStartProgramDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnStartProgramDown.Location = new System.Drawing.Point(450, 339);
             this.btnStartProgramDown.Name = "btnStartProgramDown";
             this.btnStartProgramDown.Size = new System.Drawing.Size(31, 23);
@@ -462,6 +470,8 @@ namespace SmartContextMenu.Forms
             // 
             // btnStartProgramUp
             // 
+            this.btnStartProgramUp.BackgroundImage = global::SmartContextMenu.Properties.Resources.ArrowUp;
+            this.btnStartProgramUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnStartProgramUp.Location = new System.Drawing.Point(413, 339);
             this.btnStartProgramUp.Name = "btnStartProgramUp";
             this.btnStartProgramUp.Size = new System.Drawing.Size(31, 23);
@@ -566,7 +576,7 @@ namespace SmartContextMenu.Forms
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
-            // SettingsForm
+            // ApplicationSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -578,7 +588,7 @@ namespace SmartContextMenu.Forms
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SettingsForm";
+            this.Name = "ApplicationSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyDownClick);
             this.tabMain.ResumeLayout(false);

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<smartSystemMenu>
+<smartContextMenu>
   <menuItems>
     <items>
       <item type="item" name="information" key1="" key2="" key3="" />
@@ -39,15 +39,15 @@
       <item type="group" name="transparency">
         <items>
           <item type="item" name="trans_opaque" key1="17" key2="" key3="96" />
-          <item type="item" name="10%" key1="17" key2="" key3="97" />
-          <item type="item" name="20%" key1="17" key2="" key3="98" />
-          <item type="item" name="30%" key1="17" key2="" key3="99" />
-          <item type="item" name="40%" key1="17" key2="" key3="100" />
-          <item type="item" name="50%" key1="17" key2="" key3="101" />
-          <item type="item" name="60%" key1="17" key2="" key3="102" />
-          <item type="item" name="70%" key1="17" key2="" key3="103" />
-          <item type="item" name="80%" key1="17" key2="" key3="104" />
-          <item type="item" name="90%" key1="17" key2="" key3="105" />
+          <item type="item" name="trans_10" key1="17" key2="" key3="97" />
+          <item type="item" name="trans_20" key1="17" key2="" key3="98" />
+          <item type="item" name="trans_30" key1="17" key2="" key3="99" />
+          <item type="item" name="trans_40" key1="17" key2="" key3="100" />
+          <item type="item" name="trans_50" key1="17" key2="" key3="101" />
+          <item type="item" name="trans_60" key1="17" key2="" key3="102" />
+          <item type="item" name="trans_70" key1="17" key2="" key3="103" />
+          <item type="item" name="trans_80" key1="17" key2="" key3="104" />
+          <item type="item" name="trans_90" key1="17" key2="" key3="105" />
           <item type="item" name="trans_invisible" key1="" key2="" key3="" />
           <item type="separator" />
           <item type="item" name="trans_custom" key1="" key2="" key3="" />
@@ -128,4 +128,4 @@
   <systemTrayIcon show="true" />
   <display highDPI="false" />
   <language name="" />
-</smartSystemMenu>
+</smartContextMenu>

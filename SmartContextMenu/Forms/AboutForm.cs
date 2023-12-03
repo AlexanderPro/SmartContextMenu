@@ -20,19 +20,10 @@ namespace SmartContextMenu.Forms
             linkUrl.Text = URL_SMART_CONTEXT_MENU;
         }
 
-        private void CloseClick(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void CloseClick(object sender, EventArgs e) => Close();
 
-        private void LinkClick(object sender, EventArgs e)
-        {
-            SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), URL_SMART_CONTEXT_MENU, true);
-        }
+        private void LinkClick(object sender, EventArgs e) => SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), URL_SMART_CONTEXT_MENU, true);
 
-        private void KeyDownClick(object sender, KeyEventArgs e)
-        {
-            CloseClick(sender, e);
-        }
+        private void KeyDownClick(object sender, KeyEventArgs e) => CloseClick(sender, e);
     }
 }

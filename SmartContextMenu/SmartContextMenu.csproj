@@ -181,6 +181,7 @@
     <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="CommandLineParser.cs" />
+    <Compile Include="SystemTrayMenu.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="Utils\FileUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -229,6 +231,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SmartContextMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\ArrowDown.png" />
+    <Content Include="Images\ArrowUp.png" />
+    <Content Include="Images\SmartContextMenu.ico" />
+    <Content Include="Images\SmartContextMenu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

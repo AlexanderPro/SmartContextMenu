@@ -71,12 +71,13 @@
             this.btnOk.Location = new System.Drawing.Point(358, 30);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(86, 30);
-            this.btnOk.TabIndex = 18;
+            this.btnOk.TabIndex = 3;
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.CloseClick);
             // 
             // pbImage
             // 
+            this.pbImage.BackgroundImage = global::SmartContextMenu.Properties.Resources.SmartContextMenuImage;
             this.pbImage.InitialImage = null;
             this.pbImage.Location = new System.Drawing.Point(4, 21);
             this.pbImage.Name = "pbImage";
@@ -88,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 155);
+            this.ClientSize = new System.Drawing.Size(456, 143);
             this.Controls.Add(this.pbImage);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.linkUrl);
