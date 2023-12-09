@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoStarter.cs" />
+    <Compile Include="ContextMenuManager.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />
     <Compile Include="EventArgs.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Hooks\VirtualKey.cs" />
     <Compile Include="Hooks\VirtualKeyModifier.cs" />
     <Compile Include="LanguageManager.cs" />
+    <Compile Include="MenuItemName.cs" />
     <Compile Include="Native\Constants.cs" />
     <Compile Include="Native\Dwmapi.cs" />
     <Compile Include="Native\Enums\AccentState.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\MenuItemType.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Settings\MoveToMenuItem.cs" />
     <Compile Include="Settings\StartProgramMenuItem.cs" />
     <Compile Include="Settings\WindowSizeMenuItem.cs" />
     <Compile Include="CommandLineParser.cs" />

@@ -9,6 +9,7 @@ namespace SmartContextMenu.Hooks
 {
     class MouseHook : IDisposable
     {
+        private readonly string _moduleName;
         private IntPtr _hookHandle;
         private MouseHookProc _hookProc;
         private VirtualKeyModifier _key1;
@@ -19,7 +20,12 @@ namespace SmartContextMenu.Hooks
 
         public event EventHandler<EventArgs<Tuple<Point, bool>>> Hooked;
 
-        public bool Start(string moduleName, VirtualKeyModifier key1, VirtualKeyModifier key2, VirtualKey key3, VirtualKey key4, MouseButton mouseButton)
+        public MouseHook(string moduleName)
+        {
+            _moduleName = moduleName;
+        }
+
+        public bool Start(VirtualKeyModifier key1, VirtualKeyModifier key2, VirtualKey key3, VirtualKey key4, MouseButton mouseButton)
         {
             _key1 = key1;
             _key2 = key2;
@@ -27,7 +33,7 @@ namespace SmartContextMenu.Hooks
             _key4 = key4;
             _mouseButton = mouseButton;
             _hookProc = HookProc;
-            var moduleHandle = GetModuleHandle(moduleName);
+            var moduleHandle = GetModuleHandle(_moduleName);
             _hookHandle = SetWindowsHookEx(WH_MOUSE_LL, _hookProc, moduleHandle, 0);
             return _hookHandle != IntPtr.Zero;
         }

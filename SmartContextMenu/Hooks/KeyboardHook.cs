@@ -12,20 +12,26 @@ namespace SmartContextMenu.Hooks
 {
     class KeyboardHook : IDisposable
     {
+        private readonly string _moduleName;
         private IntPtr _hookHandle;
         private KeyboardHookProc _hookProc;
         private MenuItems _menuItems;
 
         public event EventHandler<HotKeyEventArgs> Hooked;
+        public event EventHandler<EventArgs> EscHooked;
 
-        public bool Start(string moduleName, MenuItems menuItems)
+        public KeyboardHook(string moduleName)
+        {
+            _moduleName = moduleName;
+        }
+
+        public bool Start(MenuItems menuItems)
         {
             _menuItems = menuItems;
             _hookProc = HookProc;
-            var moduleHandle = GetModuleHandle(moduleName);
+            var moduleHandle = GetModuleHandle(_moduleName);
             _hookHandle = SetWindowsHookEx(WH_KEYBOARD_LL, _hookProc, moduleHandle, 0);
-            var hookStarted = _hookHandle != IntPtr.Zero;
-            return hookStarted;
+            return _hookHandle != IntPtr.Zero;
         }
 
         public bool Stop()
@@ -34,8 +40,7 @@ namespace SmartContextMenu.Hooks
             {
                 return true;
             }
-            var hookStoped = UnhookWindowsHookEx(_hookHandle);
-            return hookStoped;
+            return UnhookWindowsHookEx(_hookHandle);
         }
 
         public void Dispose()
@@ -127,6 +132,12 @@ namespace SmartContextMenu.Hooks
                                 }
                             }
                         }
+                    }
+
+                    if (lParam.vkCode == (int)VirtualKey.VK_ESCAPE)
+                    {
+                        var handler = EscHooked;
+                        handler?.Invoke(this, EventArgs.Empty);
                     }
                 }
             }

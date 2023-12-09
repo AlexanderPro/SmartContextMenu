@@ -41,7 +41,7 @@ namespace SmartContextMenu.Settings
 
         public override string ToString()
         {
-            var combination = "";
+            var combination = string.Empty;
 
             if (Key1 != VirtualKeyModifier.None)
             {
@@ -59,7 +59,7 @@ namespace SmartContextMenu.Settings
             }
             else
             {
-                combination = "";
+                combination = string.Empty;
             }
 
             return combination;

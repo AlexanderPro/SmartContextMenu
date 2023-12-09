@@ -123,7 +123,7 @@
       <item title="Kill Process By Name" fileName="taskkill.exe" arguments="/IM &quot;%Process Name%&quot; /F" useWindowWorkingDirectory="false" showWindow="false" beginParameter="%" endParameter="%" />
     </startProgramItems>
   </menuItems>
-  <hotKeys key1="" key2="" key3="" key4="" mouseButton="" />
+  <hotKeys key1="17" key2="16" key3="" key4="" mouseButton="2" />
   <sizer type="" />
   <systemTrayIcon show="true" />
   <display highDPI="false" />

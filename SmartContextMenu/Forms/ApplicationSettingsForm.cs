@@ -544,17 +544,17 @@ namespace SmartContextMenu.Forms
 
         private string GetTransparencyTitle(string name) => name switch
         {
-            "trans_opaque" => $"0%{_languageManager.GetString("trans_opaque")}",
-            "trans_10" => "10%",
-            "trans_20" => "20%",
-            "trans_30" => "30%",
-            "trans_40" => "40%",
-            "trans_50" => "50%",
-            "trans_60" => "60%",
-            "trans_70" => "70%",
-            "trans_80" => "80%",
-            "trans_90" => "90%",
-            "trans_invisible" => $"100%{_languageManager.GetString("trans_invisible")}",
+            MenuItemName.TransparencyOpaque => $"0%{_languageManager.GetString(name)}",
+            MenuItemName.Transparency10 => "10%",
+            MenuItemName.Transparency20 => "20%",
+            MenuItemName.Transparency30 => "30%",
+            MenuItemName.Transparency40 => "40%",
+            MenuItemName.Transparency50 => "50%",
+            MenuItemName.Transparency60 => "60%",
+            MenuItemName.Transparency70 => "70%",
+            MenuItemName.Transparency80 => "80%",
+            MenuItemName.Transparency90 => "90%",
+            MenuItemName.TransparencyInvisible => $"100%{_languageManager.GetString(name)}",
             _ => null
         };
 
