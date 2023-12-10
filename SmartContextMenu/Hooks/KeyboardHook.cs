@@ -17,8 +17,9 @@ namespace SmartContextMenu.Hooks
         private KeyboardHookProc _hookProc;
         private MenuItems _menuItems;
 
-        public event EventHandler<HotKeyEventArgs> Hooked;
-        public event EventHandler<EventArgs> EscHooked;
+        public event EventHandler<KeyboardEventArgs> MenuItemHooked;
+        public event EventHandler<KeyboardEventArgs> WindowSizeMenuItemHooked;
+        public event EventHandler<EventArgs> EscKeyHooked;
 
         public KeyboardHook(string moduleName)
         {
@@ -89,10 +90,10 @@ namespace SmartContextMenu.Hooks
 
                         if (key1 && key2 && lParam.vkCode == (int)item.Key3)
                         {
-                            var handler = Hooked;
+                            var handler = MenuItemHooked;
                             if (handler != null)
                             {
-                                var eventArgs = new HotKeyEventArgs(item.Name);
+                                var eventArgs = new KeyboardEventArgs(item);
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
@@ -121,10 +122,10 @@ namespace SmartContextMenu.Hooks
 
                         if (key1 && key2 && lParam.vkCode == (int)item.Key3)
                         {
-                            var handler = Hooked;
+                            var handler = WindowSizeMenuItemHooked;
                             if (handler != null)
                             {
-                                var eventArgs = new HotKeyEventArgs(item.Id);
+                                var eventArgs = new KeyboardEventArgs(item);
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
@@ -136,7 +137,7 @@ namespace SmartContextMenu.Hooks
 
                     if (lParam.vkCode == (int)VirtualKey.VK_ESCAPE)
                     {
-                        var handler = EscHooked;
+                        var handler = EscKeyHooked;
                         handler?.Invoke(this, EventArgs.Empty);
                     }
                 }

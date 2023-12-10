@@ -18,7 +18,7 @@ namespace SmartContextMenu.Hooks
         private VirtualKey _key4;
         private MouseButton _mouseButton;
 
-        public event EventHandler<EventArgs<Tuple<Point, bool>>> Hooked;
+        public event EventHandler<MouseEventArgs> Hooked;
 
         public MouseHook(string moduleName)
         {
@@ -117,8 +117,8 @@ namespace SmartContextMenu.Hooks
                         if (handler != null)
                         {
                             var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
-                            var eventArgs = new EventArgs<Tuple<Point, bool>>(new Tuple<Point, bool>(mouseHookStruct.pt, true));
-                            handler.BeginInvoke(this, eventArgs, null, null);
+                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt, true);
+                            handler.Invoke(this, eventArgs);
                             return 1;
                         }
                     }
@@ -136,8 +136,8 @@ namespace SmartContextMenu.Hooks
                         if (handler != null)
                         {
                             var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
-                            var eventArgs = new EventArgs<Tuple<Point, bool>>(new Tuple<Point, bool>(mouseHookStruct.pt, false));
-                            handler.BeginInvoke(this, eventArgs, null, null);
+                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt, false);
+                            handler.Invoke(this, eventArgs);
                         }
                     }
                 }

@@ -40,8 +40,9 @@ namespace SmartContextMenu.Forms
             using var mainModule = process.MainModule;
             
             _keyboardHook = new KeyboardHook(mainModule.ModuleName);
-            _keyboardHook.Hooked += KeyboardHooked;
-            _keyboardHook.Hooked += KeyboardEscHooked;
+            _keyboardHook.MenuItemHooked += MenuItemHooked;
+            _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
+            _keyboardHook.EscKeyHooked += EscKeyHooked;
             if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Key3 != VirtualKey.None && x.Show) ||
                 _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
             {
@@ -68,54 +69,66 @@ namespace SmartContextMenu.Forms
 
         protected override void OnClosed(EventArgs e)
         {
-            if (_menu.Items.Count > 0 && !_menu.IsDisposed)
-            {
-                ContextMenuManager.Release(_menu);
-            }
-
+            ContextMenuManager.Release(_menu);
             _systemTrayMenu?.Dispose();
             _keyboardHook?.Dispose();
             _mouseHook?.Dispose();
-            
+
             base.OnClosed(e);
         }
 
-        private void MouseHooked(object sender, EventArgs<Tuple<Native.Structs.Point, bool>> e) => BeginInvoke((MethodInvoker)delegate
+        private void MenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
-            if (e.Entity.Item2)
+            var handle = User32.GetForegroundWindow();
+            var parentHandle = WindowUtils.GetParentWindow(handle);
+            if (parentHandle == IntPtr.Zero)
             {
-                var handle = User32.WindowFromPoint(e.Entity.Item1);
+                return;
+            }
+
+            ContextMenuManager.Release(_menu);
+            var window = new Window(parentHandle);
+            MenuItemClick(window, e.MenuItem);
+            e.Succeeded = true;
+        });
+
+        private void WindowSizeMenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
+        {
+            var handle = User32.GetForegroundWindow();
+            var parentHandle = WindowUtils.GetParentWindow(handle);
+            if (parentHandle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            ContextMenuManager.Release(_menu);
+            var window = new Window(parentHandle);
+            MenuItemClick(window, e.WindowSizeMenuItem);
+            e.Succeeded = true;
+        });
+
+        private void EscKeyHooked(object sender, EventArgs e) => Invoke((MethodInvoker)delegate
+        {
+            ContextMenuManager.Release(_menu);
+        });
+
+        private void MouseHooked(object sender, Hooks.MouseEventArgs e) => Invoke((MethodInvoker)delegate
+        {
+            if (e.Hooked)
+            {
+                var handle = User32.WindowFromPoint(e.Point);
                 var parentHandle = WindowUtils.GetParentWindow(handle);
                 if (parentHandle == IntPtr.Zero)
                 {
                     return;
                 }
 
-                if (_menu.Items.Count > 0 && !_menu.IsDisposed)
-                {
-                    ContextMenuManager.Release(_menu);
-                }
-
+                ContextMenuManager.Release(_menu);
                 var window = new Window(parentHandle);
                 _menu = ContextMenuManager.Build(_settings, window, MenuItemClick);
                 _menu.Show(Cursor.Position);
             }
             else
-            {
-                if (!_menu.IsDisposed)
-                {
-                    ContextMenuManager.Release(_menu);
-                }
-            }
-        });
-
-        private void KeyboardHooked(object sender, HotKeyEventArgs e) => BeginInvoke((MethodInvoker)delegate
-        {
-        });
-
-        private void KeyboardEscHooked(object sender, HotKeyEventArgs e) => BeginInvoke((MethodInvoker)delegate
-        {
-            if (_menu.Items.Count > 0 && !_menu.IsDisposed)
             {
                 ContextMenuManager.Release(_menu);
             }
@@ -125,25 +138,47 @@ namespace SmartContextMenu.Forms
         {
             if (sender is ToolStripMenuItem toolStripMenuItem)
             {
+                var window = (Window)toolStripMenuItem.Owner.Tag;
                 if (toolStripMenuItem.Tag is Settings.MenuItem menuItem)
                 {
-                    switch (menuItem.Name)
-                    {
-                    }
+                    MenuItemClick(window, menuItem);
                 }
 
                 if (toolStripMenuItem.Tag is WindowSizeMenuItem windowSizeMenuItem)
                 {
+                    MenuItemClick(window, windowSizeMenuItem);
                 }
 
                 if (toolStripMenuItem.Tag is MoveToMenuItem moveToMenuItem)
                 {
+                    MenuItemClick(window, moveToMenuItem);
                 }
 
                 if (toolStripMenuItem.Tag is StartProgramMenuItem startProgramMenuItem)
                 {
+                    MenuItemClick(window, startProgramMenuItem);
                 }
             }
+        }
+
+        private void MenuItemClick(Window window, Settings.MenuItem menuItem)
+        {
+
+        }
+
+        private void MenuItemClick(Window window, WindowSizeMenuItem menuItem)
+        {
+
+        }
+
+        private void MenuItemClick(Window window, MoveToMenuItem menuItem)
+        {
+
+        }
+
+        private void MenuItemClick(Window window, StartProgramMenuItem menuItem)
+        {
+
         }
 
 

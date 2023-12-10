@@ -101,6 +101,17 @@ namespace SmartContextMenu
 
         public static void Release(ContextMenuStrip menu)
         {
+            menu.Hide();
+
+            if (!menu.IsDisposed)
+            {
+                menu.Dispose();
+            }
+
+            if (menu.Items.Count > 0)
+            {
+                menu.Items.Clear();
+            }
         }
 
         private static string GetTransparencyTitle(LanguageManager manager, Settings.MenuItem item) => item.Name switch
