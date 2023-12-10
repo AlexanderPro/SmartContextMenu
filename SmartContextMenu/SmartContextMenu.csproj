@@ -187,6 +187,7 @@
     <Compile Include="CommandLineParser.cs" />
     <Compile Include="SystemTrayMenu.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="Utils\EnumUtils.cs" />
     <Compile Include="Utils\FileUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />

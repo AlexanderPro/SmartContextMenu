@@ -7,12 +7,9 @@ namespace SmartContextMenu.Hooks
     {
         public Point Point { get; }
 
-        public bool Hooked { get; }
-
-        public MouseEventArgs(Point point, bool hooked)
+        public MouseEventArgs(Point point)
         {
             Point = point;
-            Hooked = hooked;
         }
     }
 }

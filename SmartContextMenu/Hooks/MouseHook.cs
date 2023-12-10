@@ -117,8 +117,8 @@ namespace SmartContextMenu.Hooks
                         if (handler != null)
                         {
                             var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
-                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt, true);
-                            handler.Invoke(this, eventArgs);
+                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt);
+                            handler.BeginInvoke(this, eventArgs, null, null);
                             return 1;
                         }
                     }
@@ -129,16 +129,6 @@ namespace SmartContextMenu.Hooks
                         (_mouseButton == MouseButton.Middle && wParam == WM_MBUTTONUP)))
                     {
                         return 1;
-                    }
-
-                    {
-                        var handler = Hooked;
-                        if (handler != null)
-                        {
-                            var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
-                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt, false);
-                            handler.Invoke(this, eventArgs);
-                        }
                     }
                 }
             }

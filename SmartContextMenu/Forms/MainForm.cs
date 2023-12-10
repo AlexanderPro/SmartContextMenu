@@ -112,26 +112,19 @@ namespace SmartContextMenu.Forms
             ContextMenuManager.Release(_menu);
         });
 
-        private void MouseHooked(object sender, Hooks.MouseEventArgs e) => Invoke((MethodInvoker)delegate
+        private void MouseHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
         {
-            if (e.Hooked)
+            var handle = User32.WindowFromPoint(e.Point);
+            var parentHandle = WindowUtils.GetParentWindow(handle);
+            if (parentHandle == IntPtr.Zero)
             {
-                var handle = User32.WindowFromPoint(e.Point);
-                var parentHandle = WindowUtils.GetParentWindow(handle);
-                if (parentHandle == IntPtr.Zero)
-                {
-                    return;
-                }
+                return;
+            }
 
-                ContextMenuManager.Release(_menu);
-                var window = new Window(parentHandle);
-                _menu = ContextMenuManager.Build(_settings, window, MenuItemClick);
-                _menu.Show(Cursor.Position);
-            }
-            else
-            {
-                ContextMenuManager.Release(_menu);
-            }
+            ContextMenuManager.Release(_menu);
+            var window = new Window(parentHandle);
+            _menu = ContextMenuManager.Build(_settings, window, MenuItemClick);
+            _menu.Show(Cursor.Position);
         });
 
         private void MenuItemClick(object sender, EventArgs e)
@@ -163,7 +156,50 @@ namespace SmartContextMenu.Forms
 
         private void MenuItemClick(Window window, Settings.MenuItem menuItem)
         {
+            switch (menuItem.Name)
+            {
+                case MenuItemName.AlignTopLeft:
+                case MenuItemName.AlignTopCenter:
+                case MenuItemName.AlignTopRight:
+                case MenuItemName.AlignMiddleLeft:
+                case MenuItemName.AlignMiddleCenter:
+                case MenuItemName.AlignMiddleRight:
+                case MenuItemName.AlignBottomLeft:
+                case MenuItemName.AlignBottomCenter:
+                case MenuItemName.AlignBottomRight:
+                    {
+                        window.SetAlignment(EnumUtils.GetAlignment(menuItem.Name));
+                    }
+                    break;
 
+                case MenuItemName.TransparencyOpaque:
+                case MenuItemName.Transparency10:
+                case MenuItemName.Transparency20:
+                case MenuItemName.Transparency30:
+                case MenuItemName.Transparency40:
+                case MenuItemName.Transparency50:
+                case MenuItemName.Transparency60:
+                case MenuItemName.Transparency70:
+                case MenuItemName.Transparency80:
+                case MenuItemName.Transparency90:
+                case MenuItemName.TransparencyInvisible:
+                    {
+                        window.SetTransparency(EnumUtils.GetTransparency(menuItem.Name));
+                    }
+                    break;
+
+                case MenuItemName.PriorityRealTime:
+                case MenuItemName.PriorityHigh:
+                case MenuItemName.PriorityAboveNormal:
+                case MenuItemName.PriorityNormal:
+                case MenuItemName.PriorityBelowNormal:
+                case MenuItemName.PriorityIdle:
+                    {
+                        window.SetPriority(EnumUtils.GetPriority(menuItem.Name));
+                    }
+                    break;
+
+            }
         }
 
         private void MenuItemClick(Window window, WindowSizeMenuItem menuItem)

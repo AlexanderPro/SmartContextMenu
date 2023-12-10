@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using SmartContextMenu.Settings;
+using SmartContextMenu.Utils;
 
 namespace SmartContextMenu
 {
@@ -24,6 +25,7 @@ namespace SmartContextMenu
                     menuItem.ShortcutKeyDisplayString = item.ToString();
                     menuItem.Tag = item;
                     menuItem.Click += onClick;
+                    SetChecked(menuItem, window, item);
                     menu.Items.Add(menuItem);
                 }
 
@@ -36,7 +38,7 @@ namespace SmartContextMenu
                 {
                     var groupTitle = GetTransparencyTitle(manager, item);
                     groupTitle ??= manager.GetString(item.Name);
-                    var subMenu = new ToolStripMenuItem();
+                    var subMenu = new ToolStripMenuItem(groupTitle);
                     subMenu.Tag = item;
                     menu.Items.Add(subMenu);
 
@@ -79,12 +81,13 @@ namespace SmartContextMenu
                     {
                         if (subItem.Type == MenuItemType.Item && subItem.Show)
                         {
-                            var title = GetTransparencyTitle(manager, item);
-                            title ??= manager.GetString(item.Name);
+                            var title = GetTransparencyTitle(manager, subItem);
+                            title ??= manager.GetString(subItem.Name);
                             var menuItem = new ToolStripMenuItem(title);
-                            menuItem.ShortcutKeyDisplayString = item.ToString();
+                            menuItem.ShortcutKeyDisplayString = subItem.ToString();
                             menuItem.Tag = subItem;
                             menuItem.Click += onClick;
+                            SetChecked(menuItem, window, subItem);
                             subMenu.DropDownItems.Add(menuItem);
                         }
 
@@ -111,6 +114,69 @@ namespace SmartContextMenu
             if (menu.Items.Count > 0)
             {
                 menu.Items.Clear();
+            }
+        }
+
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, Settings.MenuItem menuItem)
+        {
+            switch (menuItem.Name)
+            {
+                case MenuItemName.AlwaysOnTop:
+                    {
+                        toolStripMenuItem.Checked = window.AlwaysOnTop;
+                    }
+                    break;
+
+                case MenuItemName.ClickThrough:
+                    {
+                        toolStripMenuItem.Checked = window.IsClickThrough;
+                    }
+                    break;
+
+                case MenuItemName.DisableMinimizeButton:
+                    {
+                        toolStripMenuItem.Checked = window.IsDisabledMinimizeButton;
+                    }
+                    break;
+
+                case MenuItemName.DisableMaximizeButton:
+                    {
+                        toolStripMenuItem.Checked = window.IsDisabledMaximizeButton;
+                    }
+                    break;
+
+                case MenuItemName.DisableCloseButton:
+                    {
+                        toolStripMenuItem.Checked = window.IsDisabledCloseButton;
+                    }
+                    break;
+
+                case MenuItemName.TransparencyOpaque:
+                case MenuItemName.Transparency10:
+                case MenuItemName.Transparency20:
+                case MenuItemName.Transparency30:
+                case MenuItemName.Transparency40:
+                case MenuItemName.Transparency50:
+                case MenuItemName.Transparency60:
+                case MenuItemName.Transparency70:
+                case MenuItemName.Transparency80:
+                case MenuItemName.Transparency90:
+                case MenuItemName.TransparencyInvisible:
+                    {
+                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetTransparencyMenuItemName(window.Transparency);
+                    }
+                    break;
+
+                case MenuItemName.PriorityRealTime:
+                case MenuItemName.PriorityHigh:
+                case MenuItemName.PriorityAboveNormal:
+                case MenuItemName.PriorityNormal:
+                case MenuItemName.PriorityBelowNormal:
+                case MenuItemName.PriorityIdle:
+                    {
+                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetPriorityMenuItemName(window.ProcessPriority);
+                    }
+                    break;
             }
         }
 
