@@ -21,6 +21,8 @@
         public const string HideForAltTab = "hide_for_alt_tab";
 
         public const string Size = "size";
+        
+        public const string SizeCustom = "size_custom";
 
         public const string MoveTo = "move_to";
 
@@ -92,7 +94,7 @@
 
         public const string CopyFullProcessPath = "copy_full_process_path";
 
-        public const string СlearСlipboard = "clear_clipboard";
+        public const string ClearСlipboard = "clear_clipboard";
 
         public const string DisableMinimizeButton = "disable_minimize_button";
 

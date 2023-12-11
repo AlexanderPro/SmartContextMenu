@@ -2,6 +2,14 @@
 {
     static class Constants
     {
+        // System Menu
+        public const int SC_MOVE = 0xF010;
+        public const int SC_MINIMIZE = 0xF020;
+        public const int SC_MAXIMIZE = 0xF030;
+        public const int SC_RESTORE = 0xF120;
+        public const int SC_RESIZE = 0xF000;
+        public const int SC_CLOSE = 0xF060;
+
         // Menu
         public const int MF_UNCHECKED = 0x00000000;
         public const int MF_STRING = 0x00000000;
@@ -13,7 +21,6 @@
         public const int MF_BYCOMMAND = 0x00000000;
         public const int MF_BYPOSITION = 0x00000400;
         public const int MF_SEPARATOR = 0x00000800;
-        public const int SC_CLOSE = 0xF060;
 
         // GetWindow
         public const int GW_HWNDFIRST = 0;
@@ -57,7 +64,7 @@
         public const int WM_GETTEXT = 0x000D;
         public const int WM_GETTEXTLENGTH = 0x000E;
         public const int WM_GETFONT = 0x0031;
-
+        public const int WM_SYSCOMMAND = 0x0112;
         public const int WM_MOUSEMOVE = 0x0200;
         public const int WM_LBUTTONDOWN = 0x0201;
         public const int WM_LBUTTONUP = 0x0202;

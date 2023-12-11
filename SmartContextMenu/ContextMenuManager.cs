@@ -8,9 +8,8 @@ namespace SmartContextMenu
 {
     static class ContextMenuManager
     {
-        public static ContextMenuStrip Build(ApplicationSettings settings, Window window, EventHandler onClick)
+        public static void Build(ContextMenuStrip menu, ApplicationSettings settings, Window window, EventHandler onClick)
         {
-            var menu = new ContextMenuStrip();
             var manager = new LanguageManager(settings.LanguageName);
             var moveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new MoveToMenuItem(i + 1, x)).ToList();
 
@@ -57,10 +56,11 @@ namespace SmartContextMenu
                     {
                         foreach (var moveToMenuItem in moveToMenuItems)
                         {
-                            var title = $"{manager.GetString("monitor")}{moveToMenuItem.MonitorId}";
+                            var title = $"{manager.GetString("monitor")}{moveToMenuItem.MonitorIndex}";
                             var menuItem = new ToolStripMenuItem(title);
                             menuItem.Tag = new ContextMenuItemValue(window, moveToMenuItem);
                             menuItem.Click += onClick;
+                            SetChecked(menuItem, window, moveToMenuItem);
                             subMenu.DropDownItems.Add(menuItem);
                         }
                     }
@@ -97,18 +97,11 @@ namespace SmartContextMenu
                     }
                 }
             }
-
-            return menu;
         }
 
         public static void Release(ContextMenuStrip menu)
         {
             menu.Hide();
-
-            if (!menu.IsDisposed)
-            {
-                menu.Dispose();
-            }
 
             if (menu.Items.Count > 0)
             {
@@ -126,9 +119,9 @@ namespace SmartContextMenu
                     }
                     break;
 
-                case MenuItemName.ClickThrough:
+                case MenuItemName.HideForAltTab:
                     {
-                        toolStripMenuItem.Checked = window.IsClickThrough;
+                        toolStripMenuItem.Checked = window.IsExToolWindow;
                     }
                     break;
 
@@ -177,6 +170,13 @@ namespace SmartContextMenu
                     }
                     break;
             }
+        }
+
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, MoveToMenuItem menuItem)
+        {
+            var screenFromHandle = Screen.FromHandle(window.Handle);
+            var screen = Screen.AllScreens.Select((x, i) => new { Index = i + 1, Item = x }).FirstOrDefault(x => x.Item.Equals(screenFromHandle));
+            toolStripMenuItem.Checked = menuItem.MonitorIndex == screen?.Index;
         }
 
         private static string GetTransparencyTitle(LanguageManager manager, Settings.MenuItem item) => item.Name switch

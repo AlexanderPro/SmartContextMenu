@@ -19,6 +19,7 @@ namespace SmartContextMenu.Hooks
         private MouseButton _mouseButton;
 
         public event EventHandler<MouseEventArgs> Hooked;
+        public event EventHandler<MouseEventArgs> ClickHooked;
 
         public MouseHook(string moduleName)
         {
@@ -130,6 +131,17 @@ namespace SmartContextMenu.Hooks
                     {
                         return 1;
                     }
+
+                    /*if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP || wParam == WM_MBUTTONUP)
+                    {
+                        var handler = ClickHooked;
+                        if (handler != null)
+                        {
+                            var mouseHookStruct = (MouseLLHookStruct)Marshal.PtrToStructure(lParam, typeof(MouseLLHookStruct));
+                            var eventArgs = new MouseEventArgs(mouseHookStruct.pt);
+                            handler.BeginInvoke(this, eventArgs, null, null);
+                        }
+                    }*/
                 }
             }
 

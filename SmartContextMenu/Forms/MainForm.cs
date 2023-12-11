@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
+using System.Drawing.Imaging;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -52,6 +53,7 @@ namespace SmartContextMenu.Forms
 
             _mouseHook = new MouseHook(mainModule.ModuleName);
             _mouseHook.Hooked += MouseHooked;
+            _mouseHook.ClickHooked += ClickHooked;
             if (_settings.MouseButton != MouseButton.None)
             {
                 _mouseHook.Start(_settings.Key1, _settings.Key2, _settings.Key3, _settings.Key4, _settings.MouseButton);
@@ -124,8 +126,13 @@ namespace SmartContextMenu.Forms
 
             ContextMenuManager.Release(_menu);
             var window = new Window(parentHandle);
-            _menu = ContextMenuManager.Build(_settings, window, MenuItemClick);
+            ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
             _menu.Show(Cursor.Position);
+        });
+
+        private void ClickHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
+        {
+            //ContextMenuManager.Release(_menu);
         });
 
         private void MenuItemClick(object sender, EventArgs e)
@@ -199,9 +206,201 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.SizeCustom:
+                    {
+                        var sizeForm = new SizeForm(_settings, window);
+                        var result = sizeForm.ShowDialog(window.Win32Window);
+                        if (result == DialogResult.OK)
+                        {
+                            window.ShowNormal();
+
+                            if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+                            {
+                                window.SetSize(sizeForm.WindowWidth, sizeForm.WindowHeight, sizeForm.WindowLeft, sizeForm.WindowTop);
+                            }
+                            else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+                            {
+                                var margins = window.GetSystemMargins();
+                                window.SetSize(sizeForm.WindowWidth + margins.Left + margins.Right, sizeForm.WindowHeight + margins.Top + margins.Bottom, sizeForm.WindowLeft, sizeForm.WindowTop);
+                            }
+                            else
+                            {
+                                window.SetSize(sizeForm.WindowWidth + (window.Size.Width - window.ClientSize.Width), sizeForm.WindowHeight + (window.Size.Height - window.ClientSize.Height), sizeForm.WindowLeft, sizeForm.WindowTop);
+                            }
+                        }
+                    }
+                    break;
+
+                case MenuItemName.TransparencyCustom:
+                    {
+                        var opacityForm = new TransparencyForm(_settings, window);
+                        var result = opacityForm.ShowDialog(window.Win32Window);
+                        if (result == DialogResult.OK)
+                        {
+                            window.SetTransparency(opacityForm.WindowTransparency);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.AlignCustom:
+                    {
+                        var positionForm = new PositionForm(_settings, window);
+                        var result = positionForm.ShowDialog(window.Win32Window);
+
+                        if (result == DialogResult.OK)
+                        {
+                            window.ShowNormal();
+                            window.SetPosition(positionForm.WindowLeft, positionForm.WindowTop);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.Information:
+                    {
+                        var infoForm = new InformationForm(_settings, window.GetWindowInfo());
+                        infoForm.Show(window.Win32Window);
+                    }
+                    break;
+
                 case MenuItemName.AlwaysOnTop:
                     {
                         window.MakeAlwaysOnTop(!window.AlwaysOnTop);
+                    }
+                    break;
+
+                case MenuItemName.HideForAltTab:
+                    {
+                        window.HideForAltTab(!window.IsExToolWindow);
+                    }
+                    break;
+
+                case MenuItemName.ClickThrough:
+                    {
+                        window.ClickThrough(!window.IsClickThrough);
+                    }
+                    break;
+
+                case MenuItemName.SendToBottom:
+                    {
+                        window.SendToBottom();
+                    }
+                    break;
+
+                case MenuItemName.SaveScreenshot:
+                    {
+                        var languageManager = new LanguageManager(_settings.LanguageName);
+                        var bitmap = WindowUtils.PrintWindow(window.Handle);
+                        var dialog = new SaveFileDialog
+                        {
+                            OverwritePrompt = true,
+                            ValidateNames = true,
+                            Title = languageManager.GetString("save_screenshot_title"),
+                            FileName = languageManager.GetString("save_screenshot_filename"),
+                            DefaultExt = languageManager.GetString("save_screenshot_default_ext"),
+                            RestoreDirectory = false,
+                            Filter = languageManager.GetString("save_screenshot_filter")
+                        };
+
+                        if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
+                        {
+                            var fileExtension = Path.GetExtension(dialog.FileName).ToLower();
+                            var imageFormat = fileExtension == ".bmp" ? ImageFormat.Bmp :
+                                fileExtension == ".gif" ? ImageFormat.Gif :
+                                fileExtension == ".jpeg" ? ImageFormat.Jpeg :
+                                fileExtension == ".png" ? ImageFormat.Png :
+                                fileExtension == ".tiff" ? ImageFormat.Tiff :
+                                fileExtension == ".wmf" ? ImageFormat.Wmf : ImageFormat.Bmp;
+
+                            bitmap.Save(dialog.FileName, imageFormat);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.CopyScreenshot:
+                    {
+                        var bitmap = WindowUtils.PrintWindow(window.Handle);
+                        Clipboard.SetImage(bitmap);
+                    }
+                    break;
+
+                case MenuItemName.CopyWindowText:
+                    {
+                        var text = window.ExtractText();
+                        if (!string.IsNullOrEmpty(text))
+                        {
+                            Clipboard.SetText(text);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.CopyWindowTitle:
+                    {
+                        var text = window.GetWindowText();
+                        if (!string.IsNullOrEmpty(text))
+                        {
+                            Clipboard.SetText(text);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.CopyFullProcessPath:
+                    {
+                        var path = window.Process?.GetMainModuleFileName();
+                        if (!string.IsNullOrEmpty(path))
+                        {
+                            Clipboard.SetText(path);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.ClearСlipboard:
+                    {
+                        Clipboard.Clear();
+                    }
+                    break;
+
+                case MenuItemName.OpenFileInExplorer:
+                    {
+                        SystemUtils.RunAs("explorer.exe", "/select, " + window.Process.GetMainModuleFileName(), true);
+                    }
+                    break;
+
+                case MenuItemName.DisableMinimizeButton:
+                    {
+                        window.DisableMinimizeButton(!window.IsDisabledMinimizeButton);
+                    }
+                    break;
+
+                case MenuItemName.DisableMaximizeButton:
+                    {
+                        window.DisableMaximizeButton(!window.IsDisabledMaximizeButton);
+                    }
+                    break;
+
+                case MenuItemName.DisableCloseButton:
+                    {
+                        window.DisableCloseButton(!window.IsDisabledCloseButton);
+                    }
+                    break;
+
+                case MenuItemName.MinimizeOtherWindows:
+                case MenuItemName.CloseOtherWindows:
+                    {
+                        User32.EnumWindows((IntPtr handle, int lParam) =>
+                        {
+                            if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
+                            {
+                                if (menuItem.Name == MenuItemName.CloseOtherWindows)
+                                {
+                                    User32.PostMessage(handle, Constants.WM_CLOSE, 0, 0);
+                                }
+                                else
+                                {
+                                    User32.PostMessage(handle, Constants.WM_SYSCOMMAND, Constants.SC_MINIMIZE, 0);
+                                }
+                            }
+                            return true;
+                        }, 0);
                     }
                     break;
             }
@@ -209,6 +408,7 @@ namespace SmartContextMenu.Forms
 
         private void MenuItemClick(Window window, WindowSizeMenuItem menuItem)
         {
+            window.ShowNormal();
             if (_settings.Sizer == WindowSizerType.WindowWithMargins)
             {
                 window.SetSize(menuItem.Width, menuItem.Height, menuItem.Left, menuItem.Top);
