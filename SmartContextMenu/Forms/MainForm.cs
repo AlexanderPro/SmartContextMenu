@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
+using System.IO;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -129,27 +130,26 @@ namespace SmartContextMenu.Forms
 
         private void MenuItemClick(object sender, EventArgs e)
         {
-            if (sender is ToolStripMenuItem toolStripMenuItem)
+            if (sender is ToolStripMenuItem toolStripMenuItem && toolStripMenuItem.Tag is ContextMenuItemValue itemValue)
             {
-                var window = (Window)toolStripMenuItem.Owner.Tag;
-                if (toolStripMenuItem.Tag is Settings.MenuItem menuItem)
+                if (itemValue.MenuItem != null)
                 {
-                    MenuItemClick(window, menuItem);
+                    MenuItemClick(itemValue.Window, itemValue.MenuItem);
                 }
 
-                if (toolStripMenuItem.Tag is WindowSizeMenuItem windowSizeMenuItem)
+                if (itemValue.WindowSizeMenuItem != null)
                 {
-                    MenuItemClick(window, windowSizeMenuItem);
+                    MenuItemClick(itemValue.Window, itemValue.WindowSizeMenuItem);
                 }
 
-                if (toolStripMenuItem.Tag is MoveToMenuItem moveToMenuItem)
+                if (itemValue.MoveToMenuItem != null)
                 {
-                    MenuItemClick(window, moveToMenuItem);
+                    MenuItemClick(itemValue.Window, itemValue.MoveToMenuItem);
                 }
 
-                if (toolStripMenuItem.Tag is StartProgramMenuItem startProgramMenuItem)
+                if (itemValue.StartProgramMenuItem != null)
                 {
-                    MenuItemClick(window, startProgramMenuItem);
+                    MenuItemClick(itemValue.Window, itemValue.StartProgramMenuItem);
                 }
             }
         }
@@ -199,24 +199,89 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.AlwaysOnTop:
+                    {
+                        window.MakeAlwaysOnTop(!window.AlwaysOnTop);
+                    }
+                    break;
             }
         }
 
         private void MenuItemClick(Window window, WindowSizeMenuItem menuItem)
         {
-
+            if (_settings.Sizer == WindowSizerType.WindowWithMargins)
+            {
+                window.SetSize(menuItem.Width, menuItem.Height, menuItem.Left, menuItem.Top);
+            }
+            else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
+            {
+                var margins = window.GetSystemMargins();
+                window.SetSize(menuItem.Width + margins.Left + margins.Right, menuItem.Height + margins.Top + margins.Bottom, menuItem.Left, menuItem.Top);
+            }
+            else
+            {
+                window.SetSize(menuItem.Width + (window.Size.Width - window.ClientSize.Width), menuItem.Height + (window.Size.Height - window.ClientSize.Height), menuItem.Left, menuItem.Top);
+            }
         }
 
         private void MenuItemClick(Window window, MoveToMenuItem menuItem)
         {
-
+            window.MoveToMonitor(menuItem.MonitorHandle);
         }
 
         private void MenuItemClick(Window window, StartProgramMenuItem menuItem)
         {
+            try
+            {
+                var arguments = menuItem.Arguments;
+                var argumentParameters = arguments.GetParams(menuItem.BeginParameter, menuItem.EndParameter);
+                var allParametersInputed = true;
+                var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
+                foreach (var parameter in argumentParameters)
+                {
+                    var parameterName = parameter.TrimStart(menuItem.BeginParameter).TrimEnd(menuItem.EndParameter);
+                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_PROCESS_ID, true) == 0)
+                    {
+                        arguments = arguments.Replace(parameter, window.Process?.Id.ToString() ?? string.Empty);
+                        continue;
+                    }
 
+                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_PROCESS_NAME, true) == 0)
+                    {
+                        arguments = arguments.Replace(parameter, Path.GetFileName(processPath));
+                        continue;
+                    }
+
+                    if (string.Compare(parameterName, StartProgramMenuItem.PARAMETER_WINDOW_TITLE, true) == 0)
+                    {
+                        arguments = arguments.Replace(parameter, window.GetWindowText());
+                        continue;
+                    }
+
+                    var parameterForm = new ParameterForm(_settings, parameterName);
+                    var result = parameterForm.ShowDialog(window.Win32Window);
+
+                    if (result == DialogResult.OK)
+                    {
+                        arguments = arguments.Replace(parameter, parameterForm.ParameterValue);
+                    }
+                    else
+                    {
+                        allParametersInputed = false;
+                        break;
+                    }
+                }
+
+                if (allParametersInputed)
+                {
+                    SystemUtils.RunAs(menuItem.FileName, arguments, menuItem.ShowWindow, menuItem.UseWindowWorkingDirectory ? Path.GetDirectoryName(processPath) : null);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
 
         private void MenuItemAutoStartClick(object sender, EventArgs e)
         {

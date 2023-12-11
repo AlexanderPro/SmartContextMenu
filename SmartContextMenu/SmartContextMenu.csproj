@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoStarter.cs" />
+    <Compile Include="ContextMenuItemValue.cs" />
     <Compile Include="ContextMenuManager.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonCell.cs" />
     <Compile Include="Controls\DataGridViewDisableButtonColumn.cs" />

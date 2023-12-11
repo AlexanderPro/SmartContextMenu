@@ -11,7 +11,6 @@ namespace SmartContextMenu
         public static ContextMenuStrip Build(ApplicationSettings settings, Window window, EventHandler onClick)
         {
             var menu = new ContextMenuStrip();
-            menu.Tag = window;
             var manager = new LanguageManager(settings.LanguageName);
             var moveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new MoveToMenuItem(i + 1, x)).ToList();
 
@@ -23,7 +22,7 @@ namespace SmartContextMenu
                     title ??= manager.GetString(item.Name);
                     var menuItem = new ToolStripMenuItem(title);
                     menuItem.ShortcutKeyDisplayString = item.ToString();
-                    menuItem.Tag = item;
+                    menuItem.Tag = new ContextMenuItemValue(window, item);
                     menuItem.Click += onClick;
                     SetChecked(menuItem, window, item);
                     menu.Items.Add(menuItem);
@@ -39,7 +38,7 @@ namespace SmartContextMenu
                     var groupTitle = GetTransparencyTitle(manager, item);
                     groupTitle ??= manager.GetString(item.Name);
                     var subMenu = new ToolStripMenuItem(groupTitle);
-                    subMenu.Tag = item;
+                    subMenu.Tag = new ContextMenuItemValue(window, item);
                     menu.Items.Add(subMenu);
 
                     if (item.Name.ToLower() == MenuItemName.Size)
@@ -48,7 +47,7 @@ namespace SmartContextMenu
                         {
                             var menuItem = new ToolStripMenuItem(windowSizeItem.Title);
                             menuItem.ShortcutKeyDisplayString = windowSizeItem.ToString();
-                            menuItem.Tag = windowSizeItem;
+                            menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
                             menuItem.Click += onClick;
                             subMenu.DropDownItems.Add(menuItem);
                         }
@@ -60,7 +59,7 @@ namespace SmartContextMenu
                         {
                             var title = $"{manager.GetString("monitor")}{moveToMenuItem.MonitorId}";
                             var menuItem = new ToolStripMenuItem(title);
-                            menuItem.Tag = moveToMenuItem;
+                            menuItem.Tag = new ContextMenuItemValue(window, moveToMenuItem);
                             menuItem.Click += onClick;
                             subMenu.DropDownItems.Add(menuItem);
                         }
@@ -71,7 +70,7 @@ namespace SmartContextMenu
                         foreach (var startProgramItem in settings.MenuItems.StartProgramItems)
                         {
                             var menuItem = new ToolStripMenuItem(startProgramItem.Title);
-                            menuItem.Tag = startProgramItem;
+                            menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
                             menuItem.Click += onClick;
                             subMenu.DropDownItems.Add(menuItem);
                         }
@@ -85,7 +84,7 @@ namespace SmartContextMenu
                             title ??= manager.GetString(subItem.Name);
                             var menuItem = new ToolStripMenuItem(title);
                             menuItem.ShortcutKeyDisplayString = subItem.ToString();
-                            menuItem.Tag = subItem;
+                            menuItem.Tag = new ContextMenuItemValue(window, subItem);
                             menuItem.Click += onClick;
                             SetChecked(menuItem, window, subItem);
                             subMenu.DropDownItems.Add(menuItem);
