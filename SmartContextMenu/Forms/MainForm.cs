@@ -110,9 +110,13 @@ namespace SmartContextMenu.Forms
             e.Succeeded = true;
         });
 
-        private void EscKeyHooked(object sender, EventArgs e) => Invoke((MethodInvoker)delegate
+        private void EscKeyHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
-            ContextMenuManager.Release(_menu);
+            if (_menu.Visible)
+            {
+                ContextMenuManager.Release(_menu);
+                e.Succeeded = true;
+            }
         });
 
         private void MouseHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
@@ -132,7 +136,42 @@ namespace SmartContextMenu.Forms
 
         private void ClickHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
         {
-            //ContextMenuManager.Release(_menu);
+            if (_menu.Visible)
+            {
+                var cursorPosition = Cursor.Position;
+                var isCursorOverMenu = _menu.RectangleToScreen(_menu.ClientRectangle).Contains(cursorPosition);
+                var isCursorOverSubMenu = false;
+                if (!isCursorOverMenu)
+                {
+                    foreach (ToolStripItem item in _menu.Items)
+                    {
+                        if (item is ToolStripMenuItem toolStripMenuItem)
+                        {
+                            foreach (ToolStripItem subItem in toolStripMenuItem.DropDownItems)
+                            {
+                                if (subItem.Owner is ToolStripDropDownMenu subMenu && subMenu.Visible)
+                                {
+                                    isCursorOverSubMenu = subMenu.RectangleToScreen(subMenu.ClientRectangle).Contains(cursorPosition);
+                                    if (isCursorOverSubMenu)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (isCursorOverSubMenu)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (!isCursorOverMenu && !isCursorOverSubMenu)
+                {
+                    ContextMenuManager.Release(_menu);
+                }
+            }
         });
 
         private void MenuItemClick(object sender, EventArgs e)

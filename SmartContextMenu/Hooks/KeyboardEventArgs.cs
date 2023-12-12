@@ -11,6 +11,10 @@ namespace SmartContextMenu.Hooks
 
         public bool Succeeded { get; set; }
 
+        public KeyboardEventArgs()
+        {
+        }
+
         public KeyboardEventArgs(MenuItem menuItem)
         {
             MenuItem = menuItem;

@@ -19,7 +19,7 @@ namespace SmartContextMenu.Hooks
 
         public event EventHandler<KeyboardEventArgs> MenuItemHooked;
         public event EventHandler<KeyboardEventArgs> WindowSizeMenuItemHooked;
-        public event EventHandler<EventArgs> EscKeyHooked;
+        public event EventHandler<KeyboardEventArgs> EscKeyHooked;
 
         public KeyboardHook(string moduleName)
         {
@@ -138,7 +138,15 @@ namespace SmartContextMenu.Hooks
                     if (lParam.vkCode == (int)VirtualKey.VK_ESCAPE)
                     {
                         var handler = EscKeyHooked;
-                        handler?.Invoke(this, EventArgs.Empty);
+                        if (handler != null)
+                        {
+                            var eventArgs = new KeyboardEventArgs();
+                            handler?.Invoke(this, eventArgs);
+                            if (eventArgs.Succeeded)
+                            {
+                                return 1;
+                            }
+                        }
                     }
                 }
             }

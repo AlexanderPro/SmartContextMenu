@@ -48,6 +48,7 @@ namespace SmartContextMenu
                             menuItem.ShortcutKeyDisplayString = windowSizeItem.ToString();
                             menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
                             menuItem.Click += onClick;
+                            SetChecked(menuItem, window, windowSizeItem);
                             subMenu.DropDownItems.Add(menuItem);
                         }
                     }
@@ -170,6 +171,12 @@ namespace SmartContextMenu
                     }
                     break;
             }
+        }
+
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, WindowSizeMenuItem menuItem)
+        {
+            var size = window.Size;
+            toolStripMenuItem.Checked = menuItem.Width == size.Width && menuItem.Height == size.Height;
         }
 
         private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, MoveToMenuItem menuItem)

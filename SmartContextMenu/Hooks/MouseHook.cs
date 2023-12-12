@@ -132,7 +132,7 @@ namespace SmartContextMenu.Hooks
                         return 1;
                     }
 
-                    /*if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP || wParam == WM_MBUTTONUP)
+                    if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP)
                     {
                         var handler = ClickHooked;
                         if (handler != null)
@@ -141,7 +141,7 @@ namespace SmartContextMenu.Hooks
                             var eventArgs = new MouseEventArgs(mouseHookStruct.pt);
                             handler.BeginInvoke(this, eventArgs, null, null);
                         }
-                    }*/
+                    }
                 }
             }
 

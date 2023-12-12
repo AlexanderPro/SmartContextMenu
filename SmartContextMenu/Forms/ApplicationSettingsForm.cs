@@ -420,6 +420,11 @@ namespace SmartContextMenu.Forms
                 settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)row.Tag);
             }
 
+            settings.Key1 = _settings.Key1;
+            settings.Key2 = _settings.Key2;
+            settings.Key3 = _settings.Key3;
+            settings.Key4 = _settings.Key4;
+            settings.MouseButton = _settings.MouseButton;
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
