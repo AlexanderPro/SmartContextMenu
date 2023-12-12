@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -131,6 +132,7 @@ namespace SmartContextMenu.Forms
             ContextMenuManager.Release(_menu);
             var window = new Window(parentHandle);
             ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
+            User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
             _menu.Show(Cursor.Position);
         });
 
