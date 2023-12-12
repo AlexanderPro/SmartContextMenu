@@ -84,7 +84,7 @@ namespace SmartContextMenu.Forms
         {
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            if (parentHandle == IntPtr.Zero)
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
             {
                 return;
             }
@@ -99,7 +99,7 @@ namespace SmartContextMenu.Forms
         {
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            if (parentHandle == IntPtr.Zero)
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
             {
                 return;
             }
@@ -119,7 +119,7 @@ namespace SmartContextMenu.Forms
         {
             var handle = User32.WindowFromPoint(e.Point);
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            if (parentHandle == IntPtr.Zero)
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
             {
                 return;
             }

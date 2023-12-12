@@ -324,6 +324,12 @@ namespace SmartContextMenu.Utils
             return className;
         }
 
+        public static bool IsDesktopWindow(IntPtr hWnd)
+        {
+            var className = GetClassName(hWnd);
+            return className == "WorkerW" || className == "Progman" || hWnd == GetDesktopWindow() || hWnd == GetShellWindow();
+        }
+
         public static string RealGetWindowClass(IntPtr hWnd)
         {
             var builder = new StringBuilder(1024);
