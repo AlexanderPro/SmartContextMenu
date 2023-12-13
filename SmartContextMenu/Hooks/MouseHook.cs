@@ -132,7 +132,7 @@ namespace SmartContextMenu.Hooks
                         return 1;
                     }
 
-                    if (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP)
+                    if (wParam == WM_LBUTTONDOWN)
                     {
                         var handler = ClickHooked;
                         if (handler != null)
