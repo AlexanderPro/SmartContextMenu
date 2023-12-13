@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
+using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using SmartContextMenu.Settings;
@@ -15,8 +16,8 @@ namespace SmartContextMenu.Forms
 {
     public partial class MainForm : Form
     {
-        private ApplicationSettings _settings;
         private readonly SystemTrayMenu _systemTrayMenu;
+        private ApplicationSettings _settings;
         private AboutForm _aboutForm;
         private ApplicationSettingsForm _settingsForm;
         private KeyboardHook _keyboardHook;
@@ -298,8 +299,15 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.Information:
                     {
-                        var infoForm = new InformationForm(_settings, window.GetWindowInfo());
-                        infoForm.Show(window.Win32Window);
+                        Task.Factory.StartNew(() =>
+                        {
+                            var windowDetails = window.GetWindowInfo();
+                            BeginInvoke((MethodInvoker)delegate
+                            {
+                                var infoForm = new InformationForm(_settings, windowDetails);
+                                infoForm.Show(window.Win32Window);
+                            });
+                        });
                     }
                     break;
 
@@ -352,7 +360,10 @@ namespace SmartContextMenu.Forms
                                 fileExtension == ".tiff" ? ImageFormat.Tiff :
                                 fileExtension == ".wmf" ? ImageFormat.Wmf : ImageFormat.Bmp;
 
-                            bitmap.Save(dialog.FileName, imageFormat);
+                            Task.Factory.StartNew(() =>
+                            {
+                                bitmap.Save(dialog.FileName, imageFormat);
+                            });
                         }
                     }
                     break;
@@ -402,7 +413,10 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.OpenFileInExplorer:
                     {
-                        SystemUtils.RunAs("explorer.exe", "/select, " + window.Process.GetMainModuleFileName(), true);
+                        Task.Factory.StartNew(() =>
+                        {
+                            SystemUtils.RunAs("explorer.exe", "/select, " + window.Process.GetMainModuleFileName(), true);
+                        });
                     }
                     break;
 
@@ -427,21 +441,24 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.MinimizeOtherWindows:
                 case MenuItemName.CloseOtherWindows:
                     {
-                        User32.EnumWindows((IntPtr handle, int lParam) =>
+                        Task.Factory.StartNew(() =>
                         {
-                            if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
+                            User32.EnumWindows((IntPtr handle, int lParam) =>
                             {
-                                if (menuItem.Name == MenuItemName.CloseOtherWindows)
+                                if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
                                 {
-                                    User32.PostMessage(handle, Constants.WM_CLOSE, 0, 0);
+                                    if (menuItem.Name == MenuItemName.CloseOtherWindows)
+                                    {
+                                        User32.PostMessage(handle, Constants.WM_CLOSE, 0, 0);
+                                    }
+                                    else
+                                    {
+                                        User32.PostMessage(handle, Constants.WM_SYSCOMMAND, Constants.SC_MINIMIZE, 0);
+                                    }
                                 }
-                                else
-                                {
-                                    User32.PostMessage(handle, Constants.WM_SYSCOMMAND, Constants.SC_MINIMIZE, 0);
-                                }
-                            }
-                            return true;
-                        }, 0);
+                                return true;
+                            }, 0);
+                        });
                     }
                     break;
             }
@@ -515,7 +532,10 @@ namespace SmartContextMenu.Forms
 
                 if (allParametersInputed)
                 {
-                    SystemUtils.RunAs(menuItem.FileName, arguments, menuItem.ShowWindow, menuItem.UseWindowWorkingDirectory ? Path.GetDirectoryName(processPath) : null);
+                    Task.Factory.StartNew(() =>
+                    {
+                        SystemUtils.RunAs(menuItem.FileName, arguments, menuItem.ShowWindow, menuItem.UseWindowWorkingDirectory ? Path.GetDirectoryName(processPath) : null);
+                    });
                 }
             }
             catch (Exception ex)
