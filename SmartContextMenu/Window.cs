@@ -29,6 +29,10 @@ namespace SmartContextMenu
 
         public IntPtr Handle { get; }
 
+        public bool IsRollUp { get; private set; }
+
+        public bool IsAeroGlass { get; private set; }
+
         public Rect Size 
         {
             get
@@ -138,6 +142,16 @@ namespace SmartContextMenu
         {
             if (_isManaged)
             {
+                if (IsRollUp)
+                {
+                    RollUpDown();
+                }
+
+                if (IsAeroGlass)
+                {
+                    AeroGlass();
+                }
+
                 RestoreFromSystemTray();
                 _menuItemRestore?.Dispose();
                 _menuItemClose?.Dispose();
@@ -477,15 +491,19 @@ namespace SmartContextMenu
             ShowWindow(Handle, (int)WindowShowStyle.Normal);
         }
 
-        public void RollUp()
+        public void RollUpDown()
         {
-            _beforeRollupHeight = Size.Height;
-            SetSize(Size.Width, SystemInformation.CaptionHeight);
-        }
-
-        public void UnRollUp()
-        {
-            SetSize(Size.Width, _beforeRollupHeight);
+            if (IsRollUp)
+            {
+                SetSize(Size.Width, _beforeRollupHeight);
+                IsRollUp = false;
+            }
+            else
+            {
+                _beforeRollupHeight = Size.Height;
+                SetSize(Size.Width, SystemInformation.CaptionHeight);
+                IsRollUp = true;
+            }
         }
 
         public void SetPriority(Priority priority)
@@ -504,17 +522,18 @@ namespace SmartContextMenu
             return text;
         }
 
-        public void AeroGlass(bool enable)
+        public void AeroGlass()
         {
             var version = Environment.OSVersion.Version;
             if (version.Major == 6 && (version.Minor == 0 || version.Minor == 1))
             {
-                WindowUtils.AeroGlassForVistaAndSeven(Handle, enable);
+                WindowUtils.AeroGlassForVistaAndSeven(Handle, !IsAeroGlass);
             }
             else if (version.Major >= 6 || (version.Major == 6 && version.Minor > 1))
             {
-                WindowUtils.AeroGlassForEightAndHigher(Handle, enable);
+                WindowUtils.AeroGlassForEightAndHigher(Handle, !IsAeroGlass);
             }
+            IsAeroGlass = !IsAeroGlass;
         }
 
         public void MoveToMonitor(IntPtr monitorHandle)

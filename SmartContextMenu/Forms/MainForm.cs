@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -23,6 +24,7 @@ namespace SmartContextMenu.Forms
         private KeyboardHook _keyboardHook;
         private MouseHook _mouseHook;
         private ContextMenuStrip _menu;
+        private IList<Window> _windows;
 
         public MainForm(ApplicationSettings settings)
         {
@@ -30,6 +32,7 @@ namespace SmartContextMenu.Forms
             _settings = settings;
             _systemTrayMenu = new SystemTrayMenu();
             _menu = new ContextMenuStrip();
+            _windows = new List<Window>();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -74,6 +77,11 @@ namespace SmartContextMenu.Forms
 
         protected override void OnClosed(EventArgs e)
         {
+            foreach (Window window in _windows)
+            {
+                window.Dispose();
+            }
+
             ContextMenuManager.Release(_menu);
             _systemTrayMenu?.Dispose();
             _keyboardHook?.Dispose();
@@ -92,7 +100,8 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu);
-            var window = new Window(parentHandle);
+
+            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             MenuItemClick(window, e.MenuItem);
             e.Succeeded = true;
         });
@@ -107,7 +116,7 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu);
-            var window = new Window(parentHandle);
+            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             MenuItemClick(window, e.WindowSizeMenuItem);
             e.Succeeded = true;
         });
@@ -131,7 +140,7 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu);
-            var window = new Window(parentHandle);
+            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
             _menu.Show(Cursor.Position);
@@ -314,6 +323,26 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.AlwaysOnTop:
                     {
                         window.MakeAlwaysOnTop(!window.AlwaysOnTop);
+                    }
+                    break;
+
+                case MenuItemName.RollUp:
+                    {
+                        window.RollUpDown();
+                        if (!_windows.Any(x => x.Handle == window.Handle))
+                        {
+                            _windows.Add(window);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.AeroGlass:
+                    {
+                        window.AeroGlass();
+                        if (!_windows.Any(x => x.Handle == window.Handle))
+                        {
+                            _windows.Add(window);
+                        }
                     }
                     break;
 

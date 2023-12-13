@@ -120,6 +120,18 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.RollUp:
+                    {
+                        toolStripMenuItem.Checked = window.IsRollUp;
+                    }
+                    break;
+
+                case MenuItemName.AeroGlass:
+                    {
+                        toolStripMenuItem.Checked = window.IsAeroGlass;
+                    }
+                    break;
+
                 case MenuItemName.HideForAltTab:
                     {
                         toolStripMenuItem.Checked = window.IsExToolWindow;
