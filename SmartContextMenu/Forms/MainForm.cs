@@ -46,23 +46,16 @@ namespace SmartContextMenu.Forms
             using var process = Process.GetCurrentProcess();
             using var mainModule = process.MainModule;
             
-            _keyboardHook = new KeyboardHook(mainModule.ModuleName);
+            _keyboardHook = new KeyboardHook(_settings.MenuItems, mainModule.ModuleName);
             _keyboardHook.MenuItemHooked += MenuItemHooked;
             _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
             _keyboardHook.EscKeyHooked += EscKeyHooked;
-            if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Key3 != VirtualKey.None && x.Show) ||
-                _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
-            {
-                _keyboardHook.Start(_settings.MenuItems);
-            }
+            _keyboardHook.Start();
 
-            _mouseHook = new MouseHook(mainModule.ModuleName);
+            _mouseHook = new MouseHook(_settings.Key1, _settings.Key2, _settings.Key3, _settings.Key4, _settings.MouseButton, mainModule.ModuleName);
             _mouseHook.Hooked += MouseHooked;
             _mouseHook.ClickHooked += ClickHooked;
-            if (_settings.MouseButton != MouseButton.None)
-            {
-                _mouseHook.Start(_settings.Key1, _settings.Key2, _settings.Key3, _settings.Key4, _settings.MouseButton);
-            }
+            _mouseHook.Start();
 
             if (_settings.ShowSystemTrayIcon)
             {
@@ -82,7 +75,7 @@ namespace SmartContextMenu.Forms
                 window.Dispose();
             }
 
-            ContextMenuManager.Release(_menu);
+            ContextMenuManager.Release(_menu, MenuItemClick);
             _systemTrayMenu?.Dispose();
             _keyboardHook?.Dispose();
             _mouseHook?.Dispose();
@@ -99,7 +92,7 @@ namespace SmartContextMenu.Forms
                 return;
             }
 
-            ContextMenuManager.Release(_menu);
+            ContextMenuManager.Release(_menu, MenuItemClick);
 
             var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             MenuItemClick(window, e.MenuItem);
@@ -115,7 +108,7 @@ namespace SmartContextMenu.Forms
                 return;
             }
 
-            ContextMenuManager.Release(_menu);
+            ContextMenuManager.Release(_menu, MenuItemClick);
             var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             MenuItemClick(window, e.WindowSizeMenuItem);
             e.Succeeded = true;
@@ -125,28 +118,29 @@ namespace SmartContextMenu.Forms
         {
             if (_menu.Visible)
             {
-                ContextMenuManager.Release(_menu);
+                ContextMenuManager.Release(_menu, MenuItemClick);
                 e.Succeeded = true;
             }
         });
 
-        private void MouseHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
+        private void MouseHooked(object sender, EventArgs e) => BeginInvoke((MethodInvoker)delegate
         {
-            var handle = User32.WindowFromPoint(e.Point);
+            var cursorPosition = Cursor.Position;
+            var handle = User32.WindowFromPoint(new Native.Structs.Point(cursorPosition.X, cursorPosition.Y));
             var parentHandle = WindowUtils.GetParentWindow(handle);
             if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
             {
                 return;
             }
 
-            ContextMenuManager.Release(_menu);
+            ContextMenuManager.Release(_menu, MenuItemClick);
             var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
             ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
-            _menu.Show(Cursor.Position);
+            _menu.Show(cursorPosition);
         });
 
-        private void ClickHooked(object sender, Hooks.MouseEventArgs e) => BeginInvoke((MethodInvoker)delegate
+        private void ClickHooked(object sender, EventArgs e) => BeginInvoke((MethodInvoker)delegate
         {
             if (_menu.Visible)
             {
@@ -181,7 +175,7 @@ namespace SmartContextMenu.Forms
 
                 if (!isCursorOverMenu && !isCursorOverSubMenu)
                 {
-                    ContextMenuManager.Release(_menu);
+                    ContextMenuManager.Release(_menu, MenuItemClick);
                 }
             }
         });
@@ -474,7 +468,7 @@ namespace SmartContextMenu.Forms
                         {
                             User32.EnumWindows((IntPtr handle, int lParam) =>
                             {
-                                if (handle != IntPtr.Zero && handle != Handle && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
+                                if (handle != IntPtr.Zero && handle != window.Handle && WindowUtils.IsAltTabWindow(handle))
                                 {
                                     if (menuItem.Name == MenuItemName.CloseOtherWindows)
                                     {
@@ -615,20 +609,13 @@ namespace SmartContextMenu.Forms
                 _settingsForm.OkClick += (sender, e) => 
                 {
                     _settings = e.Entity;
+                    _keyboardHook.MenuItems = _settings.MenuItems;
+                    _mouseHook.Key1 = _settings.Key1;
+                    _mouseHook.Key2 = _settings.Key2;
+                    _mouseHook.Key3 = _settings.Key3;
+                    _mouseHook.Key4 = _settings.Key4;
+                    _mouseHook.MouseButton = _settings.MouseButton;
                     _systemTrayMenu.RefreshLanguage(_settings);
-
-                    _keyboardHook.Stop();
-                    if (_settings.MenuItems.Items.Flatten(x => x.Items).Any(x => x.Type == MenuItemType.Item && x.Key3 != VirtualKey.None && x.Show) ||
-                        _settings.MenuItems.WindowSizeItems.Any(x => x.Key3 != VirtualKey.None))
-                    {
-                        _keyboardHook.Start(_settings.MenuItems);
-                    }
-
-                    _mouseHook.Stop();
-                    if (_settings.MouseButton != MouseButton.None)
-                    {
-                        _mouseHook.Start(_settings.Key1, _settings.Key2, _settings.Key3, _settings.Key4, _settings.MouseButton);
-                    }
 
                     ApplicationSettingsFile.Save(_settings);
                 };

@@ -100,14 +100,25 @@ namespace SmartContextMenu
             }
         }
 
-        public static void Release(ContextMenuStrip menu)
+        public static void Release(ContextMenuStrip menu, EventHandler onClick)
         {
             menu.Hide();
 
-            if (menu.Items.Count > 0)
+            var menuItems = menu.Items.Cast<ToolStripItem>().ToArray();
+            foreach (var menuItem in menuItems)
             {
-                menu.Items.Clear();
+                menuItem.Click -= onClick;
+                menuItem.Dispose();
             }
+
+            var dropDownMenuItems = menu.Items.OfType<ToolStripMenuItem>().SelectMany(x => x.DropDownItems.Cast<ToolStripItem>()).ToArray();
+            foreach (var menuItem in dropDownMenuItems)
+            {
+                menuItem.Click -= onClick;
+                menuItem.Dispose();
+            }
+
+            menu.Items.Clear();
         }
 
         private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, Settings.MenuItem menuItem)

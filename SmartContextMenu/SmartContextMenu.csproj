@@ -134,7 +134,6 @@
     <Compile Include="Forms\SizeSettingsForm.Designer.cs">
       <DependentUpon>SizeSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hooks\MouseEventArgs.cs" />
     <Compile Include="Hooks\KeyboardEventArgs.cs" />
     <Compile Include="Hooks\KeyboardHook.cs" />
     <Compile Include="Hooks\MouseButton.cs" />

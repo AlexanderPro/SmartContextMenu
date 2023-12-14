@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using SmartContextMenu.Native.Structs;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Extensions;
+using SmartContextMenu.Native.Structs;
 using static SmartContextMenu.Native.User32;
 using static SmartContextMenu.Native.Kernel32;
 using static SmartContextMenu.Native.Constants;
@@ -13,23 +13,24 @@ namespace SmartContextMenu.Hooks
     class KeyboardHook : IDisposable
     {
         private readonly string _moduleName;
+        private readonly KeyboardHookProc _hookProc;
         private IntPtr _hookHandle;
-        private KeyboardHookProc _hookProc;
-        private MenuItems _menuItems;
 
         public event EventHandler<KeyboardEventArgs> MenuItemHooked;
         public event EventHandler<KeyboardEventArgs> WindowSizeMenuItemHooked;
         public event EventHandler<KeyboardEventArgs> EscKeyHooked;
 
-        public KeyboardHook(string moduleName)
+        public MenuItems MenuItems { get; set; }
+
+        public KeyboardHook(MenuItems menuItems, string moduleName)
         {
+            MenuItems = menuItems;
             _moduleName = moduleName;
+            _hookProc = HookProc;
         }
 
-        public bool Start(MenuItems menuItems)
+        public bool Start()
         {
-            _menuItems = menuItems;
-            _hookProc = HookProc;
             var moduleHandle = GetModuleHandle(_moduleName);
             _hookHandle = SetWindowsHookEx(WH_KEYBOARD_LL, _hookProc, moduleHandle, 0);
             return _hookHandle != IntPtr.Zero;
@@ -71,7 +72,7 @@ namespace SmartContextMenu.Hooks
             {
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
-                    foreach (var item in _menuItems.Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item))
+                    foreach (var item in MenuItems.Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item))
                     {
                         var key1 = true;
                         var key2 = true;
@@ -103,7 +104,7 @@ namespace SmartContextMenu.Hooks
                         }
                     }
 
-                    foreach (var item in _menuItems.WindowSizeItems)
+                    foreach (var item in MenuItems.WindowSizeItems)
                     {
                         var key1 = true;
                         var key2 = true;
