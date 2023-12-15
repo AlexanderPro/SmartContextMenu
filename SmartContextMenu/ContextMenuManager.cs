@@ -104,15 +104,15 @@ namespace SmartContextMenu
         {
             menu.Hide();
 
-            var menuItems = menu.Items.Cast<ToolStripItem>().ToArray();
-            foreach (var menuItem in menuItems)
+            var dropDownMenuItems = menu.Items.OfType<ToolStripMenuItem>().SelectMany(x => x.DropDownItems.Cast<ToolStripItem>()).ToArray();
+            foreach (var menuItem in dropDownMenuItems)
             {
                 menuItem.Click -= onClick;
                 menuItem.Dispose();
             }
 
-            var dropDownMenuItems = menu.Items.OfType<ToolStripMenuItem>().SelectMany(x => x.DropDownItems.Cast<ToolStripItem>()).ToArray();
-            foreach (var menuItem in dropDownMenuItems)
+            var menuItems = menu.Items.Cast<ToolStripItem>().ToArray();
+            foreach (var menuItem in menuItems)
             {
                 menuItem.Click -= onClick;
                 menuItem.Dispose();

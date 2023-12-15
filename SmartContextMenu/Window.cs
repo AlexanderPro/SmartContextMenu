@@ -142,16 +142,6 @@ namespace SmartContextMenu
         {
             if (_isManaged)
             {
-                if (IsRollUp)
-                {
-                    RollUpDown();
-                }
-
-                if (IsAeroGlass)
-                {
-                    AeroGlass();
-                }
-
                 RestoreFromSystemTray();
                 _menuItemRestore?.Dispose();
                 _menuItemClose?.Dispose();
