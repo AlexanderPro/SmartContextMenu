@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationSettingsForm));
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabpGeneral = new System.Windows.Forms.TabPage();
             this.grpbDisplay = new System.Windows.Forms.GroupBox();
@@ -585,6 +586,7 @@
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.tabMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

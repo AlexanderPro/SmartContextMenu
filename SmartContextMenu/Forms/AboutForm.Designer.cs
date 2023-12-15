@@ -29,6 +29,7 @@
         /// <param name="menuLanguage">Contains language strings.</param>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
             this.linkUrl = new System.Windows.Forms.LinkLabel();
@@ -78,6 +79,7 @@
             // pbImage
             // 
             this.pbImage.BackgroundImage = global::SmartContextMenu.Properties.Resources.SmartContextMenuImage;
+            this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbImage.InitialImage = null;
             this.pbImage.Location = new System.Drawing.Point(4, 21);
             this.pbImage.Name = "pbImage";
@@ -96,6 +98,7 @@
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblProductName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
