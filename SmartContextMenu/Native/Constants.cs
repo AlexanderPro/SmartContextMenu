@@ -125,5 +125,11 @@
         public const int STATE_SYSTEM_INVISIBLE = 0x00008000;
         public const int SE_PRIVILEGE_ENABLED = 0x02;
         public const int SEND_CHILD_HANDLE = 1;
+
+        public const uint WINEVENT_OUTOFCONTEXT = 0;
+        public const uint EVENT_SYSTEM_MINIMIZESTART = 0x0016;
+        public const uint EVENT_SYSTEM_MINIMIZEEND = 0x0017;
+        public const uint EVENT_OBJECT_DESTROY = 0x8001;
+        public const int OBJID_WINDOW = 0;
     }
 }

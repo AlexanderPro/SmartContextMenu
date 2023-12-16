@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
@@ -10,19 +9,18 @@ namespace SmartContextMenu.Forms
 
         public int WindowTop { get; private set; }
 
-        public PositionForm(ApplicationSettings settings, Window window)
+        public PositionForm(LanguageManager manager, Window window)
         {
             InitializeComponent();
-            var languageManager = new LanguageManager(settings.LanguageName);
-            InitializeControls(languageManager, window);
+            InitializeControls(manager, window);
         }
 
-        private void InitializeControls(LanguageManager languageManager, Window window)
+        private void InitializeControls(LanguageManager manager, Window window)
         {
-            lblLeft.Text = languageManager.GetString("lbl_left");
-            lblTop.Text = languageManager.GetString("lbl_top");
-            btnApply.Text = languageManager.GetString("align_btn_apply");
-            Text = languageManager.GetString("align_form");
+            lblLeft.Text = manager.GetString("lbl_left");
+            lblTop.Text = manager.GetString("lbl_top");
+            btnApply.Text = manager.GetString("align_btn_apply");
+            Text = manager.GetString("align_form");
 
             var left = window.Size.Left;
             var top = window.Size.Top;

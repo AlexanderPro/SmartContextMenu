@@ -134,7 +134,7 @@ namespace SmartContextMenu.Forms
                 var row = grid.Rows[e.RowIndex];
                 if (e.ColumnIndex == 3 && row.Tag is StartProgramMenuItem menuItem)
                 {
-                    var dialog = new StartProgramForm(_settings, menuItem);
+                    var dialog = new StartProgramForm(_languageManager, menuItem);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         row.Cells[0].Value = dialog.MenuItem.Title;
@@ -159,7 +159,7 @@ namespace SmartContextMenu.Forms
             {
                 if (e.ColumnIndex == 6 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
                 {
-                    var dialog = new SizeSettingsForm(_settings, menuItem);
+                    var dialog = new SizeSettingsForm(_languageManager, menuItem);
                     if (dialog.ShowDialog(this) == DialogResult.OK)
                     {
                         var row = grid.Rows[e.RowIndex];
@@ -229,7 +229,7 @@ namespace SmartContextMenu.Forms
             var row = grid.Rows[e.RowIndex];
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2) && e.RowIndex >= 0 && row.Tag is StartProgramMenuItem menuItem)
             {
-                var dialog = new StartProgramForm(_settings, menuItem);
+                var dialog = new StartProgramForm(_languageManager, menuItem);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     row.Cells[0].Value = dialog.MenuItem.Title;
@@ -245,7 +245,7 @@ namespace SmartContextMenu.Forms
             var grid = (DataGridView)sender;
             if ((e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5) && e.RowIndex >= 0 && grid.Rows[e.RowIndex].Tag is WindowSizeMenuItem menuItem)
             {
-                var dialog = new SizeSettingsForm(_settings, menuItem);
+                var dialog = new SizeSettingsForm(_languageManager, menuItem);
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
                     var row = grid.Rows[e.RowIndex];
@@ -270,7 +270,7 @@ namespace SmartContextMenu.Forms
 
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
-            var dialog = new StartProgramForm(_settings, null);
+            var dialog = new StartProgramForm(_languageManager, null);
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvStartProgram.Rows.Add();
@@ -286,7 +286,7 @@ namespace SmartContextMenu.Forms
 
         private void ButtonAddWindowSizeClick(object sender, EventArgs e)
         {
-            var dialog = new SizeSettingsForm(_settings, new WindowSizeMenuItem { Width = 1, Height = 1 });
+            var dialog = new SizeSettingsForm(_languageManager, new WindowSizeMenuItem { Width = 1, Height = 1 });
             if (dialog.ShowDialog(this) == DialogResult.OK)
             {
                 var index = gvWindowSize.Rows.Add();
@@ -459,7 +459,7 @@ namespace SmartContextMenu.Forms
         private void ShowHotkeysForm(DataGridViewRow row)
         {
             var menuItem = (Settings.MenuItem)row.Tag;
-            var form = new HotkeysForm(_settings, menuItem);
+            var form = new HotkeysForm(_languageManager, menuItem);
             var result = form.ShowDialog(this);
             if (result == DialogResult.OK)
             {

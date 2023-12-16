@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 
 namespace SmartContextMenu.Forms
@@ -9,12 +8,11 @@ namespace SmartContextMenu.Forms
     {
         private const string URL_SMART_CONTEXT_MENU = "https://github.com/AlexanderPro/SmartContextMenu";
 
-        public AboutForm(ApplicationSettings settings)
+        public AboutForm(LanguageManager manager)
         {
             InitializeComponent();
-            var languageManager = new LanguageManager(settings.LanguageName);
-            btnOk.Text = languageManager.GetString("about_btn_ok");
-            Text = languageManager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
+            btnOk.Text = manager.GetString("about_btn_ok");
+            Text = manager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
             lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright}-{DateTime.Now.Year} {AssemblyUtils.AssemblyCompany}";
             linkUrl.Text = URL_SMART_CONTEXT_MENU;

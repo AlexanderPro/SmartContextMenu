@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
@@ -14,21 +13,20 @@ namespace SmartContextMenu.Forms
 
         public int WindowHeight { get; private set; }
 
-        public SizeForm(ApplicationSettings settings, Window window)
+        public SizeForm(LanguageManager manager, Window window)
         {
             InitializeComponent();
-            var languageManager = new LanguageManager(settings.LanguageName);
-            InitializeControls(languageManager, window);
+            InitializeControls(manager, window);
         }
 
-        private void InitializeControls(LanguageManager languageManager, Window window)
+        private void InitializeControls(LanguageManager manager, Window window)
         {
-            lblLeft.Text = languageManager.GetString("lbl_size_form_left");
-            lblTop.Text = languageManager.GetString("lbl_size_form_top");
-            lblWidth.Text = languageManager.GetString("lbl_size_form_width");
-            lblHeight.Text = languageManager.GetString("lbl_size_form_height");
-            btnApply.Text = languageManager.GetString("size_btn_apply");
-            Text = languageManager.GetString("size_form");
+            lblLeft.Text = manager.GetString("lbl_size_form_left");
+            lblTop.Text = manager.GetString("lbl_size_form_top");
+            lblWidth.Text = manager.GetString("lbl_size_form_width");
+            lblHeight.Text = manager.GetString("lbl_size_form_height");
+            btnApply.Text = manager.GetString("size_btn_apply");
+            Text = manager.GetString("size_form");
 
             var left = window.Size.Left;
             var top = window.Size.Top;

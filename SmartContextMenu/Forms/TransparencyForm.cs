@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
@@ -8,17 +7,16 @@ namespace SmartContextMenu.Forms
     {
         public int WindowTransparency { get; private set; }
 
-        public TransparencyForm(ApplicationSettings settings, Window window)
+        public TransparencyForm(LanguageManager manager, Window window)
         {
             InitializeComponent();
-            var languageManager = new LanguageManager(settings.LanguageName);
-            InitializeControls(languageManager, window);
+            InitializeControls(manager, window);
         }
 
-        private void InitializeControls(LanguageManager languageManager, Window window)
+        private void InitializeControls(LanguageManager manager, Window window)
         {
-            btnApply.Text = languageManager.GetString("trans_btn_apply");
-            Text = languageManager.GetString("trans_form");
+            btnApply.Text = manager.GetString("trans_btn_apply");
+            Text = manager.GetString("trans_form");
             numericTransparency.Value = window.Transparency;
             DialogResult = DialogResult.Cancel;
         }

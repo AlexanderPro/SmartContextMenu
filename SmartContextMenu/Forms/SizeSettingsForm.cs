@@ -12,27 +12,26 @@ namespace SmartContextMenu.Forms
     {
         public WindowSizeMenuItem MenuItem { get; private set; }
 
-        public SizeSettingsForm(ApplicationSettings settings, WindowSizeMenuItem menuItem)
+        public SizeSettingsForm(LanguageManager manager, WindowSizeMenuItem menuItem)
         {
             MenuItem = menuItem;
-            var languageManager = new LanguageManager(settings.LanguageName);
             InitializeComponent();
-            InitializeControls(languageManager, menuItem);
+            InitializeControls(manager, menuItem);
         }
 
-        private void InitializeControls(LanguageManager languageManager, WindowSizeMenuItem menuItem)
+        private void InitializeControls(LanguageManager manager, WindowSizeMenuItem menuItem)
         {
-            lblTitle.Text = languageManager.GetString("lbl_window_size_title");
-            lblLeft.Text = languageManager.GetString("lbl_window_size_left");
-            lblTop.Text = languageManager.GetString("lbl_window_size_top");
-            lblWidth.Text = languageManager.GetString("lbl_window_size_width");
-            lblHeight.Text = languageManager.GetString("lbl_window_size_height");
-            lblKey1.Text = languageManager.GetString("lbl_window_size_key1");
-            lblKey2.Text = languageManager.GetString("lbl_window_size_key2");
-            lblKey3.Text = languageManager.GetString("lbl_window_size_key3");
-            btnApply.Text = languageManager.GetString("window_size_btn_apply");
-            btnCancel.Text = languageManager.GetString("window_size_btn_cancel");
-            Text = languageManager.GetString("window_size_form");
+            lblTitle.Text = manager.GetString("lbl_window_size_title");
+            lblLeft.Text = manager.GetString("lbl_window_size_left");
+            lblTop.Text = manager.GetString("lbl_window_size_top");
+            lblWidth.Text = manager.GetString("lbl_window_size_width");
+            lblHeight.Text = manager.GetString("lbl_window_size_height");
+            lblKey1.Text = manager.GetString("lbl_window_size_key1");
+            lblKey2.Text = manager.GetString("lbl_window_size_key2");
+            lblKey3.Text = manager.GetString("lbl_window_size_key3");
+            btnApply.Text = manager.GetString("window_size_btn_apply");
+            btnCancel.Text = manager.GetString("window_size_btn_cancel");
+            Text = manager.GetString("window_size_form");
 
             txtTitle.Text = menuItem.Title;
             txtLeft.Text = menuItem.Left == null ? string.Empty : menuItem.Left.Value.ToString();

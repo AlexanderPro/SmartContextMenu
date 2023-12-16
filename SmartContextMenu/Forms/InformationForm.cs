@@ -1,60 +1,58 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Globalization;
-using SmartContextMenu.Settings;
 
 namespace SmartContextMenu.Forms
 {
     partial class InformationForm : Form
     {
-        public InformationForm(ApplicationSettings settings, WindowDetails windowDetails)
+        public InformationForm(LanguageManager manager, WindowDetails windowDetails)
         {
             InitializeComponent();
-            var languageManager = new LanguageManager(settings.LanguageName);
-            InitializeControls(languageManager, windowDetails);
+            InitializeControls(manager, windowDetails);
         }
 
-        private void InitializeControls(LanguageManager languageManager, WindowDetails windowDetails)
+        private void InitializeControls(LanguageManager manager, WindowDetails windowDetails)
         {
-            grpWindow.Text = languageManager.GetString("grp_window");
-            grpProcess.Text = languageManager.GetString("grp_process");
-            lblGetWindowText.Text = languageManager.GetString("lbl_get_window_text");
-            lblWmGetText.Text = languageManager.GetString("lbl_wm_gettext");
-            lblGetClassName.Text = languageManager.GetString("lbl_get_class_name");
-            lblRealGetWindowClass.Text = languageManager.GetString("lbl_real_get_window_class");
-            lblFontName.Text = languageManager.GetString("lbl_font_name");
-            lblWindowHandle.Text = languageManager.GetString("lbl_window_handle");
-            lblParentWindowHandle.Text = languageManager.GetString("lbl_parent_window_handle");
-            lblWindowPosition.Text = languageManager.GetString("lbl_window_position");
-            lblWindowSize.Text = languageManager.GetString("lbl_window_size");
-            lblExtendedFrameBounds.Text = languageManager.GetString("lbl_extended_frame_bounds");
-            lblInstance.Text = languageManager.GetString("lbl_instance");
-            lblProcessId.Text = languageManager.GetString("lbl_process_id");
-            lblThreadId.Text = languageManager.GetString("lbl_thread_id");
-            lblGwlStyle.Text = languageManager.GetString("lbl_gwl_style");
-            lblGclStyle.Text = languageManager.GetString("lbl_gcl_style");
-            lblGwlExStyle.Text = languageManager.GetString("lbl_gwl_exstyle");
-            lblWindowInfoExStyle.Text = languageManager.GetString("lbl_windowinfo_exstyle");
-            lblLwaAlpha.Text = languageManager.GetString("lbl_lwa_alpha");
-            lblLwaColorKey.Text = languageManager.GetString("lbl_lwa_colorkey");
-            lblGwlUserData.Text = languageManager.GetString("lbl_gwl_userdata");
-            lblDwlUser.Text = languageManager.GetString("lbl_dwl_user");
-            lblFullPath.Text = languageManager.GetString("lbl_full_path");
-            lblCommandLine.Text = languageManager.GetString("lbl_command_line");
-            lblStartedAt.Text = languageManager.GetString("lbl_started_at");
-            lblOwner.Text = languageManager.GetString("lbl_owner");
-            lblThreads.Text = languageManager.GetString("lbl_threads");
-            lblWorkingSetSize.Text = languageManager.GetString("lbl_working_set_size");
-            lblParent.Text = languageManager.GetString("lbl_parent");
-            lblPriority.Text = languageManager.GetString("lbl_priority");
-            lblHandles.Text = languageManager.GetString("lbl_handles");
-            lblVirtualSize.Text = languageManager.GetString("lbl_virtual_size");
-            lblProductName.Text = languageManager.GetString("lbl_product_name");
-            lblCopyright.Text = languageManager.GetString("lbl_copyright");
-            lblFileVersion.Text = languageManager.GetString("lbl_file_version");
-            lblProductVersion.Text = languageManager.GetString("lbl_product_version");
-            btnOk.Text = languageManager.GetString("information_btn_apply");
-            Text = languageManager.GetString("information");
+            grpWindow.Text = manager.GetString("grp_window");
+            grpProcess.Text = manager.GetString("grp_process");
+            lblGetWindowText.Text = manager.GetString("lbl_get_window_text");
+            lblWmGetText.Text = manager.GetString("lbl_wm_gettext");
+            lblGetClassName.Text = manager.GetString("lbl_get_class_name");
+            lblRealGetWindowClass.Text = manager.GetString("lbl_real_get_window_class");
+            lblFontName.Text = manager.GetString("lbl_font_name");
+            lblWindowHandle.Text = manager.GetString("lbl_window_handle");
+            lblParentWindowHandle.Text = manager.GetString("lbl_parent_window_handle");
+            lblWindowPosition.Text = manager.GetString("lbl_window_position");
+            lblWindowSize.Text = manager.GetString("lbl_window_size");
+            lblExtendedFrameBounds.Text = manager.GetString("lbl_extended_frame_bounds");
+            lblInstance.Text = manager.GetString("lbl_instance");
+            lblProcessId.Text = manager.GetString("lbl_process_id");
+            lblThreadId.Text = manager.GetString("lbl_thread_id");
+            lblGwlStyle.Text = manager.GetString("lbl_gwl_style");
+            lblGclStyle.Text = manager.GetString("lbl_gcl_style");
+            lblGwlExStyle.Text = manager.GetString("lbl_gwl_exstyle");
+            lblWindowInfoExStyle.Text = manager.GetString("lbl_windowinfo_exstyle");
+            lblLwaAlpha.Text = manager.GetString("lbl_lwa_alpha");
+            lblLwaColorKey.Text = manager.GetString("lbl_lwa_colorkey");
+            lblGwlUserData.Text = manager.GetString("lbl_gwl_userdata");
+            lblDwlUser.Text = manager.GetString("lbl_dwl_user");
+            lblFullPath.Text = manager.GetString("lbl_full_path");
+            lblCommandLine.Text = manager.GetString("lbl_command_line");
+            lblStartedAt.Text = manager.GetString("lbl_started_at");
+            lblOwner.Text = manager.GetString("lbl_owner");
+            lblThreads.Text = manager.GetString("lbl_threads");
+            lblWorkingSetSize.Text = manager.GetString("lbl_working_set_size");
+            lblParent.Text = manager.GetString("lbl_parent");
+            lblPriority.Text = manager.GetString("lbl_priority");
+            lblHandles.Text = manager.GetString("lbl_handles");
+            lblVirtualSize.Text = manager.GetString("lbl_virtual_size");
+            lblProductName.Text = manager.GetString("lbl_product_name");
+            lblCopyright.Text = manager.GetString("lbl_copyright");
+            lblFileVersion.Text = manager.GetString("lbl_file_version");
+            lblProductVersion.Text = manager.GetString("lbl_product_version");
+            btnOk.Text = manager.GetString("information_btn_apply");
+            Text = manager.GetString("information");
 
             var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone(); ;
             nfi.NumberGroupSeparator = ",";
@@ -95,10 +93,7 @@ namespace SmartContextMenu.Forms
             txtProductVersion.Text = windowDetails.ProductVersion;
         }
 
-        private void ButtonCloseClick(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void ButtonCloseClick(object sender, EventArgs e) => Close();
 
         private void FormKeyDown(object sender, KeyEventArgs e)
         {

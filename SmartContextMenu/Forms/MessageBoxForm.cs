@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace SmartContextMenu.Forms
 {
@@ -21,10 +22,7 @@ namespace SmartContextMenu.Forms
             InitializeComponent();
         }
 
-        private void OkClick(object sender, System.EventArgs e)
-        {
-            Close();
-        }
+        private void OkClick(object sender, EventArgs e) => Close();
 
         private void FormKeyDown(object sender, KeyEventArgs e)
         {

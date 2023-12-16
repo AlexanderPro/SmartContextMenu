@@ -10,9 +10,9 @@ namespace SmartContextMenu.Forms
         private readonly LanguageManager _languageManager;
         public StartProgramMenuItem MenuItem { get; private set; }
 
-        public StartProgramForm(ApplicationSettings settings, StartProgramMenuItem menuItem)
+        public StartProgramForm(LanguageManager manager, StartProgramMenuItem menuItem)
         {
-            _languageManager = new LanguageManager(settings.LanguageName);
+            _languageManager = manager;
             InitializeComponent();
             InitializeControls(menuItem);
         }

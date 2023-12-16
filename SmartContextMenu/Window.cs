@@ -19,9 +19,9 @@ namespace SmartContextMenu
     class Window : IDisposable
     {
         private bool _isManaged;
-        private int _beforeRollupHeight;
         private bool _suspended;
         private bool _isLayered;
+        private int _beforeRollupHeight;
         private NotifyIcon _systemTrayIcon;
         private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemClose;
@@ -32,6 +32,8 @@ namespace SmartContextMenu
         public bool IsRollUp { get; private set; }
 
         public bool IsAeroGlass { get; private set; }
+
+        public bool IsMinimizeAlwaysToSystemtray { get; set; }
 
         public Rect Size 
         {
@@ -125,12 +127,25 @@ namespace SmartContextMenu
 
         public IWin32Window Win32Window => new Win32Window(Handle);
 
-        public Window(IntPtr handle)
+        public Window(IntPtr handle, LanguageManager languageManager)
         {
             Handle = handle;
             _isManaged = true;
             _beforeRollupHeight = Size.Height;
             _isLayered = false;
+            _suspended = false;
+
+            _menuItemRestore = new ToolStripMenuItem();
+            _menuItemRestore.Size = new Size(175, 22);
+            _menuItemRestore.Name = $"miRestore_{Handle}";
+            _menuItemRestore.Text = languageManager.GetString("mi_restore");
+            _menuItemRestore.Click += MenuItemRestoreClick;
+            
+            _menuItemClose = new ToolStripMenuItem();
+            _menuItemClose.Size = new Size(175, 22);
+            _menuItemClose.Name = $"miClose_{Handle}";
+            _menuItemClose.Text = languageManager.GetString("mi_close");
+            _menuItemClose.Click += MenuItemCloseClick;
         }
 
         ~Window()
@@ -156,7 +171,7 @@ namespace SmartContextMenu
 
         public string GetClassName() => WindowUtils.GetClassName(Handle);
 
-        private string RealGetWindowClass() => WindowUtils.RealGetWindowClass(Handle);
+        public string RealGetWindowClass() => WindowUtils.RealGetWindowClass(Handle);
 
         public WindowDetails GetWindowInfo()
         {
@@ -554,6 +569,18 @@ namespace SmartContextMenu
             }
         }
 
+        public Rect GetSystemMargins()
+        {
+            var withMargin = GetSizeWithMargins();
+            return new Rect
+            {
+                Left = withMargin.Left - Size.Left,
+                Top = withMargin.Top - Size.Top,
+                Right = Size.Right - withMargin.Right,
+                Bottom = Size.Bottom - withMargin.Bottom
+            };
+        }
+
         private void MenuItemRestoreClick(object sender, EventArgs e)
         {
             RestoreFromSystemTray();
@@ -617,18 +644,6 @@ namespace SmartContextMenu
                 GetWindowRect(Handle, out size);
             }
             return size;
-        }
-
-        public Rect GetSystemMargins()
-        {
-            var withMargin = GetSizeWithMargins();
-            return new Rect
-            {
-                Left = withMargin.Left - Size.Left,
-                Top = withMargin.Top - Size.Top,
-                Right = Size.Right - withMargin.Right,
-                Bottom = Size.Bottom - withMargin.Bottom
-            };
         }
 
         private ContextMenuStrip CreateSystemTrayMenu()

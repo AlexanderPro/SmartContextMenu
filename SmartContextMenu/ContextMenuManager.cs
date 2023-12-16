@@ -167,6 +167,12 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.MinimizeAlwaysToSystemtray:
+                    {
+                        toolStripMenuItem.Checked = window.IsMinimizeAlwaysToSystemtray;
+                    }
+                    break;
+
                 case MenuItemName.TransparencyOpaque:
                 case MenuItemName.Transparency10:
                 case MenuItemName.Transparency20:

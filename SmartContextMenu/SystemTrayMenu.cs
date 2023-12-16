@@ -40,29 +40,27 @@ namespace SmartContextMenu
             _isBuilt = false;
         }
 
-        public void Build(ApplicationSettings settings)
+        public void Build(LanguageManager manager)
         {
             if (_isBuilt)
             {
                 return;
             }
 
-            var languageManager = new LanguageManager(settings.LanguageName);
-
             _menuItemAutoStart.Name = "miAutoStart";
             _menuItemAutoStart.Size = new Size(175, 22);
-            _menuItemAutoStart.Text = languageManager.GetString("mi_auto_start");
+            _menuItemAutoStart.Text = manager.GetString("mi_auto_start");
             _menuItemAutoStart.Click += (sender, e) => MenuItemAutoStartClick?.Invoke(sender, e);
 
             _menuItemSettings.Name = "miSettings";
             _menuItemSettings.Size = new Size(175, 22);
             _menuItemSettings.Font = new Font(_menuItemSettings.Font.Name, _menuItemSettings.Font.Size, FontStyle.Bold);
-            _menuItemSettings.Text = languageManager.GetString("mi_settings");
+            _menuItemSettings.Text = manager.GetString("mi_settings");
             _menuItemSettings.Click += (sender, e) => MenuItemSettingsClick?.Invoke(sender, e);
 
             _menuItemAbout.Name = "miAbout";
             _menuItemAbout.Size = new Size(175, 22);
-            _menuItemAbout.Text = languageManager.GetString("mi_about");
+            _menuItemAbout.Text = manager.GetString("mi_about");
             _menuItemAbout.Click += (sender, e) => MenuItemAboutClick?.Invoke(sender, e);
 
             _menuItemSeparator1.Name = "miSeparator1";
@@ -73,7 +71,7 @@ namespace SmartContextMenu
 
             _menuItemExit.Name = "miExit";
             _menuItemExit.Size = new Size(175, 22);
-            _menuItemExit.Text = languageManager.GetString("mi_exit");
+            _menuItemExit.Text = manager.GetString("mi_exit");
             _menuItemExit.Click += (sender, e) => MenuItemExitClick?.Invoke(sender, e);
 
             _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
@@ -89,13 +87,12 @@ namespace SmartContextMenu
             _isBuilt = true;
         }
 
-        public void RefreshLanguage(ApplicationSettings settings)
+        public void RefreshLanguage(LanguageManager manager)
         {
-            var languageManager = new LanguageManager(settings.LanguageName);
-            _menuItemAutoStart.Text = languageManager.GetString("mi_auto_start");
-            _menuItemSettings.Text = languageManager.GetString("mi_settings");
-            _menuItemAbout.Text = languageManager.GetString("mi_about");
-            _menuItemExit.Text = languageManager.GetString("mi_exit");
+            _menuItemAutoStart.Text = manager.GetString("mi_auto_start");
+            _menuItemSettings.Text = manager.GetString("mi_settings");
+            _menuItemAbout.Text = manager.GetString("mi_about");
+            _menuItemExit.Text = manager.GetString("mi_exit");
         }
 
         public void CheckMenuItemAutoStart(bool check)

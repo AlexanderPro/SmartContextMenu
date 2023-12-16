@@ -7,7 +7,7 @@ using System.Xml.XPath;
 
 namespace SmartContextMenu
 {
-    class LanguageManager
+    public class LanguageManager
     {
         private readonly static Dictionary<string, Dictionary<string, string>> _values = Parse();
         private readonly string _languageName;

@@ -128,10 +128,10 @@ namespace SmartContextMenu
                 windowHandles.AddRange(handles);
             }
 
-
+            var languageManager = new LanguageManager(settings.LanguageName);
             foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero && User32.GetParent(x) == IntPtr.Zero))
             {
-                var window = new Window(windowHandle);
+                var window = new Window(windowHandle, languageManager);
 
                 // Set a Window monitor
                 if (сommandLineParser.HasToggle("m") || сommandLineParser.HasToggle("monitor"))
@@ -319,14 +319,13 @@ namespace SmartContextMenu
                 //Information dialog
                 if (сommandLineParser.HasToggle("i") || сommandLineParser.HasToggle("information"))
                 {
-                    var dialog = new InformationForm(settings, window.GetWindowInfo());
+                    var dialog = new InformationForm(languageManager, window.GetWindowInfo());
                     dialog.ShowDialog();
                 }
 
                 //Save Screenshot
                 if (сommandLineParser.HasToggle("s") || сommandLineParser.HasToggle("savescreenshot"))
                 {
-                    var languageManager = new LanguageManager(settings.LanguageName);
                     var bitmap = WindowUtils.PrintWindow(window.Handle);
                     var dialog = new SaveFileDialog
                     {

@@ -12,22 +12,21 @@ namespace SmartContextMenu.Forms
     {
         public Settings.MenuItem MenuItem { get; private set; }
 
-        public HotkeysForm(ApplicationSettings settings, Settings.MenuItem menuItem)
+        public HotkeysForm(LanguageManager manager, Settings.MenuItem menuItem)
         {
             InitializeComponent();
             MenuItem = menuItem;
-            var languageManager = new LanguageManager(settings.LanguageName);
-            InitializeControls(languageManager, menuItem);
+            InitializeControls(manager, menuItem);
         }
 
-        private void InitializeControls(LanguageManager languageManager, Settings.MenuItem menuItem)
+        private void InitializeControls(LanguageManager manager, Settings.MenuItem menuItem)
         {
-            Text = languageManager.GetString("hotkeys_form");
-            btnApply.Text = languageManager.GetString("hotkeys_btn_apply");
-            btnCancel.Text = languageManager.GetString("hotkeys_btn_cancel");
-            lblKey1.Text = languageManager.GetString("hotkeys_lbl_key1");
-            lblKey2.Text = languageManager.GetString("hotkeys_lbl_key2");
-            lblKey3.Text = languageManager.GetString("hotkeys_lbl_key3");
+            Text = manager.GetString("hotkeys_form");
+            btnApply.Text = manager.GetString("hotkeys_btn_apply");
+            btnCancel.Text = manager.GetString("hotkeys_btn_cancel");
+            lblKey1.Text = manager.GetString("hotkeys_lbl_key1");
+            lblKey2.Text = manager.GetString("hotkeys_lbl_key2");
+            lblKey3.Text = manager.GetString("hotkeys_lbl_key3");
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";
@@ -57,10 +56,7 @@ namespace SmartContextMenu.Forms
             Close();
         }
 
-        private void ButtonCancelClick(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void ButtonCancelClick(object sender, EventArgs e) => Close();
 
         private void KeyDownClick(object sender, KeyEventArgs e)
         {

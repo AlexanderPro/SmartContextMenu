@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
@@ -17,6 +18,8 @@ namespace SmartContextMenu.Forms
 {
     public partial class MainForm : Form
     {
+        private static User32.WinEventDelegate _winEventProc;
+
         private readonly SystemTrayMenu _systemTrayMenu;
         private ApplicationSettings _settings;
         private AboutForm _aboutForm;
@@ -24,7 +27,9 @@ namespace SmartContextMenu.Forms
         private KeyboardHook _keyboardHook;
         private MouseHook _mouseHook;
         private ContextMenuStrip _menu;
-        private IList<Window> _windows;
+        private IntPtr _hWinEventHookDestroy;
+        private IntPtr _hWinEventHookMinimize;
+        private IDictionary<IntPtr, Window> _windows;
 
         public MainForm(ApplicationSettings settings)
         {
@@ -32,7 +37,7 @@ namespace SmartContextMenu.Forms
             _settings = settings;
             _systemTrayMenu = new SystemTrayMenu();
             _menu = new ContextMenuStrip();
-            _windows = new List<Window>();
+            _windows = new Dictionary<IntPtr, Window>();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -57,20 +62,28 @@ namespace SmartContextMenu.Forms
             _mouseHook.ClickHooked += ClickHooked;
             _mouseHook.Start();
 
+            _winEventProc = new User32.WinEventDelegate(WinEventProc);
+            _hWinEventHookDestroy = User32.SetWinEventHook(Constants.EVENT_OBJECT_DESTROY, Constants.EVENT_OBJECT_DESTROY, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
+            _hWinEventHookMinimize = User32.SetWinEventHook(Constants.EVENT_SYSTEM_MINIMIZESTART, Constants.EVENT_SYSTEM_MINIMIZESTART, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
+
             if (_settings.ShowSystemTrayIcon)
             {
+                var manager = new LanguageManager(_settings.LanguageName);
                 _systemTrayMenu.MenuItemAutoStartClick += MenuItemAutoStartClick;
                 _systemTrayMenu.MenuItemSettingsClick += MenuItemSettingsClick;
                 _systemTrayMenu.MenuItemAboutClick += MenuItemAboutClick;
                 _systemTrayMenu.MenuItemExitClick += MenuItemExitClick;
-                _systemTrayMenu.Build(_settings);
+                _systemTrayMenu.Build(manager);
                 _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            foreach (Window window in _windows)
+            User32.UnhookWinEvent(_hWinEventHookDestroy);
+            User32.UnhookWinEvent(_hWinEventHookMinimize);
+
+            foreach (Window window in _windows.Values)
             {
                 window.Dispose();
             }
@@ -93,8 +106,8 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu, MenuItemClick);
-
-            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
+            var manager = new LanguageManager(_settings.LanguageName);
+            var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.MenuItem);
             e.Succeeded = true;
         });
@@ -109,7 +122,8 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu, MenuItemClick);
-            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
+            var manager = new LanguageManager(_settings.LanguageName);
+            var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.WindowSizeMenuItem);
             e.Succeeded = true;
         });
@@ -134,7 +148,8 @@ namespace SmartContextMenu.Forms
             }
 
             ContextMenuManager.Release(_menu, MenuItemClick);
-            var window = _windows.FirstOrDefault(x => x.Handle == parentHandle) ?? new Window(parentHandle);
+            var manager = new LanguageManager(_settings.LanguageName);
+            var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
             _menu.Show(cursorPosition);
@@ -253,7 +268,8 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.SizeCustom:
                     {
-                        var sizeForm = new SizeForm(_settings, window);
+                        var manager = new LanguageManager(_settings.LanguageName);
+                        var sizeForm = new SizeForm(manager, window);
                         var result = sizeForm.ShowDialog(window.Win32Window);
                         if (result == DialogResult.OK)
                         {
@@ -278,7 +294,8 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.TransparencyCustom:
                     {
-                        var opacityForm = new TransparencyForm(_settings, window);
+                        var manager = new LanguageManager(_settings.LanguageName);
+                        var opacityForm = new TransparencyForm(manager, window);
                         var result = opacityForm.ShowDialog(window.Win32Window);
                         if (result == DialogResult.OK)
                         {
@@ -289,7 +306,8 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.AlignCustom:
                     {
-                        var positionForm = new PositionForm(_settings, window);
+                        var manager = new LanguageManager(_settings.LanguageName);
+                        var positionForm = new PositionForm(manager, window);
                         var result = positionForm.ShowDialog(window.Win32Window);
 
                         if (result == DialogResult.OK)
@@ -307,7 +325,8 @@ namespace SmartContextMenu.Forms
                             var windowDetails = window.GetWindowInfo();
                             BeginInvoke((MethodInvoker)delegate
                             {
-                                var infoForm = new InformationForm(_settings, windowDetails);
+                                var manager = new LanguageManager(_settings.LanguageName);
+                                var infoForm = new InformationForm(manager, windowDetails);
                                 infoForm.Show(window.Win32Window);
                             });
                         });
@@ -323,9 +342,9 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.RollUp:
                     {
                         window.RollUpDown();
-                        if (!_windows.Any(x => x.Handle == window.Handle))
+                        if (!_windows.ContainsKey(window.Handle))
                         {
-                            _windows.Add(window);
+                            _windows.Add(window.Handle, window);
                         }
                     }
                     break;
@@ -333,9 +352,9 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.AeroGlass:
                     {
                         window.AeroGlass();
-                        if (!_windows.Any(x => x.Handle == window.Handle))
+                        if (!_windows.ContainsKey(window.Handle))
                         {
-                            _windows.Add(window);
+                            _windows.Add(window.Handle, window);
                         }
                     }
                     break;
@@ -360,17 +379,17 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.SaveScreenshot:
                     {
-                        var languageManager = new LanguageManager(_settings.LanguageName);
+                        var manager = new LanguageManager(_settings.LanguageName);
                         var bitmap = WindowUtils.PrintWindow(window.Handle);
                         var dialog = new SaveFileDialog
                         {
                             OverwritePrompt = true,
                             ValidateNames = true,
-                            Title = languageManager.GetString("save_screenshot_title"),
-                            FileName = languageManager.GetString("save_screenshot_filename"),
-                            DefaultExt = languageManager.GetString("save_screenshot_default_ext"),
+                            Title = manager.GetString("save_screenshot_title"),
+                            FileName = manager.GetString("save_screenshot_filename"),
+                            DefaultExt = manager.GetString("save_screenshot_default_ext"),
                             RestoreDirectory = false,
-                            Filter = languageManager.GetString("save_screenshot_filter")
+                            Filter = manager.GetString("save_screenshot_filter")
                         };
 
                         if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
@@ -461,6 +480,41 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.MinimizeToSystemtray:
+                    {
+                        window.MinimizeToSystemTray();
+
+                        if (!_windows.ContainsKey(window.Handle))
+                        {
+                            _windows.Add(window.Handle, window);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.MinimizeAlwaysToSystemtray:
+                    {
+                        window.IsMinimizeAlwaysToSystemtray = !window.IsMinimizeAlwaysToSystemtray;
+
+                        if (!_windows.ContainsKey(window.Handle))
+                        {
+                            _windows.Add(window.Handle, window);
+                        }
+                    }
+                    break;
+
+                case MenuItemName.SuspendToSystemtray:
+                    {
+                        window.MinimizeToSystemTray();
+                        Thread.Sleep(100);
+                        window.Suspend();
+
+                        if (!_windows.ContainsKey(window.Handle))
+                        {
+                            _windows.Add(window.Handle, window);
+                        }
+                    }
+                    break;
+
                 case MenuItemName.MinimizeOtherWindows:
                 case MenuItemName.CloseOtherWindows:
                     {
@@ -518,6 +572,7 @@ namespace SmartContextMenu.Forms
                 var argumentParameters = arguments.GetParams(menuItem.BeginParameter, menuItem.EndParameter);
                 var allParametersInputed = true;
                 var processPath = window.Process?.GetMainModuleFileName() ?? string.Empty;
+                var manager = new LanguageManager(_settings.LanguageName);
                 foreach (var parameter in argumentParameters)
                 {
                     var parameterName = parameter.TrimStart(menuItem.BeginParameter).TrimEnd(menuItem.EndParameter);
@@ -539,7 +594,7 @@ namespace SmartContextMenu.Forms
                         continue;
                     }
 
-                    var parameterForm = new ParameterForm(_settings, parameterName);
+                    var parameterForm = new ParameterForm(manager, parameterName);
                     var result = parameterForm.ShowDialog(window.Win32Window);
 
                     if (result == DialogResult.OK)
@@ -595,7 +650,8 @@ namespace SmartContextMenu.Forms
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
-                _aboutForm = new AboutForm(_settings);
+                var manager = new LanguageManager(_settings.LanguageName);
+                _aboutForm = new AboutForm(manager);
             }
             _aboutForm.Show();
             _aboutForm.Activate();
@@ -615,7 +671,8 @@ namespace SmartContextMenu.Forms
                     _mouseHook.Key3 = _settings.Key3;
                     _mouseHook.Key4 = _settings.Key4;
                     _mouseHook.MouseButton = _settings.MouseButton;
-                    _systemTrayMenu.RefreshLanguage(_settings);
+                    var manager = new LanguageManager(_settings.LanguageName);
+                    _systemTrayMenu.RefreshLanguage(manager);
 
                     ApplicationSettingsFile.Save(_settings);
                 };
@@ -623,6 +680,32 @@ namespace SmartContextMenu.Forms
 
             _settingsForm.Show();
             _settingsForm.Activate();
+        }
+
+        private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
+        {
+            if (eventType == Constants.EVENT_SYSTEM_MINIMIZESTART && idObject == Constants.OBJID_WINDOW)
+            {
+                BeginInvoke((MethodInvoker)delegate
+                {
+                    if (_windows.TryGetValue(hwnd, out var window) && window.IsMinimizeAlwaysToSystemtray && !window.ExistSystemTrayIcon)
+                    {
+                        window.MoveToSystemTray();
+                    }
+                });
+            }
+
+            if (eventType == Constants.EVENT_OBJECT_DESTROY && idObject == Constants.OBJID_WINDOW)
+            {
+                BeginInvoke((MethodInvoker)delegate
+                {
+                    if (_windows.TryGetValue(hwnd, out var window))
+                    {
+                        window.Dispose();
+                        _windows.Remove(hwnd);
+                    }
+                });
+            }
         }
 
         private void MenuItemExitClick(object sender, EventArgs e) => Close();
