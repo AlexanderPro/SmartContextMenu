@@ -50,6 +50,8 @@
 
         public const string AlignCustom = "align_custom";
 
+        public const string Transparency = "transparency";
+
         public const string TransparencyOpaque = "trans_opaque";
 
         public const string Transparency10 = "trans_10";

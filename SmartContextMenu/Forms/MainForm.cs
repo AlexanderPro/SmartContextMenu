@@ -69,11 +69,13 @@ namespace SmartContextMenu.Forms
             if (_settings.ShowSystemTrayIcon)
             {
                 var manager = new LanguageManager(_settings.LanguageName);
-                _systemTrayMenu.MenuItemAutoStartClick += MenuItemAutoStartClick;
-                _systemTrayMenu.MenuItemSettingsClick += MenuItemSettingsClick;
-                _systemTrayMenu.MenuItemAboutClick += MenuItemAboutClick;
-                _systemTrayMenu.MenuItemExitClick += MenuItemExitClick;
-                _systemTrayMenu.Build(manager);
+                _systemTrayMenu.MenuItemAutoStartClick += SystemTrayMenuItemAutoStartClick;
+                _systemTrayMenu.MenuItemSettingsClick += SystemTrayMenuItemSettingsClick;
+                _systemTrayMenu.MenuItemAboutClick += SystemTrayMenuItemAboutClick;
+                _systemTrayMenu.MenuItemExitClick += SystemTrayMenuItemExitClick;
+                _systemTrayMenu.MenuItemClickThroughClick += SystemTrayMenuItemClickThroughClick;
+                _systemTrayMenu.MenuItemTransparencyClick += SystemTrayMenuItemTransparencyClick;
+                _systemTrayMenu.Build(_settings);
                 _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
         }
@@ -252,6 +254,10 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.TransparencyInvisible:
                     {
                         window.SetTransparency(EnumUtils.GetTransparency(menuItem.Name));
+                        if (!_windows.ContainsKey(window.Handle))
+                        {
+                            _windows.Add(window.Handle, window);
+                        }
                     }
                     break;
 
@@ -300,6 +306,10 @@ namespace SmartContextMenu.Forms
                         if (result == DialogResult.OK)
                         {
                             window.SetTransparency(opacityForm.WindowTransparency);
+                            if (!_windows.ContainsKey(window.Handle))
+                            {
+                                _windows.Add(window.Handle, window);
+                            }
                         }
                     }
                     break;
@@ -368,6 +378,10 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.ClickThrough:
                     {
                         window.ClickThrough(!window.IsClickThrough);
+                        if (!_windows.ContainsKey(window.Handle))
+                        {
+                            _windows.Add(window.Handle, window);
+                        }
                     }
                     break;
 
@@ -622,7 +636,7 @@ namespace SmartContextMenu.Forms
             }
         }
 
-        private void MenuItemAutoStartClick(object sender, EventArgs e)
+        private void SystemTrayMenuItemAutoStartClick(object sender, EventArgs e)
         {
             var keyName = AssemblyUtils.AssemblyProductName;
             var assemblyLocation = AssemblyUtils.AssemblyLocation;
@@ -646,7 +660,7 @@ namespace SmartContextMenu.Forms
             ((ToolStripMenuItem)sender).Checked = !autoStartEnabled;
         }
 
-        private void MenuItemAboutClick(object sender, EventArgs e)
+        private void SystemTrayMenuItemAboutClick(object sender, EventArgs e)
         {
             if (_aboutForm == null || _aboutForm.IsDisposed || !_aboutForm.IsHandleCreated)
             {
@@ -657,7 +671,7 @@ namespace SmartContextMenu.Forms
             _aboutForm.Activate();
         }
 
-        private void MenuItemSettingsClick(object sender, EventArgs e)
+        private void SystemTrayMenuItemSettingsClick(object sender, EventArgs e)
         {
             if (_settingsForm == null || _settingsForm.IsDisposed || !_settingsForm.IsHandleCreated)
             {
@@ -681,6 +695,28 @@ namespace SmartContextMenu.Forms
             _settingsForm.Show();
             _settingsForm.Activate();
         }
+
+        private void SystemTrayMenuItemTransparencyClick(object sender, EventArgs e)
+        {
+            foreach (var window in _windows.Values)
+            {
+                window.RestoreTransparency();
+            }
+        }
+
+        private void SystemTrayMenuItemClickThroughClick(object sender, EventArgs e)
+        {
+            foreach (var window in _windows.Values)
+            {
+                var isClickThrough = window.IsClickThrough;
+                if (isClickThrough)
+                {
+                    window.ClickThrough(!isClickThrough);
+                }
+            }
+        }
+
+        private void SystemTrayMenuItemExitClick(object sender, EventArgs e) => Close();
 
         private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
@@ -707,7 +743,5 @@ namespace SmartContextMenu.Forms
                 });
             }
         }
-
-        private void MenuItemExitClick(object sender, EventArgs e) => Close();
     }
 }

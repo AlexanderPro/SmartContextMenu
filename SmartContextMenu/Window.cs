@@ -22,6 +22,7 @@ namespace SmartContextMenu
         private bool _suspended;
         private bool _isLayered;
         private int _beforeRollupHeight;
+        private int _defaultTransparency;
         private NotifyIcon _systemTrayIcon;
         private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemClose;
@@ -134,6 +135,7 @@ namespace SmartContextMenu
             _beforeRollupHeight = Size.Height;
             _isLayered = false;
             _suspended = false;
+            _defaultTransparency = Transparency;
 
             _menuItemRestore = new ToolStripMenuItem();
             _menuItemRestore.Size = new Size(175, 22);
@@ -293,6 +295,11 @@ namespace SmartContextMenu
         {
             var opacity = (byte)Math.Round(255 * (100 - percent) / 100f, MidpointRounding.AwayFromZero);
             WindowUtils.SetOpacity(Handle, opacity);
+        }
+
+        public void RestoreTransparency()
+        {
+            SetTransparency(_defaultTransparency);
         }
 
         public void SetWidth(int width)

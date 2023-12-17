@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Utils;
 
@@ -15,6 +16,8 @@ namespace SmartContextMenu
         private readonly ToolStripMenuItem _menuItemSettings;
         private readonly ToolStripMenuItem _menuItemAbout;
         private readonly ToolStripMenuItem _menuItemExit;
+        private readonly ToolStripMenuItem _menuItemTransparency;
+        private readonly ToolStripMenuItem _menuItemClickThrough;
         private readonly ToolStripSeparator _menuItemSeparator1;
         private readonly ToolStripSeparator _menuItemSeparator2;
         private readonly NotifyIcon _icon;
@@ -24,6 +27,8 @@ namespace SmartContextMenu
         public event EventHandler MenuItemSettingsClick;
         public event EventHandler MenuItemAboutClick;
         public event EventHandler MenuItemExitClick;
+        public event EventHandler MenuItemTransparencyClick;
+        public event EventHandler MenuItemClickThroughClick;
 
         public SystemTrayMenu()
         {
@@ -34,18 +39,22 @@ namespace SmartContextMenu
             _menuItemSeparator1 = new ToolStripSeparator();
             _menuItemSeparator2 = new ToolStripSeparator();
             _menuItemExit = new ToolStripMenuItem();
+            _menuItemTransparency = new ToolStripMenuItem();
+            _menuItemClickThrough = new ToolStripMenuItem();
             var components = new Container();
             _systemTrayMenu = new ContextMenuStrip(components);
             _icon = new NotifyIcon(components);
             _isBuilt = false;
         }
 
-        public void Build(LanguageManager manager)
+        public void Build(ApplicationSettings settings)
         {
             if (_isBuilt)
             {
                 return;
             }
+
+            var manager = new LanguageManager(settings.LanguageName);
 
             _menuItemAutoStart.Name = "miAutoStart";
             _menuItemAutoStart.Size = new Size(175, 22);
@@ -74,7 +83,39 @@ namespace SmartContextMenu
             _menuItemExit.Text = manager.GetString("mi_exit");
             _menuItemExit.Click += (sender, e) => MenuItemExitClick?.Invoke(sender, e);
 
-            _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+            var clickThroughAny = settings.MenuItems.Items.Any(x => x.Type == MenuItemType.Item && x.Name == MenuItemName.ClickThrough && x.Show);
+            var transparencyAny = settings.MenuItems.Items.Any(x => x.Type == MenuItemType.Group && x.Name == MenuItemName.Transparency && x.Show);
+
+            if (clickThroughAny || transparencyAny)
+            {
+                _menuItemRestore.Name = "miRestore";
+                _menuItemRestore.Size = new Size(175, 22);
+                _menuItemRestore.Text = manager.GetString("mi_restore_windows");
+
+                if (clickThroughAny)
+                {
+                    _menuItemClickThrough.Name = "miClickThrough";
+                    _menuItemClickThrough.Size = new Size(175, 22);
+                    _menuItemClickThrough.Text = manager.GetString("click_through");
+                    _menuItemClickThrough.Click += (sender, e) => MenuItemClickThroughClick?.Invoke(sender, e);
+                    _menuItemRestore.DropDownItems.Add(_menuItemClickThrough);
+                }
+
+                if (transparencyAny)
+                {
+                    _menuItemTransparency.Name = "miTransparency";
+                    _menuItemTransparency.Size = new Size(175, 22);
+                    _menuItemTransparency.Text = manager.GetString("transparency");
+                    _menuItemTransparency.Click += (sender, e) => MenuItemTransparencyClick?.Invoke(sender, e);
+                    _menuItemRestore.DropDownItems.Add(_menuItemTransparency);
+                }
+
+                _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemRestore, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+            }
+            else
+            {
+                _systemTrayMenu.Items.AddRange(new ToolStripItem[] { _menuItemAutoStart, _menuItemSeparator1, _menuItemSettings, _menuItemAbout, _menuItemSeparator2, _menuItemExit });
+            }
 
             _systemTrayMenu.Name = "systemTrayMenu";
             _systemTrayMenu.Size = new Size(176, 80);
@@ -93,6 +134,9 @@ namespace SmartContextMenu
             _menuItemSettings.Text = manager.GetString("mi_settings");
             _menuItemAbout.Text = manager.GetString("mi_about");
             _menuItemExit.Text = manager.GetString("mi_exit");
+            _menuItemRestore.Text = manager.GetString("mi_restore_windows");
+            _menuItemClickThrough.Text = manager.GetString("click_through");
+            _menuItemTransparency.Text = manager.GetString("transparency");
         }
 
         public void CheckMenuItemAutoStart(bool check)
@@ -111,10 +155,12 @@ namespace SmartContextMenu
             if (disposing)
             {
                 _menuItemAutoStart?.Dispose();
-                _menuItemRestore?.Dispose();
                 _menuItemSettings?.Dispose();
                 _menuItemAbout?.Dispose();
                 _menuItemExit?.Dispose();
+                _menuItemRestore?.Dispose();
+                _menuItemClickThrough?.Dispose();
+                _menuItemTransparency?.Dispose();
                 _menuItemSeparator1?.Dispose();
                 _menuItemSeparator2?.Dispose();
                 _systemTrayMenu?.Dispose();
