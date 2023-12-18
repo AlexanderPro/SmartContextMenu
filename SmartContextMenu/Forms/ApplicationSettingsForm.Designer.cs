@@ -35,8 +35,18 @@
             this.grpbDisplay = new System.Windows.Forms.GroupBox();
             this.chkEnableHighDPI = new System.Windows.Forms.CheckBox();
             this.grpbLanguage = new System.Windows.Forms.GroupBox();
-            this.cmbLanguage = new System.Windows.Forms.ComboBox();
+            this.listBoxLanguage = new System.Windows.Forms.ListBox();
             this.grpbMouseHotkeys = new System.Windows.Forms.GroupBox();
+            this.lblMouseButton = new System.Windows.Forms.Label();
+            this.cmbMouseButton = new System.Windows.Forms.ComboBox();
+            this.lblKey4 = new System.Windows.Forms.Label();
+            this.cmbKey4 = new System.Windows.Forms.ComboBox();
+            this.lblKey3 = new System.Windows.Forms.Label();
+            this.lblKey2 = new System.Windows.Forms.Label();
+            this.lblKey1 = new System.Windows.Forms.Label();
+            this.cmbKey3 = new System.Windows.Forms.ComboBox();
+            this.cmbKey2 = new System.Windows.Forms.ComboBox();
+            this.cmbKey1 = new System.Windows.Forms.ComboBox();
             this.tabpMenu = new System.Windows.Forms.TabPage();
             this.grpbHotkeys = new System.Windows.Forms.GroupBox();
             this.btnMenuItemDown = new System.Windows.Forms.Button();
@@ -76,10 +86,16 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewDisableButtonColumn1 = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
             this.grpbLanguage.SuspendLayout();
+            this.grpbMouseHotkeys.SuspendLayout();
             this.tabpMenu.SuspendLayout();
             this.grpbHotkeys.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvHotkeys)).BeginInit();
@@ -120,10 +136,10 @@
             // grpbDisplay
             // 
             this.grpbDisplay.Controls.Add(this.chkEnableHighDPI);
-            this.grpbDisplay.Location = new System.Drawing.Point(8, 87);
+            this.grpbDisplay.Location = new System.Drawing.Point(8, 115);
             this.grpbDisplay.Name = "grpbDisplay";
             this.grpbDisplay.Size = new System.Drawing.Size(541, 69);
-            this.grpbDisplay.TabIndex = 2;
+            this.grpbDisplay.TabIndex = 1;
             this.grpbDisplay.TabStop = false;
             // 
             // chkEnableHighDPI
@@ -137,29 +153,128 @@
             // 
             // grpbLanguage
             // 
-            this.grpbLanguage.Controls.Add(this.cmbLanguage);
-            this.grpbLanguage.Location = new System.Drawing.Point(8, 16);
+            this.grpbLanguage.Controls.Add(this.listBoxLanguage);
+            this.grpbLanguage.Location = new System.Drawing.Point(8, 190);
             this.grpbLanguage.Name = "grpbLanguage";
-            this.grpbLanguage.Size = new System.Drawing.Size(541, 68);
-            this.grpbLanguage.TabIndex = 0;
+            this.grpbLanguage.Size = new System.Drawing.Size(541, 194);
+            this.grpbLanguage.TabIndex = 2;
             this.grpbLanguage.TabStop = false;
             // 
-            // cmbLanguage
+            // listBoxLanguage
             // 
-            this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLanguage.FormattingEnabled = true;
-            this.cmbLanguage.Location = new System.Drawing.Point(6, 28);
-            this.cmbLanguage.Name = "cmbLanguage";
-            this.cmbLanguage.Size = new System.Drawing.Size(166, 21);
-            this.cmbLanguage.TabIndex = 0;
+            this.listBoxLanguage.FormattingEnabled = true;
+            this.listBoxLanguage.Location = new System.Drawing.Point(6, 19);
+            this.listBoxLanguage.Name = "listBoxLanguage";
+            this.listBoxLanguage.Size = new System.Drawing.Size(206, 160);
+            this.listBoxLanguage.TabIndex = 0;
             // 
             // grpbMouseHotkeys
             // 
-            this.grpbMouseHotkeys.Location = new System.Drawing.Point(8, 160);
+            this.grpbMouseHotkeys.Controls.Add(this.lblMouseButton);
+            this.grpbMouseHotkeys.Controls.Add(this.cmbMouseButton);
+            this.grpbMouseHotkeys.Controls.Add(this.lblKey4);
+            this.grpbMouseHotkeys.Controls.Add(this.cmbKey4);
+            this.grpbMouseHotkeys.Controls.Add(this.lblKey3);
+            this.grpbMouseHotkeys.Controls.Add(this.lblKey2);
+            this.grpbMouseHotkeys.Controls.Add(this.lblKey1);
+            this.grpbMouseHotkeys.Controls.Add(this.cmbKey3);
+            this.grpbMouseHotkeys.Controls.Add(this.cmbKey2);
+            this.grpbMouseHotkeys.Controls.Add(this.cmbKey1);
+            this.grpbMouseHotkeys.Location = new System.Drawing.Point(8, 9);
             this.grpbMouseHotkeys.Name = "grpbMouseHotkeys";
-            this.grpbMouseHotkeys.Size = new System.Drawing.Size(541, 224);
-            this.grpbMouseHotkeys.TabIndex = 3;
+            this.grpbMouseHotkeys.Size = new System.Drawing.Size(541, 100);
+            this.grpbMouseHotkeys.TabIndex = 0;
             this.grpbMouseHotkeys.TabStop = false;
+            // 
+            // lblMouseButton
+            // 
+            this.lblMouseButton.AutoSize = true;
+            this.lblMouseButton.Location = new System.Drawing.Point(427, 29);
+            this.lblMouseButton.Name = "lblMouseButton";
+            this.lblMouseButton.Size = new System.Drawing.Size(73, 13);
+            this.lblMouseButton.TabIndex = 8;
+            this.lblMouseButton.Text = "Mouse Button";
+            // 
+            // cmbMouseButton
+            // 
+            this.cmbMouseButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMouseButton.FormattingEnabled = true;
+            this.cmbMouseButton.Location = new System.Drawing.Point(430, 45);
+            this.cmbMouseButton.Name = "cmbMouseButton";
+            this.cmbMouseButton.Size = new System.Drawing.Size(100, 21);
+            this.cmbMouseButton.TabIndex = 9;
+            // 
+            // lblKey4
+            // 
+            this.lblKey4.AutoSize = true;
+            this.lblKey4.Location = new System.Drawing.Point(321, 29);
+            this.lblKey4.Name = "lblKey4";
+            this.lblKey4.Size = new System.Drawing.Size(34, 13);
+            this.lblKey4.TabIndex = 6;
+            this.lblKey4.Text = "Key 4";
+            // 
+            // cmbKey4
+            // 
+            this.cmbKey4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKey4.FormattingEnabled = true;
+            this.cmbKey4.Location = new System.Drawing.Point(324, 45);
+            this.cmbKey4.Name = "cmbKey4";
+            this.cmbKey4.Size = new System.Drawing.Size(100, 21);
+            this.cmbKey4.TabIndex = 7;
+            // 
+            // lblKey3
+            // 
+            this.lblKey3.AutoSize = true;
+            this.lblKey3.Location = new System.Drawing.Point(215, 29);
+            this.lblKey3.Name = "lblKey3";
+            this.lblKey3.Size = new System.Drawing.Size(34, 13);
+            this.lblKey3.TabIndex = 4;
+            this.lblKey3.Text = "Key 3";
+            // 
+            // lblKey2
+            // 
+            this.lblKey2.AutoSize = true;
+            this.lblKey2.Location = new System.Drawing.Point(109, 29);
+            this.lblKey2.Name = "lblKey2";
+            this.lblKey2.Size = new System.Drawing.Size(34, 13);
+            this.lblKey2.TabIndex = 2;
+            this.lblKey2.Text = "Key 2";
+            // 
+            // lblKey1
+            // 
+            this.lblKey1.AutoSize = true;
+            this.lblKey1.Location = new System.Drawing.Point(3, 29);
+            this.lblKey1.Name = "lblKey1";
+            this.lblKey1.Size = new System.Drawing.Size(34, 13);
+            this.lblKey1.TabIndex = 0;
+            this.lblKey1.Text = "Key 1";
+            // 
+            // cmbKey3
+            // 
+            this.cmbKey3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKey3.FormattingEnabled = true;
+            this.cmbKey3.Location = new System.Drawing.Point(218, 45);
+            this.cmbKey3.Name = "cmbKey3";
+            this.cmbKey3.Size = new System.Drawing.Size(100, 21);
+            this.cmbKey3.TabIndex = 5;
+            // 
+            // cmbKey2
+            // 
+            this.cmbKey2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKey2.FormattingEnabled = true;
+            this.cmbKey2.Location = new System.Drawing.Point(112, 45);
+            this.cmbKey2.Name = "cmbKey2";
+            this.cmbKey2.Size = new System.Drawing.Size(100, 21);
+            this.cmbKey2.TabIndex = 3;
+            // 
+            // cmbKey1
+            // 
+            this.cmbKey1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKey1.FormattingEnabled = true;
+            this.cmbKey1.Location = new System.Drawing.Point(6, 45);
+            this.cmbKey1.Name = "cmbKey1";
+            this.cmbKey1.Size = new System.Drawing.Size(100, 21);
+            this.cmbKey1.TabIndex = 1;
             // 
             // tabpMenu
             // 
@@ -577,6 +692,51 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.ButtonCancelClick);
             // 
+            // dataGridViewDisableButtonColumn1
+            // 
+            this.dataGridViewDisableButtonColumn1.HeaderText = "";
+            this.dataGridViewDisableButtonColumn1.Name = "dataGridViewDisableButtonColumn1";
+            this.dataGridViewDisableButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDisableButtonColumn1.Text = "...";
+            this.dataGridViewDisableButtonColumn1.UseColumnTextForButtonValue = true;
+            this.dataGridViewDisableButtonColumn1.Width = 30;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewButtonColumn1.Text = "...";
+            this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
+            this.dataGridViewButtonColumn1.Width = 30;
+            // 
+            // dataGridViewButtonColumn2
+            // 
+            this.dataGridViewButtonColumn2.HeaderText = "";
+            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
+            this.dataGridViewButtonColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewButtonColumn2.Text = "-";
+            this.dataGridViewButtonColumn2.UseColumnTextForButtonValue = true;
+            this.dataGridViewButtonColumn2.Width = 30;
+            // 
+            // dataGridViewButtonColumn3
+            // 
+            this.dataGridViewButtonColumn3.HeaderText = "";
+            this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
+            this.dataGridViewButtonColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewButtonColumn3.Text = "...";
+            this.dataGridViewButtonColumn3.UseColumnTextForButtonValue = true;
+            this.dataGridViewButtonColumn3.Width = 30;
+            // 
+            // dataGridViewButtonColumn4
+            // 
+            this.dataGridViewButtonColumn4.HeaderText = "";
+            this.dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
+            this.dataGridViewButtonColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewButtonColumn4.Text = "-";
+            this.dataGridViewButtonColumn4.UseColumnTextForButtonValue = true;
+            this.dataGridViewButtonColumn4.Width = 30;
+            // 
             // ApplicationSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,6 +758,8 @@
             this.grpbDisplay.ResumeLayout(false);
             this.grpbDisplay.PerformLayout();
             this.grpbLanguage.ResumeLayout(false);
+            this.grpbMouseHotkeys.ResumeLayout(false);
+            this.grpbMouseHotkeys.PerformLayout();
             this.tabpMenu.ResumeLayout(false);
             this.grpbHotkeys.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvHotkeys)).EndInit();
@@ -630,7 +792,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramDelete;
         private System.Windows.Forms.Button btnStartProgramDown;
         private System.Windows.Forms.Button btnStartProgramUp;
-        private System.Windows.Forms.ComboBox cmbLanguage;
         private System.Windows.Forms.GroupBox grpbMouseHotkeys;
         private System.Windows.Forms.TabPage tabpMenu;
         private System.Windows.Forms.GroupBox grpbHotkeys;
@@ -660,5 +821,21 @@
         private System.Windows.Forms.Button btnMenuItemUp;
         private System.Windows.Forms.GroupBox grpbDisplay;
         private System.Windows.Forms.CheckBox chkEnableHighDPI;
+        private System.Windows.Forms.Label lblMouseButton;
+        private System.Windows.Forms.ComboBox cmbMouseButton;
+        private System.Windows.Forms.Label lblKey4;
+        private System.Windows.Forms.ComboBox cmbKey4;
+        private System.Windows.Forms.Label lblKey3;
+        private System.Windows.Forms.Label lblKey2;
+        private System.Windows.Forms.Label lblKey1;
+        private System.Windows.Forms.ComboBox cmbKey3;
+        private System.Windows.Forms.ComboBox cmbKey2;
+        private System.Windows.Forms.ComboBox cmbKey1;
+        private System.Windows.Forms.ListBox listBoxLanguage;
+        private Controls.DataGridViewDisableButtonColumn dataGridViewDisableButtonColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
     }
 }

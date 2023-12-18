@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
+using SmartContextMenu.Extensions;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Controls;
+using SmartContextMenu.Hooks;
 
 namespace SmartContextMenu.Forms
 {
@@ -28,8 +30,8 @@ namespace SmartContextMenu.Forms
             tabpMenuStart.Text = _languageManager.GetString("tab_settings_menu_start");
             tabpMenuSize.Text = _languageManager.GetString("tab_settings_menu_size");
             tabpMenu.Text = _languageManager.GetString("tab_settings_menu");
+            grpbMouseHotkeys.Text = _languageManager.GetString("grpb_hotkeys");
             grpbLanguage.Text = _languageManager.GetString("grpb_language");
-            grpbMouseHotkeys.Text = _languageManager.GetString("grpb_process_exclusions");
             grpbStartProgram.Text = _languageManager.GetString("grpb_start_program");
             grpbWindowSize.Text = _languageManager.GetString("grpb_window_size");
             grpbSizer.Text = _languageManager.GetString("grpb_sizer");
@@ -49,6 +51,11 @@ namespace SmartContextMenu.Forms
             clmWindowSizeDelete.ToolTipText = _languageManager.GetString("clm_window_size_delete");
             clmnMenuItemName.HeaderText = _languageManager.GetString("clm_hotkeys_name");
             clmnHotkeys.HeaderText = _languageManager.GetString("clm_hotkeys_keys");
+            lblKey1.Text = _languageManager.GetString("lbl_key1");
+            lblKey2.Text = _languageManager.GetString("lbl_key2");
+            lblKey3.Text = _languageManager.GetString("lbl_key3");
+            lblKey4.Text = _languageManager.GetString("lbl_key4");
+            lblMouseButton.Text = _languageManager.GetString("lbl_mouse_button");
             toolTipAddProcessName.SetToolTip(btnAddStartProgram, _languageManager.GetString("btn_add_start_program"));
             toolTipAddProcessName.SetToolTip(btnStartProgramDown, _languageManager.GetString("btn_start_program_down"));
             toolTipAddProcessName.SetToolTip(btnStartProgramUp, _languageManager.GetString("btn_start_program_up"));
@@ -60,6 +67,31 @@ namespace SmartContextMenu.Forms
             btnApply.Text = _languageManager.GetString("settings_btn_apply");
             btnCancel.Text = _languageManager.GetString("settings_btn_cancel");
             Text = _languageManager.GetString("settings_form");
+
+            cmbKey1.ValueMember = "Id";
+            cmbKey1.DisplayMember = "Text";
+            cmbKey1.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey1.SelectedValue = _settings.Key1;
+
+            cmbKey2.ValueMember = "Id";
+            cmbKey2.DisplayMember = "Text";
+            cmbKey2.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey2.SelectedValue = _settings.Key2;
+
+            cmbKey3.ValueMember = "Id";
+            cmbKey3.DisplayMember = "Text";
+            cmbKey3.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey3.SelectedValue = _settings.Key3;
+
+            cmbKey4.ValueMember = "Id";
+            cmbKey4.DisplayMember = "Text";
+            cmbKey4.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey4.SelectedValue = _settings.Key4;
+
+            cmbMouseButton.ValueMember = "Id";
+            cmbMouseButton.DisplayMember = "Text";
+            cmbMouseButton.DataSource = EnumExtensions.AsEnumerable<MouseButton>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbMouseButton.SelectedValue = _settings.MouseButton;
 
             foreach (var item in _settings.MenuItems.WindowSizeItems)
             {
@@ -89,8 +121,8 @@ namespace SmartContextMenu.Forms
                 row.Tag = cloneItem;
             }
 
-            cmbLanguage.DisplayMember = "Text";
-            cmbLanguage.ValueMember = "Value";
+            listBoxLanguage.DisplayMember = "Text";
+            listBoxLanguage.ValueMember = "Value";
 
             var languageItems = new[] {
                 new { Text = "", Value = "" },
@@ -108,8 +140,8 @@ namespace SmartContextMenu.Forms
                 new { Text = "한국어", Value = "ko" }
             };
 
-            cmbLanguage.DataSource = languageItems;
-            cmbLanguage.SelectedValue = _settings.LanguageName;
+            listBoxLanguage.DataSource = languageItems;
+            listBoxLanguage.SelectedValue = _settings.LanguageName;
 
             cmbSizer.Items.Add(_languageManager.GetString("sizer_window_with_margins"));
             cmbSizer.Items.Add(_languageManager.GetString("sizer_window_without_margins"));
@@ -420,15 +452,15 @@ namespace SmartContextMenu.Forms
                 settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)row.Tag);
             }
 
-            settings.Key1 = _settings.Key1;
-            settings.Key2 = _settings.Key2;
-            settings.Key3 = _settings.Key3;
-            settings.Key4 = _settings.Key4;
-            settings.MouseButton = _settings.MouseButton;
+            settings.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
+            settings.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
+            settings.Key3 = (VirtualKey)cmbKey3.SelectedValue;
+            settings.Key4 = (VirtualKey)cmbKey4.SelectedValue;
+            settings.MouseButton = (MouseButton)cmbMouseButton.SelectedValue;
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
-            settings.LanguageName = cmbLanguage.SelectedValue == null ? string.Empty : cmbLanguage.SelectedValue.ToString();
+            settings.LanguageName = listBoxLanguage.SelectedValue == null ? string.Empty : listBoxLanguage.SelectedValue.ToString();
 
             if (!settings.Equals(_settings))
             {

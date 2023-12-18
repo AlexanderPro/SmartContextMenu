@@ -205,6 +205,12 @@
     <item name="sizer_window_client_area" value="Window client area" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Input Parameter" />
+    <item name="grpb_hotkeys" value="Hotkeys" />
+    <item name="lbl_key1" value="Key 1" />
+    <item name="lbl_key2" value="Key 2" />
+    <item name="lbl_key3" value="Key 3" />
+    <item name="lbl_key4" value="Key 4" />
+    <item name="lbl_mouse_button" value="Mouse Button" />
   </language>
   <language name="de">
     <item name="separator" value="Separator" />
@@ -412,6 +418,12 @@
     <item name="sizer_window_client_area" value="Fensterkundenbereich" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Eingabeparameter" />
+    <item name="grpb_hotkeys" value="Tastaturkürzel" />
+    <item name="lbl_key1" value="Taste 1" />
+    <item name="lbl_key2" value="Taste 2" />
+    <item name="lbl_key3" value="Taste 3" />
+    <item name="lbl_key4" value="Taste 4" />
+    <item name="lbl_mouse_button" value="Maustaste" />
   </language>
   <language name="zh_cn">
     <item name="separator" value="分隔线" />
@@ -619,6 +631,12 @@
     <item name="sizer_window_client_area" value="窗口工作区" />
     <item name="parameter_btn_apply" value="确定" />
     <item name="parameter_form" value="输入参数" />
+    <item name="grpb_hotkeys" value="热键" />
+    <item name="lbl_key1" value="键 1" />
+    <item name="lbl_key2" value="键 2" />
+    <item name="lbl_key3" value="键 3" />
+    <item name="lbl_key4" value="键 4" />
+    <item name="lbl_mouse_button" value="鼠标按钮" />
   </language>
   <language name="zh_tw">
     <item name="separator" value="分隔線" />
@@ -826,6 +844,12 @@
     <item name="sizer_window_client_area" value="視窗工作區" />
     <item name="parameter_btn_apply" value="確定" />
     <item name="parameter_form" value="輸入參數" />
+    <item name="grpb_hotkeys" value="快速鍵" />
+    <item name="lbl_key1" value="鍵 1" />
+    <item name="lbl_key2" value="鍵 2" />
+    <item name="lbl_key3" value="鍵 3" />
+    <item name="lbl_key4" value="鍵 4" />
+    <item name="lbl_mouse_button" value="滑鼠按鈕" />
   </language>
   <language name="ja">
     <item name="separator" value="セパレーター" />
@@ -1032,6 +1056,12 @@
     <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
     <item name="parameter_btn_apply" value="OK" />
     <item name="parameter_form" value="入力パラメータ" />
+    <item name="grpb_hotkeys" value="ホットキー" />
+    <item name="lbl_key1" value="キー 1" />
+    <item name="lbl_key2" value="キー 2" />
+    <item name="lbl_key3" value="キー 3" />
+    <item name="lbl_key4" value="キー 4" />
+    <item name="lbl_mouse_button" value="マウスボタン" />
   </language>
   <language name="ko">
     <item name="separator" value="분리 기호" />
@@ -1239,6 +1269,12 @@
     <item name="sizer_window_client_area" value="창 클라이언트 영역" />
     <item name="parameter_btn_apply" value="확인" />
     <item name="parameter_form" value="입력 매개 변수" />
+    <item name="grpb_hotkeys" value="단축키" />
+    <item name="lbl_key1" value="키 1" />
+    <item name="lbl_key2" value="키 2" />
+    <item name="lbl_key3" value="키 3" />
+    <item name="lbl_key4" value="키 4" />
+    <item name="lbl_mouse_button" value="마우스 버튼" />
   </language>
   <language name="ru">
     <item name="separator" value="Разделитель" />
@@ -1446,6 +1482,12 @@
     <item name="sizer_window_client_area" value="Клиентская область окна" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Введите параметр" />
+    <item name="grpb_hotkeys" value="Горячие клавиши" />
+    <item name="lbl_key1" value="Клавиша 1" />
+    <item name="lbl_key2" value="Клавиша 2" />
+    <item name="lbl_key3" value="Клавиша 3" />
+    <item name="lbl_key4" value="Клавиша 4" />
+    <item name="lbl_mouse_button" value="Кнопка мышки" />
   </language>
   <language name="sr">
     <item name="separator" value="Сепаратор" />
@@ -1653,6 +1695,12 @@
     <item name="sizer_window_client_area" value="Подручје клијента прозора" />
     <item name="parameter_btn_apply" value="У реду" />
     <item name="parameter_form" value="Улазни параметар" />
+    <item name="grpb_hotkeys" value="Пречице" />
+    <item name="lbl_key1" value="Типак 1" />
+    <item name="lbl_key2" value="Типак 2" />
+    <item name="lbl_key3" value="Типак 3" />
+    <item name="lbl_key4" value="Типак 4" />
+    <item name="lbl_mouse_button" value="Дугме миша" />
   </language>
   <language name="pt">
     <item name="separator" value="Separador" />
@@ -1860,6 +1908,12 @@
     <item name="sizer_window_client_area" value="Área do cliente da janela" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Parâmetro de entrada" />
+    <item name="grpb_hotkeys" value="Atalhos" />
+    <item name="lbl_key1" value="Key 1" />
+    <item name="lbl_key2" value="Key 2" />
+    <item name="lbl_key3" value="Key 3" />
+    <item name="lbl_key4" value="Key 4" />
+    <item name="lbl_mouse_button" value="Botão do mouse" />
   </language>
   <language name="it">
     <item name="separator" value="Separatore" />
@@ -2067,6 +2121,12 @@
     <item name="sizer_window_client_area" value="Window client area" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Parametro dell'input" />
+    <item name="grpb_hotkeys" value="Tasti rapidi" />
+    <item name="lbl_key1" value="Tasto 1" />
+    <item name="lbl_key2" value="Tasto 2" />
+    <item name="lbl_key3" value="Tasto 3" />
+    <item name="lbl_key4" value="Tasto 4" />
+    <item name="lbl_mouse_button" value="Pulsante del mouse" />
   </language>
   <language name="fr">
     <item name="separator" value="Séparateur" />
@@ -2274,6 +2334,12 @@
     <item name="sizer_window_client_area" value="Espace de travail de la fenêtre" />
     <item name="parameter_btn_apply" value="Ok" />
     <item name="parameter_form" value="Paramètre d'entrée" />
+    <item name="grpb_hotkeys" value="Raccourcis clavier" />
+    <item name="lbl_key1" value="Clé 1" />
+    <item name="lbl_key2" value="Clé 2" />
+    <item name="lbl_key3" value="Clé 3" />
+    <item name="lbl_key4" value="Clé 4" />
+    <item name="lbl_mouse_button" value="Bouton de la souris" />
   </language>
   <language name="hu">
     <item name="separator" value="Elválasztó" />
@@ -2480,6 +2546,12 @@
     <item name="sizer_window_without_margins" value="Ablak margók nélkül" />
     <item name="sizer_window_client_area" value="Ablak ügyfélterület" />
     <item name="parameter_btn_apply" value="OK" />
-    <item name="parameter_form" value="Bemeneti paraméter" />
+    <item name="parameter_form" value="Gyorsbillentyűk" />
+    <item name="grpb_hotkeys" value="Raccourcis clavier" />
+    <item name="lbl_key1" value="1. kulcs" />
+    <item name="lbl_key2" value="2. kulcs" />
+    <item name="lbl_key3" value="3. kulcs" />
+    <item name="lbl_key4" value="4. kulcs" />
+    <item name="lbl_mouse_button" value="Egérgomb" />
   </language>
 </languages>
