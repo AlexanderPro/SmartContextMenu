@@ -122,6 +122,12 @@ namespace SmartContextMenu
 
         public bool IsClickThrough => WindowUtils.IsClickThrough(Handle);
 
+        public bool IsRestored => GetWindowPlacement(Handle).showCmd == ShowWindowCommands.SW_SHOWNORMAL;
+
+        public bool IsMinimized => GetWindowPlacement(Handle).showCmd == ShowWindowCommands.SW_SHOWMINIMIZED;
+
+        public bool IsMaximized => GetWindowPlacement(Handle).showCmd == ShowWindowCommands.SW_SHOWMAXIMIZED;
+
         public IntPtr Owner => GetWindow(Handle, GW_OWNER);
         
         public bool ExistSystemTrayIcon => _systemTrayIcon != null && _systemTrayIcon.Visible;
@@ -448,6 +454,26 @@ namespace SmartContextMenu
             EnableMenuItem(systemMenuHandle, SC_CLOSE, disable ? MF_BYCOMMAND | MF_DISABLED | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED);
         }
 
+        public void Restore()
+        {
+            PostMessage(Handle, WM_SYSCOMMAND, SC_RESTORE, 0);
+        }
+
+        public void Minimize()
+        {
+            PostMessage(Handle, WM_SYSCOMMAND, SC_MINIMIZE, 0);
+        }
+
+        public void Maximize()
+        {
+            PostMessage(Handle, WM_SYSCOMMAND, SC_MAXIMIZE, 0);
+        }
+
+        public void Close()
+        {
+            PostMessage(Handle, WM_CLOSE, 0, 0);
+        }
+
         public void HideForAltTab(bool enable)
         {
             if (enable)
@@ -669,6 +695,14 @@ namespace SmartContextMenu
             icon.ContextMenuStrip = contextMenuStrip;
             icon.MouseClick += SystemTrayIconClick;
             return icon;
+        }
+
+        private WindowPlacement GetWindowPlacement(IntPtr handle)
+        {
+            var placement = new WindowPlacement();
+            placement.length = Marshal.SizeOf(placement);
+            User32.GetWindowPlacement(handle, ref placement);
+            return placement;
         }
     }
 }

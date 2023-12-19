@@ -14,7 +14,7 @@ namespace SmartContextMenu.Forms
             btnOk.Text = manager.GetString("about_btn_ok");
             Text = manager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
-            lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright}-{DateTime.Now.Year} {AssemblyUtils.AssemblyCompany}";
+            lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright} {AssemblyUtils.AssemblyCompany}";
             linkUrl.Text = URL_SMART_CONTEXT_MENU;
         }
 

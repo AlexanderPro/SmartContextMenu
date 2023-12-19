@@ -494,6 +494,30 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.SystemMenuRestore:
+                    {
+                        window.Restore();
+                    }
+                    break;
+
+                case MenuItemName.SystemMenuMinimize:
+                    {
+                        window.Minimize();
+                    }
+                    break;
+
+                case MenuItemName.SystemMenuMaximize:
+                    {
+                        window.Maximize();
+                    }
+                    break;
+
+                case MenuItemName.SystemMenuClose:
+                    {
+                        window.Close();
+                    }
+                    break;
+
                 case MenuItemName.MinimizeToSystemtray:
                     {
                         window.MinimizeToSystemTray();

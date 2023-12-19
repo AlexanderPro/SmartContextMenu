@@ -61,6 +61,10 @@ namespace SmartContextMenu.Native
         public static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out uint crKey, out Byte bAlpha, out uint dwFlags);
 
         [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, ref WindowPlacement lpwndpl);
+
+        [DllImport("user32.dll")]
         public static extern int SetWindowLong(IntPtr handle, int nIndex, int dwNewLong);
 
         [DllImport("user32.dll")]

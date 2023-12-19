@@ -211,6 +211,11 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="system_menu" value="System Menu" />
+    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_minimize" value="Minimize" />
+    <item name="system_menu_maximize" value="Maximize" />
+    <item name="system_menu_close" value="Close" />
   </language>
   <language name="de">
     <item name="separator" value="Separator" />

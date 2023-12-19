@@ -167,6 +167,24 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.SystemMenuRestore:
+                    {
+                        toolStripMenuItem.Checked = window.IsRestored;
+                    }
+                    break;
+
+                case MenuItemName.SystemMenuMinimize:
+                    {
+                        toolStripMenuItem.Checked = window.IsMinimized;
+                    }
+                    break;
+
+                case MenuItemName.SystemMenuMaximize:
+                    {
+                        toolStripMenuItem.Checked = window.IsMaximized;
+                    }
+                    break;
+
                 case MenuItemName.MinimizeAlwaysToSystemtray:
                     {
                         toolStripMenuItem.Checked = window.IsMinimizeAlwaysToSystemtray;

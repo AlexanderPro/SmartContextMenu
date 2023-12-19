@@ -155,6 +155,7 @@
     <Compile Include="Native\Enums\PriorityClass.cs" />
     <Compile Include="Native\Enums\ProcessAccess.cs" />
     <Compile Include="Native\Enums\ProcessDpiAwareness.cs" />
+    <Compile Include="Native\Enums\ShowWindowCommands.cs" />
     <Compile Include="Native\Enums\ThreadAccess.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Native\Structs\TitlebarInfo.cs" />
     <Compile Include="Native\Structs\WindowCompositionAttributeData.cs" />
     <Compile Include="Native\Structs\WindowInfo.cs" />
+    <Compile Include="Native\Structs\WindowPlacement.cs" />
     <Compile Include="Native\User32.cs" />
     <Compile Include="ProcessInfo.cs" />
     <Compile Include="Program.cs" />

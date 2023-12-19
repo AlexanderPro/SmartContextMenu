@@ -104,6 +104,14 @@
 
         public const string DisableCloseButton = "disable_close_button";
 
+        public const string SystemMenuRestore = "system_menu_restore";
+
+        public const string SystemMenuMinimize = "system_menu_minimize";
+
+        public const string SystemMenuMaximize = "system_menu_maximize";
+
+        public const string SystemMenuClose = "system_menu_close";
+
         public const string MinimizeToSystemtray = "minimize_to_systemtray";
 
         public const string MinimizeAlwaysToSystemtray = "minimize_always_to_systemtray";
