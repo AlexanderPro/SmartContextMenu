@@ -236,6 +236,8 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.AlignBottomLeft:
                 case MenuItemName.AlignBottomCenter:
                 case MenuItemName.AlignBottomRight:
+                case MenuItemName.AlignCenterHorizontally:
+                case MenuItemName.AlignCenterVertically:
                     {
                         window.SetAlignment(EnumUtils.GetAlignment(menuItem.Name));
                     }
