@@ -169,19 +169,19 @@ namespace SmartContextMenu
 
                 case MenuItemName.SystemMenuRestore:
                     {
-                        toolStripMenuItem.Checked = window.IsRestored;
+                        toolStripMenuItem.Enabled = !window.IsRestored;
                     }
                     break;
 
                 case MenuItemName.SystemMenuMinimize:
                     {
-                        toolStripMenuItem.Checked = window.IsMinimized;
+                        toolStripMenuItem.Enabled = !window.IsMinimized;
                     }
                     break;
 
                 case MenuItemName.SystemMenuMaximize:
                     {
-                        toolStripMenuItem.Checked = window.IsMaximized;
+                        toolStripMenuItem.Enabled = !window.IsMaximized;
                     }
                     break;
 

@@ -429,6 +429,11 @@
     <item name="lbl_key3" value="Taste 3" />
     <item name="lbl_key4" value="Taste 4" />
     <item name="lbl_mouse_button" value="Maustaste" />
+    <item name="system_menu" value="Systemmenü" />
+    <item name="system_menu_restore" value="Wiederherstellen" />
+    <item name="system_menu_minimize" value="Minimieren" />
+    <item name="system_menu_maximize" value="Maximieren" />
+    <item name="system_menu_close" value="Schließen" />
   </language>
   <language name="zh_cn">
     <item name="separator" value="分隔线" />
@@ -642,6 +647,11 @@
     <item name="lbl_key3" value="键 3" />
     <item name="lbl_key4" value="键 4" />
     <item name="lbl_mouse_button" value="鼠标按钮" />
+    <item name="system_menu" value="系统菜单" />
+    <item name="system_menu_restore" value="还原" />
+    <item name="system_menu_minimize" value="最小化" />
+    <item name="system_menu_maximize" value="最大化" />
+    <item name="system_menu_close" value="关闭" />
   </language>
   <language name="zh_tw">
     <item name="separator" value="分隔線" />
@@ -855,6 +865,11 @@
     <item name="lbl_key3" value="鍵 3" />
     <item name="lbl_key4" value="鍵 4" />
     <item name="lbl_mouse_button" value="滑鼠按鈕" />
+    <item name="system_menu" value="系統選單" />
+    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_minimize" value="最小化" />
+    <item name="system_menu_maximize" value="最大化" />
+    <item name="system_menu_close" value="關閉" />
   </language>
   <language name="ja">
     <item name="separator" value="セパレーター" />
@@ -1067,6 +1082,11 @@
     <item name="lbl_key3" value="キー 3" />
     <item name="lbl_key4" value="キー 4" />
     <item name="lbl_mouse_button" value="マウスボタン" />
+    <item name="system_menu" value="システムメニュー" />
+    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_minimize" value="最小化" />
+    <item name="system_menu_maximize" value="最大化" />
+    <item name="system_menu_close" value="閉じる" />
   </language>
   <language name="ko">
     <item name="separator" value="분리 기호" />
@@ -1280,6 +1300,11 @@
     <item name="lbl_key3" value="키 3" />
     <item name="lbl_key4" value="키 4" />
     <item name="lbl_mouse_button" value="마우스 버튼" />
+    <item name="system_menu" value="시스템 메뉴" />
+    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_minimize" value="최소화" />
+    <item name="system_menu_maximize" value="최대화" />
+    <item name="system_menu_close" value="닫기" />
   </language>
   <language name="ru">
     <item name="separator" value="Разделитель" />
@@ -1493,6 +1518,11 @@
     <item name="lbl_key3" value="Клавиша 3" />
     <item name="lbl_key4" value="Клавиша 4" />
     <item name="lbl_mouse_button" value="Кнопка мышки" />
+    <item name="system_menu" value="Системное меню" />
+    <item name="system_menu_restore" value="Восстановить" />
+    <item name="system_menu_minimize" value="Свернуть" />
+    <item name="system_menu_maximize" value="Развернуть" />
+    <item name="system_menu_close" value="Закрыть" />
   </language>
   <language name="sr">
     <item name="separator" value="Сепаратор" />
@@ -1706,6 +1736,11 @@
     <item name="lbl_key3" value="Типак 3" />
     <item name="lbl_key4" value="Типак 4" />
     <item name="lbl_mouse_button" value="Дугме миша" />
+    <item name="system_menu" value="Системски мени" />
+    <item name="system_menu_restore" value="Ресторе" />
+    <item name="system_menu_minimize" value="Минимизирајте" />
+    <item name="system_menu_maximize" value="Максимизирајте" />
+    <item name="system_menu_close" value="Затвори" />
   </language>
   <language name="pt">
     <item name="separator" value="Separador" />
@@ -1919,6 +1954,11 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Botão do mouse" />
+    <item name="system_menu" value="Menu do sistema" />
+    <item name="system_menu_restore" value="Restaurar" />
+    <item name="system_menu_minimize" value="Minimizar" />
+    <item name="system_menu_maximize" value="Maximizar" />
+    <item name="system_menu_close" value="Fechar" />
   </language>
   <language name="it">
     <item name="separator" value="Separatore" />
@@ -2132,6 +2172,11 @@
     <item name="lbl_key3" value="Tasto 3" />
     <item name="lbl_key4" value="Tasto 4" />
     <item name="lbl_mouse_button" value="Pulsante del mouse" />
+    <item name="system_menu" value="Menù di sistema" />
+    <item name="system_menu_restore" value="Ripristina" />
+    <item name="system_menu_minimize" value="Riduci a icona" />
+    <item name="system_menu_maximize" value="Ingrandisci" />
+    <item name="system_menu_close" value="Chiudi" />
   </language>
   <language name="fr">
     <item name="separator" value="Séparateur" />
@@ -2345,6 +2390,11 @@
     <item name="lbl_key3" value="Clé 3" />
     <item name="lbl_key4" value="Clé 4" />
     <item name="lbl_mouse_button" value="Bouton de la souris" />
+    <item name="system_menu" value="Menu système" />
+    <item name="system_menu_restore" value="Restaurer" />
+    <item name="system_menu_minimize" value="Réduire" />
+    <item name="system_menu_maximize" value="Agrandir" />
+    <item name="system_menu_close" value="Fermer" />
   </language>
   <language name="hu">
     <item name="separator" value="Elválasztó" />
@@ -2558,5 +2608,10 @@
     <item name="lbl_key3" value="3. kulcs" />
     <item name="lbl_key4" value="4. kulcs" />
     <item name="lbl_mouse_button" value="Egérgomb" />
+    <item name="system_menu" value="Rendszer menü" />
+    <item name="system_menu_restore" value="Előző méret" />
+    <item name="system_menu_minimize" value="Kis méret" />
+    <item name="system_menu_maximize" value="Teljes méret" />
+    <item name="system_menu_close" value="Bezárás" />
   </language>
 </languages>

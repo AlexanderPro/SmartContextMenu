@@ -79,19 +79,19 @@
           <item type="item" name="disable_close_button" key1="" key2="" key3="" />
         </items>
       </item>
+      <item type="group" name="system_tray">
+        <items>
+          <item type="item" name="minimize_to_systemtray" key1="" key2="" key3="" />
+          <item type="item" name="minimize_always_to_systemtray" key1="" key2="" key3="" />
+          <item type="item" name="suspend_to_systemtray" key1="" key2="" key3="" />
+        </items>
+      </item>
       <item type="group" name="system_menu">
         <items>
           <item type="item" name="system_menu_restore" key1="" key2="" key3="" />
           <item type="item" name="system_menu_minimize" key1="" key2="" key3="" />
           <item type="item" name="system_menu_maximize" key1="" key2="" key3="" />
           <item type="item" name="system_menu_close" key1="" key2="" key3="" />
-        </items>
-      </item>
-      <item type="group" name="system_tray">
-        <items>
-          <item type="item" name="minimize_to_systemtray" key1="" key2="" key3="" />
-          <item type="item" name="minimize_always_to_systemtray" key1="" key2="" key3="" />
-          <item type="item" name="suspend_to_systemtray" key1="" key2="" key3="" />
         </items>
       </item>
       <item type="group" name="other_windows">
