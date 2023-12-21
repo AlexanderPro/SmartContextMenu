@@ -6,12 +6,12 @@
 
 ---
 
-SmartContextMenu adds a context menu of all windows in the system. 
+SmartContextMenu adds a context menu to all windows in the system. 
 This program is enhanced version of [SmartSystemMenu](https://github.com/AlexanderPro/SmartSystemMenu).
 I hope it will be more convenient, because it supports all types of windows, including windows without a system menu.
 It should also be more stable and lightweight, as it does not use hooks in separate dll modules.
-To use the app, please, run the file SmartContextMenu.exe, move the mouse cursor to the necessary window and use the hotkeys Ctrl + right mouse button.
-All the menu settings and hotkeys can be changed in the settings dialog of the System Tray, as well as in the file SmartContextMenu.xml
+To use the app, please, run the file SmartContextMenu.exe, move the mouse cursor to the necessary window and use the hotkeys Ctrl + Right Mouse Button.
+All the menu settings and hotkeys can be changed in the settings dialog of the system tray, as well as in the file SmartContextMenu.xml.
 Available menu items:
 
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
@@ -111,4 +111,4 @@ Files
 --------------------
 
 * SmartContextMenu.exe
-* SmartContextMenu.xml (It is placed in roaming user directory. If you are planing to use it as portable version, then copy the file to the directory with SmartContextMenu.exe)
+* SmartContextMenu.xml (It is placed in roaming user directory. If you are planing to use SmartContextMenu as portable app, then copy the file to the directory with SmartContextMenu.exe)
