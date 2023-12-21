@@ -111,4 +111,4 @@ Files
 --------------------
 
 * SmartContextMenu.exe
-* SmartContextMenu.xml (It is placed in roaming user directory. If you are planing to use SmartContextMenu as portable app, then copy the file to the directory with SmartContextMenu.exe)
+* SmartContextMenu.xml (It is placed in roaming user directory. If you are planing to use SmartContextMenu as a portable app, then copy the file to the directory with SmartContextMenu.exe)
