@@ -1,7 +1,7 @@
 ![SmartContextMenuLogo128](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/e1aaac4b-483a-41ec-9dac-b881cd14ecfa) SmartContextMenu
 =============
 
-- [English](/README.md)
+- [English](/)
 - Русский
 
 ---
