@@ -112,3 +112,8 @@ Files
 
 * SmartContextMenu.exe
 * SmartContextMenu.xml (It is placed in roaming user directory. If you are planing to use SmartContextMenu as a portable app, then copy the file to the directory with SmartContextMenu.exe)
+
+Tips
+--------------------
+
+In some OS there can be a few seconds delay after the start of SmartContextMenu from time to time.
