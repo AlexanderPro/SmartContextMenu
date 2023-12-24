@@ -26,7 +26,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <!-- version should MATCH as closely as possible with the underlying software -->
     <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
     <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>v1.0.0</version>
+    <version>1.0.0</version>
     <packageSourceUrl>https://github.com/AlexanderPro/SmartContextMenu/tree/master/Package/Chocolatey</packageSourceUrl>
     <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
     <owners>AlexanderPro</owners>
@@ -38,7 +38,7 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <authors>Alexander Illarionov</authors>
     <!-- projectUrl is required for the community feed -->
     <projectUrl>https://github.com/AlexanderPro/SmartContextMenu</projectUrl>
-    <iconUrl>https://rawcdn.githack.com/AlexanderPro/chocolatey-packages/f235d2efbe23e322b07281131ad39ae7e9a3838a/smartcontextmenu/icon.png</iconUrl>
+    <iconUrl>https://rawcdn.githack.com/AlexanderPro/SmartContextMenu/4800c92b43b80f43b132c557d5ca2d727340779b/Package/Chocolatey/icon.png</iconUrl>
     <!-- <copyright>Year Software Vendor</copyright> -->
     <!-- If there is a license Url available, it is is required for the community feed -->
     <licenseUrl>https://github.com/AlexanderPro/SmartContextMenu/blob/master/LICENSE</licenseUrl>
