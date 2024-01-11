@@ -38,6 +38,7 @@ namespace SmartContextMenu
                     groupTitle ??= manager.GetString(item.Name);
                     var subMenu = new ToolStripMenuItem(groupTitle);
                     subMenu.Tag = new ContextMenuItemValue(window, item);
+                    subMenu.DropDownOpening += SubMenuDropDownOpening;
                     menu.Items.Add(subMenu);
 
                     if (item.Name.ToLower() == MenuItemName.Size)
@@ -114,6 +115,10 @@ namespace SmartContextMenu
             var menuItems = menu.Items.Cast<ToolStripItem>().ToArray();
             foreach (var menuItem in menuItems)
             {
+                if (menuItem is ToolStripMenuItem toolStripMenuItem)
+                {
+                    toolStripMenuItem.DropDownOpening -= SubMenuDropDownOpening;
+                }
                 menuItem.Click -= onClick;
                 menuItem.Dispose();
             }
@@ -231,6 +236,35 @@ namespace SmartContextMenu
             var screenFromHandle = Screen.FromHandle(window.Handle);
             var screen = Screen.AllScreens.Select((x, i) => new { Index = i + 1, Item = x }).FirstOrDefault(x => x.Item.Equals(screenFromHandle));
             toolStripMenuItem.Checked = menuItem.MonitorIndex == screen?.Index;
+        }
+
+        private static void SubMenuDropDownOpening(object sender, EventArgs e)
+        {
+            var menuItem = sender as ToolStripMenuItem;
+            if (menuItem.HasDropDownItems == false)
+            {
+                return;
+            }
+
+            var bounds = menuItem.GetCurrentParent().Bounds;
+            var currentScreen = Screen.FromPoint(bounds.Location);
+            var maxWidth = 0;
+            foreach (ToolStripItem subitem in menuItem.DropDownItems)
+            {
+                maxWidth = Math.Max(subitem.Width, maxWidth);
+            }
+            maxWidth += 10;
+
+            var farRight = bounds.Right + maxWidth;
+            var currentMonitorRight = currentScreen.Bounds.Right;
+            if (farRight > currentMonitorRight)
+            {
+                menuItem.DropDownDirection = ToolStripDropDownDirection.Left;
+            }
+            else
+            {
+                menuItem.DropDownDirection = ToolStripDropDownDirection.Right;
+            }
         }
 
         private static string GetTransparencyTitle(LanguageManager manager, Settings.MenuItem item) => item.Name switch
