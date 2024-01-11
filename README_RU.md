@@ -99,6 +99,7 @@ SmartContextMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysont
 --------------------
 
 * Скачайте последнюю версию [SmartContextMenu](https://github.com/AlexanderPro/SmartContextMenu/releases) в zip файле
+* [Chocolatey](https://chocolatey.org/): `choco install smartcontextmenu`
 
 Требования к системе
 --------------------

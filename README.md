@@ -100,6 +100,7 @@ Install
 --------------------
 
 * Download the [SmartContextMenu](https://github.com/AlexanderPro/SmartContextMenu/releases) in the zip file
+* [Chocolatey](https://chocolatey.org/): `choco install smartcontextmenu`
 
 Requirements
 --------------------
