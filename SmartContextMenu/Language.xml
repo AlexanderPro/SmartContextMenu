@@ -866,7 +866,7 @@
     <item name="lbl_key4" value="鍵 4" />
     <item name="lbl_mouse_button" value="滑鼠按鈕" />
     <item name="system_menu" value="系統選單" />
-    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_restore" value="還原" />
     <item name="system_menu_minimize" value="最小化" />
     <item name="system_menu_maximize" value="最大化" />
     <item name="system_menu_close" value="關閉" />
@@ -1083,7 +1083,7 @@
     <item name="lbl_key4" value="キー 4" />
     <item name="lbl_mouse_button" value="マウスボタン" />
     <item name="system_menu" value="システムメニュー" />
-    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_restore" value="元のサイズに戻す" />
     <item name="system_menu_minimize" value="最小化" />
     <item name="system_menu_maximize" value="最大化" />
     <item name="system_menu_close" value="閉じる" />
@@ -1301,7 +1301,7 @@
     <item name="lbl_key4" value="키 4" />
     <item name="lbl_mouse_button" value="마우스 버튼" />
     <item name="system_menu" value="시스템 메뉴" />
-    <item name="system_menu_restore" value="Restore" />
+    <item name="system_menu_restore" value="이전 크기로" />
     <item name="system_menu_minimize" value="최소화" />
     <item name="system_menu_maximize" value="최대화" />
     <item name="system_menu_close" value="닫기" />
