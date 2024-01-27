@@ -113,7 +113,3 @@ SmartContextMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysont
 
 * SmartContextMenu.exe
 * SmartContextMenu.xml (Располагается в каталоге профиля пользователя. Если планируете использовать приложение как портативное, то скопируйте этот файл в каталог где лежит SmartContextMenu.exe)
-
-Примечание
---------------------
-На некоторых ОС иногда после запуска SmartContextMenu может происходить задержка в несколько секунд, после чего начинают работать горячие клавиши.
