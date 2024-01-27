@@ -91,6 +91,15 @@
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabpMenuDimmer = new System.Windows.Forms.TabPage();
+            this.btnChooseDimmerColor = new System.Windows.Forms.Button();
+            this.trackbDimmerTransparency = new System.Windows.Forms.TrackBar();
+            this.grpbDimmerTransparency = new System.Windows.Forms.GroupBox();
+            this.lblTransparencyValue = new System.Windows.Forms.Label();
+            this.lblTransparencyFromValue = new System.Windows.Forms.Label();
+            this.lblTransparencyToValue = new System.Windows.Forms.Label();
+            this.grpbDimmerColor = new System.Windows.Forms.GroupBox();
+            this.txtDimmerColor = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -106,6 +115,10 @@
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
+            this.tabpMenuDimmer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).BeginInit();
+            this.grpbDimmerTransparency.SuspendLayout();
+            this.grpbDimmerColor.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -114,6 +127,7 @@
             this.tabMain.Controls.Add(this.tabpMenu);
             this.tabMain.Controls.Add(this.tabpMenuSize);
             this.tabMain.Controls.Add(this.tabpMenuStart);
+            this.tabMain.Controls.Add(this.tabpMenuDimmer);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabMain.Location = new System.Drawing.Point(0, 0);
             this.tabMain.Name = "tabMain";
@@ -737,6 +751,91 @@
             this.dataGridViewButtonColumn4.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn4.Width = 30;
             // 
+            // tabpMenuDimmer
+            // 
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerColor);
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerTransparency);
+            this.tabpMenuDimmer.Location = new System.Drawing.Point(4, 22);
+            this.tabpMenuDimmer.Name = "tabpMenuDimmer";
+            this.tabpMenuDimmer.Size = new System.Drawing.Size(557, 390);
+            this.tabpMenuDimmer.TabIndex = 4;
+            this.tabpMenuDimmer.UseVisualStyleBackColor = true;
+            // 
+            // btnChooseDimmerColor
+            // 
+            this.btnChooseDimmerColor.Location = new System.Drawing.Point(155, 26);
+            this.btnChooseDimmerColor.Name = "btnChooseDimmerColor";
+            this.btnChooseDimmerColor.Size = new System.Drawing.Size(54, 23);
+            this.btnChooseDimmerColor.TabIndex = 1;
+            this.btnChooseDimmerColor.Text = "...";
+            this.btnChooseDimmerColor.UseVisualStyleBackColor = true;
+            this.btnChooseDimmerColor.Click += new System.EventHandler(this.ButtonChooseDimmerColorClick);
+            // 
+            // trackbDimmerTransparency
+            // 
+            this.trackbDimmerTransparency.Location = new System.Drawing.Point(6, 39);
+            this.trackbDimmerTransparency.Maximum = 100;
+            this.trackbDimmerTransparency.Name = "trackbDimmerTransparency";
+            this.trackbDimmerTransparency.Size = new System.Drawing.Size(529, 45);
+            this.trackbDimmerTransparency.TabIndex = 3;
+            this.trackbDimmerTransparency.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackbDimmerTransparency.ValueChanged += new System.EventHandler(this.TrackbDimmerTransparencyValueChanged);
+            // 
+            // grpbDimmerTransparency
+            // 
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyToValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyFromValue);
+            this.grpbDimmerTransparency.Controls.Add(this.trackbDimmerTransparency);
+            this.grpbDimmerTransparency.Location = new System.Drawing.Point(8, 90);
+            this.grpbDimmerTransparency.Name = "grpbDimmerTransparency";
+            this.grpbDimmerTransparency.Size = new System.Drawing.Size(541, 100);
+            this.grpbDimmerTransparency.TabIndex = 1;
+            this.grpbDimmerTransparency.TabStop = false;
+            // 
+            // lblTransparencyValue
+            // 
+            this.lblTransparencyValue.AutoSize = true;
+            this.lblTransparencyValue.Location = new System.Drawing.Point(259, 23);
+            this.lblTransparencyValue.Name = "lblTransparencyValue";
+            this.lblTransparencyValue.Size = new System.Drawing.Size(0, 13);
+            this.lblTransparencyValue.TabIndex = 1;
+            // 
+            // lblTransparencyFromValue
+            // 
+            this.lblTransparencyFromValue.AutoSize = true;
+            this.lblTransparencyFromValue.Location = new System.Drawing.Point(6, 23);
+            this.lblTransparencyFromValue.Name = "lblTransparencyFromValue";
+            this.lblTransparencyFromValue.Size = new System.Drawing.Size(21, 13);
+            this.lblTransparencyFromValue.TabIndex = 0;
+            this.lblTransparencyFromValue.Text = "0%";
+            // 
+            // lblTransparencyToValue
+            // 
+            this.lblTransparencyToValue.AutoSize = true;
+            this.lblTransparencyToValue.Location = new System.Drawing.Point(502, 23);
+            this.lblTransparencyToValue.Name = "lblTransparencyToValue";
+            this.lblTransparencyToValue.Size = new System.Drawing.Size(33, 13);
+            this.lblTransparencyToValue.TabIndex = 2;
+            this.lblTransparencyToValue.Text = "100%";
+            // 
+            // grpbDimmerColor
+            // 
+            this.grpbDimmerColor.Controls.Add(this.btnChooseDimmerColor);
+            this.grpbDimmerColor.Controls.Add(this.txtDimmerColor);
+            this.grpbDimmerColor.Location = new System.Drawing.Point(8, 16);
+            this.grpbDimmerColor.Name = "grpbDimmerColor";
+            this.grpbDimmerColor.Size = new System.Drawing.Size(541, 68);
+            this.grpbDimmerColor.TabIndex = 0;
+            this.grpbDimmerColor.TabStop = false;
+            // 
+            // txtDimmerColor
+            // 
+            this.txtDimmerColor.Location = new System.Drawing.Point(6, 28);
+            this.txtDimmerColor.Name = "txtDimmerColor";
+            this.txtDimmerColor.Size = new System.Drawing.Size(143, 20);
+            this.txtDimmerColor.TabIndex = 0;
+            // 
             // ApplicationSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -770,6 +869,12 @@
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
+            this.tabpMenuDimmer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).EndInit();
+            this.grpbDimmerTransparency.ResumeLayout(false);
+            this.grpbDimmerTransparency.PerformLayout();
+            this.grpbDimmerColor.ResumeLayout(false);
+            this.grpbDimmerColor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -837,5 +942,14 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
+        private System.Windows.Forms.TabPage tabpMenuDimmer;
+        private System.Windows.Forms.GroupBox grpbDimmerColor;
+        private System.Windows.Forms.TextBox txtDimmerColor;
+        private System.Windows.Forms.Button btnChooseDimmerColor;
+        private System.Windows.Forms.GroupBox grpbDimmerTransparency;
+        private System.Windows.Forms.Label lblTransparencyToValue;
+        private System.Windows.Forms.Label lblTransparencyFromValue;
+        private System.Windows.Forms.Label lblTransparencyValue;
+        private System.Windows.Forms.TrackBar trackbDimmerTransparency;
     }
 }

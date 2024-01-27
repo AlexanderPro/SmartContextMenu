@@ -4,6 +4,7 @@
     <item name="information" value="Information" />
     <item name="roll_up" value="Roll Up" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Always On Top" />
     <item name="send_to_bottom" value="Send To Bottom" />
     <item name="save_screenshot" value="Save Screenshot" />
@@ -197,6 +198,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
     <item name="tab_settings_menu_start" value="Menu (Start Program)" />
     <item name="tab_settings_menu_size" value="Menu (Resize)" />
+    <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
+    <item name="grpb_dimmer_color" value="Color" />
+    <item name="grpb_dimmer_transparency" value="Transparency" />
     <item name="grpb_sizer" value="How to set window size" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -222,6 +226,7 @@
     <item name="information" value="Information" />
     <item name="roll_up" value="Verkleinern nach oben" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Immer im Vordergrund" />
     <item name="send_to_bottom" value="In den Hintergrund" />
     <item name="save_screenshot" value="Screenshot speichern…" />
@@ -415,6 +420,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
     <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
     <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
+    <item name="tab_settings_menu_dimmer" value="Menü (Dimmer)" />
+    <item name="grpb_dimmer_color" value="Farbe" />
+    <item name="grpb_dimmer_transparency" value="Transparenz" />
     <item name="grpb_sizer" value="Fenstergröße einstellen window" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -440,6 +448,7 @@
     <item name="information" value="详细信息" />
     <item name="roll_up" value="卷起窗口" />
     <item name="aero_glass" value="毛玻璃效果" />
+    <item name="dimmer" value="突出窗口操作" />
     <item name="always_on_top" value="窗口始终置顶" />
     <item name="send_to_bottom" value="窗口置底" />
     <item name="save_screenshot" value="保存窗口截图" />
@@ -633,6 +642,9 @@
     <item name="clm_hotkeys_show_tooltip" value="显示菜单项" />
     <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
     <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
+    <item name="tab_settings_menu_dimmer" value="菜单 (窗户调光器)" />
+    <item name="grpb_dimmer_color" value="颜色" />
+    <item name="grpb_dimmer_transparency" value="透明度" />
     <item name="grpb_sizer" value="如何设置窗口大小" />
     <item name="grpb_display" value="显示" />
     <item name="chk_enable_high_dpi" value="启用高 DPI 显示" />
@@ -658,6 +670,7 @@
     <item name="information" value="資訊" />
     <item name="roll_up" value="縮合" />
     <item name="aero_glass" value="Aero 半透明效果" />
+    <item name="dimmer" value="窗戶調光器" />
     <item name="always_on_top" value="視窗置頂" />
     <item name="send_to_bottom" value="移至最底層" />
     <item name="save_screenshot" value="儲存視窗擷圖" />
@@ -851,6 +864,9 @@
     <item name="clm_hotkeys_show_tooltip" value="顯示選單項目" />
     <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
     <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
+    <item name="tab_settings_menu_dimmer" value="選單 (窗戶調光器)" />
+    <item name="grpb_dimmer_color" value="顏色" />
+    <item name="grpb_dimmer_transparency" value="透明度" />
     <item name="grpb_sizer" value="如何設定視窗大小" />
     <item name="grpb_display" value="顯示" />
     <item name="chk_enable_high_dpi" value="啟用高 DPI 顯示" />
@@ -876,6 +892,7 @@
     <item name="information" value="情報" />
     <item name="roll_up" value="ロールアップ" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="窓の調光器" />
     <item name="always_on_top" value="常に手前に表示" />
     <item name="send_to_bottom" value="背面へ送る" />
     <item name="save_screenshot" value="スクリーンショットを撮る" />
@@ -1068,6 +1085,9 @@
     <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
     <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
     <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
+    <item name="tab_settings_menu_dimmer" value="メニュー (窓の調光器)" />
+    <item name="grpb_dimmer_color" value="色" />
+    <item name="grpb_dimmer_transparency" value="透明度" />
     <item name="grpb_sizer" value="ウィンドウサイズの設定方法" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -1093,6 +1113,7 @@
     <item name="information" value="정보" />
     <item name="roll_up" value="접기" />
     <item name="aero_glass" value="에어로 글래스" />
+    <item name="dimmer" value="창 조광기" />
     <item name="always_on_top" value="항상 위에 표시" />
     <item name="send_to_bottom" value="맨 아래로 보내기" />
     <item name="save_screenshot" value="스크린샷 저장" />
@@ -1286,6 +1307,9 @@
     <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
     <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
     <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
+    <item name="tab_settings_menu_dimmer" value="메뉴 (창 조광기)" />
+    <item name="grpb_dimmer_color" value="색상" />
+    <item name="grpb_dimmer_transparency" value="투명도" />
     <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
     <item name="grpb_display" value="표시" />
     <item name="chk_enable_high_dpi" value="높은 DPI 사용" />
@@ -1311,6 +1335,7 @@
     <item name="information" value="Информация" />
     <item name="roll_up" value="Свернуть вверх" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Затемнение" />
     <item name="always_on_top" value="Поверх остальных" />
     <item name="send_to_bottom" value="Переместить вниз" />
     <item name="save_screenshot" value="Сохранить снимок окна" />
@@ -1504,6 +1529,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
     <item name="tab_settings_menu_start" value="Меню (Пуск)" />
     <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
+    <item name="tab_settings_menu_dimmer" value="Меню (Затемнение)" />
+    <item name="grpb_dimmer_color" value="Цвет" />
+    <item name="grpb_dimmer_transparency" value="Прозрачность" />
     <item name="grpb_sizer" value="Как устанавливать размер окна" />
     <item name="grpb_display" value="Экран" />
     <item name="chk_enable_high_dpi" value="Включить поддержку High DPI" />
@@ -1529,6 +1557,7 @@
     <item name="information" value="Информација програма" />
     <item name="roll_up" value="Замотај" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Затамњивач прозора" />
     <item name="always_on_top" value="Увек испред" />
     <item name="send_to_bottom" value="Попаљи на дно" />
     <item name="save_screenshot" value="Сачувај прозор програма" />
@@ -1722,6 +1751,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
     <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
     <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
+    <item name="tab_settings_menu_dimmer" value="Мени (Затамњивач прозора)" />
+    <item name="grpb_dimmer_color" value="Боја" />
+    <item name="grpb_dimmer_transparency" value="Провидност" />
     <item name="grpb_sizer" value="Како поставити величину прозора" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -1747,6 +1779,7 @@
     <item name="information" value="Informações do executável atual" />
     <item name="roll_up" value="Enrolar" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Manter esta janela sempre na frente" />
     <item name="send_to_bottom" value="Enviar para o fundo" />
     <item name="save_screenshot" value="Fazer captura de tela" />
@@ -1940,6 +1973,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Exibir item do menu" />
     <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
     <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
+    <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
+    <item name="grpb_dimmer_color" value="Cor" />
+    <item name="grpb_dimmer_transparency" value="Transparência" />
     <item name="grpb_sizer" value="Como definir o tamanho da janela" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Enable High DPI" />
@@ -1965,6 +2001,7 @@
     <item name="information" value="Informazioni" />
     <item name="roll_up" value="Roll up" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Sempre in primo piano" />
     <item name="send_to_bottom" value="Metti in basso" />
     <item name="save_screenshot" value="Salva schermata" />
@@ -2158,6 +2195,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Mostra voci del menu" />
     <item name="tab_settings_menu_start" value="Menu (avvia programma)" />
     <item name="tab_settings_menu_size" value="Menu (ridimensiona)" />
+    <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
+    <item name="grpb_dimmer_color" value="Colore" />
+    <item name="grpb_dimmer_transparency" value="Trasparenza" />
     <item name="grpb_sizer" value="Come impostare dimensioni finestre" />
     <item name="grpb_display" value="Display" />
     <item name="chk_enable_high_dpi" value="Abilita DPI alti" />
@@ -2183,6 +2223,7 @@
     <item name="information" value="Information" />
     <item name="roll_up" value="Enrouler" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Toujours au premier plan" />
     <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
     <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
@@ -2376,6 +2417,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Afficher les info-bulles" />
     <item name="tab_settings_menu_start" value="Menu (lancer le programme)" />
     <item name="tab_settings_menu_size" value="Menu (redimensionner)" />
+    <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
+    <item name="grpb_dimmer_color" value="Couleur" />
+    <item name="grpb_dimmer_transparency" value="Trasparence" />
     <item name="grpb_sizer" value="Comment définir la taille des fenêtres" />
     <item name="grpb_display" value="Affichage" />
     <item name="chk_enable_high_dpi" value="Activer le DPI élevé" />
@@ -2401,6 +2445,7 @@
     <item name="information" value="Információ" />
     <item name="roll_up" value="Fölfelé" />
     <item name="aero_glass" value="Aero Glass" />
+    <item name="dimmer" value="Dimmer" />
     <item name="always_on_top" value="Mindig fölül" />
     <item name="send_to_bottom" value="Küldés alulra" />
     <item name="save_screenshot" value="Képernyőkép mentése" />
@@ -2594,6 +2639,9 @@
     <item name="clm_hotkeys_show_tooltip" value="Menüpont megjelenítése" />
     <item name="tab_settings_menu_start" value="Menü (programindítás hozzáadása)" />
     <item name="tab_settings_menu_size" value="Menü (átméretezés)" />
+    <item name="tab_settings_menu_dimmer" value="Menü (dimmer)" />
+    <item name="grpb_dimmer_color" value="Szín" />
+    <item name="grpb_dimmer_transparency" value="Átláthatóság" />
     <item name="grpb_sizer" value="Hogyan állítsuk be az ablak méretét" />
     <item name="grpb_display" value="Kijelző" />
     <item name="chk_enable_high_dpi" value="Magas DPI engedélyezése" />

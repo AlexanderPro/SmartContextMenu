@@ -161,6 +161,10 @@ namespace SmartContextMenu.Settings
             settings.Key4 = hotKeysElement.Attribute("key4") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key4").Value) ? (VirtualKey)int.Parse(hotKeysElement.Attribute("key4").Value) : VirtualKey.None;
             settings.MouseButton = hotKeysElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(hotKeysElement.Attribute("mouseButton").Value) : MouseButton.None;
 
+            var dimmerElement = document.XPathSelectElement("/smartContextMenu/dimmer");
+            settings.Dimmer.Color = dimmerElement.Attribute("color") != null ? dimmerElement.Attribute("color").Value : string.Empty;
+            settings.Dimmer.Transparency = dimmerElement.Attribute("transparency") != null ? int.Parse(dimmerElement.Attribute("transparency").Value) : 0;
+
             var sizerElement = document.XPathSelectElement("/smartContextMenu/sizer");
             settings.Sizer = sizerElement.Attribute("type") != null && !string.IsNullOrEmpty(sizerElement.Attribute("type").Value) ? (WindowSizerType)int.Parse(sizerElement.Attribute("type").Value) : WindowSizerType.WindowWithMargins;
 
@@ -297,6 +301,10 @@ namespace SmartContextMenu.Settings
                                      new XAttribute("key3", ((int)settings.Key3).ToString()),
                                      new XAttribute("key4", ((int)settings.Key4).ToString()),
                                      new XAttribute("mouseButton", ((int)settings.MouseButton).ToString())
+                                 ),
+                                 new XElement("dimmer",
+                                     new XAttribute("color", settings.Dimmer.Color),
+                                     new XAttribute("transparency", settings.Dimmer.Transparency.ToString())
                                  ),
                                  new XElement("sizer",
                                      new XAttribute("type", ((int)settings.Sizer).ToString())

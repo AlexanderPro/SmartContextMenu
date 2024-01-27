@@ -77,6 +77,12 @@
     <Compile Include="Forms\ApplicationSettingsForm.Designer.cs">
       <DependentUpon>ApplicationSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DimForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DimForm.Designer.cs">
+      <DependentUpon>DimForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HotkeysForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ApplicationSettingsFile.cs" />
+    <Compile Include="Settings\DimmerSettings.cs" />
     <Compile Include="Settings\MenuItem.cs" />
     <Compile Include="Settings\MenuItems.cs" />
     <Compile Include="Settings\MenuItemType.cs" />

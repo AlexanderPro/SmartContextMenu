@@ -129,6 +129,7 @@
         public const uint WINEVENT_OUTOFCONTEXT = 0;
         public const uint EVENT_SYSTEM_MINIMIZESTART = 0x0016;
         public const uint EVENT_SYSTEM_MINIMIZEEND = 0x0017;
+        public const uint EVENT_SYSTEM_FOREGROUND = 3;
         public const uint EVENT_OBJECT_DESTROY = 0x8001;
         public const int OBJID_WINDOW = 0;
     }

@@ -8,7 +8,7 @@ namespace SmartContextMenu
 {
     static class ContextMenuManager
     {
-        public static void Build(ContextMenuStrip menu, ApplicationSettings settings, Window window, EventHandler onClick)
+        public static void Build(ContextMenuStrip menu, ApplicationSettings settings, Window window, IntPtr dimHandle, EventHandler onClick)
         {
             var manager = new LanguageManager(settings.LanguageName);
             var moveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new MoveToMenuItem(i + 1, x)).ToList();
@@ -23,7 +23,7 @@ namespace SmartContextMenu
                     menuItem.ShortcutKeyDisplayString = item.ToString();
                     menuItem.Tag = new ContextMenuItemValue(window, item);
                     menuItem.Click += onClick;
-                    SetChecked(menuItem, window, item);
+                    SetChecked(menuItem, item, window, dimHandle);
                     menu.Items.Add(menuItem);
                 }
 
@@ -88,7 +88,7 @@ namespace SmartContextMenu
                             menuItem.ShortcutKeyDisplayString = subItem.ToString();
                             menuItem.Tag = new ContextMenuItemValue(window, subItem);
                             menuItem.Click += onClick;
-                            SetChecked(menuItem, window, subItem);
+                            SetChecked(menuItem, subItem, window, dimHandle);
                             subMenu.DropDownItems.Add(menuItem);
                         }
 
@@ -126,7 +126,7 @@ namespace SmartContextMenu
             menu.Items.Clear();
         }
 
-        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, Settings.MenuItem menuItem)
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Settings.MenuItem menuItem, Window window, IntPtr dimHandle)
         {
             switch (menuItem.Name)
             {
@@ -145,6 +145,12 @@ namespace SmartContextMenu
                 case MenuItemName.AeroGlass:
                     {
                         toolStripMenuItem.Checked = window.IsAeroGlass;
+                    }
+                    break;
+
+                case MenuItemName.Dimmer:
+                    {
+                        toolStripMenuItem.Checked = window.Handle == dimHandle;
                     }
                     break;
 

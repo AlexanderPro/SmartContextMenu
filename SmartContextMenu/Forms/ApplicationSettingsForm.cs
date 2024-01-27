@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
+using System.Drawing;
 using SmartContextMenu.Extensions;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Controls;
@@ -29,6 +30,7 @@ namespace SmartContextMenu.Forms
             tabpGeneral.Text = _languageManager.GetString("tab_settings_general");
             tabpMenuStart.Text = _languageManager.GetString("tab_settings_menu_start");
             tabpMenuSize.Text = _languageManager.GetString("tab_settings_menu_size");
+            tabpMenuDimmer.Text = _languageManager.GetString("tab_settings_menu_dimmer");
             tabpMenu.Text = _languageManager.GetString("tab_settings_menu");
             grpbMouseHotkeys.Text = _languageManager.GetString("grpb_hotkeys");
             grpbLanguage.Text = _languageManager.GetString("grpb_language");
@@ -36,6 +38,8 @@ namespace SmartContextMenu.Forms
             grpbWindowSize.Text = _languageManager.GetString("grpb_window_size");
             grpbSizer.Text = _languageManager.GetString("grpb_sizer");
             grpbDisplay.Text = _languageManager.GetString("grpb_display");
+            grpbDimmerColor.Text = _languageManager.GetString("grpb_dimmer_color");
+            grpbDimmerTransparency.Text = _languageManager.GetString("grpb_dimmer_transparency");
             chkEnableHighDPI.Text = _languageManager.GetString("chk_enable_high_dpi");
             clmStartProgramTitle.HeaderText = _languageManager.GetString("clm_start_program_title");
             clmStartProgramPath.HeaderText = _languageManager.GetString("clm_start_program_path");
@@ -67,6 +71,10 @@ namespace SmartContextMenu.Forms
             btnApply.Text = _languageManager.GetString("settings_btn_apply");
             btnCancel.Text = _languageManager.GetString("settings_btn_cancel");
             Text = _languageManager.GetString("settings_form");
+
+            txtDimmerColor.Text = _settings.Dimmer.Color;
+            trackbDimmerTransparency.Value = _settings.Dimmer.Transparency;
+            lblTransparencyValue.Text = $"{_settings.Dimmer.Transparency}%";
 
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";
@@ -425,6 +433,36 @@ namespace SmartContextMenu.Forms
             }
         }
 
+        private void TrackbDimmerTransparencyValueChanged(object sender, EventArgs e)
+        {
+            lblTransparencyValue.Text = $"{trackbDimmerTransparency.Value}%";
+        }
+
+        private void ButtonChooseDimmerColorClick(object sender, EventArgs e)
+        {
+            var color = Color.Black;
+            try
+            {
+                color = ColorTranslator.FromHtml(txtDimmerColor.Text);
+            }
+            catch
+            {
+            }
+
+            var dialog = new ColorDialog
+            {
+                AllowFullOpen = true,
+                AnyColor = true,
+                FullOpen = true,
+                Color = color
+            };
+
+            if (dialog.ShowDialog() != DialogResult.Cancel)
+            {
+                txtDimmerColor.Text = ColorTranslator.ToHtml(dialog.Color);
+            }
+        }
+
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             var settings = new ApplicationSettings();
@@ -433,23 +471,16 @@ namespace SmartContextMenu.Forms
             {
                 if (row.Tag is WindowSizeMenuItem item)
                 {
-                    settings.MenuItems.WindowSizeItems.Add(new WindowSizeMenuItem 
-                    { 
-                        Title = item.Title,
-                        Left = item.Left,
-                        Top = item.Top,
-                        Width = item.Width, 
-                        Height = item.Height,
-                        Key1 = item.Key1,
-                        Key2 = item.Key2,
-                        Key3 = item.Key3
-                    });
+                    settings.MenuItems.WindowSizeItems.Add((WindowSizeMenuItem)item.Clone());
                 }
             }
 
             foreach (DataGridViewRow row in gvStartProgram.Rows)
             {
-                settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)row.Tag);
+                if (row.Tag is StartProgramMenuItem item)
+                {
+                    settings.MenuItems.StartProgramItems.Add((StartProgramMenuItem)item.Clone());
+                }
             }
 
             settings.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
@@ -458,6 +489,8 @@ namespace SmartContextMenu.Forms
             settings.Key4 = (VirtualKey)cmbKey4.SelectedValue;
             settings.MouseButton = (MouseButton)cmbMouseButton.SelectedValue;
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
+            settings.Dimmer.Color = txtDimmerColor.Text;
+            settings.Dimmer.Transparency = trackbDimmerTransparency.Value;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
             settings.LanguageName = listBoxLanguage.SelectedValue == null ? string.Empty : listBoxLanguage.SelectedValue.ToString();

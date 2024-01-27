@@ -19,6 +19,8 @@ namespace SmartContextMenu.Settings
 
         public bool EnableHighDPI { get; set; }
 
+        public DimmerSettings Dimmer { get; set; }
+
         public WindowSizerType Sizer { get; set; }
 
         public string LanguageName { get; set; }
@@ -32,6 +34,7 @@ namespace SmartContextMenu.Settings
             Key3 = VirtualKey.None;
             Key4 = VirtualKey.None;
             MouseButton = MouseButton.None;
+            Dimmer = new DimmerSettings();
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
@@ -63,6 +66,7 @@ namespace SmartContextMenu.Settings
             settings.Key3 = Key3;
             settings.Key4 = Key4;
             settings.MouseButton = MouseButton;
+            settings.Dimmer = (DimmerSettings)Dimmer.Clone();
             settings.Sizer = Sizer;
             settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
             settings.EnableHighDPI = EnableHighDPI;
@@ -187,6 +191,11 @@ namespace SmartContextMenu.Settings
                 return false;
             }
 
+            if (string.Compare(Dimmer.Color, other.Dimmer.Color, StringComparison.CurrentCultureIgnoreCase) != 0 || Dimmer.Transparency != other.Dimmer.Transparency)
+            {
+                return false;
+            }
+
             if (Sizer != other.Sizer)
             {
                 return false;
@@ -238,6 +247,8 @@ namespace SmartContextMenu.Settings
             hashCode ^= Key3.GetHashCode();
             hashCode ^= Key4.GetHashCode();
             hashCode ^= MouseButton.GetHashCode();
+            hashCode ^= Dimmer.Color.GetHashCode();
+            hashCode ^= Dimmer.Transparency.GetHashCode();
             hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();

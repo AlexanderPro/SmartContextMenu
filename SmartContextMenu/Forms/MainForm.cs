@@ -5,6 +5,7 @@ using System.Linq;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ namespace SmartContextMenu.Forms
         private ContextMenuStrip _menu;
         private IntPtr _hWinEventHookDestroy;
         private IntPtr _hWinEventHookMinimize;
+        private IntPtr _hWinEventHookForeground;
+        private IntPtr _dimHandle;
+        private List<DimForm> _dimForms;
         private IDictionary<IntPtr, Window> _windows;
 
         public MainForm(ApplicationSettings settings)
@@ -38,6 +42,8 @@ namespace SmartContextMenu.Forms
             _systemTrayMenu = new SystemTrayMenu();
             _menu = new ContextMenuStrip();
             _windows = new Dictionary<IntPtr, Window>();
+            _dimHandle = IntPtr.Zero;
+            _dimForms = new List<DimForm>();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -65,6 +71,7 @@ namespace SmartContextMenu.Forms
             _winEventProc = new User32.WinEventDelegate(WinEventProc);
             _hWinEventHookDestroy = User32.SetWinEventHook(Constants.EVENT_OBJECT_DESTROY, Constants.EVENT_OBJECT_DESTROY, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
             _hWinEventHookMinimize = User32.SetWinEventHook(Constants.EVENT_SYSTEM_MINIMIZESTART, Constants.EVENT_SYSTEM_MINIMIZESTART, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
+            _hWinEventHookForeground = User32.SetWinEventHook(Constants.EVENT_SYSTEM_FOREGROUND, Constants.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
 
             if (_settings.ShowSystemTrayIcon)
             {
@@ -84,6 +91,7 @@ namespace SmartContextMenu.Forms
         {
             User32.UnhookWinEvent(_hWinEventHookDestroy);
             User32.UnhookWinEvent(_hWinEventHookMinimize);
+            User32.UnhookWinEvent(_hWinEventHookForeground);
 
             foreach (Window window in _windows.Values)
             {
@@ -135,6 +143,7 @@ namespace SmartContextMenu.Forms
             if (_menu.Visible)
             {
                 ContextMenuManager.Release(_menu, MenuItemClick);
+                UpdateDimWindows();
                 e.Succeeded = true;
             }
         });
@@ -144,7 +153,7 @@ namespace SmartContextMenu.Forms
             var cursorPosition = Cursor.Position;
             var handle = User32.WindowFromPoint(new Native.Structs.Point(cursorPosition.X, cursorPosition.Y));
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle) || (_dimHandle != IntPtr.Zero && _dimForms.Any(x => x.Handle == parentHandle)))
             {
                 return;
             }
@@ -152,7 +161,7 @@ namespace SmartContextMenu.Forms
             ContextMenuManager.Release(_menu, MenuItemClick);
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
-            ContextMenuManager.Build(_menu, _settings, window, MenuItemClick);
+            ContextMenuManager.Build(_menu, _settings, window, _dimHandle, MenuItemClick);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
             _menu.Show(cursorPosition);
         });
@@ -368,6 +377,25 @@ namespace SmartContextMenu.Forms
                         {
                             _windows.Add(window.Handle, window);
                         }
+                    }
+                    break;
+
+                case MenuItemName.Dimmer:
+                    {
+                        BeginInvoke((MethodInvoker)delegate
+                        {
+                            if (_dimHandle != window.Handle)
+                            {
+                                _dimHandle = window.Handle;
+                                User32.SetForegroundWindow(_dimHandle);
+                                ShowDimWindows();
+                                UpdateDimWindows();
+                            }
+                            else
+                            {
+                                HideDimWindows();
+                            }
+                        });
                     }
                     break;
 
@@ -713,6 +741,7 @@ namespace SmartContextMenu.Forms
                     _mouseHook.MouseButton = _settings.MouseButton;
                     var manager = new LanguageManager(_settings.LanguageName);
                     _systemTrayMenu.RefreshLanguage(manager);
+                    UpdateDimWindowsColor();
 
                     ApplicationSettingsFile.Save(_settings);
                 };
@@ -744,12 +773,84 @@ namespace SmartContextMenu.Forms
 
         private void SystemTrayMenuItemExitClick(object sender, EventArgs e) => Close();
 
+        private void ShowDimWindows()
+        {
+            if (_dimForms.Any())
+            {
+                return;
+            }
+
+            var opacity = WindowUtils.TransparencyToOpacity(_settings.Dimmer.Transparency);
+            var color = ColorTranslator.FromHtml(_settings.Dimmer.Color);
+            foreach (var screen in Screen.AllScreens)
+            {
+                var dimForm = new DimForm(color, opacity)
+                {
+                    Left = screen.Bounds.Left,
+                    Top = screen.Bounds.Top
+                };
+                dimForm.Click += DimFormClick;
+                dimForm.DoubleClick += DimFormClick;
+                dimForm.MouseClick += DimFormClick;
+                dimForm.MouseDoubleClick += DimFormClick;
+                dimForm.Show();
+                _dimForms.Add(dimForm);
+            }
+        }
+
+        private void DimFormClick(object sender, EventArgs e)
+        {
+            UpdateDimWindows();
+        }
+
+        private void HideDimWindows()
+        {
+            _dimForms.ForEach(w => w.Close());
+            _dimForms.Clear();
+            _dimHandle = IntPtr.Zero;
+        }
+
+        private void UpdateDimWindows()
+        {
+            if (_dimHandle != IntPtr.Zero)
+            {
+                foreach (var dimForm in _dimForms)
+                {
+                    dimForm.Show();
+                    User32.PostMessage(dimForm.Handle, Constants.WM_SYSCOMMAND, Constants.SC_MAXIMIZE, 0);
+                    User32.SetWindowPos(dimForm.Handle, User32.HWND_TOP, 0, 0, 0, 0, Constants.SWP_NOMOVE | Constants.SWP_NOSIZE | Constants.SWP_NOACTIVATE);
+                    User32.SetWindowPos(dimForm.Handle, _dimHandle, 0, 0, 0, 0, Constants.SWP_NOMOVE | Constants.SWP_NOSIZE | Constants.SWP_NOACTIVATE);
+                }
+            }
+        }
+
+        private void UpdateDimWindowsColor()
+        {
+            if (_dimHandle != IntPtr.Zero)
+            {
+                foreach (var dimForm in _dimForms)
+                {
+                    dimForm.BackColor = ColorTranslator.FromHtml(_settings.Dimmer.Color);
+                    dimForm.Opacity = WindowUtils.TransparencyToOpacity(_settings.Dimmer.Transparency);
+                }
+            }
+        }
+
+
         private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
             if (eventType == Constants.EVENT_SYSTEM_MINIMIZESTART && idObject == Constants.OBJID_WINDOW)
             {
                 BeginInvoke((MethodInvoker)delegate
                 {
+                    if (_dimHandle != IntPtr.Zero && _dimHandle == hwnd)
+                    {
+                        foreach (var dimForm in _dimForms)
+                        {
+                            dimForm.Hide();
+                        }
+                    }
+
                     if (_windows.TryGetValue(hwnd, out var window) && window.IsMinimizeAlwaysToSystemtray && !window.ExistSystemTrayIcon)
                     {
                         window.MoveToSystemTray();
@@ -757,10 +858,27 @@ namespace SmartContextMenu.Forms
                 });
             }
 
-            if (eventType == Constants.EVENT_OBJECT_DESTROY && idObject == Constants.OBJID_WINDOW)
+            if (eventType == Constants.EVENT_SYSTEM_FOREGROUND && idObject == Constants.OBJID_WINDOW)
             {
                 BeginInvoke((MethodInvoker)delegate
                 {
+                    if (_dimHandle != IntPtr.Zero && _dimHandle == hwnd)
+                    {
+                        UpdateDimWindows();
+                    }
+                });
+            }
+
+            if (eventType == Constants.EVENT_OBJECT_DESTROY && idObject == Constants.OBJID_WINDOW)  
+            {
+                BeginInvoke((MethodInvoker)delegate
+                {
+                    if (_dimHandle != IntPtr.Zero && _dimHandle == hwnd)
+                    {
+                        HideDimWindows();
+                        _dimHandle = IntPtr.Zero;
+                    }
+
                     if (_windows.TryGetValue(hwnd, out var window))
                     {
                         window.Dispose();
