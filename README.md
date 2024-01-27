@@ -17,6 +17,7 @@ Available menu items:
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
 * **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
+* **Dimmer.** Dims all but the currently focused window.
 * **Always On Top.** Allows the current window to stay on top of all other windows.
 * **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
