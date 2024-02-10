@@ -36,11 +36,11 @@ namespace SmartContextMenu
 
         public int DWL_DLGPROC { get; set; }
 
-        public int GWL_STYLE { get; set; }
+        public long GWL_STYLE { get; set; }
 
         public int GCL_STYLE { get; set; }
 
-        public int GWL_EXSTYLE { get; set; }
+        public long GWL_EXSTYLE { get; set; }
 
         public uint WindowInfoExStyle { get; set; }
 
@@ -48,9 +48,9 @@ namespace SmartContextMenu
 
         public bool LWA_COLORKEY { get; set; }
 
-        public int GWL_ID { get; set; }
+        public long GWL_ID { get; set; }
 
-        public int GWL_USERDATA { get; set; }
+        public long GWL_USERDATA { get; set; }
 
         public int DWL_USER { get; set; }
 

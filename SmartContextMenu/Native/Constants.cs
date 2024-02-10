@@ -47,13 +47,16 @@
         public const int DWL_USER = 8;
 
         // WindowStyle
-        public const int WS_MAXIMIZEBOX = 0x00010000;
-        public const int WS_MINIMIZEBOX = 0x00020000;
-        public const int WS_EX_LAYERED = 0x00080000;
-        public const int WS_EX_TOPMOST = 0x00000008;
-        public const int WS_EX_TOOLWINDOW = 0x00000080;
-        public const int WS_EX_TRANSPARENT = 0x20;
-        public const int WS_EX_NOACTIVATE = 0x08000000;
+        public const long WS_CAPTION = 0x00C00000L;
+        public const long WS_SYSMENU = 0x00080000L;
+        public const long WS_POPUP = 0x80000000L;
+        public const long WS_MAXIMIZEBOX = 0x00010000L;
+        public const long WS_MINIMIZEBOX = 0x00020000L;
+        public const long WS_EX_LAYERED = 0x00080000L;
+        public const long WS_EX_TOPMOST = 0x00000008L;
+        public const long WS_EX_TOOLWINDOW = 0x00000080L;
+        public const long WS_EX_TRANSPARENT = 0x00000020L;
+        public const long WS_EX_NOACTIVATE = 0x08000000L;
 
         // Window Messages
         public const int WM_GETICON = 0x7F;

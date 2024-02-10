@@ -93,11 +93,11 @@ namespace SmartContextMenu
         {
             get
             {
-                int style = GetWindowLong(Handle, GWL_EXSTYLE);
-                bool isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
+                var style = GetWindowLong(Handle, GWL_EXSTYLE);
+                var isLayeredWindow = (style & WS_EX_LAYERED) == WS_EX_LAYERED;
                 if (!isLayeredWindow) return 0;
                 GetLayeredWindowAttributes(Handle, out _, out var alpha, out _);
-                int transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
+                var transparency = 100 - (int)Math.Round(100 * alpha / 255f, MidpointRounding.AwayFromZero);
                 return transparency;
             }
         }

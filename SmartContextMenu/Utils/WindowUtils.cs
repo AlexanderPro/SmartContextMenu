@@ -30,12 +30,17 @@ namespace SmartContextMenu.Utils
 
         public static IntPtr GetParentWindow(IntPtr hWnd)
         {
-            IntPtr parentHwnd;
-            var resultHwnd = hWnd;
-            while ((parentHwnd = GetParent(resultHwnd)) != IntPtr.Zero)
+            IntPtr resultHwnd;
+            var parentHwnd = hWnd;
+            do
             {
                 resultHwnd = parentHwnd;
-            }
+                var windowStyle = GetWindowLong(resultHwnd, GWL_STYLE);
+                if ((windowStyle & WS_CAPTION) != 0 || (windowStyle & WS_SYSMENU) != 0 || (windowStyle & WS_POPUP) != 0)
+                {
+                    return resultHwnd;
+                }
+            } while ((parentHwnd = GetParent(resultHwnd)) != IntPtr.Zero);
             return resultHwnd;
         }
 
