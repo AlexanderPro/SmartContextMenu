@@ -8,6 +8,8 @@
 
         public const string AeroGlass = "aero_glass";
 
+        public const string Borderless = "borderless";
+
         public const string Dimmer = "dimmer";
 
         public const string AlwaysOnTop = "always_on_top";

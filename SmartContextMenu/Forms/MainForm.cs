@@ -380,6 +380,27 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.Borderless:
+                    {
+                        if (window.IsBorderless)
+                        {
+                            window.RestoreBorder();
+                            if (_windows.ContainsKey(window.Handle))
+                            {
+                                _windows.Remove(window.Handle);
+                            }
+                        }
+                        else
+                        {
+                            window.MakeBorderless();
+                            if (!_windows.ContainsKey(window.Handle))
+                            {
+                                _windows.Add(window.Handle, window);
+                            }
+                        }
+                    }
+                    break;
+
                 case MenuItemName.Dimmer:
                     {
                         BeginInvoke((MethodInvoker)delegate

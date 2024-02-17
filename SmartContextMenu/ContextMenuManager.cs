@@ -148,6 +148,12 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.Borderless:
+                    {
+                        toolStripMenuItem.Checked = window.IsBorderless;
+                    }
+                    break;
+
                 case MenuItemName.Dimmer:
                     {
                         toolStripMenuItem.Checked = window.Handle == dimHandle;

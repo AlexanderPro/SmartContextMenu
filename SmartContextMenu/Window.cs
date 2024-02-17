@@ -23,6 +23,8 @@ namespace SmartContextMenu
         private bool _isLayered;
         private int _beforeRollupHeight;
         private int _defaultTransparency;
+        private long _windowStyleBeforeBorderless;
+        private long _windowExtendedStyleBeforeBorderless;
         private NotifyIcon _systemTrayIcon;
         private ToolStripMenuItem _menuItemRestore;
         private ToolStripMenuItem _menuItemClose;
@@ -33,6 +35,8 @@ namespace SmartContextMenu
         public bool IsRollUp { get; private set; }
 
         public bool IsAeroGlass { get; private set; }
+
+        public bool IsBorderless { get; private set; }
 
         public bool IsMinimizeAlwaysToSystemtray { get; set; }
 
@@ -572,6 +576,35 @@ namespace SmartContextMenu
                 WindowUtils.AeroGlassForEightAndHigher(Handle, !IsAeroGlass);
             }
             IsAeroGlass = !IsAeroGlass;
+        }
+
+        public void MakeBorderless()
+        {
+            if (!IsBorderless)
+            {
+                _windowStyleBeforeBorderless = GetWindowLong(Handle, GWL_STYLE);
+                _windowExtendedStyleBeforeBorderless = GetWindowLong(Handle, GWL_EXSTYLE);
+
+                // Compute new styles (XOR of the inverse of all the bits to filter)
+                var newWindowStyle = _windowStyleBeforeBorderless & ~( WS_CAPTION | WS_THICKFRAME | WS_SYSMENU | WS_MAXIMIZEBOX | WS_MINIMIZEBOX);
+                var newWindowExtendedStyle = _windowExtendedStyleBeforeBorderless & ~(WS_EX_DLGMODALFRAME | WS_EX_COMPOSITED | WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE | WS_EX_LAYERED | WS_EX_STATICEDGE | WS_EX_TOOLWINDOW | WS_EX_APPWINDOW);
+
+                SetWindowLong(Handle, GWL_STYLE, newWindowStyle);
+                SetWindowLong(Handle, GWL_EXSTYLE, newWindowExtendedStyle);
+
+                IsBorderless = true;
+            }
+        }
+
+        public void RestoreBorder()
+        {
+            if (IsBorderless)
+            {
+                SetWindowLong(Handle, GWL_STYLE, _windowStyleBeforeBorderless);
+                SetWindowLong(Handle, GWL_EXSTYLE, _windowExtendedStyleBeforeBorderless);
+
+                IsBorderless = false;
+            }
         }
 
         public void MoveToMonitor(IntPtr monitorHandle)
