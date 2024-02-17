@@ -202,6 +202,12 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.SystemMenuAvailable:
+                    {
+                        toolStripMenuItem.Checked = window.IsSystemMenu;
+                    }
+                    break;
+
                 case MenuItemName.MinimizeAlwaysToSystemtray:
                     {
                         toolStripMenuItem.Checked = window.IsMinimizeAlwaysToSystemtray;

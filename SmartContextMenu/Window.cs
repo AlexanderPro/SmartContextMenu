@@ -108,6 +108,8 @@ namespace SmartContextMenu
 
         public bool AlwaysOnTop => WindowUtils.IsAlwaysOnTop(Handle);
 
+        public bool IsSystemMenu => WindowUtils.IsSystemMenu(Handle);
+
         public bool IsDisabledMinimizeButton => WindowUtils.IsDisabledMinimizeButton(Handle);
 
         public bool IsDisabledMaximizeButton => WindowUtils.IsDisabledMaximizeButton(Handle);
@@ -476,6 +478,16 @@ namespace SmartContextMenu
         public void Close()
         {
             PostMessage(Handle, WM_CLOSE, 0, 0);
+        }
+
+        public void ShowSystemMenu()
+        {
+            WindowUtils.ShowSystemMenu(Handle, true);
+        }
+
+        public void HideSystemMenu()
+        {
+            WindowUtils.ShowSystemMenu(Handle, false);
         }
 
         public void HideForAltTab(bool enable)

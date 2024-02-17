@@ -167,6 +167,8 @@ namespace SmartContextMenu.Utils
             return true;
         }
 
+        public static bool IsSystemMenu(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_STYLE) & WS_SYSMENU) != 0;
+
         public static bool IsAlwaysOnTop(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_EXSTYLE) & WS_EX_TOPMOST) != 0;
 
         public static bool IsExToolWindow(IntPtr hWnd) => (GetWindowLong(hWnd, GWL_EXSTYLE) & WS_EX_TOOLWINDOW) != 0;
@@ -236,6 +238,13 @@ namespace SmartContextMenu.Utils
             var exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
             exStyle &= ~WS_EX_TRANSPARENT;
             SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
+        }
+
+        public static void ShowSystemMenu(IntPtr hWnd, bool show)
+        {
+            var style = GetWindowLong(hWnd, GWL_STYLE);
+            style = show ? style | WS_SYSMENU : style & ~WS_SYSMENU;
+            SetWindowLong(hWnd, GWL_STYLE, style);
         }
 
         public static Icon GetIcon(IntPtr hWnd)

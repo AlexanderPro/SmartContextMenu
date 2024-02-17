@@ -221,6 +221,7 @@
     <item name="system_menu_minimize" value="Minimize" />
     <item name="system_menu_maximize" value="Maximize" />
     <item name="system_menu_close" value="Close" />
+    <item name="system_menu_available" value="Available" />
   </language>
   <language name="de">
     <item name="separator" value="Separator" />
@@ -444,6 +445,7 @@
     <item name="system_menu_minimize" value="Minimieren" />
     <item name="system_menu_maximize" value="Maximieren" />
     <item name="system_menu_close" value="Schließen" />
+    <item name="system_menu_available" value="Verfügbar" />
   </language>
   <language name="zh_cn">
     <item name="separator" value="分隔线" />
@@ -667,6 +669,7 @@
     <item name="system_menu_minimize" value="最小化" />
     <item name="system_menu_maximize" value="最大化" />
     <item name="system_menu_close" value="关闭" />
+    <item name="system_menu_available" value="可用的" />
   </language>
   <language name="zh_tw">
     <item name="separator" value="分隔線" />
@@ -890,6 +893,7 @@
     <item name="system_menu_minimize" value="最小化" />
     <item name="system_menu_maximize" value="最大化" />
     <item name="system_menu_close" value="關閉" />
+    <item name="system_menu_available" value="可用的" />
   </language>
   <language name="ja">
     <item name="separator" value="セパレーター" />
@@ -1112,6 +1116,7 @@
     <item name="system_menu_minimize" value="最小化" />
     <item name="system_menu_maximize" value="最大化" />
     <item name="system_menu_close" value="閉じる" />
+    <item name="system_menu_available" value="利用可能" />
   </language>
   <language name="ko">
     <item name="separator" value="분리 기호" />
@@ -1335,6 +1340,7 @@
     <item name="system_menu_minimize" value="최소화" />
     <item name="system_menu_maximize" value="최대화" />
     <item name="system_menu_close" value="닫기" />
+    <item name="system_menu_available" value="사용 가능" />
   </language>
   <language name="ru">
     <item name="separator" value="Разделитель" />
@@ -1558,6 +1564,7 @@
     <item name="system_menu_minimize" value="Свернуть" />
     <item name="system_menu_maximize" value="Развернуть" />
     <item name="system_menu_close" value="Закрыть" />
+    <item name="system_menu_available" value="Доступно" />
   </language>
   <language name="sr">
     <item name="separator" value="Сепаратор" />
@@ -1781,6 +1788,7 @@
     <item name="system_menu_minimize" value="Минимизирајте" />
     <item name="system_menu_maximize" value="Максимизирајте" />
     <item name="system_menu_close" value="Затвори" />
+    <item name="system_menu_available" value="Доступан" />
   </language>
   <language name="pt">
     <item name="separator" value="Separador" />
@@ -2004,6 +2012,7 @@
     <item name="system_menu_minimize" value="Minimizar" />
     <item name="system_menu_maximize" value="Maximizar" />
     <item name="system_menu_close" value="Fechar" />
+    <item name="system_menu_available" value="Disponível" />
   </language>
   <language name="it">
     <item name="separator" value="Separatore" />
@@ -2227,6 +2236,7 @@
     <item name="system_menu_minimize" value="Riduci a icona" />
     <item name="system_menu_maximize" value="Ingrandisci" />
     <item name="system_menu_close" value="Chiudi" />
+    <item name="system_menu_available" value="Disponibile" />
   </language>
   <language name="fr">
     <item name="separator" value="Séparateur" />
@@ -2450,6 +2460,7 @@
     <item name="system_menu_minimize" value="Réduire" />
     <item name="system_menu_maximize" value="Agrandir" />
     <item name="system_menu_close" value="Fermer" />
+    <item name="system_menu_available" value="Disponible" />
   </language>
   <language name="hu">
     <item name="separator" value="Elválasztó" />
@@ -2673,5 +2684,6 @@
     <item name="system_menu_minimize" value="Kis méret" />
     <item name="system_menu_maximize" value="Teljes méret" />
     <item name="system_menu_close" value="Bezárás" />
+    <item name="system_menu_available" value="Elérhető" />
   </language>
 </languages>

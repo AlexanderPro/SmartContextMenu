@@ -116,6 +116,8 @@
 
         public const string SystemMenuClose = "system_menu_close";
 
+        public const string SystemMenuAvailable = "system_menu_available";
+
         public const string MinimizeToSystemtray = "minimize_to_systemtray";
 
         public const string MinimizeAlwaysToSystemtray = "minimize_always_to_systemtray";

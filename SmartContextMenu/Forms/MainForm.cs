@@ -569,6 +569,19 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.SystemMenuAvailable:
+                    {
+                        if (window.IsSystemMenu)
+                        {
+                            window.HideSystemMenu();
+                        }
+                        else
+                        {
+                            window.ShowSystemMenu();
+                        }
+                    }
+                    break;
+
                 case MenuItemName.MinimizeToSystemtray:
                     {
                         window.MinimizeToSystemTray();
