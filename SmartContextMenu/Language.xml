@@ -6,6 +6,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Borderless" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Hide" />
     <item name="always_on_top" value="Always On Top" />
     <item name="send_to_bottom" value="Send To Bottom" />
     <item name="save_screenshot" value="Save Screenshot" />
@@ -230,6 +231,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Grenzenlos" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Verstecken" />
     <item name="always_on_top" value="Immer im Vordergrund" />
     <item name="send_to_bottom" value="In den Hintergrund" />
     <item name="save_screenshot" value="Screenshot speichern…" />
@@ -454,6 +456,7 @@
     <item name="aero_glass" value="毛玻璃效果" />
     <item name="borderless" value="无边框" />
     <item name="dimmer" value="突出窗口操作" />
+    <item name="hide" value="隐藏" />
     <item name="always_on_top" value="窗口始终置顶" />
     <item name="send_to_bottom" value="窗口置底" />
     <item name="save_screenshot" value="保存窗口截图" />
@@ -678,6 +681,7 @@
     <item name="aero_glass" value="Aero 半透明效果" />
     <item name="borderless" value="無邊框" />
     <item name="dimmer" value="窗戶調光器" />
+    <item name="hide" value="隱藏" />
     <item name="always_on_top" value="視窗置頂" />
     <item name="send_to_bottom" value="移至最底層" />
     <item name="save_screenshot" value="儲存視窗擷圖" />
@@ -902,6 +906,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="ボーダレス" />
     <item name="dimmer" value="窓の調光器" />
+    <item name="hide" value="隠れる" />
     <item name="always_on_top" value="常に手前に表示" />
     <item name="send_to_bottom" value="背面へ送る" />
     <item name="save_screenshot" value="スクリーンショットを撮る" />
@@ -1125,6 +1130,7 @@
     <item name="aero_glass" value="에어로 글래스" />
     <item name="borderless" value="무제한" />
     <item name="dimmer" value="창 조광기" />
+    <item name="hide" value="숨다" />
     <item name="always_on_top" value="항상 위에 표시" />
     <item name="send_to_bottom" value="맨 아래로 보내기" />
     <item name="save_screenshot" value="스크린샷 저장" />
@@ -1349,6 +1355,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Без рамки" />
     <item name="dimmer" value="Затемнение" />
+    <item name="hide" value="Скрыть" />
     <item name="always_on_top" value="Поверх остальных" />
     <item name="send_to_bottom" value="Переместить вниз" />
     <item name="save_screenshot" value="Сохранить снимок окна" />
@@ -1573,6 +1580,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Бордерлесс" />
     <item name="dimmer" value="Затамњивач прозора" />
+    <item name="hide" value="Сакрити" />
     <item name="always_on_top" value="Увек испред" />
     <item name="send_to_bottom" value="Попаљи на дно" />
     <item name="save_screenshot" value="Сачувај прозор програма" />
@@ -1797,6 +1805,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Sem fronteiras" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Esconder" />
     <item name="always_on_top" value="Manter esta janela sempre na frente" />
     <item name="send_to_bottom" value="Enviar para o fundo" />
     <item name="save_screenshot" value="Fazer captura de tela" />
@@ -2021,6 +2030,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Senza confini" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Nascondere" />
     <item name="always_on_top" value="Sempre in primo piano" />
     <item name="send_to_bottom" value="Metti in basso" />
     <item name="save_screenshot" value="Salva schermata" />
@@ -2245,6 +2255,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Sans frontières" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Cacher" />
     <item name="always_on_top" value="Toujours au premier plan" />
     <item name="send_to_bottom" value="Réduire dans la barre des tâches" />
     <item name="save_screenshot" value="Sauvegarder la capture d'écran" />
@@ -2469,6 +2480,7 @@
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Határtalan" />
     <item name="dimmer" value="Dimmer" />
+    <item name="hide" value="Elrejt" />
     <item name="always_on_top" value="Mindig fölül" />
     <item name="send_to_bottom" value="Küldés alulra" />
     <item name="save_screenshot" value="Képernyőkép mentése" />

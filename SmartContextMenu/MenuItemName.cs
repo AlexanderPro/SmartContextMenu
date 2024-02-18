@@ -12,6 +12,8 @@
 
         public const string Dimmer = "dimmer";
 
+        public const string Hide = "hide";
+
         public const string AlwaysOnTop = "always_on_top";
 
         public const string SendToBottom = "send_to_bottom";

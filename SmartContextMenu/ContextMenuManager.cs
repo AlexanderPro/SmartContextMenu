@@ -160,6 +160,13 @@ namespace SmartContextMenu
                     }
                     break;
 
+                case MenuItemName.Hide:
+                    {
+                        toolStripMenuItem.Checked = !window.IsVisible;
+                    }
+                    break;
+
+
                 case MenuItemName.HideForAltTab:
                     {
                         toolStripMenuItem.Checked = window.IsExToolWindow;

@@ -14,6 +14,7 @@ using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
 using SmartContextMenu.Hooks;
 using SmartContextMenu.Native;
+using SmartContextMenu.Native.Enums;
 
 namespace SmartContextMenu.Forms
 {
@@ -80,6 +81,7 @@ namespace SmartContextMenu.Forms
                 _systemTrayMenu.MenuItemSettingsClick += SystemTrayMenuItemSettingsClick;
                 _systemTrayMenu.MenuItemAboutClick += SystemTrayMenuItemAboutClick;
                 _systemTrayMenu.MenuItemExitClick += SystemTrayMenuItemExitClick;
+                _systemTrayMenu.MenuItemHideClick += SystemTrayMenuItemHideClick;
                 _systemTrayMenu.MenuItemClickThroughClick += SystemTrayMenuItemClickThroughClick;
                 _systemTrayMenu.MenuItemTransparencyClick += SystemTrayMenuItemTransparencyClick;
                 _systemTrayMenu.Build(_settings);
@@ -385,10 +387,6 @@ namespace SmartContextMenu.Forms
                         if (window.IsBorderless)
                         {
                             window.RestoreBorder();
-                            if (_windows.ContainsKey(window.Handle))
-                            {
-                                _windows.Remove(window.Handle);
-                            }
                         }
                         else
                         {
@@ -417,6 +415,23 @@ namespace SmartContextMenu.Forms
                                 HideDimWindows();
                             }
                         });
+                    }
+                    break;
+
+                case MenuItemName.Hide:
+                    {
+                        if (window.IsVisible)
+                        {
+                            User32.ShowWindow(window.Handle, (int)WindowShowStyle.Hide);
+                            if (!_windows.ContainsKey(window.Handle))
+                            {
+                                _windows.Add(window.Handle, window);
+                            }
+                        }
+                        else
+                        {
+                            User32.ShowWindow(window.Handle, (int)WindowShowStyle.Show);
+                        }
                     }
                     break;
 
@@ -783,6 +798,17 @@ namespace SmartContextMenu.Forms
 
             _settingsForm.Show();
             _settingsForm.Activate();
+        }
+
+        private void SystemTrayMenuItemHideClick(object sender, EventArgs e)
+        {
+            foreach (var window in _windows.Values)
+            {
+                if (!window.IsVisible)
+                {
+                    User32.ShowWindow(window.Handle, (int)WindowShowStyle.Show);
+                }
+            }
         }
 
         private void SystemTrayMenuItemTransparencyClick(object sender, EventArgs e)

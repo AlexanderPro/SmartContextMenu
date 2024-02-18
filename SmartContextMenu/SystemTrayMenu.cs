@@ -16,6 +16,7 @@ namespace SmartContextMenu
         private readonly ToolStripMenuItem _menuItemSettings;
         private readonly ToolStripMenuItem _menuItemAbout;
         private readonly ToolStripMenuItem _menuItemExit;
+        private readonly ToolStripMenuItem _menuItemHide;
         private readonly ToolStripMenuItem _menuItemTransparency;
         private readonly ToolStripMenuItem _menuItemClickThrough;
         private readonly ToolStripSeparator _menuItemSeparator1;
@@ -27,6 +28,7 @@ namespace SmartContextMenu
         public event EventHandler MenuItemSettingsClick;
         public event EventHandler MenuItemAboutClick;
         public event EventHandler MenuItemExitClick;
+        public event EventHandler MenuItemHideClick;
         public event EventHandler MenuItemTransparencyClick;
         public event EventHandler MenuItemClickThroughClick;
 
@@ -39,6 +41,7 @@ namespace SmartContextMenu
             _menuItemSeparator1 = new ToolStripSeparator();
             _menuItemSeparator2 = new ToolStripSeparator();
             _menuItemExit = new ToolStripMenuItem();
+            _menuItemHide = new ToolStripMenuItem();
             _menuItemTransparency = new ToolStripMenuItem();
             _menuItemClickThrough = new ToolStripMenuItem();
             var components = new Container();
@@ -83,14 +86,24 @@ namespace SmartContextMenu
             _menuItemExit.Text = manager.GetString("mi_exit");
             _menuItemExit.Click += (sender, e) => MenuItemExitClick?.Invoke(sender, e);
 
+            var hideAny = settings.MenuItems.Items.Any(x => x.Type == MenuItemType.Item && x.Name == MenuItemName.Hide && x.Show);
             var clickThroughAny = settings.MenuItems.Items.Any(x => x.Type == MenuItemType.Item && x.Name == MenuItemName.ClickThrough && x.Show);
             var transparencyAny = settings.MenuItems.Items.Any(x => x.Type == MenuItemType.Group && x.Name == MenuItemName.Transparency && x.Show);
 
-            if (clickThroughAny || transparencyAny)
+            if (hideAny || clickThroughAny || transparencyAny)
             {
                 _menuItemRestore.Name = "miRestore";
                 _menuItemRestore.Size = new Size(175, 22);
                 _menuItemRestore.Text = manager.GetString("mi_restore_windows");
+
+                if (hideAny)
+                {
+                    _menuItemHide.Name = "miHide";
+                    _menuItemHide.Size = new Size(175, 22);
+                    _menuItemHide.Text = manager.GetString("hide");
+                    _menuItemHide.Click += (sender, e) => MenuItemHideClick?.Invoke(sender, e);
+                    _menuItemRestore.DropDownItems.Add(_menuItemHide);
+                }
 
                 if (clickThroughAny)
                 {
@@ -135,6 +148,7 @@ namespace SmartContextMenu
             _menuItemAbout.Text = manager.GetString("mi_about");
             _menuItemExit.Text = manager.GetString("mi_exit");
             _menuItemRestore.Text = manager.GetString("mi_restore_windows");
+            _menuItemHide.Text = manager.GetString("hide");
             _menuItemClickThrough.Text = manager.GetString("click_through");
             _menuItemTransparency.Text = manager.GetString("transparency");
         }
@@ -159,6 +173,7 @@ namespace SmartContextMenu
                 _menuItemAbout?.Dispose();
                 _menuItemExit?.Dispose();
                 _menuItemRestore?.Dispose();
+                _menuItemHide?.Dispose();
                 _menuItemClickThrough?.Dispose();
                 _menuItemTransparency?.Dispose();
                 _menuItemSeparator1?.Dispose();

@@ -3,11 +3,12 @@
   <menuItems>
     <items>
       <item type="item" name="information" key1="" key2="" key3="" />
-      <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="aero_glass" key1="" key2="" key3="" />
+      <item type="item" name="always_on_top" key1="" key2="" key3="" />
       <item type="item" name="borderless" key1="" key2="" key3="" />
       <item type="item" name="dimmer" key1="" key2="" key3="" />
-      <item type="item" name="always_on_top" key1="" key2="" key3="" />
+      <item type="item" name="hide" key1="" key2="" key3="" />
+      <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="send_to_bottom" key1="" key2="" key3="" />
       <item type="item" name="save_screenshot" key1="" key2="" key3="" />
       <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
