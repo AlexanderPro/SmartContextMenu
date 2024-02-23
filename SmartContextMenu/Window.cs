@@ -16,7 +16,7 @@ using static SmartContextMenu.Native.Constants;
 
 namespace SmartContextMenu
 {
-    class Window : IDisposable
+    public class Window : IDisposable
     {
         private bool _isManaged;
         private bool _suspended;

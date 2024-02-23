@@ -36,15 +36,19 @@ namespace SmartContextMenu.Forms
         private List<DimForm> _dimForms;
         private IDictionary<IntPtr, Window> _windows;
 
-        public MainForm(ApplicationSettings settings)
+        public MainForm(ApplicationSettings settings, params Window[] windows)
         {
             InitializeComponent();
             _settings = settings;
             _systemTrayMenu = new SystemTrayMenu();
             _menu = new ContextMenuStrip();
-            _windows = new Dictionary<IntPtr, Window>();
             _dimHandle = IntPtr.Zero;
             _dimForms = new List<DimForm>();
+            _windows = new Dictionary<IntPtr, Window>();
+            foreach (var window in windows)
+            {
+                _windows.Add(window.Handle, window);
+            }
         }
 
         protected override void OnLoad(EventArgs e)

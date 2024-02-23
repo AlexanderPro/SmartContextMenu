@@ -3,7 +3,7 @@
 namespace SmartContextMenu.Native.Structs
 {
     [StructLayout(LayoutKind.Sequential)]
-    struct Rect
+    public struct Rect
     {
         public int Left;
         public int Top;

@@ -44,7 +44,7 @@ namespace SmartContextMenu
                 return;
             }
 
-            ProcessCommandLine(commandLineParser, settings);
+            var windows = ProcessCommandLine(commandLineParser, settings);
 
             if (commandLineParser.HasToggle("n") || commandLineParser.HasToggle("nogui"))
             {
@@ -60,10 +60,10 @@ namespace SmartContextMenu
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(settings));
+            Application.Run(new MainForm(settings, windows.ToArray()));
         }
 
-        static void ProcessCommandLine(CommandLineParser сommandLineParser, ApplicationSettings settings)
+        static ICollection<Window> ProcessCommandLine(CommandLineParser сommandLineParser, ApplicationSettings settings)
         {
             // Delay
             if (сommandLineParser.HasToggle("d") || сommandLineParser.HasToggle("delay"))
@@ -128,10 +128,16 @@ namespace SmartContextMenu
                 windowHandles.AddRange(handles);
             }
 
+            var windows = new Dictionary<IntPtr, Window>();
             var languageManager = new LanguageManager(settings.LanguageName);
             foreach (var windowHandle in windowHandles.Where(x => x != IntPtr.Zero && User32.GetParent(x) == IntPtr.Zero))
             {
                 var window = new Window(windowHandle, languageManager);
+
+                if (!windows.ContainsKey(window.Handle))
+                {
+                    windows.Add(window.Handle, window);
+                }
 
                 // Set a Window monitor
                 if (сommandLineParser.HasToggle("m") || сommandLineParser.HasToggle("monitor"))
@@ -287,6 +293,47 @@ namespace SmartContextMenu
                     window.SendToBottom();
                 }
 
+                // Roll Up
+                if (сommandLineParser.HasToggle("r") || сommandLineParser.HasToggle("rollup"))
+                {
+                    window.RollUpDown();
+                }
+
+                // Borderless
+                if (сommandLineParser.HasToggle("b") || сommandLineParser.HasToggle("borderless"))
+                {
+                    window.MakeBorderless();
+                }
+
+                // Hide
+                if (сommandLineParser.HasToggle("hide"))
+                {
+                    var hideString = сommandLineParser.GetToggleValueOrDefault("hide", string.Empty).ToLower();
+
+                    if (hideString == "on")
+                    {
+                        User32.ShowWindow(window.Handle, (int)WindowShowStyle.Hide);
+                    }
+
+                    if (hideString == "off")
+                    {
+                        User32.ShowWindow(window.Handle, (int)WindowShowStyle.Show);
+                    }
+                }
+
+                // System Menu
+                if (сommandLineParser.HasToggle("systemmenu"))
+                {
+                    var systemmenuString = сommandLineParser.GetToggleValueOrDefault("systemmenu", string.Empty).ToLower();
+                    switch (systemmenuString)
+                    {
+                        case "restore": window.Restore(); break;
+                        case "minimize": window.Minimize(); break;
+                        case "maximize": window.Maximize(); break;
+                        case "close": window.Close(); break;
+                    }
+                }
+
                 // Open File In Explorer
                 if (сommandLineParser.HasToggle("o") || сommandLineParser.HasToggle("openinexplorer"))
                 {
@@ -383,6 +430,8 @@ namespace SmartContextMenu
                     }
                 }
             }
+
+            return windows.Values;
         }
 
         static void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -428,14 +477,21 @@ namespace SmartContextMenu
                        normal,
                        belownormal,
                        idle]
+   --systemmenu       [restore,
+                       minimize,
+                       maximize,
+                       close]
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
+   --hide             [on, off]
    --hidealttab       [on, off]
    --clickthrough     [on, off]
    --minimizebutton   [on, off]
    --maximizebutton   [on, off]
    --sendtobottom     Send To Bottom
+-b --borderless       Borderless
+-r --rollup           Roll Up
 -o --openinexplorer   Open File In Explorer
 -c --copytoclipboard  Copy Window Text To Clipboard
    --copyscreenshot   Copy Screenshot To Clipboard

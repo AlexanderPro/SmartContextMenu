@@ -4,7 +4,7 @@ using SmartContextMenu.Native.Structs;
 
 namespace SmartContextMenu
 {
-    class WindowDetails
+    public class WindowDetails
     {
         public string GetWindowText { get; set; }
 
