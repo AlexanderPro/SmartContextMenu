@@ -15,10 +15,12 @@ All the menu settings and hotkeys can be changed in the settings dialog of the s
 Available menu items:
 
 * **Information.** Shows a dialog with information of the current window and process: the window handle, the window caption, the window style, the window class, the process name, the process id, the path to the process.
-* **Roll Up.** Allows to roll up and down the current window.
 * **Aero Glass.** Allows to add the "Aero Glass" blur to the current window. (Windows Vista and higher. Mostly for console windows.)
-* **Dimmer.** Dims all but the currently focused window.
 * **Always On Top.** Allows the current window to stay on top of all other windows.
+* **Borderless.** Allows you to turn your windowed games into "Borderless" mode.
+* **Dimmer.** Dims all but the currently focused window.
+* **Hide.** Allows to hide the current window.
+* **Roll Up.** Allows to roll up and down the current window.
 * **Send To Bottom.** Allows to send to bottom the current window.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
@@ -79,14 +81,21 @@ Command Line Interface
                        normal,
                        belownormal,
                        idle]
+   --systemmenu       [restore,
+                       minimize,
+                       maximize,
+                       close]
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
 -g --aeroglass        [on, off]
+   --hide             [on, off]
    --hidealttab       [on, off]
    --clickthrough     [on, off]
    --minimizebutton   [on, off]
    --maximizebutton   [on, off]
    --sendtobottom     Send To Bottom
+-b --borderless       Borderless
+-r --rollup           Roll Up
 -o --openinexplorer   Open File In Explorer
 -c --copytoclipboard  Copy Window Text To Clipboard
    --copyscreenshot   Copy Screenshot To Clipboard
