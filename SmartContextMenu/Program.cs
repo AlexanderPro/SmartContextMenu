@@ -5,6 +5,7 @@ using System.Threading;
 using System.Linq;
 using System.IO;
 using System.Drawing.Imaging;
+using Microsoft.Win32;
 using SmartContextMenu.Forms;
 using SmartContextMenu.Utils;
 using SmartContextMenu.Extensions;
@@ -22,6 +23,8 @@ namespace SmartContextMenu
         [STAThread]
         static void Main(string[] args)
         {
+            const int LowLevelHooksTimeout = 10000;
+
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
@@ -58,9 +61,30 @@ namespace SmartContextMenu
                 return;
             }
 
+            var lowLevelHooksTimeoutString = commandLineParser.GetToggleValueOrDefault(nameof(LowLevelHooksTimeout), null);
+            var lowLevelHooksTimeoutValue = int.TryParse(lowLevelHooksTimeoutString, out var value) ? value : LowLevelHooksTimeout;
+
+            using var key = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop\\", true);
+            var lowLevelHooksTimeoutOldString = key?.GetValue(nameof(LowLevelHooksTimeout))?.ToString();
+            var lowLevelHooksTimeoutOldValue = int.TryParse(lowLevelHooksTimeoutOldString, out var oldValue) ? oldValue : (int?)null;
+
+            if (lowLevelHooksTimeoutValue > lowLevelHooksTimeoutOldValue || lowLevelHooksTimeoutOldValue == null)
+            {
+                key.SetValue(nameof(LowLevelHooksTimeout), lowLevelHooksTimeoutValue);
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm(settings, windows.ToArray()));
+
+            if (lowLevelHooksTimeoutOldValue != null)
+            {
+                key.SetValue(nameof(LowLevelHooksTimeout), lowLevelHooksTimeoutOldValue);
+            }
+            else
+            {
+                key.DeleteValue(nameof(LowLevelHooksTimeout));
+            }
         }
 
         static ICollection<Window> ProcessCommandLine(CommandLineParser сommandLineParser, ApplicationSettings settings)
