@@ -74,10 +74,9 @@ namespace SmartContextMenu.Hooks
         {
             if (code == HC_ACTION)
             {
-                if (MouseButton != MouseButton.None && 
-                    (wParam == WM_LBUTTONDOWN || wParam == WM_RBUTTONDOWN || 
-                    wParam == WM_MBUTTONDOWN || wParam == WM_LBUTTONUP || 
-                    wParam == WM_RBUTTONUP || wParam == WM_MBUTTONUP))
+                if ((MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
+                    (MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
+                    (MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN))
                 {
                     var key1 = true;
                     var key2 = true;
@@ -108,10 +107,7 @@ namespace SmartContextMenu.Hooks
                         key4 = Convert.ToBoolean(keyState);
                     }
 
-                    if (key1 && key2 && key3 && key4 && 
-                        ((MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
-                        (MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
-                        (MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN)))
+                    if (key1 && key2 && key3 && key4)
                     {
                         var handler = Hooked;
                         if (handler != null)
@@ -120,14 +116,14 @@ namespace SmartContextMenu.Hooks
                             return 1;
                         }
                     }
+                }
 
-                    if (wParam == WM_LBUTTONDOWN)
+                if (MouseButton != MouseButton.None && wParam == WM_LBUTTONDOWN)
+                {
+                    var handler = ClickHooked;
+                    if (handler != null)
                     {
-                        var handler = ClickHooked;
-                        if (handler != null)
-                        {
-                            handler.BeginInvoke(this, EventArgs.Empty, null, null);
-                        }
+                        handler.BeginInvoke(this, EventArgs.Empty, null, null);
                     }
                 }
             }

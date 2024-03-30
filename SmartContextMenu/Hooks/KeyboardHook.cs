@@ -72,8 +72,13 @@ namespace SmartContextMenu.Hooks
             {
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
-                    foreach (var item in MenuItems.Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item))
+                    foreach (var item in MenuItems.Items.Flatten(x => x.Items).Where(x => x.Show && x.Type == MenuItemType.Item))
                     {
+                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        {
+                            continue;
+                        }
+
                         var key1 = true;
                         var key2 = true;
 
@@ -89,7 +94,7 @@ namespace SmartContextMenu.Hooks
                             key2 = Convert.ToBoolean(key2State);
                         }
 
-                        if (key1 && key2 && lParam.vkCode == (int)item.Key3)
+                        if (key1 && key2)
                         {
                             var handler = MenuItemHooked;
                             if (handler != null)
@@ -106,6 +111,11 @@ namespace SmartContextMenu.Hooks
 
                     foreach (var item in MenuItems.WindowSizeItems)
                     {
+                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        {
+                            continue;
+                        }
+
                         var key1 = true;
                         var key2 = true;
 
@@ -121,7 +131,7 @@ namespace SmartContextMenu.Hooks
                             key2 = Convert.ToBoolean(key2State);
                         }
 
-                        if (key1 && key2 && lParam.vkCode == (int)item.Key3)
+                        if (key1 && key2)
                         {
                             var handler = WindowSizeMenuItemHooked;
                             if (handler != null)
