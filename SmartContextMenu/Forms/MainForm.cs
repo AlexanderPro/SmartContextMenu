@@ -91,6 +91,9 @@ namespace SmartContextMenu.Forms
                 _systemTrayMenu.Build(_settings);
                 _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
+
+            BringToFront();
+            Activate();
         }
 
         protected override void OnClosed(EventArgs e)
