@@ -210,9 +210,16 @@ namespace SmartContextMenu
             info.GCL_WNDPROC = GetClassLong(Handle, GCL_WNDPROC);
             info.DWL_DLGPROC = GetClassLong(Handle, DWL_DLGPROC);
             info.DWL_USER = GetClassLong(Handle, DWL_USER);
-            info.FullPath = process?.GetMainModuleFileName() ?? "";
             info.Priority = ProcessPriority;
-            info.StartTime = process == null ? (DateTime?)null : process.StartTime;
+
+            try
+            {
+                info.FullPath = process?.GetMainModuleFileName() ?? string.Empty;
+                info.StartTime = process?.StartTime;
+            }
+            catch
+            {
+            }
 
             try
             {

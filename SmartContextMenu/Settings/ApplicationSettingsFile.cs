@@ -11,7 +11,7 @@ using SmartContextMenu.Hooks;
 
 namespace SmartContextMenu.Settings
 {
-    class ApplicationSettingsFile
+    static class ApplicationSettingsFile
     {
         public static ApplicationSettings Read()
         {

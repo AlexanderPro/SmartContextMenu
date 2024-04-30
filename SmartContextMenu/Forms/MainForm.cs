@@ -22,19 +22,19 @@ namespace SmartContextMenu.Forms
     {
         private static User32.WinEventDelegate _winEventProc;
 
-        private readonly SystemTrayMenu _systemTrayMenu;
         private ApplicationSettings _settings;
         private AboutForm _aboutForm;
         private ApplicationSettingsForm _settingsForm;
         private KeyboardHook _keyboardHook;
         private MouseHook _mouseHook;
-        private ContextMenuStrip _menu;
         private IntPtr _hWinEventHookDestroy;
         private IntPtr _hWinEventHookMinimize;
         private IntPtr _hWinEventHookForeground;
         private IntPtr _dimHandle;
-        private List<DimForm> _dimForms;
-        private IDictionary<IntPtr, Window> _windows;
+        private readonly ContextMenuStrip _menu;
+        private readonly List<DimForm> _dimForms;
+        private readonly IDictionary<IntPtr, Window> _windows;
+        private readonly SystemTrayMenu _systemTrayMenu;
 
         public MainForm(ApplicationSettings settings, params Window[] windows)
         {
@@ -162,7 +162,7 @@ namespace SmartContextMenu.Forms
             var cursorPosition = Cursor.Position;
             var handle = User32.WindowFromPoint(new Native.Structs.Point(cursorPosition.X, cursorPosition.Y));
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle) || (_dimHandle != IntPtr.Zero && _dimForms.Any(x => x.Handle == parentHandle)))
+            if (parentHandle == IntPtr.Zero || handle == _menu.Handle || WindowUtils.IsDesktopWindow(parentHandle) || (_dimHandle != IntPtr.Zero && _dimForms.Any(x => x.Handle == parentHandle)))
             {
                 return;
             }
