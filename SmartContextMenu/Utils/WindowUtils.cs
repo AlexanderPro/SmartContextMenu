@@ -324,10 +324,17 @@ namespace SmartContextMenu.Utils
 
         public static string GetWindowText(IntPtr hWnd)
         {
-            var builder = new StringBuilder(1024);
-            User32.GetWindowText(hWnd, builder, builder.Capacity);
-            var windowText = builder.ToString();
-            return windowText;
+            var length = GetWindowTextLength(hWnd);
+            if (length > 0)
+            {
+                var builder = new StringBuilder(length + 1);
+                User32.GetWindowText(hWnd, builder, builder.Capacity);
+                return builder.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public static string GetClassName(IntPtr hWnd)
