@@ -17,6 +17,8 @@ namespace SmartContextMenu
 {
     static class Program
     {
+        private static Mutex _mutex;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -55,7 +57,7 @@ namespace SmartContextMenu
             }
 
 
-            var mutex = new Mutex(false, AssemblyUtils.AssemblyTitle, out var createNew);
+            _mutex = new Mutex(false, AssemblyUtils.AssemblyTitle, out var createNew);
             if (!createNew)
             {
                 return;
