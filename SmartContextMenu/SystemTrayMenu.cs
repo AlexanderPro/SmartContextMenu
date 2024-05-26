@@ -137,6 +137,7 @@ namespace SmartContextMenu
             _icon.Icon = Properties.Resources.SmartContextMenu;
             _icon.Text = AssemblyUtils.AssemblyTitle;
             _icon.Visible = true;
+            _icon.DoubleClick += (sender, e) => MenuItemSettingsClick?.Invoke(sender, e);
 
             _isBuilt = true;
         }
