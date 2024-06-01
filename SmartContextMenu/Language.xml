@@ -3,6 +3,7 @@
     <item name="separator" value="Separator" />
     <item name="information" value="Information" />
     <item name="roll_up" value="Roll Up" />
+    <item name="change_title" value="Change Title" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Borderless" />
     <item name="dimmer" value="Dimmer" />
@@ -217,6 +218,9 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="change_title_btn_apply" value="Ok" />
+    <item name="change_title_btn_cancel" value="Cancel" />
+    <item name="change_title_form" value="Change Title" />
     <item name="system_menu" value="System Menu" />
     <item name="system_menu_restore" value="Restore" />
     <item name="system_menu_minimize" value="Minimize" />
@@ -228,6 +232,7 @@
     <item name="separator" value="Separator" />
     <item name="information" value="Information" />
     <item name="roll_up" value="Verkleinern nach oben" />
+    <item name="change_title" value="Ändere den Titel" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Grenzenlos" />
     <item name="dimmer" value="Dimmer" />
@@ -442,6 +447,9 @@
     <item name="lbl_key3" value="Taste 3" />
     <item name="lbl_key4" value="Taste 4" />
     <item name="lbl_mouse_button" value="Maustaste" />
+    <item name="change_title_btn_apply" value="Ok" />
+    <item name="change_title_btn_cancel" value="Abbrechen" />
+    <item name="change_title_form" value="Ändere den Titel" />
     <item name="system_menu" value="Systemmenü" />
     <item name="system_menu_restore" value="Wiederherstellen" />
     <item name="system_menu_minimize" value="Minimieren" />
@@ -453,6 +461,7 @@
     <item name="separator" value="分隔线" />
     <item name="information" value="详细信息" />
     <item name="roll_up" value="卷起窗口" />
+    <item name="change_title" value="更改标题" />
     <item name="aero_glass" value="毛玻璃效果" />
     <item name="borderless" value="无边框" />
     <item name="dimmer" value="突出窗口操作" />
@@ -667,6 +676,9 @@
     <item name="lbl_key3" value="键 3" />
     <item name="lbl_key4" value="键 4" />
     <item name="lbl_mouse_button" value="鼠标按钮" />
+    <item name="change_title_btn_apply" value="确定" />
+    <item name="change_title_btn_cancel" value="取消" />
+    <item name="change_title_form" value="更改标题" />
     <item name="system_menu" value="系统菜单" />
     <item name="system_menu_restore" value="还原" />
     <item name="system_menu_minimize" value="最小化" />
@@ -678,6 +690,7 @@
     <item name="separator" value="分隔線" />
     <item name="information" value="資訊" />
     <item name="roll_up" value="縮合" />
+    <item name="change_title" value="更改標題" />
     <item name="aero_glass" value="Aero 半透明效果" />
     <item name="borderless" value="無邊框" />
     <item name="dimmer" value="窗戶調光器" />
@@ -892,6 +905,9 @@
     <item name="lbl_key3" value="鍵 3" />
     <item name="lbl_key4" value="鍵 4" />
     <item name="lbl_mouse_button" value="滑鼠按鈕" />
+    <item name="change_title_btn_apply" value="確定" />
+    <item name="change_title_btn_cancel" value="取消" />
+    <item name="change_title_form" value="更改標題" />
     <item name="system_menu" value="系統選單" />
     <item name="system_menu_restore" value="還原" />
     <item name="system_menu_minimize" value="最小化" />
@@ -903,6 +919,7 @@
     <item name="separator" value="セパレーター" />
     <item name="information" value="情報" />
     <item name="roll_up" value="ロールアップ" />
+    <item name="change_title" value="タイトルを変更" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="ボーダレス" />
     <item name="dimmer" value="窓の調光器" />
@@ -1116,6 +1133,9 @@
     <item name="lbl_key3" value="キー 3" />
     <item name="lbl_key4" value="キー 4" />
     <item name="lbl_mouse_button" value="マウスボタン" />
+    <item name="change_title_btn_apply" value="OK" />
+    <item name="change_title_btn_cancel" value="キャンセル" />
+    <item name="change_title_form" value="タイトルを変更" />
     <item name="system_menu" value="システムメニュー" />
     <item name="system_menu_restore" value="元のサイズに戻す" />
     <item name="system_menu_minimize" value="最小化" />
@@ -1127,6 +1147,7 @@
     <item name="separator" value="분리 기호" />
     <item name="information" value="정보" />
     <item name="roll_up" value="접기" />
+    <item name="change_title" value="제목 변경" />
     <item name="aero_glass" value="에어로 글래스" />
     <item name="borderless" value="무제한" />
     <item name="dimmer" value="창 조광기" />
@@ -1341,6 +1362,9 @@
     <item name="lbl_key3" value="키 3" />
     <item name="lbl_key4" value="키 4" />
     <item name="lbl_mouse_button" value="마우스 버튼" />
+    <item name="change_title_btn_apply" value="확인" />
+    <item name="change_title_btn_cancel" value="취소" />
+    <item name="change_title_form" value="제목 변경" />
     <item name="system_menu" value="시스템 메뉴" />
     <item name="system_menu_restore" value="이전 크기로" />
     <item name="system_menu_minimize" value="최소화" />
@@ -1352,6 +1376,7 @@
     <item name="separator" value="Разделитель" />
     <item name="information" value="Информация" />
     <item name="roll_up" value="Свернуть вверх" />
+    <item name="change_title" value="Изменить заголовок" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Без рамки" />
     <item name="dimmer" value="Затемнение" />
@@ -1566,6 +1591,9 @@
     <item name="lbl_key3" value="Клавиша 3" />
     <item name="lbl_key4" value="Клавиша 4" />
     <item name="lbl_mouse_button" value="Кнопка мышки" />
+    <item name="change_title_btn_apply" value="Ok" />
+    <item name="change_title_btn_cancel" value="Cancel" />
+    <item name="change_title_form" value="Изменить заголовок" />
     <item name="system_menu" value="Системное меню" />
     <item name="system_menu_restore" value="Восстановить" />
     <item name="system_menu_minimize" value="Свернуть" />
@@ -1577,6 +1605,7 @@
     <item name="separator" value="Сепаратор" />
     <item name="information" value="Информација програма" />
     <item name="roll_up" value="Замотај" />
+    <item name="change_title" value="Промените наслов" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Бордерлесс" />
     <item name="dimmer" value="Затамњивач прозора" />
@@ -1791,6 +1820,9 @@
     <item name="lbl_key3" value="Типак 3" />
     <item name="lbl_key4" value="Типак 4" />
     <item name="lbl_mouse_button" value="Дугме миша" />
+    <item name="change_title_btn_apply" value="У реду" />
+    <item name="change_title_btn_cancel" value="Откажи" />
+    <item name="change_title_form" value="Промените наслов" />
     <item name="system_menu" value="Системски мени" />
     <item name="system_menu_restore" value="Ресторе" />
     <item name="system_menu_minimize" value="Минимизирајте" />
@@ -1802,6 +1834,7 @@
     <item name="separator" value="Separador" />
     <item name="information" value="Informações do executável atual" />
     <item name="roll_up" value="Enrolar" />
+    <item name="change_title" value="Alterar título" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Sem fronteiras" />
     <item name="dimmer" value="Dimmer" />
@@ -2016,6 +2049,9 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Botão do mouse" />
+    <item name="change_title_btn_apply" value="Ok" />
+    <item name="change_title_btn_cancel" value="Cancelar" />
+    <item name="change_title_form" value="Alterar título" />
     <item name="system_menu" value="Menu do sistema" />
     <item name="system_menu_restore" value="Restaurar" />
     <item name="system_menu_minimize" value="Minimizar" />
@@ -2027,6 +2063,7 @@
     <item name="separator" value="Separatore" />
     <item name="information" value="Informazioni" />
     <item name="roll_up" value="Riavvolgi" />
+    <item name="change_title" value="Cambia titolo" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Senza confini" />
     <item name="dimmer" value="Oscuramento" />
@@ -2241,6 +2278,9 @@
     <item name="lbl_key3" value="Tasto 3" />
     <item name="lbl_key4" value="Tasto 4" />
     <item name="lbl_mouse_button" value="Pulsante del mouse" />
+    <item name="change_title_btn_apply" value="OK" />
+    <item name="change_title_btn_cancel" value="Annulla" />
+    <item name="change_title_form" value="Cambia titolo" />
     <item name="system_menu" value="Menù di sistema" />
     <item name="system_menu_restore" value="Ripristina" />
     <item name="system_menu_minimize" value="Riduci a icona" />
@@ -2252,6 +2292,7 @@
     <item name="separator" value="Séparateur" />
     <item name="information" value="Information" />
     <item name="roll_up" value="Enrouler" />
+    <item name="change_title" value="Changer le titre" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Sans frontières" />
     <item name="dimmer" value="Dimmer" />
@@ -2466,6 +2507,9 @@
     <item name="lbl_key3" value="Clé 3" />
     <item name="lbl_key4" value="Clé 4" />
     <item name="lbl_mouse_button" value="Bouton de la souris" />
+    <item name="change_title_btn_apply" value="Ok" />
+    <item name="change_title_btn_cancel" value="Annuler" />
+    <item name="change_title_form" value="Changer le titre" />
     <item name="system_menu" value="Menu système" />
     <item name="system_menu_restore" value="Restaurer" />
     <item name="system_menu_minimize" value="Réduire" />
@@ -2477,6 +2521,7 @@
     <item name="separator" value="Elválasztó" />
     <item name="information" value="Információ" />
     <item name="roll_up" value="Fölfelé" />
+    <item name="change_title" value="Cím módosítása" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Határtalan" />
     <item name="dimmer" value="Dimmer" />
@@ -2691,6 +2736,9 @@
     <item name="lbl_key3" value="3. kulcs" />
     <item name="lbl_key4" value="4. kulcs" />
     <item name="lbl_mouse_button" value="Egérgomb" />
+    <item name="change_title_btn_apply" value="OK" />
+    <item name="change_title_btn_cancel" value="Mégse" />
+    <item name="change_title_form" value="Cím módosítása" />
     <item name="system_menu" value="Rendszer menü" />
     <item name="system_menu_restore" value="Előző méret" />
     <item name="system_menu_minimize" value="Kis méret" />

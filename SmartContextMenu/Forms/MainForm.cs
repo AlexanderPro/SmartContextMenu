@@ -363,6 +363,20 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.ChangeTitle:
+                    {
+                        var manager = new LanguageManager(_settings.LanguageName);
+                        var titleForm = new TitleForm(manager);
+                        titleForm.Title = window.GetWindowText();
+                        var result = titleForm.ShowDialog(window.Win32Window);
+                        
+                        if (result == DialogResult.OK)
+                        {
+                            window.SetWindowText(titleForm.Title);
+                        }
+                    }
+                    break;
+
                 case MenuItemName.AlwaysOnTop:
                     {
                         window.MakeAlwaysOnTop(!window.AlwaysOnTop);

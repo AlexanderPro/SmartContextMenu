@@ -183,6 +183,8 @@ namespace SmartContextMenu
 
         public string GetWindowText() => WindowUtils.GetWindowText(Handle);
 
+        public void SetWindowText(string text) => WindowUtils.SetWindowText(Handle, text);
+
         public string GetClassName() => WindowUtils.GetClassName(Handle);
 
         public string RealGetWindowClass() => WindowUtils.RealGetWindowClass(Handle);

@@ -14,6 +14,8 @@
 
         public const string Hide = "hide";
 
+        public const string ChangeTitle = "change_title";
+
         public const string AlwaysOnTop = "always_on_top";
 
         public const string SendToBottom = "send_to_bottom";
