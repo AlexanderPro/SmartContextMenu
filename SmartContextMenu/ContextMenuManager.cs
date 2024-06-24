@@ -253,7 +253,7 @@ namespace SmartContextMenu
         private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, WindowSizeMenuItem menuItem)
         {
             var size = window.Size;
-            toolStripMenuItem.Checked = menuItem.Width == size.Width && menuItem.Height == size.Height;
+            toolStripMenuItem.Checked = menuItem.Width.HasValue && menuItem.Height.HasValue && menuItem.Width == size.Width && menuItem.Height == size.Height;
         }
 
         private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, MoveToMenuItem menuItem)
