@@ -695,11 +695,17 @@ namespace SmartContextMenu.Forms
             else if (_settings.Sizer == WindowSizerType.WindowWithoutMargins)
             {
                 var margins = window.GetSystemMargins();
-                window.SetSize(menuItem.Width + margins.Left + margins.Right, menuItem.Height + margins.Top + margins.Bottom, menuItem.Left, menuItem.Top);
+                window.SetSize(menuItem.Width == null ? null : (menuItem.Width + margins.Left + margins.Right),
+                               menuItem.Height == null ? null : (menuItem.Height + margins.Top + margins.Bottom),
+                               menuItem.Left,
+                               menuItem.Top);
             }
             else
             {
-                window.SetSize(menuItem.Width + (window.Size.Width - window.ClientSize.Width), menuItem.Height + (window.Size.Height - window.ClientSize.Height), menuItem.Left, menuItem.Top);
+                window.SetSize(menuItem.Width == null ? null : (menuItem.Width + (window.Size.Width - window.ClientSize.Width)),
+                               menuItem.Height == null ? null : (menuItem.Height + (window.Size.Height - window.ClientSize.Height)),
+                               menuItem.Left,
+                               menuItem.Top);
             }
         }
 
