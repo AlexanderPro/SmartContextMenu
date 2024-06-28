@@ -22,6 +22,7 @@ Available menu items:
 * **Hide.** Allows to hide the current window.
 * **Roll Up.** Allows to roll up and down the current window.
 * **Send To Bottom.** Allows to send to bottom the current window.
+* **Change Title.** Allows to change the text in the title bar.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
 * **Click Through.** Allows to click through the current window.
