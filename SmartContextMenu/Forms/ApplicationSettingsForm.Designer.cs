@@ -52,10 +52,6 @@
             this.btnMenuItemDown = new System.Windows.Forms.Button();
             this.btnMenuItemUp = new System.Windows.Forms.Button();
             this.gvHotkeys = new System.Windows.Forms.DataGridView();
-            this.clmnMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnHotkeys = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmnShow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clmnChangeHotkey = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
             this.tabpMenuSize = new System.Windows.Forms.TabPage();
             this.grpbSizer = new System.Windows.Forms.GroupBox();
             this.cmbSizer = new System.Windows.Forms.ComboBox();
@@ -83,6 +79,15 @@
             this.clmStartProgramArguments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStartProgramEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.clmStartProgramDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabpMenuDimmer = new System.Windows.Forms.TabPage();
+            this.grpbDimmerColor = new System.Windows.Forms.GroupBox();
+            this.btnChooseDimmerColor = new System.Windows.Forms.Button();
+            this.txtDimmerColor = new System.Windows.Forms.TextBox();
+            this.grpbDimmerTransparency = new System.Windows.Forms.GroupBox();
+            this.lblTransparencyValue = new System.Windows.Forms.Label();
+            this.lblTransparencyToValue = new System.Windows.Forms.Label();
+            this.lblTransparencyFromValue = new System.Windows.Forms.Label();
+            this.trackbDimmerTransparency = new System.Windows.Forms.TrackBar();
             this.btnApply = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAddProcessName = new System.Windows.Forms.ToolTip(this.components);
@@ -91,15 +96,10 @@
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tabpMenuDimmer = new System.Windows.Forms.TabPage();
-            this.btnChooseDimmerColor = new System.Windows.Forms.Button();
-            this.trackbDimmerTransparency = new System.Windows.Forms.TrackBar();
-            this.grpbDimmerTransparency = new System.Windows.Forms.GroupBox();
-            this.lblTransparencyValue = new System.Windows.Forms.Label();
-            this.lblTransparencyFromValue = new System.Windows.Forms.Label();
-            this.lblTransparencyToValue = new System.Windows.Forms.Label();
-            this.grpbDimmerColor = new System.Windows.Forms.GroupBox();
-            this.txtDimmerColor = new System.Windows.Forms.TextBox();
+            this.clmnMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnHotkeys = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmnShow = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmnChangeHotkey = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -116,9 +116,9 @@
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
             this.tabpMenuDimmer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).BeginInit();
-            this.grpbDimmerTransparency.SuspendLayout();
             this.grpbDimmerColor.SuspendLayout();
+            this.grpbDimmerTransparency.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMain
@@ -361,39 +361,6 @@
             this.gvHotkeys.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellContentClick);
             this.gvHotkeys.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewHotkeysCellDoubleClick);
             // 
-            // clmnMenuItemName
-            // 
-            this.clmnMenuItemName.HeaderText = "clmnMenuItemName";
-            this.clmnMenuItemName.MinimumWidth = 200;
-            this.clmnMenuItemName.Name = "clmnMenuItemName";
-            this.clmnMenuItemName.ReadOnly = true;
-            this.clmnMenuItemName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnMenuItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmnMenuItemName.Width = 200;
-            // 
-            // clmnHotkeys
-            // 
-            this.clmnHotkeys.HeaderText = "clmnHotkeys";
-            this.clmnHotkeys.MinimumWidth = 200;
-            this.clmnHotkeys.Name = "clmnHotkeys";
-            this.clmnHotkeys.Width = 200;
-            // 
-            // clmnShow
-            // 
-            this.clmnShow.HeaderText = "";
-            this.clmnShow.Name = "clmnShow";
-            this.clmnShow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnShow.Width = 30;
-            // 
-            // clmnChangeHotkey
-            // 
-            this.clmnChangeHotkey.HeaderText = "";
-            this.clmnChangeHotkey.Name = "clmnChangeHotkey";
-            this.clmnChangeHotkey.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmnChangeHotkey.Text = "...";
-            this.clmnChangeHotkey.UseColumnTextForButtonValue = true;
-            this.clmnChangeHotkey.Width = 30;
-            // 
             // tabpMenuSize
             // 
             this.tabpMenuSize.Controls.Add(this.grpbSizer);
@@ -486,6 +453,7 @@
             this.clmWindowSizeHotKey,
             this.clmWindowSizeEdit,
             this.clmWindowSizeDelete});
+            this.gvWindowSize.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvWindowSize.GridColor = System.Drawing.SystemColors.Control;
             this.gvWindowSize.Location = new System.Drawing.Point(6, 19);
             this.gvWindowSize.MultiSelect = false;
@@ -503,15 +471,14 @@
             this.clmWindowSizeTitle.HeaderText = "clmWindowSizeTitle";
             this.clmWindowSizeTitle.Name = "clmWindowSizeTitle";
             this.clmWindowSizeTitle.ReadOnly = true;
-            this.clmWindowSizeTitle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWindowSizeTitle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // clmWindowSizeLeft
             // 
             this.clmWindowSizeLeft.HeaderText = "clmWindowSizeLeft";
             this.clmWindowSizeLeft.Name = "clmWindowSizeLeft";
             this.clmWindowSizeLeft.ReadOnly = true;
-            this.clmWindowSizeLeft.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.clmWindowSizeLeft.Width = 50;
             // 
             // clmWindowSizeTop
@@ -519,7 +486,7 @@
             this.clmWindowSizeTop.HeaderText = "clmWindowSizeTop";
             this.clmWindowSizeTop.Name = "clmWindowSizeTop";
             this.clmWindowSizeTop.ReadOnly = true;
-            this.clmWindowSizeTop.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmWindowSizeTop.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.clmWindowSizeTop.Width = 50;
             // 
             // clmWindowSizeWidth
@@ -527,8 +494,7 @@
             this.clmWindowSizeWidth.HeaderText = "clmWindowSizeWidth";
             this.clmWindowSizeWidth.Name = "clmWindowSizeWidth";
             this.clmWindowSizeWidth.ReadOnly = true;
-            this.clmWindowSizeWidth.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeWidth.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWindowSizeWidth.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.clmWindowSizeWidth.Width = 50;
             // 
             // clmWindowSizeHeight
@@ -536,16 +502,17 @@
             this.clmWindowSizeHeight.HeaderText = "clmWindowSizeHeight";
             this.clmWindowSizeHeight.Name = "clmWindowSizeHeight";
             this.clmWindowSizeHeight.ReadOnly = true;
-            this.clmWindowSizeHeight.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmWindowSizeHeight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWindowSizeHeight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.clmWindowSizeHeight.Width = 50;
             // 
             // clmWindowSizeHotKey
             // 
             this.clmWindowSizeHotKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clmWindowSizeHotKey.HeaderText = "";
+            this.clmWindowSizeHotKey.MinimumWidth = 30;
             this.clmWindowSizeHotKey.Name = "clmWindowSizeHotKey";
             this.clmWindowSizeHotKey.ReadOnly = true;
+            this.clmWindowSizeHotKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // clmWindowSizeEdit
             // 
@@ -635,6 +602,7 @@
             this.clmStartProgramArguments,
             this.clmStartProgramEdit,
             this.clmStartProgramDelete});
+            this.gvStartProgram.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gvStartProgram.GridColor = System.Drawing.SystemColors.Control;
             this.gvStartProgram.Location = new System.Drawing.Point(6, 19);
             this.gvStartProgram.MultiSelect = false;
@@ -649,30 +617,35 @@
             // 
             // clmStartProgramTitle
             // 
+            this.clmStartProgramTitle.HeaderText = "clmStartProgramTitle";
+            this.clmStartProgramTitle.MinimumWidth = 6;
             this.clmStartProgramTitle.Name = "clmStartProgramTitle";
             this.clmStartProgramTitle.ReadOnly = true;
-            this.clmStartProgramTitle.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmStartProgramTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmStartProgramTitle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmStartProgramTitle.Width = 160;
             // 
             // clmStartProgramPath
             // 
-            this.clmStartProgramPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmStartProgramPath.HeaderText = "clmStartProgramPath";
+            this.clmStartProgramPath.MinimumWidth = 6;
             this.clmStartProgramPath.Name = "clmStartProgramPath";
             this.clmStartProgramPath.ReadOnly = true;
-            this.clmStartProgramPath.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmStartProgramPath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmStartProgramPath.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmStartProgramPath.Width = 160;
             // 
             // clmStartProgramArguments
             // 
+            this.clmStartProgramArguments.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmStartProgramArguments.HeaderText = "clmStartProgramArguments";
+            this.clmStartProgramArguments.MinimumWidth = 30;
             this.clmStartProgramArguments.Name = "clmStartProgramArguments";
             this.clmStartProgramArguments.ReadOnly = true;
-            this.clmStartProgramArguments.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmStartProgramArguments.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmStartProgramArguments.Width = 72;
+            this.clmStartProgramArguments.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // clmStartProgramEdit
             // 
             this.clmStartProgramEdit.HeaderText = "";
+            this.clmStartProgramEdit.MinimumWidth = 6;
             this.clmStartProgramEdit.Name = "clmStartProgramEdit";
             this.clmStartProgramEdit.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmStartProgramEdit.Text = "...";
@@ -682,11 +655,97 @@
             // clmStartProgramDelete
             // 
             this.clmStartProgramDelete.HeaderText = "";
+            this.clmStartProgramDelete.MinimumWidth = 6;
             this.clmStartProgramDelete.Name = "clmStartProgramDelete";
             this.clmStartProgramDelete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmStartProgramDelete.Text = "-";
             this.clmStartProgramDelete.UseColumnTextForButtonValue = true;
             this.clmStartProgramDelete.Width = 30;
+            // 
+            // tabpMenuDimmer
+            // 
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerColor);
+            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerTransparency);
+            this.tabpMenuDimmer.Location = new System.Drawing.Point(4, 22);
+            this.tabpMenuDimmer.Name = "tabpMenuDimmer";
+            this.tabpMenuDimmer.Size = new System.Drawing.Size(557, 390);
+            this.tabpMenuDimmer.TabIndex = 4;
+            this.tabpMenuDimmer.UseVisualStyleBackColor = true;
+            // 
+            // grpbDimmerColor
+            // 
+            this.grpbDimmerColor.Controls.Add(this.btnChooseDimmerColor);
+            this.grpbDimmerColor.Controls.Add(this.txtDimmerColor);
+            this.grpbDimmerColor.Location = new System.Drawing.Point(8, 16);
+            this.grpbDimmerColor.Name = "grpbDimmerColor";
+            this.grpbDimmerColor.Size = new System.Drawing.Size(541, 68);
+            this.grpbDimmerColor.TabIndex = 0;
+            this.grpbDimmerColor.TabStop = false;
+            // 
+            // btnChooseDimmerColor
+            // 
+            this.btnChooseDimmerColor.Location = new System.Drawing.Point(155, 26);
+            this.btnChooseDimmerColor.Name = "btnChooseDimmerColor";
+            this.btnChooseDimmerColor.Size = new System.Drawing.Size(54, 23);
+            this.btnChooseDimmerColor.TabIndex = 1;
+            this.btnChooseDimmerColor.Text = "...";
+            this.btnChooseDimmerColor.UseVisualStyleBackColor = true;
+            this.btnChooseDimmerColor.Click += new System.EventHandler(this.ButtonChooseDimmerColorClick);
+            // 
+            // txtDimmerColor
+            // 
+            this.txtDimmerColor.Location = new System.Drawing.Point(6, 28);
+            this.txtDimmerColor.Name = "txtDimmerColor";
+            this.txtDimmerColor.Size = new System.Drawing.Size(143, 20);
+            this.txtDimmerColor.TabIndex = 0;
+            // 
+            // grpbDimmerTransparency
+            // 
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyToValue);
+            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyFromValue);
+            this.grpbDimmerTransparency.Controls.Add(this.trackbDimmerTransparency);
+            this.grpbDimmerTransparency.Location = new System.Drawing.Point(8, 90);
+            this.grpbDimmerTransparency.Name = "grpbDimmerTransparency";
+            this.grpbDimmerTransparency.Size = new System.Drawing.Size(541, 100);
+            this.grpbDimmerTransparency.TabIndex = 1;
+            this.grpbDimmerTransparency.TabStop = false;
+            // 
+            // lblTransparencyValue
+            // 
+            this.lblTransparencyValue.AutoSize = true;
+            this.lblTransparencyValue.Location = new System.Drawing.Point(259, 23);
+            this.lblTransparencyValue.Name = "lblTransparencyValue";
+            this.lblTransparencyValue.Size = new System.Drawing.Size(0, 13);
+            this.lblTransparencyValue.TabIndex = 1;
+            // 
+            // lblTransparencyToValue
+            // 
+            this.lblTransparencyToValue.AutoSize = true;
+            this.lblTransparencyToValue.Location = new System.Drawing.Point(502, 23);
+            this.lblTransparencyToValue.Name = "lblTransparencyToValue";
+            this.lblTransparencyToValue.Size = new System.Drawing.Size(33, 13);
+            this.lblTransparencyToValue.TabIndex = 2;
+            this.lblTransparencyToValue.Text = "100%";
+            // 
+            // lblTransparencyFromValue
+            // 
+            this.lblTransparencyFromValue.AutoSize = true;
+            this.lblTransparencyFromValue.Location = new System.Drawing.Point(6, 23);
+            this.lblTransparencyFromValue.Name = "lblTransparencyFromValue";
+            this.lblTransparencyFromValue.Size = new System.Drawing.Size(21, 13);
+            this.lblTransparencyFromValue.TabIndex = 0;
+            this.lblTransparencyFromValue.Text = "0%";
+            // 
+            // trackbDimmerTransparency
+            // 
+            this.trackbDimmerTransparency.Location = new System.Drawing.Point(6, 39);
+            this.trackbDimmerTransparency.Maximum = 100;
+            this.trackbDimmerTransparency.Name = "trackbDimmerTransparency";
+            this.trackbDimmerTransparency.Size = new System.Drawing.Size(529, 45);
+            this.trackbDimmerTransparency.TabIndex = 3;
+            this.trackbDimmerTransparency.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackbDimmerTransparency.ValueChanged += new System.EventHandler(this.TrackbDimmerTransparencyValueChanged);
             // 
             // btnApply
             // 
@@ -751,90 +810,41 @@
             this.dataGridViewButtonColumn4.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn4.Width = 30;
             // 
-            // tabpMenuDimmer
+            // clmnMenuItemName
             // 
-            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerColor);
-            this.tabpMenuDimmer.Controls.Add(this.grpbDimmerTransparency);
-            this.tabpMenuDimmer.Location = new System.Drawing.Point(4, 22);
-            this.tabpMenuDimmer.Name = "tabpMenuDimmer";
-            this.tabpMenuDimmer.Size = new System.Drawing.Size(557, 390);
-            this.tabpMenuDimmer.TabIndex = 4;
-            this.tabpMenuDimmer.UseVisualStyleBackColor = true;
+            this.clmnMenuItemName.HeaderText = "clmnMenuItemName";
+            this.clmnMenuItemName.MinimumWidth = 6;
+            this.clmnMenuItemName.Name = "clmnMenuItemName";
+            this.clmnMenuItemName.ReadOnly = true;
+            this.clmnMenuItemName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmnMenuItemName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmnMenuItemName.Width = 260;
             // 
-            // btnChooseDimmerColor
+            // clmnHotkeys
             // 
-            this.btnChooseDimmerColor.Location = new System.Drawing.Point(155, 26);
-            this.btnChooseDimmerColor.Name = "btnChooseDimmerColor";
-            this.btnChooseDimmerColor.Size = new System.Drawing.Size(54, 23);
-            this.btnChooseDimmerColor.TabIndex = 1;
-            this.btnChooseDimmerColor.Text = "...";
-            this.btnChooseDimmerColor.UseVisualStyleBackColor = true;
-            this.btnChooseDimmerColor.Click += new System.EventHandler(this.ButtonChooseDimmerColorClick);
+            this.clmnHotkeys.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clmnHotkeys.HeaderText = "clmnHotkeys";
+            this.clmnHotkeys.MinimumWidth = 30;
+            this.clmnHotkeys.Name = "clmnHotkeys";
+            this.clmnHotkeys.ReadOnly = true;
+            this.clmnHotkeys.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmnHotkeys.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // trackbDimmerTransparency
+            // clmnShow
             // 
-            this.trackbDimmerTransparency.Location = new System.Drawing.Point(6, 39);
-            this.trackbDimmerTransparency.Maximum = 100;
-            this.trackbDimmerTransparency.Name = "trackbDimmerTransparency";
-            this.trackbDimmerTransparency.Size = new System.Drawing.Size(529, 45);
-            this.trackbDimmerTransparency.TabIndex = 3;
-            this.trackbDimmerTransparency.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackbDimmerTransparency.ValueChanged += new System.EventHandler(this.TrackbDimmerTransparencyValueChanged);
+            this.clmnShow.HeaderText = "";
+            this.clmnShow.Name = "clmnShow";
+            this.clmnShow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmnShow.Width = 30;
             // 
-            // grpbDimmerTransparency
+            // clmnChangeHotkey
             // 
-            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyValue);
-            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyToValue);
-            this.grpbDimmerTransparency.Controls.Add(this.lblTransparencyFromValue);
-            this.grpbDimmerTransparency.Controls.Add(this.trackbDimmerTransparency);
-            this.grpbDimmerTransparency.Location = new System.Drawing.Point(8, 90);
-            this.grpbDimmerTransparency.Name = "grpbDimmerTransparency";
-            this.grpbDimmerTransparency.Size = new System.Drawing.Size(541, 100);
-            this.grpbDimmerTransparency.TabIndex = 1;
-            this.grpbDimmerTransparency.TabStop = false;
-            // 
-            // lblTransparencyValue
-            // 
-            this.lblTransparencyValue.AutoSize = true;
-            this.lblTransparencyValue.Location = new System.Drawing.Point(259, 23);
-            this.lblTransparencyValue.Name = "lblTransparencyValue";
-            this.lblTransparencyValue.Size = new System.Drawing.Size(0, 13);
-            this.lblTransparencyValue.TabIndex = 1;
-            // 
-            // lblTransparencyFromValue
-            // 
-            this.lblTransparencyFromValue.AutoSize = true;
-            this.lblTransparencyFromValue.Location = new System.Drawing.Point(6, 23);
-            this.lblTransparencyFromValue.Name = "lblTransparencyFromValue";
-            this.lblTransparencyFromValue.Size = new System.Drawing.Size(21, 13);
-            this.lblTransparencyFromValue.TabIndex = 0;
-            this.lblTransparencyFromValue.Text = "0%";
-            // 
-            // lblTransparencyToValue
-            // 
-            this.lblTransparencyToValue.AutoSize = true;
-            this.lblTransparencyToValue.Location = new System.Drawing.Point(502, 23);
-            this.lblTransparencyToValue.Name = "lblTransparencyToValue";
-            this.lblTransparencyToValue.Size = new System.Drawing.Size(33, 13);
-            this.lblTransparencyToValue.TabIndex = 2;
-            this.lblTransparencyToValue.Text = "100%";
-            // 
-            // grpbDimmerColor
-            // 
-            this.grpbDimmerColor.Controls.Add(this.btnChooseDimmerColor);
-            this.grpbDimmerColor.Controls.Add(this.txtDimmerColor);
-            this.grpbDimmerColor.Location = new System.Drawing.Point(8, 16);
-            this.grpbDimmerColor.Name = "grpbDimmerColor";
-            this.grpbDimmerColor.Size = new System.Drawing.Size(541, 68);
-            this.grpbDimmerColor.TabIndex = 0;
-            this.grpbDimmerColor.TabStop = false;
-            // 
-            // txtDimmerColor
-            // 
-            this.txtDimmerColor.Location = new System.Drawing.Point(6, 28);
-            this.txtDimmerColor.Name = "txtDimmerColor";
-            this.txtDimmerColor.Size = new System.Drawing.Size(143, 20);
-            this.txtDimmerColor.TabIndex = 0;
+            this.clmnChangeHotkey.HeaderText = "";
+            this.clmnChangeHotkey.Name = "clmnChangeHotkey";
+            this.clmnChangeHotkey.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmnChangeHotkey.Text = "...";
+            this.clmnChangeHotkey.UseColumnTextForButtonValue = true;
+            this.clmnChangeHotkey.Width = 30;
             // 
             // ApplicationSettingsForm
             // 
@@ -870,11 +880,11 @@
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
             this.tabpMenuDimmer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).EndInit();
-            this.grpbDimmerTransparency.ResumeLayout(false);
-            this.grpbDimmerTransparency.PerformLayout();
             this.grpbDimmerColor.ResumeLayout(false);
             this.grpbDimmerColor.PerformLayout();
+            this.grpbDimmerTransparency.ResumeLayout(false);
+            this.grpbDimmerTransparency.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -890,21 +900,12 @@
         private System.Windows.Forms.GroupBox grpbStartProgram;
         private System.Windows.Forms.Button btnAddStartProgram;
         private System.Windows.Forms.DataGridView gvStartProgram;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramArguments;
-        private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramDelete;
         private System.Windows.Forms.Button btnStartProgramDown;
         private System.Windows.Forms.Button btnStartProgramUp;
         private System.Windows.Forms.GroupBox grpbMouseHotkeys;
         private System.Windows.Forms.TabPage tabpMenu;
         private System.Windows.Forms.GroupBox grpbHotkeys;
         private System.Windows.Forms.DataGridView gvHotkeys;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnMenuItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHotkeys;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmnShow;
-        private SmartContextMenu.Controls.DataGridViewDisableButtonColumn clmnChangeHotkey;
         private System.Windows.Forms.TabPage tabpMenuSize;
         private System.Windows.Forms.GroupBox grpbWindowSize;
         private System.Windows.Forms.Button btnWindowSizeDown;
@@ -914,14 +915,6 @@
         private System.Windows.Forms.GroupBox grpbLanguage;
         private System.Windows.Forms.GroupBox grpbSizer;
         private System.Windows.Forms.ComboBox cmbSizer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeLeft;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTop;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeWidth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHotKey;
-        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
         private System.Windows.Forms.Button btnMenuItemDown;
         private System.Windows.Forms.Button btnMenuItemUp;
         private System.Windows.Forms.GroupBox grpbDisplay;
@@ -951,5 +944,22 @@
         private System.Windows.Forms.Label lblTransparencyFromValue;
         private System.Windows.Forms.Label lblTransparencyValue;
         private System.Windows.Forms.TrackBar trackbDimmerTransparency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeLeft;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeTop;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeWidth;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmWindowSizeHotKey;
+        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn clmWindowSizeDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramPath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmStartProgramArguments;
+        private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn clmStartProgramDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnMenuItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmnHotkeys;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clmnShow;
+        private Controls.DataGridViewDisableButtonColumn clmnChangeHotkey;
     }
 }
