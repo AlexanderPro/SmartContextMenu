@@ -1150,9 +1150,9 @@
     <item name="change_title" value="제목 변경" />
     <item name="aero_glass" value="에어로 글래스" />
     <item name="borderless" value="무제한" />
-    <item name="dimmer" value="창 조광기" />
-    <item name="hide" value="숨다" />
-    <item name="always_on_top" value="항상 위에 표시" />
+    <item name="dimmer" value="디머" />
+    <item name="hide" value="숨기기" />
+    <item name="always_on_top" value="항상 맨 위에 표시" />
     <item name="send_to_bottom" value="맨 아래로 보내기" />
     <item name="save_screenshot" value="스크린샷 저장" />
     <item name="open_file_in_explorer" value="탐색기에서 파일 열기" />
@@ -1160,22 +1160,22 @@
     <item name="copy_screenshot" value="스크린샷 복사" />
     <item name="copy_window_text" value="창 텍스트 복사" />
     <item name="copy_window_title" value="창 제목 복사" />
-    <item name="copy_full_process_path" value="전체 프로세스 경로 복사" />
+    <item name="copy_full_process_path" value="프로세스 전체 경로 복사" />
     <item name="clear_clipboard" value="지우기" />
     <item name="drag_by_mouse" value="마우스로 드래그" />
     <item name="hide_for_alt_tab" value="Alt+Tab으로 숨기기" />
     <item name="click_through" value="창을 통해 클릭" />
     <item name="size" value="크기 변경" />
     <item name="size_default" value="기본" />
-    <item name="size_custom" value="사용자 정의..." />
+    <item name="size_custom" value="사용자 지정..." />
     <item name="move_to" value="이동" />
     <item name="monitor" value="모니터링 " />
     <item name="alignment" value="정렬" />
     <item name="align_top_left" value="상단 왼쪽" />
     <item name="align_top_center" value="상단 가운데" />
-    <item name="align_top_right" value="상단 우측" />
+    <item name="align_top_right" value="상단 오른쪽" />
     <item name="align_middle_left" value="중간 왼쪽" />
-    <item name="align_middle_center" value="중간 가운데" />
+    <item name="align_middle_center" value="정중앙" />
     <item name="align_middle_right" value="중간 오른쪽" />
     <item name="align_bottom_left" value="하단 왼쪽" />
     <item name="align_bottom_center" value="하단 가운데" />
@@ -1183,12 +1183,12 @@
     <item name="align_center_horizontally" value="가로 가운데" />
     <item name="align_center_vertically" value="세로 가운데" />
     <item name="align_default" value="기본" />
-    <item name="align_custom" value="사용자 정의..." />
-    <item name="transparency" value="투명도" />
+    <item name="align_custom" value="사용자 지정..." />
+    <item name="transparency" value="창 투명도" />
     <item name="trans_opaque" value=" (불투명)" />
     <item name="trans_invisible" value=" (투명)" />
     <item name="trans_default" value="기본" />
-    <item name="trans_custom" value="사용자 정의..." />
+    <item name="trans_custom" value="사용자 지정..." />
     <item name="priority" value="우선 순위" />
     <item name="priority_real_time" value="실시간: 24" />
     <item name="priority_high" value="높음: 13" />
@@ -1199,15 +1199,15 @@
     <item name="system_tray" value="시스템 트레이" />
     <item name="minimize_to_systemtray" value="트레이로 최소화" />
     <item name="minimize_always_to_systemtray" value="항상 트레이로 최소화" />
-    <item name="suspend_to_systemtray" value="일시 중단 및 트레이 최소화" />
+    <item name="suspend_to_systemtray" value="일시 중단하고 트레이로 최소화" />
     <item name="other_windows" value="다른 창" />
     <item name="minimize_other_windows" value="다른 창 최소화" />
     <item name="close_other_windows" value="다른 창 닫기" />
     <item name="start_program" value="프로그램 실행" />
     <item name="buttons" value="버튼" />
-    <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 비활성화" />
-    <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 비활성화" />
-    <item name="disable_close_button" value="&quot;닫기&quot; 버튼 비활성화" />
+    <item name="disable_minimize_button" value="&quot;최소화&quot; 버튼 사용 안 함" />
+    <item name="disable_maximize_button" value="&quot;최대화&quot; 버튼 사용 안 함" />
+    <item name="disable_close_button" value="&quot;닫기&quot; 버튼 사용 안 함" />
     <item name="grp_window" value="창" />
     <item name="grp_process" value="프로세스" />
     <item name="lbl_get_window_text" value="GetWindowText:" />
@@ -1279,7 +1279,7 @@
     <item name="grpb_start_program" value="프로그램 실행 메뉴 항목" />
     <item name="clm_start_program_title" value="제목" />
     <item name="clm_start_program_path" value="파일 이름" />
-    <item name="clm_start_program_arguments" value="정렬" />
+    <item name="clm_start_program_arguments" value="인수" />
     <item name="clm_start_program_edit" value="편집" />
     <item name="clm_start_program_delete" value="삭제" />
     <item name="btn_start_program_up" value="프로그램 위로 이동" />
@@ -1287,7 +1287,7 @@
     <item name="btn_add_start_program" value="프로그램 실행 추가" />
     <item name="settings_btn_apply" value="확인" />
     <item name="settings_btn_cancel" value="취소" />
-    <item name="grpb_window_size" value="Window 크기 메뉴 항목" />
+    <item name="grpb_window_size" value="창 크기 메뉴 항목" />
     <item name="window_size_form" value="창 크기" />
     <item name="window_size_btn_apply" value="확인" />
     <item name="window_size_btn_cancel" value="취소" />
@@ -1319,7 +1319,7 @@
     <item name="start_program_form" value="프로그램 실행" />
     <item name="start_program_lbl_title" value="제목:" />
     <item name="start_program_lbl_file_name" value="파일 이름:" />
-    <item name="start_program_lbl_arguments" value="정렬:" />
+    <item name="start_program_lbl_arguments" value="인수:" />
     <item name="start_program_lbl_runas" value="실행:" />
     <item name="start_program_lbl_begin" value="시작:" />
     <item name="start_program_lbl_end" value="종료:" />
@@ -1345,7 +1345,7 @@
     <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
     <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
     <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
-    <item name="tab_settings_menu_dimmer" value="메뉴 (창 조광기)" />
+    <item name="tab_settings_menu_dimmer" value="메뉴 (디머)" />
     <item name="grpb_dimmer_color" value="색상" />
     <item name="grpb_dimmer_transparency" value="투명도" />
     <item name="grpb_sizer" value="창 크기를 설정하는 방법" />
