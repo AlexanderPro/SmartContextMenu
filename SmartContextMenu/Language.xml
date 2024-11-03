@@ -179,6 +179,9 @@
     <item name="start_program_lbl_runas" value="RunAs:" />
     <item name="start_program_lbl_begin" value="Begin:" />
     <item name="start_program_lbl_end" value="End:" />
+    <item name="start_program_lbl_key1" value="Key 1:" />
+    <item name="start_program_lbl_key2" value="Key 2:" />
+    <item name="start_program_lbl_key3" value="Key 3:" />
     <item name="start_program_show_window" value="Show Window" />
     <item name="start_program_use_window_working_directory" value="Use a window working directory" />
     <item name="start_program_parameter" value="Parameter" />
@@ -408,6 +411,9 @@
     <item name="start_program_lbl_runas" value="Rennen wie:" />
     <item name="start_program_lbl_begin" value="Start:" />
     <item name="start_program_lbl_end" value="Ende:" />
+    <item name="start_program_lbl_key1" value="Taste 1:" />
+    <item name="start_program_lbl_key2" value="Taste 2:" />
+    <item name="start_program_lbl_key3" value="Taste 3:" />
     <item name="start_program_show_window" value="Schaufenster" />
     <item name="start_program_use_window_working_directory" value="Verwenden Sie ein Windows-Arbeitsverzeichnis" />
     <item name="start_program_parameter" value="Parameter" />
@@ -637,6 +643,9 @@
     <item name="start_program_lbl_runas" value="运行方式:" />
     <item name="start_program_lbl_begin" value="开始:" />
     <item name="start_program_lbl_end" value="结尾:" />
+    <item name="start_program_lbl_key1" value="键 1:" />
+    <item name="start_program_lbl_key2" value="键 2:" />
+    <item name="start_program_lbl_key3" value="键 3:" />    
     <item name="start_program_show_window" value="显示窗口" />
     <item name="start_program_use_window_working_directory" value="使用窗口工作目录" />
     <item name="start_program_parameter" value="范围" />
@@ -866,6 +875,9 @@
     <item name="start_program_lbl_runas" value="執行方式:" />
     <item name="start_program_lbl_begin" value="開始:" />
     <item name="start_program_lbl_end" value="結尾:" />
+    <item name="start_program_lbl_key1" value="鍵 1:" />
+    <item name="start_program_lbl_key2" value="鍵 2:" />
+    <item name="start_program_lbl_key3" value="鍵 3:" />
     <item name="start_program_show_window" value="顯示視窗" />
     <item name="start_program_use_window_working_directory" value="使用視窗工作目錄" />
     <item name="start_program_parameter" value="參數" />
@@ -1094,6 +1106,9 @@
     <item name="start_program_lbl_runas" value="として実行:" />
     <item name="start_program_lbl_begin" value="始める:" />
     <item name="start_program_lbl_end" value="終わり:" />
+    <item name="start_program_lbl_key1" value="キー 1:" />
+    <item name="start_program_lbl_key2" value="キー 2:" />
+    <item name="start_program_lbl_key3" value="キー 3:" />
     <item name="start_program_show_window" value="ウィンドウを表示" />
     <item name="start_program_use_window_working_directory" value="ウィンドウの作業ディレクトリを使用する" />
     <item name="start_program_parameter" value="パラメータ" />
@@ -1323,6 +1338,9 @@
     <item name="start_program_lbl_runas" value="실행:" />
     <item name="start_program_lbl_begin" value="시작:" />
     <item name="start_program_lbl_end" value="종료:" />
+    <item name="start_program_lbl_key1" value="키 1:" />
+    <item name="start_program_lbl_key2" value="키 2:" />
+    <item name="start_program_lbl_key3" value="키 3:" />
     <item name="start_program_show_window" value="창 표시" />
     <item name="start_program_use_window_working_directory" value="창 작업 디렉터리 사용" />
     <item name="start_program_parameter" value="매개 변수" />
@@ -1552,6 +1570,9 @@
     <item name="start_program_lbl_runas" value="Запуск под пользователем:" />
     <item name="start_program_lbl_begin" value="Начало:" />
     <item name="start_program_lbl_end" value="Конец:" />
+    <item name="start_program_lbl_key1" value="Клавиша 1:" />
+    <item name="start_program_lbl_key2" value="Клавиша 2:" />
+    <item name="start_program_lbl_key3" value="Клавиша 3:" />
     <item name="start_program_show_window" value="Отображать окно" />
     <item name="start_program_use_window_working_directory" value="Использовать рабочий каталог окна" />
     <item name="start_program_parameter" value="Параметр" />
@@ -1781,6 +1802,9 @@
     <item name="start_program_lbl_runas" value="Трчати као:" />
     <item name="start_program_lbl_begin" value="Започети:" />
     <item name="start_program_lbl_end" value="Завршити:" />
+    <item name="start_program_lbl_key1" value="Типак 1:" />
+    <item name="start_program_lbl_key2" value="Типак 2:" />
+    <item name="start_program_lbl_key3" value="Типак 3:" />
     <item name="start_program_show_window" value="Изложбени прозор" />
     <item name="start_program_use_window_working_directory" value="Користите радни директоријум прозора" />
     <item name="start_program_parameter" value="Параметар" />
@@ -2010,6 +2034,9 @@
     <item name="start_program_lbl_runas" value="Correr como:" />
     <item name="start_program_lbl_begin" value="Começar:" />
     <item name="start_program_lbl_end" value="Fim:" />
+    <item name="start_program_lbl_key1" value="Key 1:" />
+    <item name="start_program_lbl_key2" value="Key 2:" />
+    <item name="start_program_lbl_key3" value="Key 3:" />
     <item name="start_program_show_window" value="Mostrar janela" />
     <item name="start_program_use_window_working_directory" value="Use um diretório de trabalho da janela" />
     <item name="start_program_parameter" value="Parâmetro" />
@@ -2239,6 +2266,9 @@
     <item name="start_program_lbl_runas" value="Apri come:" />
     <item name="start_program_lbl_begin" value="Inizio:" />
     <item name="start_program_lbl_end" value="Fine:" />
+    <item name="start_program_lbl_key1" value="Tasto 1:" />
+    <item name="start_program_lbl_key2" value="Tasto 2:" />
+    <item name="start_program_lbl_key3" value="Tasto 3:" />
     <item name="start_program_show_window" value="Mostra finestra" />
     <item name="start_program_use_window_working_directory" value="Usa cartella della finestra operativa" />
     <item name="start_program_parameter" value="Parametero" />
@@ -2468,6 +2498,9 @@
     <item name="start_program_lbl_runas" value="Ouvrir comme:" />
     <item name="start_program_lbl_begin" value="Commencer:" />
     <item name="start_program_lbl_end" value="Terminer:" />
+    <item name="start_program_lbl_key1" value="Clé 1:" />
+    <item name="start_program_lbl_key2" value="Clé 2:" />
+    <item name="start_program_lbl_key3" value="Clé 3:" />
     <item name="start_program_show_window" value="Afficher la fenêtre" />
     <item name="start_program_use_window_working_directory" value="Utiliser le classeur de fenêtre" />
     <item name="start_program_parameter" value="Paramètre" />
@@ -2697,6 +2730,9 @@
     <item name="start_program_lbl_runas" value="Futtatás mint:" />
     <item name="start_program_lbl_begin" value="Kezdés:" />
     <item name="start_program_lbl_end" value="Vége:" />
+    <item name="start_program_lbl_key1" value="1. kulcs:" />
+    <item name="start_program_lbl_key2" value="2. kulcs:" />
+    <item name="start_program_lbl_key3" value="3. kulcs:" />
     <item name="start_program_show_window" value="Az ablak megjelenítése" />
     <item name="start_program_use_window_working_directory" value="Az ablak munkakönyvtárának használata" />
     <item name="start_program_parameter" value="Paraméter" />

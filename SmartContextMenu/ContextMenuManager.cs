@@ -72,6 +72,7 @@ namespace SmartContextMenu
                         foreach (var startProgramItem in settings.MenuItems.StartProgramItems)
                         {
                             var menuItem = new ToolStripMenuItem(startProgramItem.Title);
+                            menuItem.ShortcutKeyDisplayString = startProgramItem.ToString();
                             menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
                             menuItem.Click += onClick;
                             subMenu.DropDownItems.Add(menuItem);

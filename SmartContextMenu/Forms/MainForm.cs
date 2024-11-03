@@ -65,6 +65,7 @@ namespace SmartContextMenu.Forms
             _keyboardHook = new KeyboardHook(_settings.MenuItems, mainModule.ModuleName);
             _keyboardHook.MenuItemHooked += MenuItemHooked;
             _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
+            _keyboardHook.StartProgramMenuItemHooked += StartProgramMenuItemHooked;
             _keyboardHook.EscKeyHooked += EscKeyHooked;
             _keyboardHook.Start();
 
@@ -144,6 +145,17 @@ namespace SmartContextMenu.Forms
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.WindowSizeMenuItem);
+            e.Succeeded = true;
+        });
+
+        private void StartProgramMenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
+        {
+            var handle = User32.GetForegroundWindow();
+            var parentHandle = WindowUtils.GetParentWindow(handle);
+            ContextMenuManager.Release(_menu, MenuItemClick);
+            var manager = new LanguageManager(_settings.LanguageName);
+            var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+            MenuItemClick(window, e.StartProgramMenuItem);
             e.Succeeded = true;
         });
 

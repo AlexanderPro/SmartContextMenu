@@ -18,6 +18,7 @@ namespace SmartContextMenu.Hooks
 
         public event EventHandler<KeyboardEventArgs> MenuItemHooked;
         public event EventHandler<KeyboardEventArgs> WindowSizeMenuItemHooked;
+        public event EventHandler<KeyboardEventArgs> StartProgramMenuItemHooked;
         public event EventHandler<KeyboardEventArgs> EscKeyHooked;
 
         public MenuItems MenuItems { get; set; }
@@ -134,6 +135,43 @@ namespace SmartContextMenu.Hooks
                         if (key1 && key2)
                         {
                             var handler = WindowSizeMenuItemHooked;
+                            if (handler != null)
+                            {
+                                var eventArgs = new KeyboardEventArgs(item);
+                                handler.Invoke(this, eventArgs);
+                                if (eventArgs.Succeeded)
+                                {
+                                    return 1;
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (var item in MenuItems.StartProgramItems)
+                    {
+                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        {
+                            continue;
+                        }
+
+                        var key1 = true;
+                        var key2 = true;
+
+                        if (item.Key1 != VirtualKeyModifier.None)
+                        {
+                            var key1State = GetAsyncKeyState((int)item.Key1) & 0x8000;
+                            key1 = Convert.ToBoolean(key1State);
+                        }
+
+                        if (item.Key2 != VirtualKeyModifier.None)
+                        {
+                            var key2State = GetAsyncKeyState((int)item.Key2) & 0x8000;
+                            key2 = Convert.ToBoolean(key2State);
+                        }
+
+                        if (key1 && key2)
+                        {
+                            var handler = StartProgramMenuItemHooked;
                             if (handler != null)
                             {
                                 var eventArgs = new KeyboardEventArgs(item);

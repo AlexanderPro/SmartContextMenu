@@ -148,6 +148,9 @@ namespace SmartContextMenu.Settings
                     string.Compare(MenuItems.StartProgramItems[i].Arguments, other.MenuItems.StartProgramItems[i].Arguments, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     string.Compare(MenuItems.StartProgramItems[i].BeginParameter, other.MenuItems.StartProgramItems[i].BeginParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
                     string.Compare(MenuItems.StartProgramItems[i].EndParameter, other.MenuItems.StartProgramItems[i].EndParameter, StringComparison.CurrentCultureIgnoreCase) != 0 ||
+                    MenuItems.StartProgramItems[i].Key1 != other.MenuItems.StartProgramItems[i].Key1 ||
+                    MenuItems.StartProgramItems[i].Key2 != other.MenuItems.StartProgramItems[i].Key2 ||
+                    MenuItems.StartProgramItems[i].Key3 != other.MenuItems.StartProgramItems[i].Key3 ||
                     MenuItems.StartProgramItems[i].ShowWindow != other.MenuItems.StartProgramItems[i].ShowWindow ||
                     MenuItems.StartProgramItems[i].UseWindowWorkingDirectory != other.MenuItems.StartProgramItems[i].UseWindowWorkingDirectory)
                 {
@@ -230,7 +233,7 @@ namespace SmartContextMenu.Settings
 
             foreach (var item in MenuItems.StartProgramItems)
             {
-                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode() ^ item.UseWindowWorkingDirectory.GetHashCode() ^ item.BeginParameter.GetHashCode() ^ item.EndParameter.GetHashCode();
+                hashCode ^= item.Title.GetHashCode() ^ item.FileName.GetHashCode() ^ item.Arguments.GetHashCode() ^ item.UseWindowWorkingDirectory.GetHashCode() ^ item.BeginParameter.GetHashCode() ^ item.EndParameter.GetHashCode() ^ item.Key1.GetHashCode() ^ item.Key2.GetHashCode() ^ item.Key3.GetHashCode();
             }
 
             foreach (var item in MenuItems.Items)

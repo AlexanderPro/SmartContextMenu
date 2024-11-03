@@ -1,7 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using SmartContextMenu.Settings;
+using SmartContextMenu.Hooks;
+using SmartContextMenu.Extensions;
+
 
 namespace SmartContextMenu.Forms
 {
@@ -26,9 +30,13 @@ namespace SmartContextMenu.Forms
             lblArguments.Text = _languageManager.GetString("start_program_lbl_arguments");
             lblBegin.Text = _languageManager.GetString("start_program_lbl_begin");
             lblEnd.Text = _languageManager.GetString("start_program_lbl_end");
+            lblKey1.Text = _languageManager.GetString("start_program_lbl_key1");
+            lblKey2.Text = _languageManager.GetString("start_program_lbl_key2");
+            lblKey3.Text = _languageManager.GetString("start_program_lbl_key3");
             chkShowWindow.Text = _languageManager.GetString("start_program_show_window");
             chkUseWindowWorkingDirectory.Text = _languageManager.GetString("start_program_use_window_working_directory");
             Text = _languageManager.GetString("start_program_form");
+
             if (menuItem != null)
             {
                 txtTitle.Text = menuItem.Title;
@@ -40,6 +48,21 @@ namespace SmartContextMenu.Forms
                 chkShowWindow.Checked = menuItem.ShowWindow;
                 chkUseWindowWorkingDirectory.Checked = menuItem.UseWindowWorkingDirectory;
             }
+
+            cmbKey1.ValueMember = "Id";
+            cmbKey1.DisplayMember = "Text";
+            cmbKey1.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey1.SelectedValue = menuItem.Key1;
+
+            cmbKey2.ValueMember = "Id";
+            cmbKey2.DisplayMember = "Text";
+            cmbKey2.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey2.SelectedValue = menuItem.Key2;
+
+            cmbKey3.ValueMember = "Id";
+            cmbKey3.DisplayMember = "Text";
+            cmbKey3.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey3.SelectedValue = menuItem.Key3;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -90,6 +113,9 @@ namespace SmartContextMenu.Forms
                 EndParameter = txtEnd.Text,
                 ShowWindow = chkShowWindow.Checked,
                 UseWindowWorkingDirectory = chkUseWindowWorkingDirectory.Checked,
+                Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue,
+                Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue,
+                Key3 = (VirtualKey)cmbKey3.SelectedValue
             };
             DialogResult = DialogResult.OK;
             Close();

@@ -9,6 +9,8 @@ namespace SmartContextMenu.Hooks
 
         public WindowSizeMenuItem WindowSizeMenuItem { get; }
 
+        public StartProgramMenuItem StartProgramMenuItem { get; }
+
         public bool Succeeded { get; set; }
 
         public KeyboardEventArgs()
@@ -23,6 +25,11 @@ namespace SmartContextMenu.Hooks
         public KeyboardEventArgs(WindowSizeMenuItem menuItem)
         {
             WindowSizeMenuItem = menuItem;
+        }
+
+        public KeyboardEventArgs(StartProgramMenuItem menuItem)
+        {
+            StartProgramMenuItem = menuItem;
         }
     }
 }
