@@ -1,8 +1,12 @@
-![SmartContextMenuLogo128](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/e1aaac4b-483a-41ec-9dac-b881cd14ecfa) SmartContextMenu
-=============
+<div align="center">
 
-- [English](/)
-- Русский
+<img src="https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/e1aaac4b-483a-41ec-9dac-b881cd14ecfa" alt="logo" width="128">
+
+# SmartContextMenu
+
+</div>
+
+🌏: [English](/) [**Русский**](README_RU.md)
 
 ---
 
