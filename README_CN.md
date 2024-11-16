@@ -47,7 +47,6 @@ SmartContextMenu为您的操作系统的所有窗口添加了一个上下文菜�
 ![alt tag](./SmartContextMenu/Images/SmartContextMenuCn3.png)
 
 ## 命令行接口
---------------------
 
 ```bash
    --help             The help
