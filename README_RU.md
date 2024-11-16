@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [**Русский**](README_RU.md)
+🌏: [English](/) [**Русский**](/README_RU.md) [中文版](/README_CN.md)
 
 ---
 
@@ -45,9 +45,9 @@ SmartContextMenu добавляет контекстное меню для вс�
 Скриншоты
 ------------------
 
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/b1fa5cf4-fcfb-46e0-adcf-477405704c72)
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/e0cf1d93-e85a-47f9-ba6a-35a6cc09a336)
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/0113aff7-b518-4418-90dc-6afbab8f529d)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuRu1.png)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuRu2.png)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuRu3.png)
 
 Интерфейс командной строки
 --------------------

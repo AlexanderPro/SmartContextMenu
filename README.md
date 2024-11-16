@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [**English**](/) [Русский](README_RU.md)
+🌏: [**English**](/) [Русский](/README_RU.md) [中文版](/README_CN.md)
 
 ---
 
@@ -46,9 +46,9 @@ Available menu items:
 Screenshots
 ------------------
 
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/af804d01-8421-453b-b954-0568d88f7681)
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/e663cb55-7c1e-482c-a787-ea58a86c631a)
-![alt tag](https://github.com/AlexanderPro/SmartContextMenu/assets/8102586/62b73104-cef6-478e-b8fa-e3c77380694b)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuEn1.png)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuEn2.png)
+![alt tag](./SmartContextMenu/Images/SmartContextMenuEn3.png)
 
 Command Line Interface
 --------------------
