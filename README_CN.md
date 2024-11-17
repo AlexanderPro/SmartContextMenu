@@ -42,9 +42,9 @@ SmartContextMenu为您的操作系统的所有窗口添加了一个上下文菜�
 截图
 ------------------
 
-![alt tag](./SmartContextMenu/Images/SmartContextMenuCn1.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuCn2.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuCn3.png)
+![Resize](./SmartContextMenu/Images/SmartContextMenuCn1.png)
+![Alignment](./SmartContextMenu/Images/SmartContextMenuCn2.png)
+![System Menu](./SmartContextMenu/Images/SmartContextMenuCn3.png)
 
 ## 命令行接口
 

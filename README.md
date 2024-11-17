@@ -46,9 +46,9 @@ Available menu items:
 Screenshots
 ------------------
 
-![alt tag](./SmartContextMenu/Images/SmartContextMenuEn1.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuEn2.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuEn3.png)
+![Resize](./SmartContextMenu/Images/SmartContextMenuEn1.png)
+![Alignment](./SmartContextMenu/Images/SmartContextMenuEn2.png)
+![System Menu](./SmartContextMenu/Images/SmartContextMenuEn3.png)
 
 Command Line Interface
 --------------------

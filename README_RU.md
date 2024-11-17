@@ -45,9 +45,9 @@ SmartContextMenu добавляет контекстное меню для вс�
 Скриншоты
 ------------------
 
-![alt tag](./SmartContextMenu/Images/SmartContextMenuRu1.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuRu2.png)
-![alt tag](./SmartContextMenu/Images/SmartContextMenuRu3.png)
+![Resize](./SmartContextMenu/Images/SmartContextMenuRu1.png)
+![Alignment](./SmartContextMenu/Images/SmartContextMenuRu2.png)
+![System Menu](./SmartContextMenu/Images/SmartContextMenuRu3.png)
 
 Интерфейс командной строки
 --------------------
