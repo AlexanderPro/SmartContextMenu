@@ -142,6 +142,7 @@ namespace SmartContextMenu.Forms
                 new { Text = "Português", Value = "pt" },
                 new { Text = "Русский", Value = "ru" },
                 new { Text = "Српски", Value = "sr" },
+                new { Text = "עִברִית", Value = "he" },
                 new { Text = "简体中文", Value = "zh_cn" },
                 new { Text = "繁體中文", Value = "zh_tw"},
                 new { Text = "日本語", Value = "ja" },

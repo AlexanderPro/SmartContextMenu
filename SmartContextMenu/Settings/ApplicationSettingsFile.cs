@@ -191,64 +191,69 @@ namespace SmartContextMenu.Settings
                 settings.LanguageName = languageName;
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-CN"))
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "zh-CN"))
             {
                 settings.LanguageName = "zh_cn";
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "zh-TW"))
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "zh-TW"))
             {
                 settings.LanguageName = "zh_tw";
             }
 
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ja-JP")
+            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "ja-JP")
             {
                 settings.LanguageName = "ja";
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "ko-KR" || Thread.CurrentThread.CurrentCulture.Name == "ko-KP"))
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "ko-KR" || Thread.CurrentThread.CurrentUICulture.Name == "ko-KP"))
             {
                 settings.LanguageName = "ko";
             }
 
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "ru-RU")
+            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "ru-RU")
             {
                 settings.LanguageName = "ru";
             }
 
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "de-DE")
+            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
             {
                 settings.LanguageName = "de";
             }
 
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "fr-FR")
+            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "fr-FR")
             {
                 settings.LanguageName = "fr";
             }
 
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentCulture.Name == "hu-HU")
+            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "hu-HU")
             {
                 settings.LanguageName = "hu";
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "it-IT" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-SM" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-CH" ||
-                Thread.CurrentThread.CurrentCulture.Name == "it-VA"))
+            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "he-IL")
+            {
+                languageName = "he";
+            }
+
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "it-IT" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-SM" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-CH" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "it-VA"))
             {
                 settings.LanguageName = "it";
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "pt-BR" || Thread.CurrentThread.CurrentCulture.Name == "pt-PT"))
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "pt-BR" || Thread.CurrentThread.CurrentUICulture.Name == "pt-PT"))
             {
                 settings.LanguageName = "pt";
             }
 
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-BA" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-ME" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-RS" ||
-                Thread.CurrentThread.CurrentCulture.Name == "sr-Cyrl-CS"))
+            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-BA" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-ME" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-RS" ||
+                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-CS"))
             {
                 settings.LanguageName = "sr";
             }
