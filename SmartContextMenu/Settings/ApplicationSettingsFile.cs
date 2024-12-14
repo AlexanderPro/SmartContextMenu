@@ -183,85 +183,26 @@ namespace SmartContextMenu.Settings
                 settings.EnableHighDPI = true;
             }
 
+            var cultureName = Thread.CurrentThread.CurrentUICulture.Name;
             var languageElement = document.XPathSelectElement("/smartContextMenu/language");
-            var languageName = string.Empty;
-            if (languageElement != null && languageElement.Attribute("name") != null && languageElement.Attribute("name").Value != null)
-            {
-                languageName = languageElement.Attribute("name").Value.ToLower().Trim();
-                settings.LanguageName = languageName;
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "zh-CN"))
-            {
-                settings.LanguageName = "zh_cn";
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "zh-TW"))
-            {
-                settings.LanguageName = "zh_tw";
-            }
-
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "ja-JP")
-            {
-                settings.LanguageName = "ja";
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "ko-KR" || Thread.CurrentThread.CurrentUICulture.Name == "ko-KP"))
-            {
-                settings.LanguageName = "ko";
-            }
-
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "ru-RU")
-            {
-                settings.LanguageName = "ru";
-            }
-
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "de-DE")
-            {
-                settings.LanguageName = "de";
-            }
-
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "fr-FR")
-            {
-                settings.LanguageName = "fr";
-            }
-
-            if (languageName == string.Empty && Thread.CurrentThread.CurrentUICulture.Name == "hu-HU")
-            {
-                settings.LanguageName = "hu";
-            }
-
-            if (languageName == "" && Thread.CurrentThread.CurrentUICulture.Name == "he-IL")
-            {
-                languageName = "he";
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "it-IT" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-SM" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-CH" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "it-VA"))
-            {
-                settings.LanguageName = "it";
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "pt-BR" || Thread.CurrentThread.CurrentUICulture.Name == "pt-PT"))
-            {
-                settings.LanguageName = "pt";
-            }
-
-            if (languageName == string.Empty && (Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-BA" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-ME" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-RS" ||
-                Thread.CurrentThread.CurrentUICulture.Name == "sr-Cyrl-CS"))
-            {
-                settings.LanguageName = "sr";
-            }
-
-            if (string.IsNullOrEmpty(settings.LanguageName))
-            {
-                settings.LanguageName = "en";
-            }
+            settings.LanguageName = languageElement != null && languageElement.Attribute("name") != null && !string.IsNullOrWhiteSpace(languageElement.Attribute("name").Value) ?
+                languageElement.Attribute("name").Value.ToLower().Trim() :
+                cultureName switch
+                {
+                    "zh-CN" => "zh_cn",
+                    "zh-TW" => "zh_tw",
+                    "ja-JP" => "ja",
+                    "ru-RU" => "ru",
+                    "de-DE" => "de",
+                    "fr-FR" => "fr",
+                    "hu-HU" => "hu",
+                    "he-IL" => "he",
+                    "ko-KR" or "ko-KP" => "ko",
+                    "pt-BR" or "pt-PT" => "pt",
+                    "it-IT" or "it-SM" or "it-CH" or "it-VA" => "it",
+                    "sr-Cyrl" or "sr-Cyrl-BA" or "sr-Cyrl-ME" or "sr-Cyrl-RS" or "sr-Cyrl-CS" => "sr",
+                    _ => "en"
+                };
 
             return settings;
         }

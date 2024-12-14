@@ -133,7 +133,6 @@ namespace SmartContextMenu.Forms
             listBoxLanguage.ValueMember = "Value";
 
             var languageItems = new[] {
-                new { Text = "", Value = "" },
                 new { Text = "English", Value = "en" },
                 new { Text = "Deutsch", Value = "de" },
                 new { Text = "Français", Value = "fr" },
