@@ -90,7 +90,7 @@ namespace SmartContextMenu.Forms
                 _systemTrayMenu.MenuItemClickThroughClick += SystemTrayMenuItemClickThroughClick;
                 _systemTrayMenu.MenuItemTransparencyClick += SystemTrayMenuItemTransparencyClick;
                 _systemTrayMenu.Build(_settings);
-                _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsAutoStartByRegisterEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
+                _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
 
             BringToFront();
@@ -788,22 +788,14 @@ namespace SmartContextMenu.Forms
         {
             var keyName = AssemblyUtils.AssemblyProductName;
             var assemblyLocation = AssemblyUtils.AssemblyLocation;
-            var autoStartEnabled = AutoStarter.IsAutoStartByRegisterEnabled(keyName, assemblyLocation);
+            var autoStartEnabled = AutoStarter.IsEnabled(keyName, assemblyLocation);
             if (autoStartEnabled)
             {
-                AutoStarter.UnsetAutoStartByRegister(keyName);
-                if (Environment.OSVersion.Version.Major >= 6)
-                {
-                    AutoStarter.UnsetAutoStartByScheduler(keyName);
-                }
+                AutoStarter.Disable(keyName);
             }
             else
             {
-                AutoStarter.SetAutoStartByRegister(keyName, assemblyLocation);
-                if (Environment.OSVersion.Version.Major >= 6)
-                {
-                    AutoStarter.SetAutoStartByScheduler(keyName, assemblyLocation);
-                }
+                AutoStarter.Enable(keyName, assemblyLocation);
             }
             ((ToolStripMenuItem)sender).Checked = !autoStartEnabled;
         }

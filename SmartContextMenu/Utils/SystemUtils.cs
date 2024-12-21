@@ -13,7 +13,7 @@ using static SmartContextMenu.Native.Kernel32;
 using static SmartContextMenu.Native.SHCore;
 using static SmartContextMenu.Native.Constants;
 
-namespace SmartContextMenu
+namespace SmartContextMenu.Utils
 {
     static class SystemUtils
     {
