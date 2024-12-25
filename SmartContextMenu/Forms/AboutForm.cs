@@ -14,14 +14,20 @@ namespace SmartContextMenu.Forms
             btnOk.Text = manager.GetString("about_btn_ok");
             Text = manager.GetString("about_form") + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
-            lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright} {AssemblyUtils.AssemblyCompany}";
+            lblCopyright.Text = $"{AssemblyUtils.AssemblyCopyright}-{DateTime.Now.Year} {AssemblyUtils.AssemblyCompany}";
             linkUrl.Text = URL_SMART_CONTEXT_MENU;
         }
 
-        private void CloseClick(object sender, EventArgs e) => Close();
+        private void ButtonOkClick(object sender, EventArgs e) => Close();
 
         private void LinkClick(object sender, EventArgs e) => SystemUtils.RunAs(SystemUtils.GetDefaultBrowserModuleName(), URL_SMART_CONTEXT_MENU, true);
 
-        private void KeyDownClick(object sender, KeyEventArgs e) => CloseClick(sender, e);
+        private void KeyDownClick(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13 || e.KeyValue == 27)
+            {
+                Close();
+            }
+        }
     }
 }
