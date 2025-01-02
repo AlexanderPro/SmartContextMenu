@@ -138,7 +138,7 @@ namespace SmartContextMenu.Forms
                 new { Text = "Français", Value = "fr" },
                 new { Text = "Italiano", Value = "it" },
                 new { Text = "Magyar", Value = "hu" },
-                new { Text = "Española", Value = "es" },
+                new { Text = "Español", Value = "es" },
                 new { Text = "Português", Value = "pt" },
                 new { Text = "Русский", Value = "ru" },
                 new { Text = "Српски", Value = "sr" },
