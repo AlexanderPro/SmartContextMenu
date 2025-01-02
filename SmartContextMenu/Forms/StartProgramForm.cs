@@ -37,18 +37,6 @@ namespace SmartContextMenu.Forms
             chkUseWindowWorkingDirectory.Text = _languageManager.GetString("start_program_use_window_working_directory");
             Text = _languageManager.GetString("start_program_form");
 
-            cmbKey1.ValueMember = "Id";
-            cmbKey1.DisplayMember = "Text";
-            cmbKey1.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-
-            cmbKey2.ValueMember = "Id";
-            cmbKey2.DisplayMember = "Text";
-            cmbKey2.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-
-            cmbKey3.ValueMember = "Id";
-            cmbKey3.DisplayMember = "Text";
-            cmbKey3.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-
             if (menuItem != null)
             {
                 txtTitle.Text = menuItem.Title;
@@ -59,10 +47,22 @@ namespace SmartContextMenu.Forms
                 txtParameter.Text = $"{menuItem.BeginParameter}{_languageManager.GetString("start_program_parameter")}{menuItem.EndParameter}";
                 chkShowWindow.Checked = menuItem.ShowWindow;
                 chkUseWindowWorkingDirectory.Checked = menuItem.UseWindowWorkingDirectory;
-                cmbKey1.SelectedValue = menuItem.Key1;
-                cmbKey2.SelectedValue = menuItem.Key2;
-                cmbKey3.SelectedValue = menuItem.Key3;
             }
+
+            cmbKey1.ValueMember = "Id";
+            cmbKey1.DisplayMember = "Text";
+            cmbKey1.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey1.SelectedValue = menuItem.Key1;
+
+            cmbKey2.ValueMember = "Id";
+            cmbKey2.DisplayMember = "Text";
+            cmbKey2.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey2.SelectedValue = menuItem.Key2;
+
+            cmbKey3.ValueMember = "Id";
+            cmbKey3.DisplayMember = "Text";
+            cmbKey3.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
+            cmbKey3.SelectedValue = menuItem.Key3;
         }
 
         protected override void OnLoad(EventArgs e)
