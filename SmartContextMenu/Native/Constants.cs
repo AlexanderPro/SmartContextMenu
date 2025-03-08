@@ -67,6 +67,7 @@
 
         // Window Messages
         public const int WM_GETICON = 0x7F;
+        public const int WM_SETICON = 0x0080;
         public const int WM_CLOSE = 0x0010;
         public const int WM_NULL = 0x0000;
         public const int WM_KEYDOWN = 0x0100;

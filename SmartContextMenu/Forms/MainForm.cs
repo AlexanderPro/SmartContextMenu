@@ -581,6 +581,31 @@ namespace SmartContextMenu.Forms
                     }
                     break;
 
+                case MenuItemName.ChangeIcon:
+                    {
+                        try
+                        {
+                            var manager = new LanguageManager(_settings.LanguageName);
+                            var dialog = new OpenFileDialog
+                            {
+                                ValidateNames = true,
+                                DefaultExt = manager.GetString("icon_default_ext"),
+                                RestoreDirectory = false,
+                                Filter = manager.GetString("icon_filter")
+                            };
+
+                            if (dialog.ShowDialog(window.Win32Window) == DialogResult.OK)
+                            {
+                                window.ChangeIcon(dialog.FileName);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            MessageBox.Show(e.Message);
+                        }
+                    }
+                    break;
+
                 case MenuItemName.DisableMinimizeButton:
                     {
                         window.DisableMinimizeButton(!window.IsDisabledMinimizeButton);
@@ -932,7 +957,6 @@ namespace SmartContextMenu.Forms
                 }
             }
         }
-
 
         private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
         {
