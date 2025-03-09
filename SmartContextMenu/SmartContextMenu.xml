@@ -142,6 +142,6 @@
   <dimmer color="#000000" transparency="50" />
   <sizer type="" />
   <systemTrayIcon show="true" />
-  <display highDPI="false" />
+  <display highDPI="true" />
   <language name="" />
 </smartContextMenu>

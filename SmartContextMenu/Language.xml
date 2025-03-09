@@ -1051,6 +1051,7 @@
     <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
     <item name="icon_default_ext" value="ico" />
     <item name="icon_filter" value="Icon (*.ico)|*.ico|ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
+    <item name="size_form" value="サイズ" />
     <item name="size_btn_apply" value="適用" />
     <item name="lbl_size_form_height" value="高さ：" />
     <item name="lbl_size_form_width" value="幅：" />
