@@ -112,6 +112,7 @@ SmartContextMenu.exe --title "Untitled - Notepad" -a topleft -p high --alwaysont
 
 - 下载 [SmartContextMenu](https://github.com/AlexanderPro/SmartContextMenu/releases) zip 压缩包文件
 - [Chocolatey](https://chocolatey.org/): `choco install smartcontextmenu`
+- [Scoop](https://scoop.sh/): `scoop bucket add extras` and `scoop install extras/smartcontextmenu`
 
 要求
 --------------------
