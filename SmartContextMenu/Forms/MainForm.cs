@@ -499,7 +499,12 @@ namespace SmartContextMenu.Forms
                 case MenuItemName.SaveScreenshot:
                     {
                         var manager = new LanguageManager(_settings.LanguageName);
-                        var bitmap = WindowUtils.PrintWindow(window.Handle);
+                        var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                        if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                        {
+                            WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                        }
+
                         var dialog = new SaveFileDialog
                         {
                             OverwritePrompt = true,
@@ -531,7 +536,12 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.CopyScreenshot:
                     {
-                        var bitmap = WindowUtils.PrintWindow(window.Handle);
+                        var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                        if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                        {
+                            WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                        }
+
                         Clipboard.SetImage(bitmap);
                     }
                     break;

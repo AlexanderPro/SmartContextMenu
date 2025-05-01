@@ -658,17 +658,7 @@ namespace SmartContextMenu
             }
         }
 
-        public Rect GetSystemMargins()
-        {
-            var withMargin = GetSizeWithMargins();
-            return new Rect
-            {
-                Left = withMargin.Left - Size.Left,
-                Top = withMargin.Top - Size.Top,
-                Right = Size.Right - withMargin.Right,
-                Bottom = Size.Bottom - withMargin.Bottom
-            };
-        }
+        public Rect GetSystemMargins() => WindowUtils.GetSystemMargins(Handle);
 
         public void ChangeIcon(string fileName)
         {
@@ -731,20 +721,6 @@ namespace SmartContextMenu
             {
                 RestoreFromSystemTray();
             }
-        }
-
-        private Rect GetSizeWithMargins()
-        {
-            Rect size;
-            if (Environment.OSVersion.Version.Major < 6)
-            {
-                GetWindowRect(Handle, out size);
-            }
-            else if (Dwmapi.DwmGetWindowAttribute(Handle, DWMWA_EXTENDED_FRAME_BOUNDS, out size, Marshal.SizeOf(typeof(Rect))) != 0)
-            {
-                GetWindowRect(Handle, out size);
-            }
-            return size;
         }
 
         private ContextMenuStrip CreateSystemTrayMenu()

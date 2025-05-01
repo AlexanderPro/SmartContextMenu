@@ -385,7 +385,12 @@ namespace SmartContextMenu
                 // Copy Screenshot
                 if (сommandLineParser.HasToggle("copyscreenshot"))
                 {
-                    var bitmap = WindowUtils.PrintWindow(window.Handle);
+                    var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                    if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                    {
+                        WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                    }
+
                     Clipboard.SetImage(bitmap);
                 }
 
@@ -399,7 +404,12 @@ namespace SmartContextMenu
                 //Save Screenshot
                 if (сommandLineParser.HasToggle("s") || сommandLineParser.HasToggle("savescreenshot"))
                 {
-                    var bitmap = WindowUtils.PrintWindow(window.Handle);
+                    var result = WindowUtils.PrintWindow(window.Handle, out var bitmap);
+                    if (!result || !WindowUtils.IsCorrectScreenshot(window.Handle, bitmap))
+                    {
+                        WindowUtils.CaptureWindow(window.Handle, false, out bitmap);
+                    }
+
                     var dialog = new SaveFileDialog
                     {
                         OverwritePrompt = true,

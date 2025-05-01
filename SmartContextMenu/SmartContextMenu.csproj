@@ -164,6 +164,7 @@
     <Compile Include="Native\Constants.cs" />
     <Compile Include="Native\Dwmapi.cs" />
     <Compile Include="Native\Enums\AccentState.cs" />
+    <Compile Include="Native\Enums\CopyPixelOperations.cs" />
     <Compile Include="Native\Enums\DpiAwarenessContext.cs" />
     <Compile Include="Native\Enums\DwmBB.cs" />
     <Compile Include="Native\Enums\LayeredWindow.cs" />
@@ -175,13 +176,16 @@
     <Compile Include="Native\Enums\ThreadAccess.cs" />
     <Compile Include="Native\Enums\WindowCompositionAttribute.cs" />
     <Compile Include="Native\Enums\WindowShowStyle.cs" />
+    <Compile Include="Native\Gdi32.cs" />
     <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Native\Ntdll.cs" />
     <Compile Include="Native\SHCore.cs" />
     <Compile Include="Native\Structs\AccentPolicy.cs" />
     <Compile Include="Native\Structs\ConsoleScreenBufferInfo.cs" />
     <Compile Include="Native\Structs\Coord.cs" />
+    <Compile Include="Native\Structs\CURSORINFO.cs" />
     <Compile Include="Native\Structs\DwmBlurBehind.cs" />
+    <Compile Include="Native\Structs\ICONINFO.cs" />
     <Compile Include="Native\Structs\KeyboardLLHookStruct.cs" />
     <Compile Include="Native\Structs\MonitorInfo.cs" />
     <Compile Include="Native\Structs\MouseLLHookStruct.cs" />

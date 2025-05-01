@@ -143,5 +143,10 @@
         public const uint EVENT_SYSTEM_FOREGROUND = 3;
         public const uint EVENT_OBJECT_DESTROY = 0x8001;
         public const int OBJID_WINDOW = 0;
+
+        public const int CURSOR_SHOWING = 0x00000001;
+
+        public const int DI_COMPAT = 0x0004;
+        public const int DI_NORMAL = 0x0003;
     }
 }
