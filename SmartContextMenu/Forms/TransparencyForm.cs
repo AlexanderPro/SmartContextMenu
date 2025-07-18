@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SmartContextMenu.Utils;
 
 namespace SmartContextMenu.Forms
 {
@@ -19,7 +20,13 @@ namespace SmartContextMenu.Forms
             Text = manager.GetString("trans_form");
             numericTransparency.Value = window.Transparency;
             DialogResult = DialogResult.Cancel;
+            numericTransparency.TextChanged += NumericTransparencyValueChanged;
+            ChangeTransparency();
         }
+
+        private void NumericTransparencyValueChanged(object sender, EventArgs e) => ChangeTransparency();
+
+        private void NumericTransparencyKeyDown(object sender, KeyEventArgs e) => ChangeTransparency();
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
@@ -39,6 +46,12 @@ namespace SmartContextMenu.Forms
             {
                 Close();
             }
+        }
+
+        private void ChangeTransparency()
+        {
+            var opacity = WindowUtils.TransparencyToAlphaOpacity((int)numericTransparency.Value);
+            WindowUtils.SetOpacity(Handle, opacity);
         }
     }
 }
