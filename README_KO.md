@@ -67,7 +67,7 @@ SmartContextMenu는 시스템의 모든 창에 컨텍스트 메뉴를 추가합�
 -t --top              위쪽
 -w --width            너비
 -h --height           높이
--i --information      정보 대화상지
+-i --information      정보 대화상자
 -s --savescreenshot   스크린샷 저장
 -m --monitor          [0, 1, 2, 3, ...]
 -a --alignment        [왼쪽 위,
