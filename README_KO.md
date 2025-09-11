@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [English](/) [**한국어**](/README_KO.md) [Русский](/README_RU.md) [中文版](/README_CN.md)
+🌏: [English](/) [Русский](/README_RU.md) [中文版](/README_CN.md) [**한국어**](/README_KO.md)
 
 ---
 
@@ -47,9 +47,9 @@ SmartContextMenu는 시스템의 모든 창에 컨텍스트 메뉴를 추가합�
 스크린샷
 ------------------
 
-![Resize](./SmartContextMenu/Images/SmartContextMenuEn1.png)
-![Alignment](./SmartContextMenu/Images/SmartContextMenuEn2.png)
-![System Menu](./SmartContextMenu/Images/SmartContextMenuEn3.png)
+![Resize](./SmartContextMenu/Images/SmartContextMenuKo1.png)
+![Alignment](./SmartContextMenu/Images/SmartContextMenuKo2.png)
+![System Menu](./SmartContextMenu/Images/SmartContextMenuKo3.png)
 
 명령줄 인터페이스
 --------------------
