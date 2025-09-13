@@ -341,13 +341,9 @@ namespace SmartContextMenu.Forms
                         var manager = new LanguageManager(_settings.LanguageName);
                         var opacityForm = new TransparencyForm(manager, window);
                         var result = opacityForm.ShowDialog(window.Win32Window);
-                        if (result == DialogResult.OK)
+                        if (result == DialogResult.OK && !_windows.ContainsKey(window.Handle))
                         {
-                            window.SetTransparency(opacityForm.WindowTransparency);
-                            if (!_windows.ContainsKey(window.Handle))
-                            {
-                                _windows.Add(window.Handle, window);
-                            }
+                            _windows.Add(window.Handle, window);
                         }
                     }
                     break;

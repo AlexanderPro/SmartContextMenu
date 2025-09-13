@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using SmartContextMenu.Utils;
+using SmartContextMenu.Native;
 
 namespace SmartContextMenu.Forms
 {
     partial class TransparencyForm : Form
     {
+        private Window _window;
+
         public int WindowTransparency { get; private set; }
 
         public TransparencyForm(LanguageManager manager, Window window)
@@ -14,14 +16,30 @@ namespace SmartContextMenu.Forms
             InitializeControls(manager, window);
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == Constants.WM_SYSCOMMAND)
+            {
+                var lowOrder = m.WParam.ToInt64() & 0x0000FFFF;
+                if (lowOrder == Constants.SC_CLOSE)
+                {
+                    ButtonCancelClick(this, EventArgs.Empty);
+                }
+            }
+
+            base.WndProc(ref m);
+        }
+
+
         private void InitializeControls(LanguageManager manager, Window window)
         {
+            _window = window;
             btnApply.Text = manager.GetString("trans_btn_apply");
             Text = manager.GetString("trans_form");
-            numericTransparency.Value = window.Transparency;
+            WindowTransparency = window.Transparency;
+            numericTransparency.Value = WindowTransparency;
             DialogResult = DialogResult.Cancel;
             numericTransparency.TextChanged += NumericTransparencyValueChanged;
-            ChangeTransparency();
         }
 
         private void NumericTransparencyValueChanged(object sender, EventArgs e) => ChangeTransparency();
@@ -35,6 +53,16 @@ namespace SmartContextMenu.Forms
             Close();
         }
 
+        private void ButtonCancelClick(object sender, EventArgs e)
+        {
+            if (WindowTransparency != _window.Transparency)
+            {
+                _window.SetTransparency(WindowTransparency);
+            }
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
         private void FormKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13)
@@ -44,14 +72,13 @@ namespace SmartContextMenu.Forms
 
             if (e.KeyValue == 27)
             {
-                Close();
+                ButtonCancelClick(sender, e);
             }
         }
 
         private void ChangeTransparency()
         {
-            var opacity = WindowUtils.TransparencyToAlphaOpacity((int)numericTransparency.Value);
-            WindowUtils.SetOpacity(Handle, opacity);
+            _window.SetTransparency((int)numericTransparency.Value);
         }
     }
 }
