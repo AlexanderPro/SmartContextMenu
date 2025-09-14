@@ -42,9 +42,10 @@ namespace SmartContextMenu.Forms
             numericTransparency.TextChanged += NumericTransparencyValueChanged;
         }
 
-        private void NumericTransparencyValueChanged(object sender, EventArgs e) => ChangeTransparency();
-
-        private void NumericTransparencyKeyDown(object sender, KeyEventArgs e) => ChangeTransparency();
+        private void NumericTransparencyValueChanged(object sender, EventArgs e)
+        {
+            _window.SetTransparency((int)numericTransparency.Value);
+        }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
@@ -74,11 +75,6 @@ namespace SmartContextMenu.Forms
             {
                 ButtonCancelClick(sender, e);
             }
-        }
-
-        private void ChangeTransparency()
-        {
-            _window.SetTransparency((int)numericTransparency.Value);
         }
     }
 }
