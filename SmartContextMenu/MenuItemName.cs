@@ -135,5 +135,7 @@
         public const string CloseOtherWindows = "close_other_windows";
 
         public const string StartProgram = "start_program";
+
+        public const string Settings = "settings";
     }
 }

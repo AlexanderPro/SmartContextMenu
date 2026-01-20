@@ -725,6 +725,12 @@ namespace SmartContextMenu.Forms
                         });
                     }
                     break;
+
+                case MenuItemName.Settings:
+                    {
+                        SystemTrayMenuItemSettingsClick(this, EventArgs.Empty);
+                    }
+                    break;
             }
         }
 
