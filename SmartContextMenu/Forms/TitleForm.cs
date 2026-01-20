@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SmartContextMenu.Forms
 {
@@ -31,6 +32,7 @@ namespace SmartContextMenu.Forms
 
         private void InitializeControls(LanguageManager manager)
         {
+            MinimumSize = new Size(400, 250);
             btnApply.Text = manager.GetString("change_title_btn_apply");
             btnCancel.Text = manager.GetString("change_title_btn_cancel");
             Text = manager.GetString("change_title_form");
