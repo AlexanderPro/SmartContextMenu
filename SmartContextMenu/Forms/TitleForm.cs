@@ -33,7 +33,7 @@ namespace SmartContextMenu.Forms
         {
             btnApply.Text = manager.GetString("change_title_btn_apply");
             btnCancel.Text = manager.GetString("change_title_btn_cancel");
-            Text = manager.GetString("change_title_form");            
+            Text = manager.GetString("change_title_form");
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
@@ -53,6 +53,16 @@ namespace SmartContextMenu.Forms
             if (e.KeyValue == 27)
             {
                 ButtonCancelClick(sender, e);
+            }
+        }
+
+        private void TextBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+                ButtonApplyClick(sender, e);
             }
         }
     }
