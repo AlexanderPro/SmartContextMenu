@@ -6,10 +6,12 @@ namespace SmartContextMenu.Settings
 {
     public class WindowSizeMenuItem : ICloneable
     {
+        public MenuItemType Type { get; set; }
+
         public string Title { get; set; }
 
         public int? Left { get; set; }
-        
+
         public int? Top { get; set; }
 
         public int? Width { get; set; }
@@ -24,6 +26,7 @@ namespace SmartContextMenu.Settings
 
         public WindowSizeMenuItem()
         {
+            Type = MenuItemType.Item;
             Title = string.Empty;
             Left = null;
             Top = null;

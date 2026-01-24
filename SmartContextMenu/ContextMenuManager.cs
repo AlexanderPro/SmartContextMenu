@@ -45,12 +45,20 @@ namespace SmartContextMenu
                     {
                         foreach (var windowSizeItem in settings.MenuItems.WindowSizeItems)
                         {
-                            var menuItem = new ToolStripMenuItem(windowSizeItem.Title);
-                            menuItem.ShortcutKeyDisplayString = windowSizeItem.ToString();
-                            menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
-                            menuItem.Click += onClick;
-                            SetChecked(menuItem, window, windowSizeItem);
-                            subMenu.DropDownItems.Add(menuItem);
+                            if (windowSizeItem.Type == MenuItemType.Item)
+                            {
+                                var menuItem = new ToolStripMenuItem(windowSizeItem.Title);
+                                menuItem.ShortcutKeyDisplayString = windowSizeItem.ToString();
+                                menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
+                                menuItem.Click += onClick;
+                                SetChecked(menuItem, window, windowSizeItem);
+                                subMenu.DropDownItems.Add(menuItem);
+                            }
+
+                            if (windowSizeItem.Type == MenuItemType.Separator)
+                            {
+                                subMenu.DropDownItems.Add(new ToolStripSeparator());
+                            }
                         }
                     }
 
@@ -71,11 +79,19 @@ namespace SmartContextMenu
                     {
                         foreach (var startProgramItem in settings.MenuItems.StartProgramItems)
                         {
-                            var menuItem = new ToolStripMenuItem(startProgramItem.Title);
-                            menuItem.ShortcutKeyDisplayString = startProgramItem.ToString();
-                            menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
-                            menuItem.Click += onClick;
-                            subMenu.DropDownItems.Add(menuItem);
+                            if (startProgramItem.Type == MenuItemType.Item)
+                            {
+                                var menuItem = new ToolStripMenuItem(startProgramItem.Title);
+                                menuItem.ShortcutKeyDisplayString = startProgramItem.ToString();
+                                menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
+                                menuItem.Click += onClick;
+                                subMenu.DropDownItems.Add(menuItem);
+                            }
+
+                            if (startProgramItem.Type == MenuItemType.Separator)
+                            {
+                                subMenu.DropDownItems.Add(new ToolStripSeparator());
+                            }
                         }
                     }
 

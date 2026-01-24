@@ -66,7 +66,7 @@
             this.clmWindowSizeWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWindowSizeHeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWindowSizeHotKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWindowSizeEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmWindowSizeEdit = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
             this.clmWindowSizeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabpMenuStart = new System.Windows.Forms.TabPage();
             this.grpbStartProgram = new System.Windows.Forms.GroupBox();
@@ -77,7 +77,7 @@
             this.clmStartProgramTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStartProgramPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStartProgramArguments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStartProgramEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.clmStartProgramEdit = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
             this.clmStartProgramDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabpMenuDimmer = new System.Windows.Forms.TabPage();
             this.grpbDimmerColor = new System.Windows.Forms.GroupBox();

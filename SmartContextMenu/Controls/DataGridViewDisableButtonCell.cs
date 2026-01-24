@@ -12,7 +12,7 @@ namespace SmartContextMenu.Controls
         public override object Clone()
         {
             DataGridViewDisableButtonCell cell = (DataGridViewDisableButtonCell)base.Clone();
-            cell.Enabled = this.Enabled;
+            cell.Enabled = Enabled;
             return cell;
         }
 
@@ -62,7 +62,7 @@ namespace SmartContextMenu.Controls
                 // Draw the disabled button text.
                 if (FormattedValue is string)
                 {
-                    TextRenderer.DrawText(graphics, (string)FormattedValue, DataGridView.Font, buttonArea, SystemColors.GrayText);
+                    TextRenderer.DrawText(graphics, string.Empty, DataGridView.Font, buttonArea, SystemColors.GrayText);
                 }
             }
             else
