@@ -59,9 +59,9 @@ namespace SmartContextMenu.Forms
                 txtParameter.Text = $"{menuItem.BeginParameter}{_languageManager.GetString("start_program_parameter")}{menuItem.EndParameter}";
                 chkShowWindow.Checked = menuItem.ShowWindow;
                 chkUseWindowWorkingDirectory.Checked = menuItem.UseWindowWorkingDirectory;
-                cmbKey1.SelectedValue = menuItem.Key1;
-                cmbKey2.SelectedValue = menuItem.Key2;
-                cmbKey3.SelectedValue = menuItem.Key3;
+                cmbKey1.SelectedValue = menuItem.Shortcut.Key1;
+                cmbKey2.SelectedValue = menuItem.Shortcut.Key2;
+                cmbKey3.SelectedValue = menuItem.Shortcut.Key3;
             }
         }
 
@@ -113,10 +113,12 @@ namespace SmartContextMenu.Forms
                 EndParameter = txtEnd.Text,
                 ShowWindow = chkShowWindow.Checked,
                 UseWindowWorkingDirectory = chkUseWindowWorkingDirectory.Checked,
-                Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue,
-                Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue,
-                Key3 = (VirtualKey)cmbKey3.SelectedValue
+                Shortcut = new KeyboardShortcut()
             };
+
+            MenuItem.Shortcut.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
+            MenuItem.Shortcut.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
+            MenuItem.Shortcut.Key3 = (VirtualKey)cmbKey3.SelectedValue;
             DialogResult = DialogResult.OK;
             Close();
         }

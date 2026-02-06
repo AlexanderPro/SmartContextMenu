@@ -20,7 +20,7 @@ namespace SmartContextMenu
                     var title = GetTransparencyTitle(manager, item);
                     title ??= manager.GetString(item.Name);
                     var menuItem = new ToolStripMenuItem(title);
-                    menuItem.ShortcutKeyDisplayString = item.ToString();
+                    menuItem.ShortcutKeyDisplayString = item.Shortcut.ToString();
                     menuItem.Tag = new ContextMenuItemValue(window, item);
                     menuItem.Click += onClick;
                     SetChecked(menuItem, item, window, dimHandle);
@@ -48,7 +48,7 @@ namespace SmartContextMenu
                             if (windowSizeItem.Type == MenuItemType.Item)
                             {
                                 var menuItem = new ToolStripMenuItem(windowSizeItem.Title);
-                                menuItem.ShortcutKeyDisplayString = windowSizeItem.ToString();
+                                menuItem.ShortcutKeyDisplayString = windowSizeItem.Shortcut.ToString();
                                 menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
                                 menuItem.Click += onClick;
                                 SetChecked(menuItem, window, windowSizeItem);
@@ -82,7 +82,7 @@ namespace SmartContextMenu
                             if (startProgramItem.Type == MenuItemType.Item)
                             {
                                 var menuItem = new ToolStripMenuItem(startProgramItem.Title);
-                                menuItem.ShortcutKeyDisplayString = startProgramItem.ToString();
+                                menuItem.ShortcutKeyDisplayString = startProgramItem.Shortcut.ToString();
                                 menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
                                 menuItem.Click += onClick;
                                 subMenu.DropDownItems.Add(menuItem);
@@ -102,7 +102,7 @@ namespace SmartContextMenu
                             var title = GetTransparencyTitle(manager, subItem);
                             title ??= manager.GetString(subItem.Name);
                             var menuItem = new ToolStripMenuItem(title);
-                            menuItem.ShortcutKeyDisplayString = subItem.ToString();
+                            menuItem.ShortcutKeyDisplayString = subItem.Shortcut.ToString();
                             menuItem.Tag = new ContextMenuItemValue(window, subItem);
                             menuItem.Click += onClick;
                             SetChecked(menuItem, subItem, window, dimHandle);

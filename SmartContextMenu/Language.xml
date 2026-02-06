@@ -208,6 +208,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
     <item name="tab_settings_menu_start" value="Menu (Start Program)" />
     <item name="tab_settings_menu_size" value="Menu (Resize)" />
+    <item name="tab_settings_menu_move_to" value="Menu (Move To)" />
     <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
     <item name="grpb_dimmer_color" value="Color" />
     <item name="grpb_dimmer_transparency" value="Transparency" />
@@ -225,6 +226,8 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="grpb_next_hotkeys" value="Hotkeys →" />
+    <item name="grpb_previous_hotkeys" value="Hotkeys ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Cancel" />
     <item name="change_title_form" value="Change Title" />
@@ -444,6 +447,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Menüpunkt anzeigen" />
     <item name="tab_settings_menu_start" value="Menü (Programm ausführen)" />
     <item name="tab_settings_menu_size" value="Menü (Fenstergröβe ändern)" />
+    <item name="tab_settings_menu_move_to" value="Menü (Verschieben zu)" />
     <item name="tab_settings_menu_dimmer" value="Menü (Dimmer)" />
     <item name="grpb_dimmer_color" value="Farbe" />
     <item name="grpb_dimmer_transparency" value="Transparenz" />
@@ -461,6 +465,8 @@
     <item name="lbl_key3" value="Taste 3" />
     <item name="lbl_key4" value="Taste 4" />
     <item name="lbl_mouse_button" value="Maustaste" />
+    <item name="grpb_next_hotkeys" value="Tastaturkürzel →" />
+    <item name="grpb_previous_hotkeys" value="Tastaturkürzel ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Abbrechen" />
     <item name="change_title_form" value="Ändere den Titel" />
@@ -680,6 +686,7 @@
     <item name="clm_hotkeys_show_tooltip" value="显示菜单项" />
     <item name="tab_settings_menu_start" value="菜单 (启动程序)" />
     <item name="tab_settings_menu_size" value="菜单 (调整窗口大小)" />
+    <item name="tab_settings_menu_move_to" value="菜单 (移动到)" />
     <item name="tab_settings_menu_dimmer" value="菜单 (窗户调光器)" />
     <item name="grpb_dimmer_color" value="颜色" />
     <item name="grpb_dimmer_transparency" value="透明度" />
@@ -697,6 +704,8 @@
     <item name="lbl_key3" value="键 3" />
     <item name="lbl_key4" value="键 4" />
     <item name="lbl_mouse_button" value="鼠标按钮" />
+    <item name="grpb_next_hotkeys" value="热键 →" />
+    <item name="grpb_previous_hotkeys" value="热键 ←" />
     <item name="change_title_btn_apply" value="确定" />
     <item name="change_title_btn_cancel" value="取消" />
     <item name="change_title_form" value="更改标题" />
@@ -916,6 +925,7 @@
     <item name="clm_hotkeys_show_tooltip" value="顯示選單項目" />
     <item name="tab_settings_menu_start" value="選單 (啟動程式)" />
     <item name="tab_settings_menu_size" value="選單 (調整視窗大小)" />
+    <item name="tab_settings_menu_move_to" value="選單 (移動到)" />
     <item name="tab_settings_menu_dimmer" value="選單 (窗戶調光器)" />
     <item name="grpb_dimmer_color" value="顏色" />
     <item name="grpb_dimmer_transparency" value="透明度" />
@@ -933,6 +943,8 @@
     <item name="lbl_key3" value="鍵 3" />
     <item name="lbl_key4" value="鍵 4" />
     <item name="lbl_mouse_button" value="滑鼠按鈕" />
+    <item name="grpb_next_hotkeys" value="快速鍵 →" />
+    <item name="grpb_previous_hotkeys" value="快速鍵 ←" />
     <item name="change_title_btn_apply" value="確定" />
     <item name="change_title_btn_cancel" value="取消" />
     <item name="change_title_form" value="更改標題" />
@@ -1152,6 +1164,7 @@
     <item name="clm_hotkeys_show_tooltip" value="メニュー項目を表示" />
     <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
     <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
+    <item name="tab_settings_menu_move_to" value="メニュー (移動)" />
     <item name="tab_settings_menu_dimmer" value="メニュー (窓の調光器)" />
     <item name="grpb_dimmer_color" value="色" />
     <item name="grpb_dimmer_transparency" value="透明度" />
@@ -1169,6 +1182,8 @@
     <item name="lbl_key3" value="キー 3" />
     <item name="lbl_key4" value="キー 4" />
     <item name="lbl_mouse_button" value="マウスボタン" />
+    <item name="grpb_next_hotkeys" value="ホットキー →" />
+    <item name="grpb_previous_hotkeys" value="ホットキー ←" />
     <item name="change_title_btn_apply" value="OK" />
     <item name="change_title_btn_cancel" value="キャンセル" />
     <item name="change_title_form" value="タイトルを変更" />
@@ -1388,6 +1403,7 @@
     <item name="clm_hotkeys_show_tooltip" value="메뉴 항목 표시" />
     <item name="tab_settings_menu_start" value="메뉴 (프로그램 실행)" />
     <item name="tab_settings_menu_size" value="메뉴 (크기 변경)" />
+    <item name="tab_settings_menu_move_to" value="메뉴 (이동)" />
     <item name="tab_settings_menu_dimmer" value="메뉴 (디머)" />
     <item name="grpb_dimmer_color" value="색상" />
     <item name="grpb_dimmer_transparency" value="투명도" />
@@ -1405,6 +1421,8 @@
     <item name="lbl_key3" value="키 3" />
     <item name="lbl_key4" value="키 4" />
     <item name="lbl_mouse_button" value="마우스 버튼" />
+    <item name="grpb_next_hotkeys" value="단축키 →" />
+    <item name="grpb_previous_hotkeys" value="단축키 ←" />
     <item name="change_title_btn_apply" value="확인" />
     <item name="change_title_btn_cancel" value="취소" />
     <item name="change_title_form" value="제목 변경" />
@@ -1624,6 +1642,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Отобразить или скрыть пункт меню" />
     <item name="tab_settings_menu_start" value="Меню (Пуск)" />
     <item name="tab_settings_menu_size" value="Меню (Изменить размер)" />
+    <item name="tab_settings_menu_move_to" value="Меню (Переместить)" />
     <item name="tab_settings_menu_dimmer" value="Меню (Затемнение)" />
     <item name="grpb_dimmer_color" value="Цвет" />
     <item name="grpb_dimmer_transparency" value="Прозрачность" />
@@ -1641,6 +1660,8 @@
     <item name="lbl_key3" value="Клавиша 3" />
     <item name="lbl_key4" value="Клавиша 4" />
     <item name="lbl_mouse_button" value="Кнопка мышки" />
+    <item name="grpb_next_hotkeys" value="Горячие клавиши →" />
+    <item name="grpb_previous_hotkeys" value="Горячие клавиши ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Cancel" />
     <item name="change_title_form" value="Изменить заголовок" />
@@ -1860,6 +1881,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Прикажи ставку менија" />
     <item name="tab_settings_menu_start" value="Мени (Покренути програм)" />
     <item name="tab_settings_menu_size" value="Мени (Промени величину)" />
+    <item name="tab_settings_menu_move_to" value="Мени (Премести на)" />
     <item name="tab_settings_menu_dimmer" value="Мени (Затамњивач прозора)" />
     <item name="grpb_dimmer_color" value="Боја" />
     <item name="grpb_dimmer_transparency" value="Провидност" />
@@ -1877,6 +1899,8 @@
     <item name="lbl_key3" value="Типак 3" />
     <item name="lbl_key4" value="Типак 4" />
     <item name="lbl_mouse_button" value="Дугме миша" />
+    <item name="grpb_next_hotkeys" value="Пречице →" />
+    <item name="grpb_previous_hotkeys" value="Пречице ←" />
     <item name="change_title_btn_apply" value="У реду" />
     <item name="change_title_btn_cancel" value="Откажи" />
     <item name="change_title_form" value="Промените наслов" />
@@ -2096,6 +2120,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Exibir item do menu" />
     <item name="tab_settings_menu_start" value="Menu (Executar programa)" />
     <item name="tab_settings_menu_size" value="Menu (Redimensionar)" />
+    <item name="tab_settings_menu_move_to" value="Menu (Mover para)" />
     <item name="tab_settings_menu_dimmer" value="Menu (Dimmer)" />
     <item name="grpb_dimmer_color" value="Cor" />
     <item name="grpb_dimmer_transparency" value="Transparência" />
@@ -2113,6 +2138,8 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Botão do mouse" />
+    <item name="grpb_next_hotkeys" value="Atalhos →" />
+    <item name="grpb_previous_hotkeys" value="Atalhos ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Cancelar" />
     <item name="change_title_form" value="Alterar título" />
@@ -2332,6 +2359,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Mostra voci di menu" />
     <item name="tab_settings_menu_start" value="Menu (Avvia programma)" />
     <item name="tab_settings_menu_size" value="Menu (Ridimensiona)" />
+    <item name="tab_settings_menu_move_to" value="Menu (Sposta in)" />
     <item name="tab_settings_menu_dimmer" value="Menu (Oscuramento)" />
     <item name="grpb_dimmer_color" value="Colore" />
     <item name="grpb_dimmer_transparency" value="Trasparenza" />
@@ -2349,6 +2377,8 @@
     <item name="lbl_key3" value="Tasto 3" />
     <item name="lbl_key4" value="Tasto 4" />
     <item name="lbl_mouse_button" value="Pulsante del mouse" />
+    <item name="grpb_next_hotkeys" value="Tasti rapidi →" />
+    <item name="grpb_previous_hotkeys" value="Tasti rapidi ←" />
     <item name="change_title_btn_apply" value="OK" />
     <item name="change_title_btn_cancel" value="Annulla" />
     <item name="change_title_form" value="Cambia titolo" />
@@ -2568,6 +2598,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Afficher les info-bulles" />
     <item name="tab_settings_menu_start" value="Menu (lancer le programme)" />
     <item name="tab_settings_menu_size" value="Menu (redimensionner)" />
+    <item name="tab_settings_menu_move_to" value="Menu (déplacer dans)" />
     <item name="tab_settings_menu_dimmer" value="Menu (dimmer)" />
     <item name="grpb_dimmer_color" value="Couleur" />
     <item name="grpb_dimmer_transparency" value="Trasparence" />
@@ -2585,6 +2616,8 @@
     <item name="lbl_key3" value="Clé 3" />
     <item name="lbl_key4" value="Clé 4" />
     <item name="lbl_mouse_button" value="Bouton de la souris" />
+    <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
+    <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Annuler" />
     <item name="change_title_form" value="Changer le titre" />
@@ -2804,6 +2837,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Menüpont megjelenítése" />
     <item name="tab_settings_menu_start" value="Menü (programindítás hozzáadása)" />
     <item name="tab_settings_menu_size" value="Menü (átméretezés)" />
+    <item name="tab_settings_menu_move_to" value="Menü (áthelyezés ide)" />
     <item name="tab_settings_menu_dimmer" value="Menü (dimmer)" />
     <item name="grpb_dimmer_color" value="Szín" />
     <item name="grpb_dimmer_transparency" value="Átláthatóság" />
@@ -2821,6 +2855,8 @@
     <item name="lbl_key3" value="3. kulcs" />
     <item name="lbl_key4" value="4. kulcs" />
     <item name="lbl_mouse_button" value="Egérgomb" />
+    <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
+    <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
     <item name="change_title_btn_apply" value="OK" />
     <item name="change_title_btn_cancel" value="Mégse" />
     <item name="change_title_form" value="Cím módosítása" />
@@ -3040,6 +3076,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Show menu item" />
     <item name="tab_settings_menu_start" value="תפריט (הרץ תוכנה)" />
     <item name="tab_settings_menu_size" value="תפריט (שנה גודל)" />
+    <item name="tab_settings_menu_move_to" value="תפריט (העבר אל)" />
     <item name="tab_settings_menu_dimmer" value="תפריט (שקיפות)" />
     <item name="grpb_dimmer_color" value="צבע" />
     <item name="grpb_dimmer_transparency" value="שקיפות" />
@@ -3051,12 +3088,14 @@
     <item name="sizer_window_client_area" value="Window client area" />
     <item name="parameter_btn_apply" value="אישור" />
     <item name="parameter_form" value="הזן פרמטר" />
-    <item name="grpb_hotkeys" value="Hotkeys" />
+    <item name="grpb_hotkeys" value="מקשי קיצור" />
     <item name="lbl_key1" value="מקש 1" />
     <item name="lbl_key2" value="מקש 2" />
     <item name="lbl_key3" value="מקש 3" />
     <item name="lbl_key4" value="מקש 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="grpb_next_hotkeys" value="מקשי קיצור →" />
+    <item name="grpb_previous_hotkeys" value="מקשי קיצור ←" />
     <item name="change_title_btn_apply" value="אישור" />
     <item name="change_title_btn_cancel" value="ביטול" />
     <item name="change_title_form" value="שנה שם" />
@@ -3276,6 +3315,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Mostrar elemento de menú" />
     <item name="tab_settings_menu_start" value="Menú (Inciar programa)" />
     <item name="tab_settings_menu_size" value="Menú (Redimensionar)" />
+    <item name="tab_settings_menu_move_to" value="Menú (Mover a)" />
     <item name="tab_settings_menu_dimmer" value="Menú (Atenuar)" />
     <item name="grpb_dimmer_color" value="Color" />
     <item name="grpb_dimmer_transparency" value="Transparencia" />
@@ -3293,6 +3333,8 @@
     <item name="lbl_key3" value="Tecla 3" />
     <item name="lbl_key4" value="Tecla 4" />
     <item name="lbl_mouse_button" value="Botón delñ mouse" />
+    <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
+    <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Cancelar" />
     <item name="change_title_form" value="Cambiar título" />
@@ -3512,6 +3554,7 @@
     <item name="clm_hotkeys_show_tooltip" value="Prikaži element menija" />
     <item name="tab_settings_menu_start" value="Meni (Zagon programa)" />
     <item name="tab_settings_menu_size" value="Meni (Sprememba velikosti)" />
+    <item name="tab_settings_menu_move_to" value="Meni (Premakni na)" />
     <item name="tab_settings_menu_dimmer" value="Meni (Zatemnitev)" />
     <item name="grpb_dimmer_color" value="Barva" />
     <item name="grpb_dimmer_transparency" value="Prosojnost" />
@@ -3529,6 +3572,8 @@
     <item name="lbl_key3" value="Tipka 3" />
     <item name="lbl_key4" value="Tipka 4" />
     <item name="lbl_mouse_button" value="Gumb miške" />
+    <item name="grpb_next_hotkeys" value="Bližnjice →" />
+    <item name="grpb_previous_hotkeys" value="Bližnjice ←" />
     <item name="change_title_btn_apply" value="V redu" />
     <item name="change_title_btn_cancel" value="Prekliči" />
     <item name="change_title_form" value="Spremeni naslov" />

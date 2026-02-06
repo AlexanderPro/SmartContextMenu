@@ -11,6 +11,10 @@ namespace SmartContextMenu.Hooks
 
         public StartProgramMenuItem StartProgramMenuItem { get; }
 
+        public bool NextMonitor { get; set; }
+
+        public bool PreviousMonitor { get; set; }
+
         public bool Succeeded { get; set; }
 
         public KeyboardEventArgs()

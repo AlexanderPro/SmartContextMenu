@@ -62,10 +62,11 @@ namespace SmartContextMenu.Forms
             using var process = Process.GetCurrentProcess();
             using var mainModule = process.MainModule;
             
-            _keyboardHook = new KeyboardHook(_settings.MenuItems, mainModule.ModuleName);
+            _keyboardHook = new KeyboardHook(_settings, mainModule.ModuleName);
             _keyboardHook.MenuItemHooked += MenuItemHooked;
             _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
             _keyboardHook.StartProgramMenuItemHooked += StartProgramMenuItemHooked;
+            _keyboardHook.MoveToHooked += MoveToHooked;
             _keyboardHook.EscKeyHooked += EscKeyHooked;
             _keyboardHook.Start();
 
@@ -156,6 +157,35 @@ namespace SmartContextMenu.Forms
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.StartProgramMenuItem);
+            e.Succeeded = true;
+        });
+
+        private void MoveToHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
+        {
+            var monitorHandles = SystemUtils.GetMonitors();
+            if (monitorHandles.Count > 1)
+            {
+                var handle = User32.GetForegroundWindow();
+                var parentHandle = WindowUtils.GetParentWindow(handle);
+                var monitorHandle = User32.MonitorFromWindow(parentHandle, Constants.MONITOR_DEFAULTTONEAREST);
+                var monitor = monitorHandles.Select((x, i) => new { Handle = x, Index = i }).Where(x => x.Handle == monitorHandle).FirstOrDefault();
+                if (monitor != default)
+                {
+                    var monitorIndex = monitor.Index;
+                    if (e.NextMonitor)
+                    {
+                        monitorIndex = monitorIndex == (monitorHandles.Count - 1) ? 0 : monitorIndex + 1;
+                    }
+
+                    if (e.PreviousMonitor)
+                    {
+                        monitorIndex = monitorIndex == 0 ? monitorHandles.Count - 1 : monitorIndex - 1;
+                    }
+
+                    monitorHandle = monitorHandles[monitorIndex];
+                    WindowUtils.MoveToMonitor(parentHandle, monitorHandle);
+                }
+            }
             e.Succeeded = true;
         });
 
@@ -856,7 +886,7 @@ namespace SmartContextMenu.Forms
                 _settingsForm.OkClick += (sender, e) => 
                 {
                     _settings = e.Entity;
-                    _keyboardHook.MenuItems = _settings.MenuItems;
+                    _keyboardHook.Settings = _settings;
                     _mouseHook.Key1 = _settings.Key1;
                     _mouseHook.Key2 = _settings.Key2;
                     _mouseHook.Key3 = _settings.Key3;

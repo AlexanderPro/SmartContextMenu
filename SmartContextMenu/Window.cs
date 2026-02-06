@@ -629,33 +629,7 @@ namespace SmartContextMenu
             }
         }
 
-        public void MoveToMonitor(IntPtr monitorHandle)
-        {
-            var currentMonitorHandle = MonitorFromWindow(Handle, MONITOR_DEFAULTTONEAREST);
-            if (currentMonitorHandle != monitorHandle)
-            {
-                var currentMonitorInfo = new MonitorInfo();
-                currentMonitorInfo.Init();
-                GetMonitorInfo(currentMonitorHandle, ref currentMonitorInfo);
-
-                var newMonitorInfo = new MonitorInfo();
-                newMonitorInfo.Init();
-                GetMonitorInfo(monitorHandle, ref newMonitorInfo);
-                GetWindowRect(Handle, out Rect windowRect);
-
-                var left = newMonitorInfo.rcWork.Left + windowRect.Left - currentMonitorInfo.rcWork.Left;
-                var top = newMonitorInfo.rcWork.Top + windowRect.Top - currentMonitorInfo.rcWork.Top;
-                if (windowRect.Left - currentMonitorInfo.rcWork.Left > newMonitorInfo.rcWork.Width || windowRect.Top - currentMonitorInfo.rcWork.Top > newMonitorInfo.rcWork.Height)
-                {
-                    left = newMonitorInfo.rcWork.Left;
-                    top = newMonitorInfo.rcWork.Top;
-                }
-
-                MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
-                Thread.Sleep(10);
-                MoveWindow(Handle, left, top, windowRect.Width, windowRect.Height, true);
-            }
-        }
+        public void MoveToMonitor(IntPtr monitorHandle) => WindowUtils.MoveToMonitor(Handle, monitorHandle);
 
         public Rect GetSystemMargins() => WindowUtils.GetSystemMargins(Handle);
 

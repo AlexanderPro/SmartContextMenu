@@ -10,16 +10,16 @@ namespace SmartContextMenu.Forms
 {
     public partial class HotkeysForm : Form
     {
-        public Settings.MenuItem MenuItem { get; private set; }
+        public KeyboardShortcut Shortcut { get; private set; }
 
-        public HotkeysForm(LanguageManager manager, Settings.MenuItem menuItem)
+        public HotkeysForm(LanguageManager manager, KeyboardShortcut shortcut)
         {
             InitializeComponent();
-            MenuItem = menuItem;
-            InitializeControls(manager, menuItem);
+            Shortcut = shortcut;
+            InitializeControls(manager, shortcut);
         }
 
-        private void InitializeControls(LanguageManager manager, Settings.MenuItem menuItem)
+        private void InitializeControls(LanguageManager manager, KeyboardShortcut shortcut)
         {
             Text = manager.GetString("hotkeys_form");
             btnApply.Text = manager.GetString("hotkeys_btn_apply");
@@ -31,27 +31,25 @@ namespace SmartContextMenu.Forms
             cmbKey1.ValueMember = "Id";
             cmbKey1.DisplayMember = "Text";
             cmbKey1.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-            cmbKey1.SelectedValue = menuItem.Key1;
+            cmbKey1.SelectedValue = shortcut.Key1;
 
             cmbKey2.ValueMember = "Id";
             cmbKey2.DisplayMember = "Text";
             cmbKey2.DataSource = EnumExtensions.AsEnumerable<VirtualKeyModifier>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-            cmbKey2.SelectedValue = menuItem.Key2;
+            cmbKey2.SelectedValue = shortcut.Key2;
 
             cmbKey3.ValueMember = "Id";
             cmbKey3.DisplayMember = "Text";
             cmbKey3.DataSource = EnumExtensions.AsEnumerable<VirtualKey>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
-            cmbKey3.SelectedValue = menuItem.Key3;
+            cmbKey3.SelectedValue = shortcut.Key3;
         }
 
         private void ButtonApplyClick(object sender, EventArgs e)
         {
-            var menuItem = new Settings.MenuItem();
-            menuItem.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
-            menuItem.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
-            menuItem.Key3 = (VirtualKey)cmbKey3.SelectedValue;
-            menuItem.Name = MenuItem.Name;
-            MenuItem = menuItem;
+            Shortcut = new KeyboardShortcut();
+            Shortcut.Key1 = (VirtualKeyModifier)cmbKey1.SelectedValue;
+            Shortcut.Key2 = (VirtualKeyModifier)cmbKey2.SelectedValue;
+            Shortcut.Key3 = (VirtualKey)cmbKey3.SelectedValue;
             DialogResult = DialogResult.OK;
             Close();
         }

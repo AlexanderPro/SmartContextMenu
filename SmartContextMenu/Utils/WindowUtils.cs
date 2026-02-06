@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text;
+using System.Threading;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
@@ -564,6 +565,35 @@ namespace SmartContextMenu.Utils
                 Bottom = rect.Bottom - rectWithoutMargin.Bottom
             };
         }
+
+        public static void MoveToMonitor(IntPtr hWnd, IntPtr monitorHandle)
+        {
+            var currentMonitorHandle = MonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
+            if (currentMonitorHandle != monitorHandle)
+            {
+                var currentMonitorInfo = new MonitorInfo();
+                currentMonitorInfo.Init();
+                GetMonitorInfo(currentMonitorHandle, ref currentMonitorInfo);
+
+                var newMonitorInfo = new MonitorInfo();
+                newMonitorInfo.Init();
+                GetMonitorInfo(monitorHandle, ref newMonitorInfo);
+                GetWindowRect(hWnd, out Rect windowRect);
+
+                var left = newMonitorInfo.rcWork.Left + windowRect.Left - currentMonitorInfo.rcWork.Left;
+                var top = newMonitorInfo.rcWork.Top + windowRect.Top - currentMonitorInfo.rcWork.Top;
+                if (windowRect.Left - currentMonitorInfo.rcWork.Left > newMonitorInfo.rcWork.Width || windowRect.Top - currentMonitorInfo.rcWork.Top > newMonitorInfo.rcWork.Height)
+                {
+                    left = newMonitorInfo.rcWork.Left;
+                    top = newMonitorInfo.rcWork.Top;
+                }
+
+                MoveWindow(hWnd, left, top, windowRect.Width, windowRect.Height, true);
+                Thread.Sleep(10);
+                MoveWindow(hWnd, left, top, windowRect.Width, windowRect.Height, true);
+            }
+        }
+
 
         public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);
 

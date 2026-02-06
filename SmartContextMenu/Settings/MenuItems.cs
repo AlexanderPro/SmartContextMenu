@@ -22,7 +22,7 @@ namespace SmartContextMenu.Settings
         public string GetHotKeysCombination(string name)
         {
             var item = Items.Flatten(x => x.Items).Where(x => x.Type == MenuItemType.Item).FirstOrDefault(x => x.Name == name);
-            var value = item == null ? "" : item.ToString();
+            var value = item == null ? string.Empty : item.Shortcut.ToString();
             return value;
         }
     }

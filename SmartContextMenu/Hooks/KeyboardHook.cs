@@ -19,13 +19,14 @@ namespace SmartContextMenu.Hooks
         public event EventHandler<KeyboardEventArgs> MenuItemHooked;
         public event EventHandler<KeyboardEventArgs> WindowSizeMenuItemHooked;
         public event EventHandler<KeyboardEventArgs> StartProgramMenuItemHooked;
+        public event EventHandler<KeyboardEventArgs> MoveToHooked;
         public event EventHandler<KeyboardEventArgs> EscKeyHooked;
 
-        public MenuItems MenuItems { get; set; }
+        public ApplicationSettings Settings { get; set; }
 
-        public KeyboardHook(MenuItems menuItems, string moduleName)
+        public KeyboardHook(ApplicationSettings settings, string moduleName)
         {
-            MenuItems = menuItems;
+            Settings = settings;
             _moduleName = moduleName;
             _hookProc = HookProc;
         }
@@ -73,9 +74,75 @@ namespace SmartContextMenu.Hooks
             {
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
-                    foreach (var item in MenuItems.Items.Flatten(x => x.Items).Where(x => x.Show && x.Type == MenuItemType.Item))
+                    if ((int)Settings.NextMonitor.Key3 == lParam.vkCode)
                     {
-                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        var key1 = true;
+                        var key2 = true;
+
+                        if (Settings.NextMonitor.Key1 != VirtualKeyModifier.None)
+                        {
+                            var key1State = GetAsyncKeyState((int)Settings.NextMonitor.Key1) & 0x8000;
+                            key1 = Convert.ToBoolean(key1State);
+                        }
+
+                        if (Settings.NextMonitor.Key2 != VirtualKeyModifier.None)
+                        {
+                            var key2State = GetAsyncKeyState((int)Settings.NextMonitor.Key2) & 0x8000;
+                            key2 = Convert.ToBoolean(key2State);
+                        }
+
+                        if (key1 && key2)
+                        {
+                            var handler = MoveToHooked;
+                            if (handler != null)
+                            {
+                                var eventArgs = new KeyboardEventArgs();
+                                eventArgs.NextMonitor = true;
+                                handler.Invoke(this, eventArgs);
+                                if (eventArgs.Succeeded)
+                                {
+                                    return 1;
+                                }
+                            }
+                        }
+                    }
+
+                    if ((int)Settings.PreviousMonitor.Key3 == lParam.vkCode)
+                    {
+                        var key1 = true;
+                        var key2 = true;
+
+                        if (Settings.PreviousMonitor.Key1 != VirtualKeyModifier.None)
+                        {
+                            var key1State = GetAsyncKeyState((int)Settings.PreviousMonitor.Key1) & 0x8000;
+                            key1 = Convert.ToBoolean(key1State);
+                        }
+
+                        if (Settings.PreviousMonitor.Key2 != VirtualKeyModifier.None)
+                        {
+                            var key2State = GetAsyncKeyState((int)Settings.PreviousMonitor.Key2) & 0x8000;
+                            key2 = Convert.ToBoolean(key2State);
+                        }
+
+                        if (key1 && key2)
+                        {
+                            var handler = MoveToHooked;
+                            if (handler != null)
+                            {
+                                var eventArgs = new KeyboardEventArgs();
+                                eventArgs.PreviousMonitor = true;
+                                handler.Invoke(this, eventArgs);
+                                if (eventArgs.Succeeded)
+                                {
+                                    return 1;
+                                }
+                            }
+                        }
+                    }
+
+                    foreach (var item in Settings.MenuItems.Items.Flatten(x => x.Items).Where(x => x.Show && x.Type == MenuItemType.Item))
+                    {
+                        if (item.Shortcut.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Shortcut.Key3)
                         {
                             continue;
                         }
@@ -83,15 +150,15 @@ namespace SmartContextMenu.Hooks
                         var key1 = true;
                         var key2 = true;
 
-                        if (item.Key1 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key1 != VirtualKeyModifier.None)
                         {
-                            var key1State = GetAsyncKeyState((int)item.Key1) & 0x8000;
+                            var key1State = GetAsyncKeyState((int)item.Shortcut.Key1) & 0x8000;
                             key1 = Convert.ToBoolean(key1State);
                         }
 
-                        if (item.Key2 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key2 != VirtualKeyModifier.None)
                         {
-                            var key2State = GetAsyncKeyState((int)item.Key2) & 0x8000;
+                            var key2State = GetAsyncKeyState((int)item.Shortcut.Key2) & 0x8000;
                             key2 = Convert.ToBoolean(key2State);
                         }
 
@@ -110,9 +177,9 @@ namespace SmartContextMenu.Hooks
                         }
                     }
 
-                    foreach (var item in MenuItems.WindowSizeItems)
+                    foreach (var item in Settings.MenuItems.WindowSizeItems)
                     {
-                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        if (item.Shortcut.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Shortcut.Key3)
                         {
                             continue;
                         }
@@ -120,15 +187,15 @@ namespace SmartContextMenu.Hooks
                         var key1 = true;
                         var key2 = true;
 
-                        if (item.Key1 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key1 != VirtualKeyModifier.None)
                         {
-                            var key1State = GetAsyncKeyState((int)item.Key1) & 0x8000;
+                            var key1State = GetAsyncKeyState((int)item.Shortcut.Key1) & 0x8000;
                             key1 = Convert.ToBoolean(key1State);
                         }
 
-                        if (item.Key2 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key2 != VirtualKeyModifier.None)
                         {
-                            var key2State = GetAsyncKeyState((int)item.Key2) & 0x8000;
+                            var key2State = GetAsyncKeyState((int)item.Shortcut.Key2) & 0x8000;
                             key2 = Convert.ToBoolean(key2State);
                         }
 
@@ -147,9 +214,9 @@ namespace SmartContextMenu.Hooks
                         }
                     }
 
-                    foreach (var item in MenuItems.StartProgramItems)
+                    foreach (var item in Settings.MenuItems.StartProgramItems)
                     {
-                        if (item.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Key3)
+                        if (item.Shortcut.Key3 == VirtualKey.None || lParam.vkCode != (int)item.Shortcut.Key3)
                         {
                             continue;
                         }
@@ -157,15 +224,15 @@ namespace SmartContextMenu.Hooks
                         var key1 = true;
                         var key2 = true;
 
-                        if (item.Key1 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key1 != VirtualKeyModifier.None)
                         {
-                            var key1State = GetAsyncKeyState((int)item.Key1) & 0x8000;
+                            var key1State = GetAsyncKeyState((int)item.Shortcut.Key1) & 0x8000;
                             key1 = Convert.ToBoolean(key1State);
                         }
 
-                        if (item.Key2 != VirtualKeyModifier.None)
+                        if (item.Shortcut.Key2 != VirtualKeyModifier.None)
                         {
-                            var key2State = GetAsyncKeyState((int)item.Key2) & 0x8000;
+                            var key2State = GetAsyncKeyState((int)item.Shortcut.Key2) & 0x8000;
                             key2 = Convert.ToBoolean(key2State);
                         }
 
