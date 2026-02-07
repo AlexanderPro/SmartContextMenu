@@ -203,6 +203,7 @@ namespace SmartContextMenu.Settings
                     "it-IT" or "it-SM" or "it-CH" or "it-VA" => "it",
                     "sr-Cyrl" or "sr-Cyrl-BA" or "sr-Cyrl-ME" or "sr-Cyrl-RS" or "sr-Cyrl-CS" => "sr",
                     "sl-SI" => "sl",
+                    "ta-IN" => "ta",
                     _ => "en"
                 };
 
