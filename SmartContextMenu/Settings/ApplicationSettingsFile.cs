@@ -145,7 +145,7 @@ namespace SmartContextMenu.Settings
                         Name = y.Attribute("name") != null ? y.Attribute("name").Value : string.Empty,
                         Show = y.Attribute("show") == null || y.Attribute("show").Value.ToLower() != "false",
                         Type = y.Attribute("type") != null && !string.IsNullOrEmpty(y.Attribute("type").Value) ? (MenuItemType)Enum.Parse(typeof(MenuItemType), y.Attribute("type").Value, true) : MenuItemType.Item,
-                        Shortcut = ReadShortcut(x)
+                        Shortcut = ReadShortcut(y)
                     }).ToList() : new List<MenuItem>();
                     return menuItem;
                 })
@@ -253,21 +253,21 @@ namespace SmartContextMenu.Settings
                                          x.Type == MenuItemType.Item ? new XAttribute("key2", x.Shortcut.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)x.Shortcut.Key2).ToString()) : null,
                                          x.Type == MenuItemType.Item ? new XAttribute("key3", x.Shortcut.Key3 == VirtualKey.None ? string.Empty : ((int)x.Shortcut.Key3).ToString()) : null)))),
                                  new XElement("hotKeys",
-                                     new XAttribute("key1", ((int)settings.Key1).ToString()),
-                                     new XAttribute("key2", ((int)settings.Key2).ToString()),
-                                     new XAttribute("key3", ((int)settings.Key3).ToString()),
-                                     new XAttribute("key4", ((int)settings.Key4).ToString()),
-                                     new XAttribute("mouseButton", ((int)settings.MouseButton).ToString())
+                                     new XAttribute("key1", settings.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)settings.Key1).ToString()),
+                                     new XAttribute("key2", settings.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)settings.Key2).ToString()),
+                                     new XAttribute("key3", settings.Key3 == VirtualKey.None ? string.Empty : ((int)settings.Key3).ToString()),
+                                     new XAttribute("key4", settings.Key4 == VirtualKey.None ? string.Empty : ((int)settings.Key4).ToString()),
+                                     new XAttribute("mouseButton", settings.MouseButton == MouseButton.None ? string.Empty : ((int)settings.MouseButton).ToString())
                                  ),
                                  new XElement("mover",
                                      new XElement("next",
-                                         new XAttribute("key1", ((int)settings.NextMonitor.Key1).ToString()),
-                                         new XAttribute("key2", ((int)settings.NextMonitor.Key2).ToString()),
-                                         new XAttribute("key3", ((int)settings.NextMonitor.Key3).ToString())),
+                                         new XAttribute("key1", settings.NextMonitor.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)settings.NextMonitor.Key1).ToString()),
+                                         new XAttribute("key2", settings.NextMonitor.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)settings.NextMonitor.Key2).ToString()),
+                                         new XAttribute("key3", settings.NextMonitor.Key3 == VirtualKey.None ? string.Empty : ((int)settings.NextMonitor.Key3).ToString())),
                                      new XElement("previous",
-                                         new XAttribute("key1", ((int)settings.PreviousMonitor.Key1).ToString()),
-                                         new XAttribute("key2", ((int)settings.PreviousMonitor.Key2).ToString()),
-                                         new XAttribute("key3", ((int)settings.PreviousMonitor.Key3).ToString()))
+                                         new XAttribute("key1", settings.PreviousMonitor.Key1 == VirtualKeyModifier.None ? string.Empty : ((int)settings.PreviousMonitor.Key1).ToString()),
+                                         new XAttribute("key2", settings.PreviousMonitor.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)settings.PreviousMonitor.Key2).ToString()),
+                                         new XAttribute("key3", settings.PreviousMonitor.Key3 == VirtualKey.None ? string.Empty : ((int)settings.PreviousMonitor.Key3).ToString()))
                                  ),
                                  new XElement("dimmer",
                                      new XAttribute("color", settings.Dimmer.Color),
