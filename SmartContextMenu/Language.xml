@@ -2848,15 +2848,15 @@
     <item name="sizer_window_without_margins" value="Ablak margók nélkül" />
     <item name="sizer_window_client_area" value="Ablak ügyfélterület" />
     <item name="parameter_btn_apply" value="OK" />
-    <item name="parameter_form" value="Gyorsbillentyűk" />
-    <item name="grpb_hotkeys" value="Raccourcis clavier" />
+    <item name="parameter_form" value="Bemeneti paraméter" />
+    <item name="grpb_hotkeys" value="Gyorsbillentyűk" />
     <item name="lbl_key1" value="1. kulcs" />
     <item name="lbl_key2" value="2. kulcs" />
     <item name="lbl_key3" value="3. kulcs" />
     <item name="lbl_key4" value="4. kulcs" />
     <item name="lbl_mouse_button" value="Egérgomb" />
-    <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
-    <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
+    <item name="grpb_next_hotkeys" value="Gyorsbillentyűk →" />
+    <item name="grpb_previous_hotkeys" value="Gyorsbillentyűk ←" />
     <item name="change_title_btn_apply" value="OK" />
     <item name="change_title_btn_cancel" value="Mégse" />
     <item name="change_title_form" value="Cím módosítása" />
@@ -3333,8 +3333,8 @@
     <item name="lbl_key3" value="Tecla 3" />
     <item name="lbl_key4" value="Tecla 4" />
     <item name="lbl_mouse_button" value="Botón delñ mouse" />
-    <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
-    <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
+    <item name="grpb_next_hotkeys" value="Teclas de acceso rápido →" />
+    <item name="grpb_previous_hotkeys" value="Teclas de acceso rápido ←" />
     <item name="change_title_btn_apply" value="Ok" />
     <item name="change_title_btn_cancel" value="Cancelar" />
     <item name="change_title_form" value="Cambiar título" />
