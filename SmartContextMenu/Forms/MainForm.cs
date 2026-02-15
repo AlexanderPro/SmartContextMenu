@@ -162,8 +162,6 @@ namespace SmartContextMenu.Forms
 
         private void MoveToHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
-            e.Succeeded = true;
-
             var monitorHandles = SystemUtils.GetMonitors();
             if (monitorHandles.Count < 2)
             {
@@ -197,6 +195,7 @@ namespace SmartContextMenu.Forms
 
             monitorHandle = monitorHandles[monitorIndex];
             WindowUtils.MoveToMonitor(parentHandle, monitorHandle);
+            e.Succeeded = true;
         });
 
         private void EscKeyHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
