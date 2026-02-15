@@ -162,31 +162,41 @@ namespace SmartContextMenu.Forms
 
         private void MoveToHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
-            var monitorHandles = SystemUtils.GetMonitors();
-            if (monitorHandles.Count > 1)
-            {
-                var handle = User32.GetForegroundWindow();
-                var parentHandle = WindowUtils.GetParentWindow(handle);
-                var monitorHandle = User32.MonitorFromWindow(parentHandle, Constants.MONITOR_DEFAULTTONEAREST);
-                var monitor = monitorHandles.Select((x, i) => new { Handle = x, Index = i }).Where(x => x.Handle == monitorHandle).FirstOrDefault();
-                if (monitor != default)
-                {
-                    var monitorIndex = monitor.Index;
-                    if (e.NextMonitor)
-                    {
-                        monitorIndex = monitorIndex == (monitorHandles.Count - 1) ? 0 : monitorIndex + 1;
-                    }
-
-                    if (e.PreviousMonitor)
-                    {
-                        monitorIndex = monitorIndex == 0 ? monitorHandles.Count - 1 : monitorIndex - 1;
-                    }
-
-                    monitorHandle = monitorHandles[monitorIndex];
-                    WindowUtils.MoveToMonitor(parentHandle, monitorHandle);
-                }
-            }
             e.Succeeded = true;
+
+            var monitorHandles = SystemUtils.GetMonitors();
+            if (monitorHandles.Count < 2)
+            {
+                return;
+            }
+
+            var handle = User32.GetForegroundWindow();
+            var parentHandle = WindowUtils.GetParentWindow(handle);
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
+            {
+                return;
+            }
+
+            var monitorHandle = User32.MonitorFromWindow(parentHandle, Constants.MONITOR_DEFAULTTONEAREST);
+            var monitor = monitorHandles.Select((x, i) => new { Handle = x, Index = i }).Where(x => x.Handle == monitorHandle).FirstOrDefault();
+            if (monitor == null)
+            {
+                return;
+            }
+
+            var monitorIndex = monitor.Index;
+            if (e.NextMonitor)
+            {
+                monitorIndex = monitorIndex == (monitorHandles.Count - 1) ? 0 : monitorIndex + 1;
+            }
+
+            if (e.PreviousMonitor)
+            {
+                monitorIndex = monitorIndex == 0 ? monitorHandles.Count - 1 : monitorIndex - 1;
+            }
+
+            monitorHandle = monitorHandles[monitorIndex];
+            WindowUtils.MoveToMonitor(parentHandle, monitorHandle);
         });
 
         private void EscKeyHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
