@@ -956,17 +956,17 @@
     <item name="system_menu_available" value="可用的" />
   </language>
   <language name="ja">
-    <item name="separator" value="セパレーター" />
+    <item name="separator" value="区切り" />
     <item name="information" value="情報" />
     <item name="roll_up" value="ロールアップ" />
     <item name="change_icon" value="アイコンを変更" />
     <item name="change_title" value="タイトルを変更" />
-    <item name="aero_glass" value="Aero Glass" />
-    <item name="borderless" value="ボーダレス" />
-    <item name="dimmer" value="窓の調光器" />
-    <item name="hide" value="隠れる" />
+    <item name="aero_glass" value="エアログラス" />
+    <item name="borderless" value="枠なし" />
+    <item name="dimmer" value="ウィンドウの色" />
+    <item name="hide" value="隠す" />
     <item name="always_on_top" value="常に手前に表示" />
-    <item name="send_to_bottom" value="背面へ送る" />
+    <item name="send_to_bottom" value="背面へ移動" />
     <item name="save_screenshot" value="スクリーンショットを撮る" />
     <item name="open_file_in_explorer" value="エクスプローラーで開く" />
     <item name="clipboard" value="クリップボード" />
@@ -974,13 +974,13 @@
     <item name="copy_window_text" value="ウィンドウテキストのコピー" />
     <item name="copy_window_title" value="ウィンドウタイトルのコピー" />
     <item name="copy_full_process_path" value="フルプロセスパスをコピー" />
-    <item name="clear_clipboard" value="クリア" />
-    <item name="drag_by_mouse" value="マウスでドラッグする" />
+    <item name="clear_clipboard" value="消去" />
+    <item name="drag_by_mouse" value="マウスでドラッグ" />
     <item name="hide_for_alt_tab" value="Alt+Tabで非表示" />
     <item name="click_through" value="クリックスルーウィンドウ" />
     <item name="size" value="サイズ変更" />
     <item name="size_default" value="デフォルト" />
-    <item name="size_custom" value="カストム" />
+    <item name="size_custom" value="カスタム..." />
     <item name="move_to" value="移動" />
     <item name="monitor" value="モニター" />
     <item name="alignment" value="位置合わせ" />
@@ -993,37 +993,37 @@
     <item name="align_bottom_left" value="左下" />
     <item name="align_bottom_center" value="下" />
     <item name="align_bottom_right" value="右下" />
-    <item name="align_center_horizontally" value="水平方向に中央に配置" />
-    <item name="align_center_vertically" value="垂直方向に中央に配置" />
+    <item name="align_center_horizontally" value="水平方向の中央に配置" />
+    <item name="align_center_vertically" value="垂直方向の中央に配置" />
     <item name="align_default" value="デフォルト" />
-    <item name="align_custom" value="カストム" />
+    <item name="align_custom" value="カスタム..." />
     <item name="transparency" value="透明度" />
     <item name="trans_opaque" value=" (不透明)" />
     <item name="trans_invisible" value=" (透明)" />
     <item name="trans_default" value="デフォルト" />
-    <item name="trans_custom" value="カストム" />
+    <item name="trans_custom" value="カスタム..." />
     <item name="priority" value="優先度の設定" />
-    <item name="priority_real_time" value="リアルタイム： 24" />
-    <item name="priority_high" value="高： 13" />
-    <item name="priority_above_normal" value="通常以上： 10" />
-    <item name="priority_normal" value="通常： 8" />
-    <item name="priority_below_normal" value="通常以下： 6" />
-    <item name="priority_idle" value="低： 4" />
+    <item name="priority_real_time" value="リアルタイム : 24" />
+    <item name="priority_high" value="高 : 13" />
+    <item name="priority_above_normal" value="通常以上 : 10" />
+    <item name="priority_normal" value="通常 : 8" />
+    <item name="priority_below_normal" value="通常以下 :6" />
+    <item name="priority_idle" value="低 : 4" />
     <item name="system_tray" value="システムトレイ" />
     <item name="minimize_to_systemtray" value="システムトレイへ最小化" />
     <item name="minimize_always_to_systemtray" value="常にシステムトレイへ最小化" />
-    <item name="suspend_to_systemtray" value="Suspend and Minimize To Tray" />
-    <item name="other_windows" value="その他画面" />
+    <item name="suspend_to_systemtray" value="中断してトレイへ最小化" />
+    <item name="other_windows" value="その他(ウィンドウ)" />
     <item name="minimize_other_windows" value="最小化" />
     <item name="close_other_windows" value="閉じる" />
-    <item name="start_program" value="起動プログラム" />
+    <item name="start_program" value="プログラムの起動" />
     <item name="buttons" value="ボタン" />
     <item name="disable_minimize_button" value="「最小化」ボタンを無効にする" />
     <item name="disable_maximize_button" value="「最大化」ボタンを無効にする" />
     <item name="disable_close_button" value="「閉じる」ボタンを無効にする" />
     <item name="settings" value="設定..." />
-    <item name="grp_window" value="Window" />
-    <item name="grp_process" value="Process" />
+    <item name="grp_window" value="ウィンドウ" />
+    <item name="grp_process" value="プロセス" />
     <item name="lbl_get_window_text" value="GetWindowText:" />
     <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
     <item name="lbl_get_class_name" value="GetClassName:" />
@@ -1031,10 +1031,10 @@
     <item name="lbl_font_name" value="Font Name:" />
     <item name="lbl_window_handle" value="Window Handle:" />
     <item name="lbl_parent_window_handle" value="Parent Window Handle:" />
-    <item name="lbl_window_size" value="Window Size:" />
-    <item name="lbl_window_position" value="Window Position:" />
-    <item name="lbl_extended_frame_bounds" value="Extended Frame Bounds:" />
-    <item name="lbl_instance" value="Instance:" />
+    <item name="lbl_window_size" value="ウィンドウサイズ :" />
+    <item name="lbl_window_position" value="ウィンドウ位置 :" />
+    <item name="lbl_extended_frame_bounds" value="拡張フレーム境界 :" />
+    <item name="lbl_instance" value="インスタンス :" />
     <item name="lbl_process_id" value="ProcessID:" />
     <item name="lbl_thread_id" value="ThreadID:" />
     <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
@@ -1047,23 +1047,23 @@
     <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
     <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
     <item name="lbl_dwl_user" value="DWL_USER:" />
-    <item name="lbl_full_path" value="Full Path:" />
-    <item name="lbl_command_line" value="Command Line:" />
-    <item name="lbl_started_at" value="Started at:" />
-    <item name="lbl_owner" value="Owner:" />
-    <item name="lbl_threads" value="Threads:" />
-    <item name="lbl_working_set_size" value="Working Set Size:" />
-    <item name="lbl_parent" value="Parent:" />
-    <item name="lbl_priority" value="Priority:" />
-    <item name="lbl_handles" value="Handles:" />
-    <item name="lbl_virtual_size" value="Virtual Size:" />
-    <item name="lbl_product_name" value="Product Name:" />
-    <item name="lbl_copyright" value="Copyright:" />
-    <item name="lbl_file_version" value="File Version:" />
-    <item name="lbl_product_version" value="Product Version:" />
+    <item name="lbl_full_path" value="フルパス :" />
+    <item name="lbl_command_line" value="コマンドライン :" />
+    <item name="lbl_started_at" value="開始 :" />
+    <item name="lbl_owner" value="所有者 :" />
+    <item name="lbl_threads" value="スレッド :" />
+    <item name="lbl_working_set_size" value="ワーキングセットサイズ :" />
+    <item name="lbl_parent" value="親 :" />
+    <item name="lbl_priority" value="優先度 :" />
+    <item name="lbl_handles" value="ハンドル :" />
+    <item name="lbl_virtual_size" value="仮想サイズ :" />
+    <item name="lbl_product_name" value="製品名 :" />
+    <item name="lbl_copyright" value="著作権 :" />
+    <item name="lbl_file_version" value="ファイルバージョン :" />
+    <item name="lbl_product_version" value="製品バージョン :" />
     <item name="information_btn_apply" value="適用" />
-    <item name="save_screenshot_title" value="ウィンドウスクリーンショット保存" />
-    <item name="save_screenshot_filename" value="ウィンドウスクリーンショット" />
+    <item name="save_screenshot_title" value="スクリーンショットの保存" />
+    <item name="save_screenshot_filename" value="スクリーンショット" />
     <item name="save_screenshot_default_ext" value="bmp" />
     <item name="save_screenshot_filter" value="ビットマップ画像(*.bmp)|*.bmp|GIF画像 (*.gif)|*.gif|JPEG画像 (*.jpeg)|*.jpeg|PNG画像 (*.png)|*.png|TIFF画像 (*.tiff)|*.tiff|WMF画像 (*.wmf)|*.wmf" />
     <item name="icon_default_ext" value="ico" />
@@ -1078,16 +1078,16 @@
     <item name="trans_btn_apply" value="適用" />
     <item name="align_form" value="位置設定" />
     <item name="align_btn_apply" value="適用" />
-    <item name="lbl_top" value="上:" />
-    <item name="lbl_left" value="左:" />
-    <item name="mi_restore" value="戻す" />
-    <item name="mi_restore_windows" value="戻す" />
+    <item name="lbl_top" value="上 :" />
+    <item name="lbl_left" value="左 :" />
+    <item name="mi_restore" value="復元" />
+    <item name="mi_restore_windows" value="復元" />
     <item name="mi_close" value="閉じる" />
     <item name="mi_auto_start" value="自動起動" />
     <item name="mi_settings" value="設定..." />
-    <item name="mi_about" value="プログラム関連情報" />
+    <item name="mi_about" value="SmartContextMenu について" />
     <item name="mi_exit" value="終了" />
-    <item name="about_form" value="プログラム関連情報" />
+    <item name="about_form" value="SmartContextMenu について" />
     <item name="about_btn_ok" value="OK" />
     <item name="settings_form" value="設定" />
     <item name="tab_settings_general" value="全般" />
@@ -1103,8 +1103,8 @@
     <item name="btn_add_start_program" value="起動プログラムの追加" />
     <item name="settings_btn_apply" value="OK" />
     <item name="settings_btn_cancel" value="キャンセル" />
-    <item name="grpb_window_size" value="Window Size Menu Items" />
-    <item name="window_size_form" value="Window Size" />
+    <item name="grpb_window_size" value="ウィンドウサイズメニュー項目" />
+    <item name="window_size_form" value="ウィンドウサイズ" />
     <item name="window_size_btn_apply" value="OK" />
     <item name="window_size_btn_cancel" value="キャンセル" />
     <item name="clm_window_size_title" value="タイトル" />
@@ -1114,34 +1114,34 @@
     <item name="clm_window_size_left" value="左" />
     <item name="clm_window_size_edit" value="編集" />
     <item name="clm_window_size_delete" value="削除" />
-    <item name="lbl_window_size_title" value="タイトル:" />
-    <item name="lbl_window_size_width" value="幅:" />
-    <item name="lbl_window_size_height" value="高さ:" />
-    <item name="lbl_window_size_key1" value="キー 1:" />
-    <item name="lbl_window_size_key2" value="キー 2:" />
-    <item name="lbl_window_size_key3" value="キー 3:" />
-    <item name="lbl_window_size_top" value="上:" />
-    <item name="lbl_window_size_left" value="左:" />
-    <item name="btn_window_size_up" value="Move Up" />
-    <item name="btn_window_size_down" value="Move Down" />
+    <item name="lbl_window_size_title" value="タイトル :" />
+    <item name="lbl_window_size_width" value="幅 :" />
+    <item name="lbl_window_size_height" value="高さ :" />
+    <item name="lbl_window_size_key1" value="キー 1 :" />
+    <item name="lbl_window_size_key2" value="キー 2 :" />
+    <item name="lbl_window_size_key3" value="キー 3 :" />
+    <item name="lbl_window_size_top" value="上 :" />
+    <item name="lbl_window_size_left" value="左 :" />
+    <item name="btn_window_size_up" value="上へ" />
+    <item name="btn_window_size_down" value="下へ" />
     <item name="btn_add_window_size" value="追加" />
-    <item name="btn_menu_item_up" value="Move Up" />
-    <item name="btn_menu_item_down" value="Move Down" />
+    <item name="btn_menu_item_up" value="上へ" />
+    <item name="btn_menu_item_down" value="下へ" />
     <item name="process_name_form" value="プロセスの除外" />
-    <item name="process_lbl_file_name" value="プロセス名：" />
+    <item name="process_lbl_file_name" value="プロセス名 ：" />
     <item name="process_btn_apply" value="適用" />
     <item name="process_btn_cancel" value="キャンセル" />
-    <item name="process_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
+    <item name="process_browse_file_filter" value="実行ファイル(*.exe)|*.exe|すべてのファイル(*.*)|*.*" />
     <item name="start_program_form" value="起動プログラム" />
-    <item name="start_program_lbl_title" value="タイトル：" />
-    <item name="start_program_lbl_file_name" value="ファイル名：" />
+    <item name="start_program_lbl_title" value="タイトル ：" />
+    <item name="start_program_lbl_file_name" value="ファイル名 ：" />
     <item name="start_program_lbl_arguments" value="引数" />
-    <item name="start_program_lbl_runas" value="として実行:" />
-    <item name="start_program_lbl_begin" value="始める:" />
-    <item name="start_program_lbl_end" value="終わり:" />
-    <item name="start_program_lbl_key1" value="キー 1:" />
-    <item name="start_program_lbl_key2" value="キー 2:" />
-    <item name="start_program_lbl_key3" value="キー 3:" />
+    <item name="start_program_lbl_runas" value="管理者として実行 :" />
+    <item name="start_program_lbl_begin" value="開始 :" />
+    <item name="start_program_lbl_end" value="終了 :" />
+    <item name="start_program_lbl_key1" value="キー 1 :" />
+    <item name="start_program_lbl_key2" value="キー 2 :" />
+    <item name="start_program_lbl_key3" value="キー 3 :" />
     <item name="start_program_show_window" value="ウィンドウを表示" />
     <item name="start_program_use_window_working_directory" value="ウィンドウの作業ディレクトリを使用する" />
     <item name="start_program_parameter" value="パラメータ" />
@@ -1149,10 +1149,10 @@
     <item name="start_program_administrator" value="管理者" />
     <item name="start_program_btn_apply" value="適用" />
     <item name="start_program_btn_cancel" value="キャンセル" />
-    <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|全てのファイル(*.*)|*.*" />
+    <item name="start_program_browse_file_filter" value="実行ファイル(*.exe)|*.exe|すべてのファイル(*.*)|*.*" />
     <item name="grpb_language" value="言語" />
     <item name="message_box_attention_title" value="注意" />
-    <item name="message_box_attention_content" value="変更後設定が有効になるように、手動でアプリを再起動してください。" />
+    <item name="message_box_attention_content" value="設定を適用するには、アプリを再起動してください。" />
     <item name="hotkeys_form" value="ホットキー" />
     <item name="hotkeys_lbl_key1" value="キー 1" />
     <item name="hotkeys_lbl_key2" value="キー 2" />
@@ -1165,14 +1165,14 @@
     <item name="tab_settings_menu_start" value="メニュー (起動プログラム)" />
     <item name="tab_settings_menu_size" value="メニュー (サイズ変更)" />
     <item name="tab_settings_menu_move_to" value="メニュー (移動)" />
-    <item name="tab_settings_menu_dimmer" value="メニュー (窓の調光器)" />
+    <item name="tab_settings_menu_dimmer" value="メニュー (ウィンドウの色)" />
     <item name="grpb_dimmer_color" value="色" />
     <item name="grpb_dimmer_transparency" value="透明度" />
-    <item name="grpb_sizer" value="ウィンドウサイズの設定方法" />
-    <item name="grpb_display" value="Display" />
-    <item name="chk_enable_high_dpi" value="Enable High DPI" />
-    <item name="sizer_window_with_margins" value="余白のあるウィンドウ" />
-    <item name="sizer_window_without_margins" value="余白のないウィンドウ" />
+    <item name="grpb_sizer" value="ウィンドウサイズの設定" />
+    <item name="grpb_display" value="ディスプレイ" />
+    <item name="chk_enable_high_dpi" value="高DPIを有効にする" />
+    <item name="sizer_window_with_margins" value="余白付きウィンドウ" />
+    <item name="sizer_window_without_margins" value="余白なしウィンドウ" />
     <item name="sizer_window_client_area" value="ウィンドウクライアントエリア" />
     <item name="parameter_btn_apply" value="OK" />
     <item name="parameter_form" value="入力パラメータ" />
@@ -1186,7 +1186,7 @@
     <item name="grpb_previous_hotkeys" value="ホットキー ←" />
     <item name="change_title_btn_apply" value="OK" />
     <item name="change_title_btn_cancel" value="キャンセル" />
-    <item name="change_title_form" value="タイトルを変更" />
+    <item name="change_title_form" value="タイトルの変更" />
     <item name="system_menu" value="システムメニュー" />
     <item name="system_menu_restore" value="元のサイズに戻す" />
     <item name="system_menu_minimize" value="最小化" />
