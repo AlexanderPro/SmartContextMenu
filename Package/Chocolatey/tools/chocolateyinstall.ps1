@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $packageName= 'smartcontextmenu'
 $toolsDir   = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url        = 'https://github.com/AlexanderPro/SmartContextMenu/releases/download/v1.7.2/SmartContextMenu_v1.7.2.zip'
+$url        = 'https://github.com/AlexanderPro/SmartContextMenu/releases/download/v1.8.0/SmartContextMenu_v1.8.0.zip'
 
 $packageArgs = @{
   packageName   = $packageName
@@ -9,7 +9,7 @@ $packageArgs = @{
   fileType      = 'zip'
   url           = $url
   softwareName  = 'SmartContextMenu*'
-  checksum      = '957ba30cedd92e90d66fdb6d565d180e4b153379da7d29a6d512c5485c36bf30'
+  checksum      = '6db630e7f353002d0d02eacab4611af6a046bef9b0405cf387ac031b3c58e574'
   checksumType  = 'sha256'
 }
 
