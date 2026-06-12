@@ -25,15 +25,15 @@
       <item type="group" name="move_to" />
       <item type="group" name="alignment">
         <items>
-          <item type="item" name="align_top_left" key1="18" key2="" key3="103" />
-          <item type="item" name="align_top_center" key1="18" key2="" key3="104" />
-          <item type="item" name="align_top_right" key1="18" key2="" key3="105" />
-          <item type="item" name="align_middle_left" key1="18" key2="" key3="100" />
-          <item type="item" name="align_middle_center" key1="18" key2="" key3="101" />
-          <item type="item" name="align_middle_right" key1="18" key2="" key3="102" />
-          <item type="item" name="align_bottom_left" key1="18" key2="" key3="97" />
-          <item type="item" name="align_bottom_center" key1="18" key2="" key3="98" />
-          <item type="item" name="align_bottom_right" key1="18" key2="" key3="99" />
+          <item type="item" name="align_top_left" key1="91" key2="18" key3="103" />
+          <item type="item" name="align_top_center" key1="91" key2="18" key3="104" />
+          <item type="item" name="align_top_right" key1="91" key2="18" key3="105" />
+          <item type="item" name="align_middle_left" key1="91" key2="18" key3="100" />
+          <item type="item" name="align_middle_center" key1="91" key2="18" key3="101" />
+          <item type="item" name="align_middle_right" key1="91" key2="18" key3="102" />
+          <item type="item" name="align_bottom_left" key1="91" key2="18" key3="97" />
+          <item type="item" name="align_bottom_center" key1="91" key2="18" key3="98" />
+          <item type="item" name="align_bottom_right" key1="91" key2="18" key3="99" />
           <item type="separator" />
           <item type="item" name="align_center_horizontally" key1="" key2="" key3="" />
           <item type="item" name="align_center_vertically" key1="" key2="" key3="" />
