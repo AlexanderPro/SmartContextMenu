@@ -5,6 +5,8 @@ namespace SmartContextMenu.Settings
 {
     public class ApplicationSettings : ICloneable
     {
+        public const int DefaultLowLevelHooksTimeout = 300;
+
         public VirtualKeyModifier Key1 { get; set; }
 
         public VirtualKeyModifier Key2 { get; set; }
@@ -18,6 +20,8 @@ namespace SmartContextMenu.Settings
         public bool ShowSystemTrayIcon { get; set; }
 
         public bool EnableHighDPI { get; set; }
+
+        public int LowLevelHooksTimeout { get; set; }
 
         public DimmerSettings Dimmer { get; set; }
 
@@ -42,6 +46,7 @@ namespace SmartContextMenu.Settings
             Sizer = WindowSizerType.WindowWithMargins;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
+            LowLevelHooksTimeout = DefaultLowLevelHooksTimeout;
             LanguageName = string.Empty;
             NextMonitor = new KeyboardShortcut();
             PreviousMonitor = new KeyboardShortcut();

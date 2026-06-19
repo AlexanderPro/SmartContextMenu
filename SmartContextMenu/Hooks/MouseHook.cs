@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using SmartContextMenu.Settings;
 using SmartContextMenu.Native.Structs;
 using static SmartContextMenu.Native.Kernel32;
 using static SmartContextMenu.Native.User32;
@@ -9,33 +11,26 @@ namespace SmartContextMenu.Hooks
     class MouseHook : IDisposable
     {
         private readonly string _moduleName;
-        private readonly MouseHookProc _hookProc;
+        private static MouseHookProc _hookProc;
+        private IntPtr _moduleHandle;
         private IntPtr _hookHandle;
 
         public event EventHandler<EventArgs> Hooked;
         public event EventHandler<EventArgs> ClickHooked;
 
-        public VirtualKeyModifier Key1 { get; set; }
-        public VirtualKeyModifier Key2 { get; set; }
-        public VirtualKey Key3 { get; set; }
-        public VirtualKey Key4 { get; set; }
-        public MouseButton MouseButton { get; set; }
-
-        public MouseHook(VirtualKeyModifier key1, VirtualKeyModifier key2, VirtualKey key3, VirtualKey key4, MouseButton mouseButton, string moduleName)
+        public ApplicationSettings Settings { get; set; }
+        
+        public MouseHook(ApplicationSettings settings, string moduleName)
         {
-            Key1 = key1;
-            Key2 = key2;
-            Key3 = key3;
-            Key4 = key4;
-            MouseButton = mouseButton;
+            Settings = settings;
             _moduleName = moduleName;
             _hookProc = HookProc;
         }
 
         public bool Start()
         {
-            var moduleHandle = GetModuleHandle(_moduleName);
-            _hookHandle = SetWindowsHookEx(WH_MOUSE_LL, _hookProc, moduleHandle, 0);
+            _moduleHandle = GetModuleHandle(_moduleName);
+            InitializeHook();
             return _hookHandle != IntPtr.Zero;
         }
 
@@ -70,40 +65,42 @@ namespace SmartContextMenu.Hooks
             Dispose(false);
         }
 
-        private int HookProc(int code, int wParam, IntPtr lParam)
+        private int HookProc(int nCode, int wParam, IntPtr lParam)
         {
-            if (code == HC_ACTION)
+            if (nCode >= 0)
             {
-                if ((MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
-                    (MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
-                    (MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN))
+                var stopWatch = Stopwatch.StartNew();
+
+                if ((Settings.MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
+                    (Settings.MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
+                    (Settings.MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN))
                 {
                     var key1 = true;
                     var key2 = true;
                     var key3 = true;
                     var key4 = true;
 
-                    if (Key1 != VirtualKeyModifier.None)
+                    if (Settings.Key1 != VirtualKeyModifier.None)
                     {
-                        var keyState = GetAsyncKeyState((int)Key1) & 0x8000;
+                        var keyState = GetAsyncKeyState((int)Settings.Key1) & 0x8000;
                         key1 = Convert.ToBoolean(keyState);
                     }
 
-                    if (Key2 != VirtualKeyModifier.None)
+                    if (Settings.Key2 != VirtualKeyModifier.None)
                     {
-                        var keyState = GetAsyncKeyState((int)Key2) & 0x8000;
+                        var keyState = GetAsyncKeyState((int)Settings.Key2) & 0x8000;
                         key2 = Convert.ToBoolean(keyState);
                     }
 
-                    if (Key3 != VirtualKey.None)
+                    if (Settings.Key3 != VirtualKey.None)
                     {
-                        var keyState = GetAsyncKeyState((int)Key3) & 0x8000;
+                        var keyState = GetAsyncKeyState((int)Settings.Key3) & 0x8000;
                         key3 = Convert.ToBoolean(keyState);
                     }
 
-                    if (Key4 != VirtualKey.None)
+                    if (Settings.Key4 != VirtualKey.None)
                     {
-                        var keyState = GetAsyncKeyState((int)Key4) & 0x8000;
+                        var keyState = GetAsyncKeyState((int)Settings.Key4) & 0x8000;
                         key4 = Convert.ToBoolean(keyState);
                     }
 
@@ -113,12 +110,19 @@ namespace SmartContextMenu.Hooks
                         if (handler != null)
                         {
                             handler.BeginInvoke(this, EventArgs.Empty, null, null);
+
+                            stopWatch.Stop();
+                            if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                            {
+                                InitializeHook();
+                            }
+
                             return 1;
                         }
                     }
                 }
 
-                if (MouseButton != MouseButton.None && wParam == WM_LBUTTONDOWN)
+                if (Settings.MouseButton != MouseButton.None && wParam == WM_LBUTTONDOWN)
                 {
                     var handler = ClickHooked;
                     if (handler != null)
@@ -126,9 +130,25 @@ namespace SmartContextMenu.Hooks
                         handler.BeginInvoke(this, EventArgs.Empty, null, null);
                     }
                 }
+
+                stopWatch.Stop();
+                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                {
+                    InitializeHook();
+                }
             }
 
-            return CallNextHookEx(_hookHandle, code, wParam, lParam);
+            return CallNextHookEx(_hookHandle, nCode, wParam, lParam);
+        }
+
+        private void InitializeHook()
+        {
+            if (_hookHandle != IntPtr.Zero)
+            {
+                UnhookWindowsHookEx(_hookHandle);
+                _hookHandle = IntPtr.Zero;
+            }
+            _hookHandle = SetWindowsHookEx(WH_MOUSE_LL, _hookProc, _moduleHandle, 0);
         }
     }
 }

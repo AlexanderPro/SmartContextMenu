@@ -70,7 +70,7 @@ namespace SmartContextMenu.Forms
             _keyboardHook.EscKeyHooked += EscKeyHooked;
             _keyboardHook.Start();
 
-            _mouseHook = new MouseHook(_settings.Key1, _settings.Key2, _settings.Key3, _settings.Key4, _settings.MouseButton, mainModule.ModuleName);
+            _mouseHook = new MouseHook(_settings, mainModule.ModuleName);
             _mouseHook.Hooked += MouseHooked;
             _mouseHook.ClickHooked += ClickHooked;
             _mouseHook.Start();
@@ -896,11 +896,7 @@ namespace SmartContextMenu.Forms
                 {
                     _settings = e.Entity;
                     _keyboardHook.Settings = _settings;
-                    _mouseHook.Key1 = _settings.Key1;
-                    _mouseHook.Key2 = _settings.Key2;
-                    _mouseHook.Key3 = _settings.Key3;
-                    _mouseHook.Key4 = _settings.Key4;
-                    _mouseHook.MouseButton = _settings.MouseButton;
+                    _mouseHook.Settings = _settings;
                     var manager = new LanguageManager(_settings.LanguageName);
                     _systemTrayMenu.RefreshLanguage(manager);
                     UpdateDimWindowsColor();

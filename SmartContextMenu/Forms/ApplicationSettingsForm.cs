@@ -508,6 +508,7 @@ namespace SmartContextMenu.Forms
             settings.Dimmer.Transparency = trackbDimmerTransparency.Value;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
+            settings.LowLevelHooksTimeout = _settings.LowLevelHooksTimeout;
             settings.LanguageName = listBoxLanguage.SelectedValue == null ? string.Empty : listBoxLanguage.SelectedValue.ToString();
 
             if (txtNextHotkeys.Tag is KeyboardShortcut nextShortcut)

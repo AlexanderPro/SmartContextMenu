@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Diagnostics;
 using SmartContextMenu.Settings;
 using SmartContextMenu.Extensions;
 using SmartContextMenu.Native.Structs;
@@ -13,7 +14,8 @@ namespace SmartContextMenu.Hooks
     class KeyboardHook : IDisposable
     {
         private readonly string _moduleName;
-        private readonly KeyboardHookProc _hookProc;
+        private static KeyboardHookProc _hookProc;
+        private IntPtr _moduleHandle;
         private IntPtr _hookHandle;
 
         public event EventHandler<KeyboardEventArgs> MenuItemHooked;
@@ -33,8 +35,8 @@ namespace SmartContextMenu.Hooks
 
         public bool Start()
         {
-            var moduleHandle = GetModuleHandle(_moduleName);
-            _hookHandle = SetWindowsHookEx(WH_KEYBOARD_LL, _hookProc, moduleHandle, 0);
+            _moduleHandle = GetModuleHandle(_moduleName);
+            InitializeHook();
             return _hookHandle != IntPtr.Zero;
         }
 
@@ -68,10 +70,12 @@ namespace SmartContextMenu.Hooks
             Dispose(false);
         }
 
-        private int HookProc(int code, IntPtr wParam, ref KeyboardLLHookStruct lParam)
+        private int HookProc(int nCode, IntPtr wParam, ref KeyboardLLHookStruct lParam)
         {
-            if (code == HC_ACTION)
+            if (nCode >= 0)
             {
+                var stopWatch = Stopwatch.StartNew();
+
                 if (wParam.ToInt32() == WM_KEYDOWN || wParam.ToInt32() == WM_SYSKEYDOWN)
                 {
                     if ((int)Settings.NextMonitor.Key3 == lParam.vkCode)
@@ -101,6 +105,12 @@ namespace SmartContextMenu.Hooks
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
+                                    stopWatch.Stop();
+                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                    {
+                                        InitializeHook();
+                                    }
+
                                     return 1;
                                 }
                             }
@@ -134,6 +144,12 @@ namespace SmartContextMenu.Hooks
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
+                                    stopWatch.Stop();
+                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                    {
+                                        InitializeHook();
+                                    }
+
                                     return 1;
                                 }
                             }
@@ -171,6 +187,12 @@ namespace SmartContextMenu.Hooks
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
+                                    stopWatch.Stop();
+                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                    {
+                                        InitializeHook();
+                                    }
+
                                     return 1;
                                 }
                             }
@@ -208,6 +230,12 @@ namespace SmartContextMenu.Hooks
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
+                                    stopWatch.Stop();
+                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                    {
+                                        InitializeHook();
+                                    }
+
                                     return 1;
                                 }
                             }
@@ -245,6 +273,12 @@ namespace SmartContextMenu.Hooks
                                 handler.Invoke(this, eventArgs);
                                 if (eventArgs.Succeeded)
                                 {
+                                    stopWatch.Stop();
+                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                    {
+                                        InitializeHook();
+                                    }
+
                                     return 1;
                                 }
                             }
@@ -260,14 +294,36 @@ namespace SmartContextMenu.Hooks
                             handler?.Invoke(this, eventArgs);
                             if (eventArgs.Succeeded)
                             {
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 return 1;
                             }
                         }
                     }
                 }
+
+                stopWatch.Stop();
+                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                {
+                    InitializeHook();
+                }
             }
 
-            return CallNextHookEx(_hookHandle, code, wParam, ref lParam);
+            return CallNextHookEx(_hookHandle, nCode, wParam, ref lParam);
+        }
+
+        private void InitializeHook()
+        {
+            if (_hookHandle != IntPtr.Zero)
+            {
+                UnhookWindowsHookEx(_hookHandle);
+                _hookHandle = IntPtr.Zero;
+            }
+            _hookHandle = SetWindowsHookEx(WH_KEYBOARD_LL, _hookProc, _moduleHandle, 0);
         }
     }
 }

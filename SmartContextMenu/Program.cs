@@ -25,8 +25,6 @@ namespace SmartContextMenu
         [STAThread]
         static void Main(string[] args)
         {
-            const int LowLevelHooksTimeout = 10000;
-
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
@@ -56,37 +54,23 @@ namespace SmartContextMenu
                 return;
             }
 
-
             _mutex = new Mutex(false, AssemblyUtils.AssemblyTitle, out var createNew);
             if (!createNew)
             {
                 return;
             }
 
-            var lowLevelHooksTimeoutString = commandLineParser.GetToggleValueOrDefault(nameof(LowLevelHooksTimeout), null);
-            var lowLevelHooksTimeoutValue = int.TryParse(lowLevelHooksTimeoutString, out var value) ? value : LowLevelHooksTimeout;
-
-            using var key = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop\\", true);
-            var lowLevelHooksTimeoutOldString = key?.GetValue(nameof(LowLevelHooksTimeout))?.ToString();
-            var lowLevelHooksTimeoutOldValue = int.TryParse(lowLevelHooksTimeoutOldString, out var oldValue) ? oldValue : (int?)null;
-
-            if (lowLevelHooksTimeoutValue > lowLevelHooksTimeoutOldValue || lowLevelHooksTimeoutOldValue == null)
+            using var key = Registry.CurrentUser.OpenSubKey("Control Panel\\Desktop\\", false);
+            var lowLevelHooksTimeoutString = key?.GetValue(nameof(settings.LowLevelHooksTimeout))?.ToString();
+            var lowLevelHooksTimeoutValue = int.TryParse(lowLevelHooksTimeoutString, out var value) ? value : 0;
+            if (lowLevelHooksTimeoutValue > 0)
             {
-                key.SetValue(nameof(LowLevelHooksTimeout), lowLevelHooksTimeoutValue);
+                settings.LowLevelHooksTimeout = lowLevelHooksTimeoutValue;
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm(settings, windows.ToArray()));
-
-            if (lowLevelHooksTimeoutOldValue != null)
-            {
-                key.SetValue(nameof(LowLevelHooksTimeout), lowLevelHooksTimeoutOldValue);
-            }
-            else
-            {
-                key.DeleteValue(nameof(LowLevelHooksTimeout));
-            }
         }
 
         static ICollection<Window> ProcessCommandLine(CommandLineParser сommandLineParser, ApplicationSettings settings)
