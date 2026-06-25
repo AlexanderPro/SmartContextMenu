@@ -8,7 +8,7 @@ namespace SmartContextMenu
 {
     static class ContextMenuManager
     {
-        public static void Build(ContextMenuStrip menu, ApplicationSettings settings, Window window, IntPtr dimHandle, EventHandler onClick)
+        public static void Build(ContextMenuStrip menu, ApplicationSettings settings, EventHandler onClick)
         {
             var manager = new LanguageManager(settings.LanguageName);
             var moveToMenuItems = SystemUtils.GetMonitors().Select((x, i) => new MoveToMenuItem(i + 1, x)).ToList();
@@ -21,9 +21,8 @@ namespace SmartContextMenu
                     title ??= manager.GetString(item.Name);
                     var menuItem = new ToolStripMenuItem(title);
                     menuItem.ShortcutKeyDisplayString = item.Shortcut.ToString();
-                    menuItem.Tag = new ContextMenuItemValue(window, item);
+                    menuItem.Tag = new ContextMenuItemValue(item);
                     menuItem.Click += onClick;
-                    SetChecked(menuItem, item, window, dimHandle);
                     menu.Items.Add(menuItem);
                 }
 
@@ -37,7 +36,7 @@ namespace SmartContextMenu
                     var groupTitle = GetTransparencyTitle(manager, item);
                     groupTitle ??= manager.GetString(item.Name);
                     var subMenu = new ToolStripMenuItem(groupTitle);
-                    subMenu.Tag = new ContextMenuItemValue(window, item);
+                    subMenu.Tag = new ContextMenuItemValue(item);
                     subMenu.DropDownOpening += SubMenuDropDownOpening;
                     menu.Items.Add(subMenu);
 
@@ -49,9 +48,8 @@ namespace SmartContextMenu
                             {
                                 var menuItem = new ToolStripMenuItem(windowSizeItem.Title);
                                 menuItem.ShortcutKeyDisplayString = windowSizeItem.Shortcut.ToString();
-                                menuItem.Tag = new ContextMenuItemValue(window, windowSizeItem);
+                                menuItem.Tag = new ContextMenuItemValue(windowSizeItem);
                                 menuItem.Click += onClick;
-                                SetChecked(menuItem, window, windowSizeItem);
                                 subMenu.DropDownItems.Add(menuItem);
                             }
 
@@ -68,9 +66,8 @@ namespace SmartContextMenu
                         {
                             var title = $"{manager.GetString("monitor")}{moveToMenuItem.MonitorIndex}";
                             var menuItem = new ToolStripMenuItem(title);
-                            menuItem.Tag = new ContextMenuItemValue(window, moveToMenuItem);
+                            menuItem.Tag = new ContextMenuItemValue(moveToMenuItem);
                             menuItem.Click += onClick;
-                            SetChecked(menuItem, window, moveToMenuItem);
                             subMenu.DropDownItems.Add(menuItem);
                         }
                     }
@@ -83,7 +80,7 @@ namespace SmartContextMenu
                             {
                                 var menuItem = new ToolStripMenuItem(startProgramItem.Title);
                                 menuItem.ShortcutKeyDisplayString = startProgramItem.Shortcut.ToString();
-                                menuItem.Tag = new ContextMenuItemValue(window, startProgramItem);
+                                menuItem.Tag = new ContextMenuItemValue(startProgramItem);
                                 menuItem.Click += onClick;
                                 subMenu.DropDownItems.Add(menuItem);
                             }
@@ -103,9 +100,8 @@ namespace SmartContextMenu
                             title ??= manager.GetString(subItem.Name);
                             var menuItem = new ToolStripMenuItem(title);
                             menuItem.ShortcutKeyDisplayString = subItem.Shortcut.ToString();
-                            menuItem.Tag = new ContextMenuItemValue(window, subItem);
+                            menuItem.Tag = new ContextMenuItemValue(subItem);
                             menuItem.Click += onClick;
-                            SetChecked(menuItem, subItem, window, dimHandle);
                             subMenu.DropDownItems.Add(menuItem);
                         }
 
@@ -143,7 +139,45 @@ namespace SmartContextMenu
             menu.Items.Clear();
         }
 
-        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Settings.MenuItem menuItem, Window window, IntPtr dimHandle)
+        public static void Refresh(ContextMenuStrip menu, Window window, IntPtr dimHandle)
+        {
+            var screenFromHandle = Screen.FromHandle(window.Handle);
+            var screenIndex = Screen.AllScreens.Where(x => x.Equals(screenFromHandle)).Select((x, i) => i + 1).First();
+            var windowSize = window.Size;
+            var windowTransparency = window.Transparency;
+            var processPriority = window.ProcessPriority;
+            Refresh(menu.Items, window, windowSize, windowTransparency, processPriority, dimHandle, screenIndex);
+        }
+
+        private static void Refresh(ToolStripItemCollection toolStripMenuItems, Window window, Native.Structs.Rect windowSize, int windowTransparency, Native.Enums.Priority processPriority, IntPtr dimHandle, int screenIndex)
+        {
+            foreach (ToolStripMenuItem menuItem in toolStripMenuItems.OfType<ToolStripMenuItem>().Where(x => x != null))
+            {
+                if (menuItem.DropDownItems.Count > 0)
+                {
+                    Refresh(menuItem.DropDownItems, window, windowSize, windowTransparency, processPriority, dimHandle, screenIndex);
+                }
+                else if (menuItem.Tag is ContextMenuItemValue itemValue)
+                {
+                    itemValue.Window = window;
+
+                    if (itemValue.MenuItem != null)
+                    {
+                        SetChecked(menuItem, itemValue.MenuItem, window, windowTransparency, processPriority, dimHandle);
+                    }
+                    else if (itemValue.WindowSizeMenuItem != null)
+                    {
+                        SetChecked(menuItem, itemValue.WindowSizeMenuItem, windowSize);
+                    }
+                    else if (itemValue.MoveToMenuItem != null)
+                    {
+                        SetChecked(menuItem, itemValue.MoveToMenuItem, screenIndex);
+                    }
+                }
+            }
+        }
+
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Settings.MenuItem menuItem, Window window, int windowTransparency, Native.Enums.Priority processPriority, IntPtr dimHandle)
         {
             switch (menuItem.Name)
             {
@@ -250,7 +284,7 @@ namespace SmartContextMenu
                 case MenuItemName.Transparency90:
                 case MenuItemName.TransparencyInvisible:
                     {
-                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetTransparencyMenuItemName(window.Transparency);
+                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetTransparencyMenuItemName(windowTransparency);
                     }
                     break;
 
@@ -261,23 +295,20 @@ namespace SmartContextMenu
                 case MenuItemName.PriorityBelowNormal:
                 case MenuItemName.PriorityIdle:
                     {
-                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetPriorityMenuItemName(window.ProcessPriority);
+                        toolStripMenuItem.Checked = menuItem.Name == EnumUtils.GetPriorityMenuItemName(processPriority);
                     }
                     break;
             }
         }
 
-        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, WindowSizeMenuItem menuItem)
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, WindowSizeMenuItem menuItem, Native.Structs.Rect size)
         {
-            var size = window.Size;
             toolStripMenuItem.Checked = menuItem.Width.HasValue && menuItem.Height.HasValue && menuItem.Width == size.Width && menuItem.Height == size.Height;
         }
 
-        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, Window window, MoveToMenuItem menuItem)
+        private static void SetChecked(ToolStripMenuItem toolStripMenuItem, MoveToMenuItem menuItem, int screenIndex)
         {
-            var screenFromHandle = Screen.FromHandle(window.Handle);
-            var screen = Screen.AllScreens.Select((x, i) => new { Index = i + 1, Item = x }).FirstOrDefault(x => x.Item.Equals(screenFromHandle));
-            toolStripMenuItem.Checked = menuItem.MonitorIndex == screen?.Index;
+            toolStripMenuItem.Checked = menuItem.MonitorIndex == screenIndex;
         }
 
         private static void SubMenuDropDownOpening(object sender, EventArgs e)

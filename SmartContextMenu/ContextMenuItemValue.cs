@@ -15,27 +15,23 @@ namespace SmartContextMenu
         public StartProgramMenuItem StartProgramMenuItem { get; }
 
 
-        public ContextMenuItemValue(Window window, MenuItem menuItem)
+        public ContextMenuItemValue(MenuItem menuItem)
         {
-            Window = window;
             MenuItem = menuItem;
         }
 
-        public ContextMenuItemValue(Window window, WindowSizeMenuItem windowSizeMenuItem)
+        public ContextMenuItemValue(WindowSizeMenuItem windowSizeMenuItem)
         {
-            Window = window;
             WindowSizeMenuItem = windowSizeMenuItem;
         }
 
-        public ContextMenuItemValue(Window window, MoveToMenuItem moveToMenuItem)
+        public ContextMenuItemValue(MoveToMenuItem moveToMenuItem)
         {
-            Window = window;
             MoveToMenuItem = moveToMenuItem;
         }
 
-        public ContextMenuItemValue(Window window, StartProgramMenuItem startProgramMenuItem)
+        public ContextMenuItemValue(StartProgramMenuItem startProgramMenuItem)
         {
-            Window = window;
             StartProgramMenuItem = startProgramMenuItem;
         }
     }

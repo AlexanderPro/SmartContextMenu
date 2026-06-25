@@ -80,6 +80,8 @@ namespace SmartContextMenu.Forms
             _hWinEventHookMinimize = User32.SetWinEventHook(Constants.EVENT_SYSTEM_MINIMIZESTART, Constants.EVENT_SYSTEM_MINIMIZESTART, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
             _hWinEventHookForeground = User32.SetWinEventHook(Constants.EVENT_SYSTEM_FOREGROUND, Constants.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
 
+            ContextMenuManager.Build(_menu, _settings, MenuItemClick);
+
             if (_settings.ShowSystemTrayIcon)
             {
                 var manager = new LanguageManager(_settings.LanguageName);
@@ -119,6 +121,8 @@ namespace SmartContextMenu.Forms
 
         private void MenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
+            _menu.Hide();
+
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
             if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
@@ -126,7 +130,6 @@ namespace SmartContextMenu.Forms
                 return;
             }
 
-            ContextMenuManager.Release(_menu, MenuItemClick);
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.MenuItem);
@@ -135,6 +138,8 @@ namespace SmartContextMenu.Forms
 
         private void WindowSizeMenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
+            _menu.Hide();
+
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
             if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
@@ -142,7 +147,6 @@ namespace SmartContextMenu.Forms
                 return;
             }
 
-            ContextMenuManager.Release(_menu, MenuItemClick);
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.WindowSizeMenuItem);
@@ -151,9 +155,15 @@ namespace SmartContextMenu.Forms
 
         private void StartProgramMenuItemHooked(object sender, KeyboardEventArgs e) => Invoke((MethodInvoker)delegate
         {
+            _menu.Hide();
+
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
-            ContextMenuManager.Release(_menu, MenuItemClick);
+            if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
+            {
+                return;
+            }
+
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
             MenuItemClick(window, e.StartProgramMenuItem);
@@ -202,13 +212,13 @@ namespace SmartContextMenu.Forms
         {
             if (_menu.Visible)
             {
-                ContextMenuManager.Release(_menu, MenuItemClick);
+                _menu.Hide();
                 UpdateDimWindows();
                 e.Succeeded = true;
             }
         });
 
-        private void MouseHooked(object sender, EventArgs e) => BeginInvoke((MethodInvoker)delegate
+        private void MouseHooked(object sender, EventArgs e) => Invoke((MethodInvoker)delegate
         {
             var cursorPosition = Cursor.Position;
             var handle = User32.WindowFromPoint(new Native.Structs.Point(cursorPosition.X, cursorPosition.Y));
@@ -218,10 +228,10 @@ namespace SmartContextMenu.Forms
                 return;
             }
 
-            ContextMenuManager.Release(_menu, MenuItemClick);
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
-            ContextMenuManager.Build(_menu, _settings, window, _dimHandle, MenuItemClick);
+            _menu.Hide();
+            ContextMenuManager.Refresh(_menu, window, _dimHandle);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
             _menu.Show(cursorPosition);
         });
@@ -261,7 +271,7 @@ namespace SmartContextMenu.Forms
 
                 if (!isCursorOverMenu && !isCursorOverSubMenu)
                 {
-                    ContextMenuManager.Release(_menu, MenuItemClick);
+                    _menu.Hide();
                 }
             }
         });
@@ -274,18 +284,15 @@ namespace SmartContextMenu.Forms
                 {
                     MenuItemClick(itemValue.Window, itemValue.MenuItem);
                 }
-
-                if (itemValue.WindowSizeMenuItem != null)
+                else if (itemValue.WindowSizeMenuItem != null)
                 {
                     MenuItemClick(itemValue.Window, itemValue.WindowSizeMenuItem);
                 }
-
-                if (itemValue.MoveToMenuItem != null)
+                else if (itemValue.MoveToMenuItem != null)
                 {
                     MenuItemClick(itemValue.Window, itemValue.MoveToMenuItem);
                 }
-
-                if (itemValue.StartProgramMenuItem != null)
+                else if (itemValue.StartProgramMenuItem != null)
                 {
                     MenuItemClick(itemValue.Window, itemValue.StartProgramMenuItem);
                 }
@@ -892,21 +899,30 @@ namespace SmartContextMenu.Forms
             if (_settingsForm == null || _settingsForm.IsDisposed || !_settingsForm.IsHandleCreated)
             {
                 _settingsForm = new ApplicationSettingsForm(_settings);
-                _settingsForm.OkClick += (sender, e) => 
-                {
-                    _settings = e.Entity;
-                    _keyboardHook.Settings = _settings;
-                    _mouseHook.Settings = _settings;
-                    var manager = new LanguageManager(_settings.LanguageName);
-                    _systemTrayMenu.RefreshLanguage(manager);
-                    UpdateDimWindowsColor();
-
-                    ApplicationSettingsFile.Save(_settings);
-                };
+                _settingsForm.OkClick += SettingsFormOkClick;
             }
 
             _settingsForm.Show();
             _settingsForm.Activate();
+        }
+
+        private void SettingsFormOkClick(object sender, EventArgs<ApplicationSettings> e)
+        {
+            _settings = e.Entity;
+
+            var manager = new LanguageManager(_settings.LanguageName);
+            _systemTrayMenu.RefreshLanguage(manager);
+            UpdateDimWindowsColor();
+
+            ContextMenuManager.Release(_menu, MenuItemClick);
+            ContextMenuManager.Build(_menu, _settings, MenuItemClick);
+            ApplicationSettingsFile.Save(_settings);
+
+            _keyboardHook.Settings = _settings;
+            _keyboardHook.InitializeHook();
+
+            _mouseHook.Settings = _settings;
+            _mouseHook.InitializeHook();
         }
 
         private void SystemTrayMenuItemHideClick(object sender, EventArgs e)

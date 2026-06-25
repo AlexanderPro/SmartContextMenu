@@ -316,7 +316,7 @@ namespace SmartContextMenu.Hooks
             return CallNextHookEx(_hookHandle, nCode, wParam, ref lParam);
         }
 
-        private void InitializeHook()
+        public void InitializeHook()
         {
             if (_hookHandle != IntPtr.Zero)
             {

@@ -278,7 +278,7 @@ namespace SmartContextMenu
 
             try
             {
-                info.Parent = Path.GetFileName(process.GetParentProcess().GetMainModuleFileName());
+                info.Parent = Path.GetFileName(process.GetParentProcess()?.GetMainModuleFileName());
             }
             catch
             {

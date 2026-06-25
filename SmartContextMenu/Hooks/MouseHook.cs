@@ -71,9 +71,9 @@ namespace SmartContextMenu.Hooks
             {
                 var stopWatch = Stopwatch.StartNew();
 
-                if ((Settings.MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
-                    (Settings.MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
-                    (Settings.MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN))
+                if ((Settings.MouseButton == MouseButton.Left && wParam == WM_LBUTTONUP) ||
+                    (Settings.MouseButton == MouseButton.Right && wParam == WM_RBUTTONUP) ||
+                    (Settings.MouseButton == MouseButton.Middle && wParam == WM_MBUTTONUP))
                 {
                     var key1 = true;
                     var key2 = true;
@@ -109,15 +109,12 @@ namespace SmartContextMenu.Hooks
                         var handler = Hooked;
                         if (handler != null)
                         {
-                            handler.BeginInvoke(this, EventArgs.Empty, null, null);
-
+                            handler.Invoke(this, EventArgs.Empty);
                             stopWatch.Stop();
                             if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
                             {
                                 InitializeHook();
                             }
-
-                            return 1;
                         }
                     }
                 }
@@ -141,7 +138,7 @@ namespace SmartContextMenu.Hooks
             return CallNextHookEx(_hookHandle, nCode, wParam, lParam);
         }
 
-        private void InitializeHook()
+        public void InitializeHook()
         {
             if (_hookHandle != IntPtr.Zero)
             {
