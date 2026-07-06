@@ -206,6 +206,7 @@ namespace SmartContextMenu.Settings
                     "sr-Cyrl" or "sr-Cyrl-BA" or "sr-Cyrl-ME" or "sr-Cyrl-RS" or "sr-Cyrl-CS" => "sr",
                     "sl-SI" => "sl",
                     "ta-IN" => "ta",
+                    "vi-VN" => "vi",
                     _ => "en"
                 };
 
