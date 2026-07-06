@@ -226,6 +226,7 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="chk_show_only_on_titlebar" value="Show Only On Titlebar" />
     <item name="grpb_next_hotkeys" value="Hotkeys →" />
     <item name="grpb_previous_hotkeys" value="Hotkeys ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -465,6 +466,7 @@
     <item name="lbl_key3" value="Taste 3" />
     <item name="lbl_key4" value="Taste 4" />
     <item name="lbl_mouse_button" value="Maustaste" />
+    <item name="chk_show_only_on_titlebar" value="Nur in der Titelleiste anzeigen" />
     <item name="grpb_next_hotkeys" value="Tastaturkürzel →" />
     <item name="grpb_previous_hotkeys" value="Tastaturkürzel ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -704,6 +706,7 @@
     <item name="lbl_key3" value="键 3" />
     <item name="lbl_key4" value="键 4" />
     <item name="lbl_mouse_button" value="鼠标按钮" />
+    <item name="chk_show_only_on_titlebar" value="仅在标题栏显示" />
     <item name="grpb_next_hotkeys" value="热键 →" />
     <item name="grpb_previous_hotkeys" value="热键 ←" />
     <item name="change_title_btn_apply" value="确定" />
@@ -943,6 +946,7 @@
     <item name="lbl_key3" value="鍵 3" />
     <item name="lbl_key4" value="鍵 4" />
     <item name="lbl_mouse_button" value="滑鼠按鈕" />
+    <item name="chk_show_only_on_titlebar" value="僅在標題列顯示" />
     <item name="grpb_next_hotkeys" value="快速鍵 →" />
     <item name="grpb_previous_hotkeys" value="快速鍵 ←" />
     <item name="change_title_btn_apply" value="確定" />
@@ -1182,6 +1186,7 @@
     <item name="lbl_key3" value="キー 3" />
     <item name="lbl_key4" value="キー 4" />
     <item name="lbl_mouse_button" value="マウスボタン" />
+    <item name="chk_show_only_on_titlebar" value="タイトルバーのみに表示" />
     <item name="grpb_next_hotkeys" value="ホットキー →" />
     <item name="grpb_previous_hotkeys" value="ホットキー ←" />
     <item name="change_title_btn_apply" value="OK" />
@@ -1421,6 +1426,7 @@
     <item name="lbl_key3" value="키 3" />
     <item name="lbl_key4" value="키 4" />
     <item name="lbl_mouse_button" value="마우스 버튼" />
+    <item name="chk_show_only_on_titlebar" value="제목 표시줄에만 표시" />
     <item name="grpb_next_hotkeys" value="단축키 →" />
     <item name="grpb_previous_hotkeys" value="단축키 ←" />
     <item name="change_title_btn_apply" value="확인" />
@@ -1660,6 +1666,7 @@
     <item name="lbl_key3" value="Клавиша 3" />
     <item name="lbl_key4" value="Клавиша 4" />
     <item name="lbl_mouse_button" value="Кнопка мышки" />
+    <item name="chk_show_only_on_titlebar" value="Показывать только на заголовке окна" />
     <item name="grpb_next_hotkeys" value="Горячие клавиши →" />
     <item name="grpb_previous_hotkeys" value="Горячие клавиши ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -1899,6 +1906,7 @@
     <item name="lbl_key3" value="Типак 3" />
     <item name="lbl_key4" value="Типак 4" />
     <item name="lbl_mouse_button" value="Дугме миша" />
+    <item name="chk_show_only_on_titlebar" value="Прикажи само у наслову прозора" />
     <item name="grpb_next_hotkeys" value="Пречице →" />
     <item name="grpb_previous_hotkeys" value="Пречице ←" />
     <item name="change_title_btn_apply" value="У реду" />
@@ -2138,6 +2146,7 @@
     <item name="lbl_key3" value="Key 3" />
     <item name="lbl_key4" value="Key 4" />
     <item name="lbl_mouse_button" value="Botão do mouse" />
+    <item name="chk_show_only_on_titlebar" value="Mostrar apenas na barra de título" />
     <item name="grpb_next_hotkeys" value="Atalhos →" />
     <item name="grpb_previous_hotkeys" value="Atalhos ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -2377,6 +2386,7 @@
     <item name="lbl_key3" value="Tasto 3" />
     <item name="lbl_key4" value="Tasto 4" />
     <item name="lbl_mouse_button" value="Pulsante del mouse" />
+    <item name="chk_show_only_on_titlebar" value="Mostra solo nella barra del titolo" />
     <item name="grpb_next_hotkeys" value="Tasti rapidi →" />
     <item name="grpb_previous_hotkeys" value="Tasti rapidi ←" />
     <item name="change_title_btn_apply" value="OK" />
@@ -2616,6 +2626,7 @@
     <item name="lbl_key3" value="Clé 3" />
     <item name="lbl_key4" value="Clé 4" />
     <item name="lbl_mouse_button" value="Bouton de la souris" />
+    <item name="chk_show_only_on_titlebar" value="Afficher uniquement dans la barre de titre" />
     <item name="grpb_next_hotkeys" value="Raccourcis clavier →" />
     <item name="grpb_previous_hotkeys" value="Raccourcis clavier ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -2855,6 +2866,7 @@
     <item name="lbl_key3" value="3. kulcs" />
     <item name="lbl_key4" value="4. kulcs" />
     <item name="lbl_mouse_button" value="Egérgomb" />
+    <item name="chk_show_only_on_titlebar" value="Csak a címsorban jelenjen meg" />
     <item name="grpb_next_hotkeys" value="Gyorsbillentyűk →" />
     <item name="grpb_previous_hotkeys" value="Gyorsbillentyűk ←" />
     <item name="change_title_btn_apply" value="OK" />
@@ -3094,6 +3106,7 @@
     <item name="lbl_key3" value="מקש 3" />
     <item name="lbl_key4" value="מקש 4" />
     <item name="lbl_mouse_button" value="Mouse Button" />
+    <item name="chk_show_only_on_titlebar" value="הצג רק בסרגל הכותרת" />
     <item name="grpb_next_hotkeys" value="מקשי קיצור →" />
     <item name="grpb_previous_hotkeys" value="מקשי קיצור ←" />
     <item name="change_title_btn_apply" value="אישור" />
@@ -3333,6 +3346,7 @@
     <item name="lbl_key3" value="Tecla 3" />
     <item name="lbl_key4" value="Tecla 4" />
     <item name="lbl_mouse_button" value="Botón delñ mouse" />
+    <item name="chk_show_only_on_titlebar" value="Mostrar solo en la barra de título" />
     <item name="grpb_next_hotkeys" value="Teclas de acceso rápido →" />
     <item name="grpb_previous_hotkeys" value="Teclas de acceso rápido ←" />
     <item name="change_title_btn_apply" value="Ok" />
@@ -3572,6 +3586,7 @@
     <item name="lbl_key3" value="Tipka 3" />
     <item name="lbl_key4" value="Tipka 4" />
     <item name="lbl_mouse_button" value="Gumb miške" />
+    <item name="chk_show_only_on_titlebar" value="Prikaži samo v naslovni vrstici" />
     <item name="grpb_next_hotkeys" value="Bližnjice →" />
     <item name="grpb_previous_hotkeys" value="Bližnjice ←" />
     <item name="change_title_btn_apply" value="V redu" />
@@ -3811,6 +3826,7 @@
     <item name="lbl_key3" value="விசை 3" />
     <item name="lbl_key4" value="விசை 4" />
     <item name="lbl_mouse_button" value="சுட்டி பொத்தான்" />
+    <item name="chk_show_only_on_titlebar" value="தலைப்புப் பட்டியில் மட்டும் காட்டு" />
     <item name="grpb_next_hotkeys" value="ஹாட்கீகள →" />
     <item name="grpb_previous_hotkeys" value="ஹாட்கீகள ←" />
     <item name="change_title_btn_apply" value="சரி" />

@@ -6,6 +6,7 @@ namespace SmartContextMenu.Settings
     public class ApplicationSettings : ICloneable
     {
         public const int DefaultLowLevelHooksTimeout = 300;
+        public const int DefaultMenuDisabledInterval = 1;
 
         public VirtualKeyModifier Key1 { get; set; }
 
@@ -16,6 +17,10 @@ namespace SmartContextMenu.Settings
         public VirtualKey Key4 { get; set; }
 
         public MouseButton MouseButton { get; set; }
+
+        public bool ShowOnlyOnTitlebar { get; set; }
+
+        public int MenuDisabledInterval { get; set; }
 
         public bool ShowSystemTrayIcon { get; set; }
 
@@ -44,6 +49,8 @@ namespace SmartContextMenu.Settings
             MouseButton = MouseButton.None;
             Dimmer = new DimmerSettings();
             Sizer = WindowSizerType.WindowWithMargins;
+            ShowOnlyOnTitlebar = false;
+            MenuDisabledInterval = DefaultMenuDisabledInterval;
             ShowSystemTrayIcon = true;
             EnableHighDPI = false;
             LowLevelHooksTimeout = DefaultLowLevelHooksTimeout;
@@ -79,6 +86,8 @@ namespace SmartContextMenu.Settings
             settings.MouseButton = MouseButton;
             settings.Dimmer = (DimmerSettings)Dimmer.Clone();
             settings.Sizer = Sizer;
+            settings.ShowOnlyOnTitlebar = ShowOnlyOnTitlebar;
+            settings.MenuDisabledInterval = MenuDisabledInterval;
             settings.ShowSystemTrayIcon = ShowSystemTrayIcon;
             settings.EnableHighDPI = EnableHighDPI;
             settings.LanguageName = LanguageName;
@@ -227,6 +236,16 @@ namespace SmartContextMenu.Settings
                 return false;
             }
 
+            if (ShowOnlyOnTitlebar != other.ShowOnlyOnTitlebar)
+            {
+                return false;
+            }
+
+            if (MenuDisabledInterval != other.MenuDisabledInterval)
+            {
+                return false;
+            }
+
             if (ShowSystemTrayIcon != other.ShowSystemTrayIcon)
             {
                 return false;
@@ -283,6 +302,8 @@ namespace SmartContextMenu.Settings
             hashCode ^= Dimmer.Transparency.GetHashCode();
             hashCode ^= Sizer.GetHashCode();
             hashCode ^= LanguageName.GetHashCode();
+            hashCode ^= ShowOnlyOnTitlebar.GetHashCode();
+            hashCode ^= MenuDisabledInterval.GetHashCode();
             hashCode ^= ShowSystemTrayIcon.GetHashCode();
             hashCode ^= EnableHighDPI.GetHashCode();
             return hashCode;

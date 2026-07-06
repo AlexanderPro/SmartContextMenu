@@ -40,7 +40,7 @@ namespace SmartContextMenu
 
         public bool IsMinimizeAlwaysToSystemtray { get; set; }
 
-        public Rect Size 
+        public Rect Size
         {
             get
             {
@@ -643,6 +643,52 @@ namespace SmartContextMenu
                 SendMessage(Handle, WM_SETICON, new IntPtr(ICON_SMALL), iconHandle);
                 SendMessage(Handle, WM_SETICON, new IntPtr(ICON_BIG), iconHandle);
             }
+        }
+
+        public bool GetTitleBarSize(out Rect rect)
+        {
+            rect = new Rect();
+
+            if (!GetWindowRect(Handle, out var windowRect))
+            {
+                return false;
+            }
+
+            if (!GetClientRect(Handle, out var clientRect))
+            {
+                return false;
+            }
+
+            var titleBarHeight = 0;
+            var titlebarInfo = new TitlebarInfo();
+            titlebarInfo.cbSize = (uint)Marshal.SizeOf(titlebarInfo);
+
+            if (GetTitleBarInfo(Handle, ref titlebarInfo))
+            {
+                titleBarHeight = titlebarInfo.rcTitleBar.Height;
+            }
+            else
+            {
+                var clientTopLeft = new Native.Structs.Point { x = 0, y = 0 };
+                if (!MapWindowPoints(Handle, IntPtr.Zero, ref clientTopLeft, 1))
+                {
+                    return false;
+                }
+
+                titleBarHeight = clientTopLeft.y - windowRect.Top;
+            }
+
+            if (titleBarHeight < 0)
+            {
+                titleBarHeight = 0;
+            }
+
+            rect.Left = windowRect.Left;
+            rect.Right = windowRect.Right;
+            rect.Top = windowRect.Top;
+            rect.Bottom = windowRect.Top + titleBarHeight;
+
+            return true;
         }
 
         private void MenuItemRestoreClick(object sender, EventArgs e)

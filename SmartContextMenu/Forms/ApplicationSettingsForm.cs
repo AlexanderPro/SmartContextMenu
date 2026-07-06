@@ -63,6 +63,7 @@ namespace SmartContextMenu.Forms
             lblKey3.Text = _languageManager.GetString("lbl_key3");
             lblKey4.Text = _languageManager.GetString("lbl_key4");
             lblMouseButton.Text = _languageManager.GetString("lbl_mouse_button");
+            chkShowOnlyOnTitlebar.Text = _languageManager.GetString("chk_show_only_on_titlebar");
             toolTipAddProcessName.SetToolTip(btnAddStartProgram, _languageManager.GetString("btn_add_start_program"));
             toolTipAddProcessName.SetToolTip(btnStartProgramDown, _languageManager.GetString("btn_start_program_down"));
             toolTipAddProcessName.SetToolTip(btnStartProgramUp, _languageManager.GetString("btn_start_program_up"));
@@ -108,6 +109,7 @@ namespace SmartContextMenu.Forms
             cmbMouseButton.DisplayMember = "Text";
             cmbMouseButton.DataSource = EnumExtensions.AsEnumerable<MouseButton>().Select(x => new { Id = x, Text = x.GetDescription() }).Where(x => !string.IsNullOrEmpty(x.Text)).ToList();
             cmbMouseButton.SelectedValue = _settings.MouseButton;
+            chkShowOnlyOnTitlebar.Checked = _settings.ShowOnlyOnTitlebar;
 
             listBoxLanguage.DisplayMember = "Text";
             listBoxLanguage.ValueMember = "Value";
@@ -503,11 +505,13 @@ namespace SmartContextMenu.Forms
             settings.Key3 = (VirtualKey)cmbKey3.SelectedValue;
             settings.Key4 = (VirtualKey)cmbKey4.SelectedValue;
             settings.MouseButton = (MouseButton)cmbMouseButton.SelectedValue;
+            settings.ShowOnlyOnTitlebar = chkShowOnlyOnTitlebar.Checked;
             settings.MenuItems.Items = (IList<Settings.MenuItem>)gvHotkeys.Tag;
             settings.Dimmer.Color = txtDimmerColor.Text;
             settings.Dimmer.Transparency = trackbDimmerTransparency.Value;
             settings.Sizer = (WindowSizerType)cmbSizer.SelectedIndex;
             settings.EnableHighDPI = chkEnableHighDPI.Checked;
+            settings.MenuDisabledInterval = _settings.MenuDisabledInterval;
             settings.LowLevelHooksTimeout = _settings.LowLevelHooksTimeout;
             settings.LanguageName = listBoxLanguage.SelectedValue == null ? string.Empty : listBoxLanguage.SelectedValue.ToString();
 

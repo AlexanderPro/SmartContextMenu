@@ -37,6 +37,7 @@
             this.grpbLanguage = new System.Windows.Forms.GroupBox();
             this.listBoxLanguage = new System.Windows.Forms.ListBox();
             this.grpbMouseHotkeys = new System.Windows.Forms.GroupBox();
+            this.chkShowOnlyOnTitlebar = new System.Windows.Forms.CheckBox();
             this.lblMouseButton = new System.Windows.Forms.Label();
             this.cmbMouseButton = new System.Windows.Forms.ComboBox();
             this.lblKey4 = new System.Windows.Forms.Label();
@@ -73,6 +74,12 @@
             this.clmWindowSizeEdit = new SmartContextMenu.Controls.DataGridViewDisableButtonColumn();
             this.clmWindowSizeDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabpMenuMoveTo = new System.Windows.Forms.TabPage();
+            this.grpbPreviousHotkeys = new System.Windows.Forms.GroupBox();
+            this.btnPreviousHotkeys = new System.Windows.Forms.Button();
+            this.txtPreviousHotkeys = new System.Windows.Forms.TextBox();
+            this.grpbNextHotkeys = new System.Windows.Forms.GroupBox();
+            this.btnNextHotkeys = new System.Windows.Forms.Button();
+            this.txtNextHotkeys = new System.Windows.Forms.TextBox();
             this.tabpMenuStart = new System.Windows.Forms.TabPage();
             this.grpbStartProgram = new System.Windows.Forms.GroupBox();
             this.btnStartProgramDown = new System.Windows.Forms.Button();
@@ -101,12 +108,6 @@
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.grpbNextHotkeys = new System.Windows.Forms.GroupBox();
-            this.grpbPreviousHotkeys = new System.Windows.Forms.GroupBox();
-            this.txtNextHotkeys = new System.Windows.Forms.TextBox();
-            this.btnNextHotkeys = new System.Windows.Forms.Button();
-            this.btnPreviousHotkeys = new System.Windows.Forms.Button();
-            this.txtPreviousHotkeys = new System.Windows.Forms.TextBox();
             this.tabMain.SuspendLayout();
             this.tabpGeneral.SuspendLayout();
             this.grpbDisplay.SuspendLayout();
@@ -120,6 +121,8 @@
             this.grpbWindowSize.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvWindowSize)).BeginInit();
             this.tabpMenuMoveTo.SuspendLayout();
+            this.grpbPreviousHotkeys.SuspendLayout();
+            this.grpbNextHotkeys.SuspendLayout();
             this.tabpMenuStart.SuspendLayout();
             this.grpbStartProgram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).BeginInit();
@@ -127,8 +130,6 @@
             this.grpbDimmerColor.SuspendLayout();
             this.grpbDimmerTransparency.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).BeginInit();
-            this.grpbNextHotkeys.SuspendLayout();
-            this.grpbPreviousHotkeys.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -204,6 +205,7 @@
             // 
             // grpbMouseHotkeys
             // 
+            this.grpbMouseHotkeys.Controls.Add(this.chkShowOnlyOnTitlebar);
             this.grpbMouseHotkeys.Controls.Add(this.lblMouseButton);
             this.grpbMouseHotkeys.Controls.Add(this.cmbMouseButton);
             this.grpbMouseHotkeys.Controls.Add(this.lblKey4);
@@ -222,10 +224,20 @@
             this.grpbMouseHotkeys.TabIndex = 0;
             this.grpbMouseHotkeys.TabStop = false;
             // 
+            // chkShowOnlyOnTitlebar
+            // 
+            this.chkShowOnlyOnTitlebar.AutoSize = true;
+            this.chkShowOnlyOnTitlebar.Location = new System.Drawing.Point(8, 88);
+            this.chkShowOnlyOnTitlebar.Margin = new System.Windows.Forms.Padding(4);
+            this.chkShowOnlyOnTitlebar.Name = "chkShowOnlyOnTitlebar";
+            this.chkShowOnlyOnTitlebar.Size = new System.Drawing.Size(18, 17);
+            this.chkShowOnlyOnTitlebar.TabIndex = 10;
+            this.chkShowOnlyOnTitlebar.UseVisualStyleBackColor = true;
+            // 
             // lblMouseButton
             // 
             this.lblMouseButton.AutoSize = true;
-            this.lblMouseButton.Location = new System.Drawing.Point(569, 36);
+            this.lblMouseButton.Location = new System.Drawing.Point(569, 27);
             this.lblMouseButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMouseButton.Name = "lblMouseButton";
             this.lblMouseButton.Size = new System.Drawing.Size(95, 17);
@@ -236,7 +248,7 @@
             // 
             this.cmbMouseButton.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMouseButton.FormattingEnabled = true;
-            this.cmbMouseButton.Location = new System.Drawing.Point(573, 55);
+            this.cmbMouseButton.Location = new System.Drawing.Point(573, 46);
             this.cmbMouseButton.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMouseButton.Name = "cmbMouseButton";
             this.cmbMouseButton.Size = new System.Drawing.Size(132, 24);
@@ -245,7 +257,7 @@
             // lblKey4
             // 
             this.lblKey4.AutoSize = true;
-            this.lblKey4.Location = new System.Drawing.Point(428, 36);
+            this.lblKey4.Location = new System.Drawing.Point(428, 27);
             this.lblKey4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKey4.Name = "lblKey4";
             this.lblKey4.Size = new System.Drawing.Size(44, 17);
@@ -256,7 +268,7 @@
             // 
             this.cmbKey4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKey4.FormattingEnabled = true;
-            this.cmbKey4.Location = new System.Drawing.Point(432, 55);
+            this.cmbKey4.Location = new System.Drawing.Point(432, 46);
             this.cmbKey4.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKey4.Name = "cmbKey4";
             this.cmbKey4.Size = new System.Drawing.Size(132, 24);
@@ -265,7 +277,7 @@
             // lblKey3
             // 
             this.lblKey3.AutoSize = true;
-            this.lblKey3.Location = new System.Drawing.Point(287, 36);
+            this.lblKey3.Location = new System.Drawing.Point(287, 27);
             this.lblKey3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKey3.Name = "lblKey3";
             this.lblKey3.Size = new System.Drawing.Size(44, 17);
@@ -275,7 +287,7 @@
             // lblKey2
             // 
             this.lblKey2.AutoSize = true;
-            this.lblKey2.Location = new System.Drawing.Point(145, 36);
+            this.lblKey2.Location = new System.Drawing.Point(145, 27);
             this.lblKey2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKey2.Name = "lblKey2";
             this.lblKey2.Size = new System.Drawing.Size(44, 17);
@@ -285,7 +297,7 @@
             // lblKey1
             // 
             this.lblKey1.AutoSize = true;
-            this.lblKey1.Location = new System.Drawing.Point(4, 36);
+            this.lblKey1.Location = new System.Drawing.Point(4, 27);
             this.lblKey1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblKey1.Name = "lblKey1";
             this.lblKey1.Size = new System.Drawing.Size(44, 17);
@@ -296,7 +308,7 @@
             // 
             this.cmbKey3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKey3.FormattingEnabled = true;
-            this.cmbKey3.Location = new System.Drawing.Point(291, 55);
+            this.cmbKey3.Location = new System.Drawing.Point(291, 46);
             this.cmbKey3.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKey3.Name = "cmbKey3";
             this.cmbKey3.Size = new System.Drawing.Size(132, 24);
@@ -306,7 +318,7 @@
             // 
             this.cmbKey2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKey2.FormattingEnabled = true;
-            this.cmbKey2.Location = new System.Drawing.Point(149, 55);
+            this.cmbKey2.Location = new System.Drawing.Point(149, 46);
             this.cmbKey2.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKey2.Name = "cmbKey2";
             this.cmbKey2.Size = new System.Drawing.Size(132, 24);
@@ -316,7 +328,7 @@
             // 
             this.cmbKey1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKey1.FormattingEnabled = true;
-            this.cmbKey1.Location = new System.Drawing.Point(8, 55);
+            this.cmbKey1.Location = new System.Drawing.Point(8, 46);
             this.cmbKey1.Margin = new System.Windows.Forms.Padding(4);
             this.cmbKey1.Name = "cmbKey1";
             this.cmbKey1.Size = new System.Drawing.Size(132, 24);
@@ -638,6 +650,62 @@
             this.tabpMenuMoveTo.TabIndex = 5;
             this.tabpMenuMoveTo.UseVisualStyleBackColor = true;
             // 
+            // grpbPreviousHotkeys
+            // 
+            this.grpbPreviousHotkeys.Controls.Add(this.btnPreviousHotkeys);
+            this.grpbPreviousHotkeys.Controls.Add(this.txtPreviousHotkeys);
+            this.grpbPreviousHotkeys.Location = new System.Drawing.Point(11, 152);
+            this.grpbPreviousHotkeys.Name = "grpbPreviousHotkeys";
+            this.grpbPreviousHotkeys.Size = new System.Drawing.Size(723, 126);
+            this.grpbPreviousHotkeys.TabIndex = 1;
+            this.grpbPreviousHotkeys.TabStop = false;
+            // 
+            // btnPreviousHotkeys
+            // 
+            this.btnPreviousHotkeys.Location = new System.Drawing.Point(278, 56);
+            this.btnPreviousHotkeys.Name = "btnPreviousHotkeys";
+            this.btnPreviousHotkeys.Size = new System.Drawing.Size(47, 23);
+            this.btnPreviousHotkeys.TabIndex = 1;
+            this.btnPreviousHotkeys.Text = "...";
+            this.btnPreviousHotkeys.UseVisualStyleBackColor = true;
+            this.btnPreviousHotkeys.Click += new System.EventHandler(this.ButtonPreviousHotkeysClick);
+            // 
+            // txtPreviousHotkeys
+            // 
+            this.txtPreviousHotkeys.Location = new System.Drawing.Point(18, 57);
+            this.txtPreviousHotkeys.Name = "txtPreviousHotkeys";
+            this.txtPreviousHotkeys.ReadOnly = true;
+            this.txtPreviousHotkeys.Size = new System.Drawing.Size(254, 22);
+            this.txtPreviousHotkeys.TabIndex = 0;
+            // 
+            // grpbNextHotkeys
+            // 
+            this.grpbNextHotkeys.Controls.Add(this.btnNextHotkeys);
+            this.grpbNextHotkeys.Controls.Add(this.txtNextHotkeys);
+            this.grpbNextHotkeys.Location = new System.Drawing.Point(11, 20);
+            this.grpbNextHotkeys.Name = "grpbNextHotkeys";
+            this.grpbNextHotkeys.Size = new System.Drawing.Size(723, 126);
+            this.grpbNextHotkeys.TabIndex = 0;
+            this.grpbNextHotkeys.TabStop = false;
+            // 
+            // btnNextHotkeys
+            // 
+            this.btnNextHotkeys.Location = new System.Drawing.Point(278, 54);
+            this.btnNextHotkeys.Name = "btnNextHotkeys";
+            this.btnNextHotkeys.Size = new System.Drawing.Size(47, 23);
+            this.btnNextHotkeys.TabIndex = 1;
+            this.btnNextHotkeys.Text = "...";
+            this.btnNextHotkeys.UseVisualStyleBackColor = true;
+            this.btnNextHotkeys.Click += new System.EventHandler(this.ButtonNextHotkeysClick);
+            // 
+            // txtNextHotkeys
+            // 
+            this.txtNextHotkeys.Location = new System.Drawing.Point(18, 55);
+            this.txtNextHotkeys.Name = "txtNextHotkeys";
+            this.txtNextHotkeys.ReadOnly = true;
+            this.txtNextHotkeys.Size = new System.Drawing.Size(254, 22);
+            this.txtNextHotkeys.TabIndex = 0;
+            // 
             // tabpMenuStart
             // 
             this.tabpMenuStart.Controls.Add(this.grpbStartProgram);
@@ -942,62 +1010,6 @@
             this.dataGridViewButtonColumn4.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn4.Width = 30;
             // 
-            // grpbNextHotkeys
-            // 
-            this.grpbNextHotkeys.Controls.Add(this.btnNextHotkeys);
-            this.grpbNextHotkeys.Controls.Add(this.txtNextHotkeys);
-            this.grpbNextHotkeys.Location = new System.Drawing.Point(11, 20);
-            this.grpbNextHotkeys.Name = "grpbNextHotkeys";
-            this.grpbNextHotkeys.Size = new System.Drawing.Size(723, 126);
-            this.grpbNextHotkeys.TabIndex = 0;
-            this.grpbNextHotkeys.TabStop = false;
-            // 
-            // grpbPreviousHotkeys
-            // 
-            this.grpbPreviousHotkeys.Controls.Add(this.btnPreviousHotkeys);
-            this.grpbPreviousHotkeys.Controls.Add(this.txtPreviousHotkeys);
-            this.grpbPreviousHotkeys.Location = new System.Drawing.Point(11, 152);
-            this.grpbPreviousHotkeys.Name = "grpbPreviousHotkeys";
-            this.grpbPreviousHotkeys.Size = new System.Drawing.Size(723, 126);
-            this.grpbPreviousHotkeys.TabIndex = 1;
-            this.grpbPreviousHotkeys.TabStop = false;
-            // 
-            // txtNextHotkeys
-            // 
-            this.txtNextHotkeys.Location = new System.Drawing.Point(18, 55);
-            this.txtNextHotkeys.Name = "txtNextHotkeys";
-            this.txtNextHotkeys.ReadOnly = true;
-            this.txtNextHotkeys.Size = new System.Drawing.Size(254, 22);
-            this.txtNextHotkeys.TabIndex = 0;
-            // 
-            // btnNextHotkeys
-            // 
-            this.btnNextHotkeys.Location = new System.Drawing.Point(278, 54);
-            this.btnNextHotkeys.Name = "btnNextHotkeys";
-            this.btnNextHotkeys.Size = new System.Drawing.Size(47, 23);
-            this.btnNextHotkeys.TabIndex = 1;
-            this.btnNextHotkeys.Text = "...";
-            this.btnNextHotkeys.UseVisualStyleBackColor = true;
-            this.btnNextHotkeys.Click += new System.EventHandler(this.ButtonNextHotkeysClick);
-            // 
-            // btnPreviousHotkeys
-            // 
-            this.btnPreviousHotkeys.Location = new System.Drawing.Point(278, 56);
-            this.btnPreviousHotkeys.Name = "btnPreviousHotkeys";
-            this.btnPreviousHotkeys.Size = new System.Drawing.Size(47, 23);
-            this.btnPreviousHotkeys.TabIndex = 1;
-            this.btnPreviousHotkeys.Text = "...";
-            this.btnPreviousHotkeys.UseVisualStyleBackColor = true;
-            this.btnPreviousHotkeys.Click += new System.EventHandler(this.ButtonPreviousHotkeysClick);
-            // 
-            // txtPreviousHotkeys
-            // 
-            this.txtPreviousHotkeys.Location = new System.Drawing.Point(18, 57);
-            this.txtPreviousHotkeys.Name = "txtPreviousHotkeys";
-            this.txtPreviousHotkeys.ReadOnly = true;
-            this.txtPreviousHotkeys.Size = new System.Drawing.Size(254, 22);
-            this.txtPreviousHotkeys.TabIndex = 0;
-            // 
             // ApplicationSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1030,6 +1042,10 @@
             this.grpbWindowSize.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvWindowSize)).EndInit();
             this.tabpMenuMoveTo.ResumeLayout(false);
+            this.grpbPreviousHotkeys.ResumeLayout(false);
+            this.grpbPreviousHotkeys.PerformLayout();
+            this.grpbNextHotkeys.ResumeLayout(false);
+            this.grpbNextHotkeys.PerformLayout();
             this.tabpMenuStart.ResumeLayout(false);
             this.grpbStartProgram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvStartProgram)).EndInit();
@@ -1039,10 +1055,6 @@
             this.grpbDimmerTransparency.ResumeLayout(false);
             this.grpbDimmerTransparency.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackbDimmerTransparency)).EndInit();
-            this.grpbNextHotkeys.ResumeLayout(false);
-            this.grpbNextHotkeys.PerformLayout();
-            this.grpbPreviousHotkeys.ResumeLayout(false);
-            this.grpbPreviousHotkeys.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1126,5 +1138,6 @@
         private System.Windows.Forms.GroupBox grpbNextHotkeys;
         private System.Windows.Forms.Button btnNextHotkeys;
         private System.Windows.Forms.TextBox txtNextHotkeys;
+        private System.Windows.Forms.CheckBox chkShowOnlyOnTitlebar;
     }
 }

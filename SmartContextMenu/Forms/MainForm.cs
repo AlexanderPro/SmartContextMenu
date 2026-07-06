@@ -15,6 +15,7 @@ using SmartContextMenu.Extensions;
 using SmartContextMenu.Hooks;
 using SmartContextMenu.Native;
 using SmartContextMenu.Native.Enums;
+using MenuTimer = System.Timers.Timer;
 
 namespace SmartContextMenu.Forms
 {
@@ -31,6 +32,7 @@ namespace SmartContextMenu.Forms
         private IntPtr _hWinEventHookMinimize;
         private IntPtr _hWinEventHookForeground;
         private IntPtr _dimHandle;
+        private MenuTimer _menuTimer;
         private readonly ContextMenuStrip _menu;
         private readonly List<DimForm> _dimForms;
         private readonly IDictionary<IntPtr, Window> _windows;
@@ -59,28 +61,10 @@ namespace SmartContextMenu.Forms
 
             base.OnLoad(e);
 
-            using var process = Process.GetCurrentProcess();
-            using var mainModule = process.MainModule;
-            
-            _keyboardHook = new KeyboardHook(_settings, mainModule.ModuleName);
-            _keyboardHook.MenuItemHooked += MenuItemHooked;
-            _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
-            _keyboardHook.StartProgramMenuItemHooked += StartProgramMenuItemHooked;
-            _keyboardHook.MoveToHooked += MoveToHooked;
-            _keyboardHook.EscKeyHooked += EscKeyHooked;
-            _keyboardHook.Start();
-
-            _mouseHook = new MouseHook(_settings, mainModule.ModuleName);
-            _mouseHook.Hooked += MouseHooked;
-            _mouseHook.ClickHooked += ClickHooked;
-            _mouseHook.Start();
-
             _winEventProc = new User32.WinEventDelegate(WinEventProc);
             _hWinEventHookDestroy = User32.SetWinEventHook(Constants.EVENT_OBJECT_DESTROY, Constants.EVENT_OBJECT_DESTROY, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
             _hWinEventHookMinimize = User32.SetWinEventHook(Constants.EVENT_SYSTEM_MINIMIZESTART, Constants.EVENT_SYSTEM_MINIMIZESTART, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
             _hWinEventHookForeground = User32.SetWinEventHook(Constants.EVENT_SYSTEM_FOREGROUND, Constants.EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _winEventProc, 0, 0, Constants.WINEVENT_OUTOFCONTEXT);
-
-            ContextMenuManager.Build(_menu, _settings, MenuItemClick);
 
             if (_settings.ShowSystemTrayIcon)
             {
@@ -95,6 +79,30 @@ namespace SmartContextMenu.Forms
                 _systemTrayMenu.Build(_settings);
                 _systemTrayMenu.CheckMenuItemAutoStart(AutoStarter.IsEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation));
             }
+
+            ContextMenuManager.Build(_menu, _settings, MenuItemClick);
+
+            using var process = Process.GetCurrentProcess();
+            using var mainModule = process.MainModule;
+
+            _keyboardHook = new KeyboardHook(_settings, mainModule.ModuleName);
+            _keyboardHook.MenuItemHooked += MenuItemHooked;
+            _keyboardHook.WindowSizeMenuItemHooked += WindowSizeMenuItemHooked;
+            _keyboardHook.StartProgramMenuItemHooked += StartProgramMenuItemHooked;
+            _keyboardHook.MoveToHooked += MoveToHooked;
+            _keyboardHook.EscKeyHooked += EscKeyHooked;
+            _keyboardHook.Start();
+
+            _mouseHook = new MouseHook(_settings, mainModule.ModuleName);
+            _mouseHook.Hooked += MouseHooked;
+            _mouseHook.ClickHooked += ClickHooked;
+            _mouseHook.Start();
+
+            _menuTimer = new MenuTimer();
+            _menuTimer.Interval = _settings.MenuDisabledInterval;
+            _menuTimer.AutoReset = false;
+            _menuTimer.SynchronizingObject = this;
+            _menuTimer.Elapsed += MenuTimerElapsed;
 
             BringToFront();
             Activate();
@@ -218,7 +226,7 @@ namespace SmartContextMenu.Forms
             }
         });
 
-        private void MouseHooked(object sender, EventArgs e) => Invoke((MethodInvoker)delegate
+        private void MouseHooked(object sender, Hooks.MouseEventArgs e) => Invoke((MethodInvoker)delegate
         {
             var cursorPosition = Cursor.Position;
             var handle = User32.WindowFromPoint(new Native.Structs.Point(cursorPosition.X, cursorPosition.Y));
@@ -230,15 +238,23 @@ namespace SmartContextMenu.Forms
 
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+            if (_settings.ShowOnlyOnTitlebar && !(window.GetTitleBarSize(out var titleBarSize)  && titleBarSize.ToRectangle().Contains(cursorPosition)))
+            {
+                return;
+            }
+
             _menu.Hide();
             ContextMenuManager.Refresh(_menu, window, _dimHandle);
             User32.SetForegroundWindow(new HandleRef(_menu, _menu.Handle));
+            _menu.Enabled = false;
             _menu.Show(cursorPosition);
+            _menuTimer.Start();
+            e.Succeeded = true;
         });
 
         private void ClickHooked(object sender, EventArgs e) => BeginInvoke((MethodInvoker)delegate
         {
-            if (_menu.Visible)
+            if (_menu.Visible && _menu.Enabled)
             {
                 var cursorPosition = Cursor.Position;
                 var isCursorOverMenu = _menu.RectangleToScreen(_menu.ClientRectangle).Contains(cursorPosition);
@@ -865,6 +881,11 @@ namespace SmartContextMenu.Forms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void MenuTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            _menu.Enabled = true;
         }
 
         private void SystemTrayMenuItemAutoStartClick(object sender, EventArgs e)

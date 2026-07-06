@@ -157,6 +157,8 @@ namespace SmartContextMenu.Settings
             settings.Key3 = hotKeysElement.Attribute("key3") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key3").Value) ? (VirtualKey)int.Parse(hotKeysElement.Attribute("key3").Value) : VirtualKey.None;
             settings.Key4 = hotKeysElement.Attribute("key4") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key4").Value) ? (VirtualKey)int.Parse(hotKeysElement.Attribute("key4").Value) : VirtualKey.None;
             settings.MouseButton = hotKeysElement.Attribute("mouseButton") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("mouseButton").Value) ? (MouseButton)int.Parse(hotKeysElement.Attribute("mouseButton").Value) : MouseButton.None;
+            settings.ShowOnlyOnTitlebar = hotKeysElement.Attribute("showOnlyOnTitlebar") != null && hotKeysElement.Attribute("showOnlyOnTitlebar").Value != null && hotKeysElement.Attribute("showOnlyOnTitlebar").Value.ToLower() == "true";
+            settings.MenuDisabledInterval = hotKeysElement.Attribute("menuDisabledInterval") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("menuDisabledInterval").Value) ? int.Parse(hotKeysElement.Attribute("menuDisabledInterval").Value) : ApplicationSettings.DefaultMenuDisabledInterval;
 
             var nextMonitorElement = document.XPathSelectElement("/smartContextMenu/mover/next");
             settings.NextMonitor = ReadShortcut(nextMonitorElement);
@@ -257,7 +259,9 @@ namespace SmartContextMenu.Settings
                                      new XAttribute("key2", settings.Key2 == VirtualKeyModifier.None ? string.Empty : ((int)settings.Key2).ToString()),
                                      new XAttribute("key3", settings.Key3 == VirtualKey.None ? string.Empty : ((int)settings.Key3).ToString()),
                                      new XAttribute("key4", settings.Key4 == VirtualKey.None ? string.Empty : ((int)settings.Key4).ToString()),
-                                     new XAttribute("mouseButton", settings.MouseButton == MouseButton.None ? string.Empty : ((int)settings.MouseButton).ToString())
+                                     new XAttribute("mouseButton", settings.MouseButton == MouseButton.None ? string.Empty : ((int)settings.MouseButton).ToString()),
+                                     new XAttribute("showOnlyOnTitlebar", settings.ShowOnlyOnTitlebar.ToString().ToLower()),
+                                     new XAttribute("menuDisabledInterval", settings.MenuDisabledInterval.ToString())
                                  ),
                                  new XElement("mover",
                                      new XElement("next",

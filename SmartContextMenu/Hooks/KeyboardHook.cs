@@ -103,14 +103,15 @@ namespace SmartContextMenu.Hooks
                                 var eventArgs = new KeyboardEventArgs();
                                 eventArgs.NextMonitor = true;
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -142,14 +143,15 @@ namespace SmartContextMenu.Hooks
                                 var eventArgs = new KeyboardEventArgs();
                                 eventArgs.PreviousMonitor = true;
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -185,14 +187,15 @@ namespace SmartContextMenu.Hooks
                             {
                                 var eventArgs = new KeyboardEventArgs(item);
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -228,14 +231,15 @@ namespace SmartContextMenu.Hooks
                             {
                                 var eventArgs = new KeyboardEventArgs(item);
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -271,14 +275,15 @@ namespace SmartContextMenu.Hooks
                             {
                                 var eventArgs = new KeyboardEventArgs(item);
                                 handler.Invoke(this, eventArgs);
+
+                                stopWatch.Stop();
+                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                                {
+                                    InitializeHook();
+                                }
+
                                 if (eventArgs.Succeeded)
                                 {
-                                    stopWatch.Stop();
-                                    if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                    {
-                                        InitializeHook();
-                                    }
-
                                     return 1;
                                 }
                             }
@@ -291,15 +296,16 @@ namespace SmartContextMenu.Hooks
                         if (handler != null)
                         {
                             var eventArgs = new KeyboardEventArgs();
-                            handler?.Invoke(this, eventArgs);
+                            handler.Invoke(this, eventArgs);
+
+                            stopWatch.Stop();
+                            if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
+                            {
+                                InitializeHook();
+                            }
+
                             if (eventArgs.Succeeded)
                             {
-                                stopWatch.Stop();
-                                if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
-                                {
-                                    InitializeHook();
-                                }
-
                                 return 1;
                             }
                         }

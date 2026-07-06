@@ -15,7 +15,7 @@ namespace SmartContextMenu.Hooks
         private IntPtr _moduleHandle;
         private IntPtr _hookHandle;
 
-        public event EventHandler<EventArgs> Hooked;
+        public event EventHandler<MouseEventArgs> Hooked;
         public event EventHandler<EventArgs> ClickHooked;
 
         public ApplicationSettings Settings { get; set; }
@@ -71,9 +71,9 @@ namespace SmartContextMenu.Hooks
             {
                 var stopWatch = Stopwatch.StartNew();
 
-                if ((Settings.MouseButton == MouseButton.Left && wParam == WM_LBUTTONUP) ||
-                    (Settings.MouseButton == MouseButton.Right && wParam == WM_RBUTTONUP) ||
-                    (Settings.MouseButton == MouseButton.Middle && wParam == WM_MBUTTONUP))
+                if ((Settings.MouseButton == MouseButton.Left && wParam == WM_LBUTTONDOWN) ||
+                    (Settings.MouseButton == MouseButton.Right && wParam == WM_RBUTTONDOWN) ||
+                    (Settings.MouseButton == MouseButton.Middle && wParam == WM_MBUTTONDOWN))
                 {
                     var key1 = true;
                     var key2 = true;
@@ -109,17 +109,24 @@ namespace SmartContextMenu.Hooks
                         var handler = Hooked;
                         if (handler != null)
                         {
-                            handler.Invoke(this, EventArgs.Empty);
+                            var eventArgs = new MouseEventArgs();
+                            handler.Invoke(this, eventArgs);
+
                             stopWatch.Stop();
                             if (stopWatch.ElapsedMilliseconds > Settings.LowLevelHooksTimeout)
                             {
                                 InitializeHook();
                             }
+
+                            if (eventArgs.Succeeded)
+                            {
+                                return 1;
+                            }
                         }
                     }
                 }
 
-                if (Settings.MouseButton != MouseButton.None && wParam == WM_LBUTTONDOWN)
+                if (Settings.MouseButton != MouseButton.None && (wParam == WM_LBUTTONUP || wParam == WM_RBUTTONUP || wParam == WM_MBUTTONUP))
                 {
                     var handler = ClickHooked;
                     if (handler != null)

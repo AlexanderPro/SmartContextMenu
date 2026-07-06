@@ -126,11 +126,19 @@ namespace SmartContextMenu.Native
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool PrintWindow(IntPtr handle, IntPtr hdc, int nFlags);
+        public static extern bool GetClientRect(IntPtr handle, out Rect lpRect);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool GetClientRect(IntPtr handle, out Rect lpRect);
+        public static extern bool MapWindowPoints(IntPtr hWnd, IntPtr hWndTo, ref Point lpPoints, uint cPoints);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool ClientToScreen(IntPtr hWnd, ref Point lpPoint);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool PrintWindow(IntPtr handle, IntPtr hdc, int nFlags);
 
         [DllImport("user32.dll")]
         public static extern bool MoveWindow(IntPtr handle, int x, int y, int nWidth, int nHeight, bool bRepaint);

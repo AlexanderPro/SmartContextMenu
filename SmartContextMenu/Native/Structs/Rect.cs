@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace SmartContextMenu.Native.Structs
 {
@@ -12,5 +13,7 @@ namespace SmartContextMenu.Native.Structs
 
         public int Width => Right - Left;
         public int Height => Bottom - Top;
+
+        public Rectangle ToRectangle() => new Rectangle(Left, Top, Width, Height);
     }
 }
