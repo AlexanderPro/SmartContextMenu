@@ -3823,4 +3823,243 @@
     <item name="system_menu_close" value="மூடு" />
     <item name="system_menu_available" value="கிடைக்கிறது" />
   </language>
+    <language name="vi">
+      <item name="separator" value="Dấu phân cách" />
+      <item name="information" value="Thông tin" />
+      <item name="roll_up" value="Cuộn lên" />
+      <item name="change_icon" value="Đổi biểu tượng" />
+      <item name="change_title" value="Đổi tiêu đề" />
+      <item name="aero_glass" value="Aero Glass" />
+      <item name="borderless" value="Không viền" />
+      <item name="dimmer" value="Tối dần" />
+      <item name="hide" value="Ẩn" />
+      <item name="always_on_top" value="Luôn ở trên cùng" />
+      <item name="send_to_bottom" value="Đưa xuống dưới cùng" />
+      <item name="save_screenshot" value="Lưu ảnh chụp màn hình" />
+      <item name="open_file_in_explorer" value="Mở tệp trong Explorer" />
+      <item name="clipboard" value="Bảng tạm" />
+      <item name="copy_screenshot" value="Sao chép ảnh chụp màn hình" />
+      <item name="copy_window_text" value="Sao chép văn bản cửa sổ" />
+      <item name="copy_window_title" value="Sao chép tiêu đề cửa sổ" />
+      <item name="copy_full_process_path" value="Sao chép đường dẫn đầy đủ tiến trình" />
+      <item name="clear_clipboard" value="Xóa" />
+      <item name="drag_by_mouse" value="Kéo bằng chuột" />
+      <item name="hide_for_alt_tab" value="Ẩn trong Alt+Tab" />
+      <item name="click_through" value="Nhấn xuyên qua" />
+      <item name="size" value="Đổi kích thước" />
+      <item name="size_default" value="Mặc định" />
+      <item name="size_custom" value="Tùy chỉnh..." />
+      <item name="move_to" value="Di chuyển đến" />
+      <item name="monitor" value="Theo dõi " />
+      <item name="alignment" value="Canh chỉnh" />
+      <item name="align_top_left" value="trên-trái" />
+      <item name="align_top_center" value="trên-giữa" />
+      <item name="align_top_right" value="trên-phải" />
+      <item name="align_middle_left" value="giữa-trái" />
+      <item name="align_middle_center" value="giữa-giữa" />
+      <item name="align_middle_right" value="giữa-phải" />
+      <item name="align_bottom_left" value="dưới-trái" />
+      <item name="align_bottom_center" value="dưới-giữa" />
+      <item name="align_bottom_right" value="dưới-phải" />
+      <item name="align_center_horizontally" value="Căn giữa theo chiều ngang" />
+      <item name="align_center_vertically" value="Căn giữa theo chiều dọc" />
+      <item name="align_default" value="Mặc định" />
+      <item name="align_custom" value="Tùy chỉnh..." />
+      <item name="transparency" value="Độ trong suốt" />
+      <item name="trans_opaque" value=" (mờ đục)" />
+      <item name="trans_invisible" value=" (trong suốt)" />
+      <item name="trans_default" value="Mặc định" />
+      <item name="trans_custom" value="Tùy chỉnh..." />
+      <item name="priority" value="Mức độ ưu tiên" />
+      <item name="priority_real_time" value="Thời gian thực: 24" />
+      <item name="priority_high" value="Cao: 13" />
+      <item name="priority_above_normal" value="Cao hơn bình thường: 10" />
+      <item name="priority_normal" value="Bình thường: 8" />
+      <item name="priority_below_normal" value="Dưới mức bình thường: 6" />
+      <item name="priority_idle" value="Rảnh rỗi: 4" />
+      <item name="system_tray" value="Khay hệ thống" />
+      <item name="minimize_to_systemtray" value="Thu nhỏ vào khay" />
+      <item name="minimize_always_to_systemtray" value="Luôn thu nhỏ vào khay" />
+      <item name="suspend_to_systemtray" value="Tạm ngừng và thu nhỏ vào khay" />
+      <item name="other_windows" value="Cửa sổ khác" />
+      <item name="minimize_other_windows" value="Thu nhỏ" />
+      <item name="close_other_windows" value="Đóng" />
+      <item name="start_program" value="Khởi chạy chương trình" />
+      <item name="buttons" value="Nút bấm" />
+      <item name="disable_minimize_button" value="Vô hiệu hóa nút &quot;Thu nhỏ&quot;" />
+      <item name="disable_maximize_button" value="Vô hiệu hóa nút &quot;Phóng to&quot;" />
+      <item name="disable_close_button" value="Vô hiệu hóa nút &quot;Đóng&quot;" />
+      <item name="settings" value="Cài đặt..." />
+      <item name="grp_window" value="Cửa sổ" />
+      <item name="grp_process" value="Tiến trình" />
+      <item name="lbl_get_window_text" value="GetWindowText:" />
+      <item name="lbl_wm_gettext" value="WM_GETTEXT:" />
+      <item name="lbl_get_class_name" value="GetClassName:" />
+      <item name="lbl_real_get_window_class" value="RealGetWindowClass:" />
+      <item name="lbl_font_name" value="Tên phông chữ:" />
+      <item name="lbl_window_handle" value="Xử lý cửa sổ:" />
+      <item name="lbl_parent_window_handle" value="Xử lý Cửa sổ Gốc:" />
+      <item name="lbl_window_size" value="Kích thước Cửa sổ:" />
+      <item name="lbl_window_position" value="Vị trí Cửa sổ:" />
+      <item name="lbl_extended_frame_bounds" value="Biên Khung Mở rộng:" />
+      <item name="lbl_instance" value=" Instance:" />
+      <item name="lbl_process_id" value="ProcessID:" />
+      <item name="lbl_thread_id" value="ThreadID:" />
+      <item name="lbl_gcl_wnd_proc" value="GCL_WNDPROC:" />
+      <item name="lbl_dwl_dlg_proc" value="DWL_DLGPROC:" />
+      <item name="lbl_gwl_style" value="GWL_STYLE:" />
+      <item name="lbl_gcl_style" value="GCL_STYLE:" />
+      <item name="lbl_gwl_exstyle" value="GWL_EXSTYLE:" />
+      <item name="lbl_windowinfo_exstyle" value="WindowInfo.ExStyle:" />
+      <item name="lbl_lwa_alpha" value="LWA_ALPHA:" />
+      <item name="lbl_lwa_colorkey" value="LWA_COLORKEY:" />
+      <item name="lbl_gwl_userdata" value="GWL_USERDATA:" />
+      <item name="lbl_dwl_user" value="DWL_USER:" />
+      <item name="lbl_full_path" value="Đường dẫn đầy đủ:" />
+      <item name="lbl_command_line" value="Dòng lệnh:" />
+      <item name="lbl_started_at" value="Đã khởi chạy lúc:" />
+      <item name="lbl_owner" value="Chủ sở hữu:" />
+      <item name="lbl_threads" value="Luồng:" />
+      <item name="lbl_working_set_size" value="Kích thước Tập Làm việc:" />
+      <item name="lbl_parent" value="Cây cha:" />
+      <item name="lbl_priority" value="Mức độ ưu tiên:" />
+      <item name="lbl_handles" value="Xử lý:" />
+      <item name="lbl_virtual_size" value="Kích thước ảo:" />
+      <item name="lbl_product_name" value="Tên sản phẩm:" />
+      <item name="lbl_copyright" value="Bản quyền:" />
+      <item name="lbl_file_version" value="Phiên bản tệp:" />
+      <item name="lbl_product_version" value="Phiên bản sản phẩm:" />
+      <item name="information_btn_apply" value="Đồng ý" />
+      <item name="save_screenshot_title" value="Lưu ảnh chụp màn hình cửa sổ" />
+      <item name="save_screenshot_filename" value="WindowScreenshot" />
+      <item name="save_screenshot_default_ext" value="bmp" />
+      <item name="save_screenshot_filter" value="Hình ảnh Bitmap (*.bmp)|*.bmp|Hình ảnh GIF (*.gif)|*.gif|Hình ảnh JPEG (*.jpeg)|*.jpeg|Hình ảnh PNG (*.png)|*.png|Hình ảnh TIFF (*.tiff)|*.tiff|Hình ảnh WMF (*.wmf)|*.wmf" />
+      <item name="icon_default_ext" value="ico" />
+      <item name="icon_filter" value="Biểu tượng (*.ico)|*.ico|Hình ảnh Bitmap (*.bmp)|*.bmp|Hình ảnh GIF (*.gif)|*.gif|Hình ảnh JPEG (*.jpeg)|*.jpeg|Hình ảnh PNG (*.png)|*.png|Hình ảnh TIFF (*.tiff)|*.tiff|Hình ảnh WMF (*.wmf)|*.wmf|Tất cả các tệp (*.*)|*.*" />
+      <item name="size_form" value="Đặt kích thước" />
+      <item name="size_btn_apply" value="Áp dụng" />
+      <item name="lbl_size_form_height" value="Chiều cao:" />
+      <item name="lbl_size_form_width" value="Chiều rộng:" />
+      <item name="lbl_size_form_top" value="Trên:" />
+      <item name="lbl_size_form_left" value="Trái:" />
+      <item name="trans_form" value="Đặt độ trong suốt" />
+      <item name="trans_btn_apply" value="Áp dụng" />
+      <item name="align_form" value="Đặt vị trí" />
+      <item name="align_btn_apply" value="Áp dụng" />
+      <item name="lbl_top" value="Trên:" />
+      <item name="lbl_left" value="Trái:" />
+      <item name="mi_restore" value="Khôi phục" />
+      <item name="mi_restore_windows" value="Khôi phục" />
+      <item name="mi_close" value="Đóng" />
+      <item name="mi_auto_start" value="Tự động khởi động chương trình" />
+      <item name="mi_settings" value="Cài đặt..." />
+      <item name="mi_about" value="Giới thiệu" />
+      <item name="mi_exit" value="Thoát" />
+      <item name="about_form" value="Giới thiệu " />
+      <item name="about_btn_ok" value="Đồng ý" />
+      <item name="settings_form" value="Cài đặt" />
+      <item name="tab_settings_general" value="Chung" />
+      <item name="tab_settings_menu" value="Menu" />
+      <item name="grpb_start_program" value="Các mục menu Khởi động chương trình" />
+      <item name="clm_start_program_title" value="Tiêu đề" />
+      <item name="clm_start_program_path" value="Tên tệp" />
+      <item name="clm_start_program_arguments" value="Đối số" />
+      <item name="clm_start_program_edit" value="Chỉnh sửa" />
+      <item name="clm_start_program_delete" value="Xóa" />
+      <item name="btn_start_program_up" value="Di chuyển lên chương trình" />
+      <item name="btn_start_program_down" value="Di chuyển xuống chương trình" />
+      <item name="btn_add_start_program" value="Thêm chương trình khởi động" />
+      <item name="settings_btn_apply" value="Đồng ý" />
+      <item name="settings_btn_cancel" value="Hủy" />
+      <item name="grpb_window_size" value="Các mục menu Kích thước cửa sổ" />
+      <item name="window_size_form" value="Kích thước cửa sổ" />
+      <item name="window_size_btn_apply" value="Đồng ý" />
+      <item name="window_size_btn_cancel" value="Hủy" />
+      <item name="clm_window_size_title" value="Tiêu đề" />
+      <item name="clm_window_size_width" value="Chiều rộng" />
+      <item name="clm_window_size_height" value="Chiều cao" />
+      <item name="clm_window_size_top" value="Trên" />
+      <item name="clm_window_size_left" value="Trái" />
+      <item name="clm_window_size_edit" value="Chỉnh sửa" />
+      <item name="clm_window_size_delete" value="Xóa" />
+      <item name="lbl_window_size_title" value="Tiêu đề:" />
+      <item name="lbl_window_size_width" value="Chiều rộng:" />
+      <item name="lbl_window_size_height" value="Chiều cao:" />
+      <item name="lbl_window_size_top" value="Trên:" />
+      <item name="lbl_window_size_left" value="Trái:" />
+      <item name="lbl_window_size_key1" value="Phím 1:" />
+      <item name="lbl_window_size_key2" value="Phím 2:" />
+      <item name="lbl_window_size_key3" value="Phím 3:" />
+      <item name="btn_window_size_up" value="Chuyển lên" />
+      <item name="btn_window_size_down" value="Chuyển xuống" />
+      <item name="btn_add_window_size" value="Thêm" />
+      <item name="btn_menu_item_up" value="Chuyển lên" />
+      <item name="btn_menu_item_down" value="Chuyển xuống" />
+      <item name="process_name_form" value="Loại trừ tiến trình" />
+      <item name="process_lbl_file_name" value="Tên tệp:" />
+      <item name="process_btn_apply" value="Đồng ý" />
+      <item name="process_btn_cancel" value="Hủy" />
+      <item name="process_browse_file_filter" value="Tập thực thi (*.exe)|*.exe|Tất cả tệp (*.*)|*.*" />
+      <item name="start_program_form" value="Khởi chạy Chương trình" />
+      <item name="start_program_lbl_title" value="Tiêu đề:" />
+      <item name="start_program_lbl_file_name" value="Tên tệp:" />
+      <item name="start_program_lbl_arguments" value="Đối số:" />
+      <item name="start_program_lbl_runas" value="Chạy với tư cách:" />
+      <item name="start_program_lbl_begin" value="Bắt đầu:" />
+      <item name="start_program_lbl_end" value="Kết thúc:" />
+      <item name="start_program_lbl_key1" value="Phím 1:" />
+      <item name="start_program_lbl_key2" value="Phím 2:" />
+      <item name="start_program_lbl_key3" value="Phím 3:" />
+      <item name="start_program_show_window" value="Hiển thị cửa sổ" />
+      <item name="start_program_use_window_working_directory" value="Sử dụng thư mục làm việc của cửa sổ" />
+      <item name="start_program_parameter" value="Tham số" />
+      <item name="start_program_normal" value="Bình thường" />
+      <item name="start_program_administrator" value="Quản trị viên" />
+      <item name="start_program_btn_apply" value="OK" />
+      <item name="start_program_btn_cancel" value="Hủy" />
+      <item name="start_program_browse_file_filter" value="Tập thực thi (*.exe)|*.exe|Tất cả tệp (*.*)|*.*" />
+      <item name="grpb_language" value="Ngôn ngữ" />
+      <item name="message_box_attention_title" value="Lưu ý" />
+      <item name="message_box_attention_content" value="Bạn nên khởi động lại ứng dụng theo cách thủ công để áp dụng các cài đặt." />
+      <item name="hotkeys_form" value="Phím nóng" />
+      <item name="hotkeys_lbl_key1" value="Phím 1" />
+      <item name="hotkeys_lbl_key2" value="Phím 2" />
+      <item name="hotkeys_lbl_key3" value="Phím 3" />
+      <item name="hotkeys_btn_apply" value="Đồng ý" />
+      <item name="hotkeys_btn_cancel" value="Hủy" />
+      <item name="tab_settings_hotkeys" value="Phím nóng" />
+      <item name="clm_hotkeys_name" value="Tên" />
+      <item name="clm_hotkeys_show_tooltip" value="Hiển thị mục trình đơn" />
+      <item name="tab_settings_menu_start" value="Trình đơn (Khởi chạy chương trình)" />
+      <item name="tab_settings_menu_size" value="Trình đơn (Thay đổi kích thước)" />
+      <item name="tab_settings_menu_move_to" value="Trình đơn (Di chuyển đến)" />
+      <item name="tab_settings_menu_dimmer" value="Trình đơn (Dimmer)" />
+      <item name="grpb_dimmer_color" value="Màu sắc" />
+      <item name="grpb_dimmer_transparency" value="Độ trong suốt" />
+      <item name="grpb_sizer" value="Cách đặt kích thước cửa sổ" />
+      <item name="grpb_display" value="Hiển thị" />
+      <item name="chk_enable_high_dpi" value="Bật DPI cao" />
+      <item name="sizer_window_with_margins" value="Cửa sổ có lề" />
+      <item name="sizer_window_without_margins" value="Cửa sổ không có lề" />
+      <item name="sizer_window_client_area" value="Vùng khách của cửa sổ" />
+      <item name="parameter_btn_apply" value="Đồng ý" />
+      <item name="parameter_form" value="Nhập tham số" />
+      <item name="grpb_hotkeys" value="Phím nóng" />
+      <item name="lbl_key1" value="Phím 1" />
+      <item name="lbl_key2" value="Phím 2" />
+      <item name="lbl_key3" value="Phím 3" />
+      <item name="lbl_key4" value="Key 4" />
+      <item name="lbl_mouse_button" value="Nút chuột" />
+      <item name="grpb_next_hotkeys" value="Phím nóng →" />
+      <item name="grpb_previous_hotkeys" value="Phím nóng ←" />
+      <item name="change_title_btn_apply" value="Đồng ý" />
+      <item name="change_title_btn_cancel" value="Hủy" />
+      <item name="change_title_form" value="Thay đổi tiêu đề" />
+      <item name="system_menu" value="Menu hệ thống" />
+      <item name="system_menu_restore" value="Khôi phục" />
+      <item name="system_menu_minimize" value="Thu nhỏ" />
+      <item name="system_menu_maximize" value="Phóng to" />
+      <item name="system_menu_close" value="Đóng" />
+      <item name="system_menu_available" value="Có sẵn" />
+    </language>
 </languages>
