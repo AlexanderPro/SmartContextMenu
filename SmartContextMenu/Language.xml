@@ -3127,7 +3127,7 @@
     <item name="change_title" value="Cambiar título" />
     <item name="aero_glass" value="Aero Glass" />
     <item name="borderless" value="Sin fronteras" />
-    <item name="dimmer" value="Atenuar" />
+    <item name="dimmer" value="Atenuar fondo" />
     <item name="hide" value="Ocultar" />
     <item name="always_on_top" value="Siempre encima" />
     <item name="send_to_bottom" value="Enviar al fondo" />
@@ -3214,7 +3214,7 @@
     <item name="lbl_full_path" value="Ruta Completa:" />
     <item name="lbl_command_line" value="Línea de Comandos:" />
     <item name="lbl_started_at" value="Iniciado:" />
-    <item name="lbl_owner" value="Dueño:" />
+    <item name="lbl_owner" value="Propietario:" />
     <item name="lbl_threads" value="Hilos:" />
     <item name="lbl_working_set_size" value="Tamaño del Conjunto de Trabajo:" />
     <item name="lbl_parent" value="Padre:" />
@@ -3329,7 +3329,7 @@
     <item name="tab_settings_menu_start" value="Menú (Inciar programa)" />
     <item name="tab_settings_menu_size" value="Menú (Redimensionar)" />
     <item name="tab_settings_menu_move_to" value="Menú (Mover a)" />
-    <item name="tab_settings_menu_dimmer" value="Menú (Atenuar)" />
+    <item name="tab_settings_menu_dimmer" value="Menú (Atenuar fondo)" />
     <item name="grpb_dimmer_color" value="Color" />
     <item name="grpb_dimmer_transparency" value="Transparencia" />
     <item name="grpb_sizer" value="Cómo configurar el tamaño de la ventana" />
@@ -3345,7 +3345,7 @@
     <item name="lbl_key2" value="Tecla 2" />
     <item name="lbl_key3" value="Tecla 3" />
     <item name="lbl_key4" value="Tecla 4" />
-    <item name="lbl_mouse_button" value="Botón delñ mouse" />
+    <item name="lbl_mouse_button" value="Botón del mouse" />
     <item name="chk_show_only_on_titlebar" value="Mostrar solo en la barra de título" />
     <item name="grpb_next_hotkeys" value="Teclas de acceso rápido →" />
     <item name="grpb_previous_hotkeys" value="Teclas de acceso rápido ←" />
