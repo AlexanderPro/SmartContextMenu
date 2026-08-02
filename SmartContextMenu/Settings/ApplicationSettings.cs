@@ -6,7 +6,7 @@ namespace SmartContextMenu.Settings
     public class ApplicationSettings : ICloneable
     {
         public const int DefaultLowLevelHooksTimeout = 300;
-        public const int DefaultMenuDisabledInterval = 1;
+        public const int DefaultMenuDisabledInterval = 300;
 
         public VirtualKeyModifier Key1 { get; set; }
 
