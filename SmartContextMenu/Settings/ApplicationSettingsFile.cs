@@ -207,6 +207,7 @@ namespace SmartContextMenu.Settings
                     "sl-SI" => "sl",
                     "ta-IN" => "ta",
                     "vi-VN" => "vi",
+                    "id-ID" => "id",
                     _ => "en"
                 };
 
