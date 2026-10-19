@@ -105,7 +105,9 @@ namespace SmartContextMenu
             }
         }
 
-        public bool AlwaysOnTop => WindowUtils.IsAlwaysOnTop(Handle);
+        public bool IsAlwaysOnTop => WindowUtils.IsAlwaysOnTop(Handle);
+
+        public bool IsDarkMode => WindowUtils.IsDarkMode(Handle);
 
         public bool IsSystemMenu => WindowUtils.IsSystemMenu(Handle);
 
@@ -628,6 +630,8 @@ namespace SmartContextMenu
                 IsBorderless = false;
             }
         }
+
+        public bool UseDarkMode(bool enabled) => WindowUtils.UseDarkMode(Handle, enabled);
 
         public void MoveToMonitor(IntPtr monitorHandle) => WindowUtils.MoveToMonitor(Handle, monitorHandle);
 

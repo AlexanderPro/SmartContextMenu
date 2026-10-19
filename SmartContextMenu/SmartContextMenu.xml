@@ -10,8 +10,6 @@
       <item type="item" name="hide" key1="" key2="" key3="" />
       <item type="item" name="roll_up" key1="" key2="" key3="" />
       <item type="item" name="send_to_bottom" key1="" key2="" key3="" />
-      <item type="item" name="change_icon" key1="" key2="" key3="" />
-      <item type="item" name="change_title" key1="" key2="" key3="" />
       <item type="item" name="save_screenshot" key1="" key2="" key3="" />
       <item type="item" name="open_file_in_explorer" key1="" key2="" key3="" />
       <item type="item" name="click_through" key1="" key2="" key3="" />
@@ -77,8 +75,11 @@
           <item type="item" name="clear_clipboard" key1="" key2="" key3="" />
         </items>
       </item>
-      <item type="group" name="buttons">
+      <item type="group" name="title_bar">
         <items>
+          <item type="item" name="dark_mode" key1="" key2="" key3="" />
+          <item type="item" name="change_icon" key1="" key2="" key3="" />
+          <item type="item" name="change_title" key1="" key2="" key3="" />
           <item type="item" name="disable_minimize_button" key1="" key2="" key3="" />
           <item type="item" name="disable_maximize_button" key1="" key2="" key3="" />
           <item type="item" name="disable_close_button" key1="" key2="" key3="" />

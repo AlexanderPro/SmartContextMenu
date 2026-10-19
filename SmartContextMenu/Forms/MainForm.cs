@@ -455,7 +455,13 @@ namespace SmartContextMenu.Forms
 
                 case MenuItemName.AlwaysOnTop:
                     {
-                        window.MakeAlwaysOnTop(!window.AlwaysOnTop);
+                        window.MakeAlwaysOnTop(!window.IsAlwaysOnTop);
+                    }
+                    break;
+
+                case MenuItemName.DarkMode:
+                    {
+                        window.UseDarkMode(!window.IsDarkMode);
                     }
                     break;
 

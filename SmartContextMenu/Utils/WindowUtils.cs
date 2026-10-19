@@ -13,6 +13,7 @@ using SmartContextMenu.Native.Structs;
 using static SmartContextMenu.Native.Gdi32;
 using static SmartContextMenu.Native.User32;
 using static SmartContextMenu.Native.Kernel32;
+using static SmartContextMenu.Native.Dwmapi;
 using static SmartContextMenu.Native.Constants;
 
 namespace SmartContextMenu.Utils
@@ -594,11 +595,64 @@ namespace SmartContextMenu.Utils
             }
         }
 
+        public static bool UseDarkMode(IntPtr hWnd, bool enabled)
+        {
+            if (IsWindows10OrGreater(17763))
+            {
+                var attribute = DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1;
+                if (IsWindows10OrGreater(18985))
+                {
+                    attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
+                }
+
+                int useImmersiveDarkMode = enabled ? 1 : 0;
+                if (DwmSetWindowAttribute(hWnd, attribute, ref useImmersiveDarkMode, sizeof(int)) == 0)
+                {
+                    SendMessage(hWnd, WM_NCACTIVATE, 0, 0);
+                    SendMessage(hWnd, WM_NCACTIVATE, 1, 0);
+                    ForceRedrawNonClientArea(hWnd);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool IsDarkMode(IntPtr hWnd)
+        {
+            if (IsWindows10OrGreater(17763))
+            {
+                var attribute = DWMWA_USE_IMMERSIVE_DARK_MODE_BEFORE_20H1;
+                if (IsWindows10OrGreater(18985))
+                {
+                    attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
+                }
+
+                return DwmGetWindowAttribute(hWnd, attribute, out int attributeValue, sizeof(int)) == 0 && attributeValue != 0;
+            }
+
+            return false;
+        }
 
         public static Func<int, double> TransparencyToOpacity = t => 1 - (t / 100.0);
 
         public static Func<int, byte> TransparencyToAlphaOpacity = t => (byte)Math.Round(255 * (100 - t) / 100f, MidpointRounding.AwayFromZero);
 
         public static Func<byte, int> AlphaOpacityToTransparency = o => 100 - (int)Math.Round(100 * o / 255f, MidpointRounding.AwayFromZero);
+
+        private static void ForceRedrawNonClientArea(IntPtr hWnd)
+        {
+            if (!GetWindowRect(hWnd, out var rect) || rect.Width <= 0 || rect.Height <= 0)
+            {
+                return;
+            }
+
+            var flags = SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOREDRAW;
+            SetWindowPos(hWnd, IntPtr.Zero, rect.Left, rect.Top, rect.Width + 1, rect.Height, flags);
+            SetWindowPos(hWnd, IntPtr.Zero, rect.Left, rect.Top, rect.Width, rect.Height, flags);
+            RedrawWindow(hWnd, IntPtr.Zero, IntPtr.Zero, RDW_FRAME | RDW_INVALIDATE | RDW_UPDATENOW);
+        }
+
+        private static bool IsWindows10OrGreater(int build = -1) => Environment.OSVersion.Version.Major >= 10 && Environment.OSVersion.Version.Build >= build;
     }
 }

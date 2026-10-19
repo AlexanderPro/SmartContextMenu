@@ -183,7 +183,13 @@ namespace SmartContextMenu
             {
                 case MenuItemName.AlwaysOnTop:
                     {
-                        toolStripMenuItem.Checked = window.AlwaysOnTop;
+                        toolStripMenuItem.Checked = window.IsAlwaysOnTop;
+                    }
+                    break;
+
+                case MenuItemName.DarkMode:
+                    {
+                        toolStripMenuItem.Checked = window.IsDarkMode;
                     }
                     break;
 

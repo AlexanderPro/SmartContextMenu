@@ -14,10 +14,6 @@
 
         public const string Hide = "hide";
 
-        public const string ChangeIcon = "change_icon";
-
-        public const string ChangeTitle = "change_title";
-
         public const string AlwaysOnTop = "always_on_top";
 
         public const string SendToBottom = "send_to_bottom";
@@ -107,6 +103,14 @@
         public const string CopyFullProcessPath = "copy_full_process_path";
 
         public const string ClearСlipboard = "clear_clipboard";
+
+        public const string TitleBar = "title_bar";
+
+        public const string DarkMode = "dark_mode";
+
+        public const string ChangeIcon = "change_icon";
+
+        public const string ChangeTitle = "change_title";
 
         public const string DisableMinimizeButton = "disable_minimize_button";
 
