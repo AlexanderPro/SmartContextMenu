@@ -245,6 +245,22 @@ namespace SmartContextMenu
                     }
                 }
 
+                // Use Dark Mode
+                if (сommandLineParser.HasToggle("darkmode"))
+                {
+                    var darkmodeString = сommandLineParser.GetToggleValueOrDefault("darkmode", string.Empty).ToLower();
+
+                    if (darkmodeString == "on")
+                    {
+                        window.UseDarkMode(true);
+                    }
+
+                    if (darkmodeString == "off")
+                    {
+                        window.UseDarkMode(false);
+                    }
+                }
+
                 // Set a Window Aero Glass
                 if (сommandLineParser.HasToggle("g") || сommandLineParser.HasToggle("aeroglass"))
                 {
@@ -503,6 +519,7 @@ namespace SmartContextMenu
                        close]
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
+   --darkmode         [on, off]
 -g --aeroglass        [on, off]
    --hide             [on, off]
    --hidealttab       [on, off]
