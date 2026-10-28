@@ -577,7 +577,7 @@ namespace SmartContextMenu
             var process = Process;
             if (process != null)
             {
-                Kernel32.SetPriorityClass(process.GetHandle(), priority.GetPriorityClass());
+                Kernel32.SetPriorityClass(process.Handle, priority.GetPriorityClass());
             }
         }
 

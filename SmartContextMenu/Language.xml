@@ -138,6 +138,13 @@
     <item name="settings_form" value="Settings" />
     <item name="tab_settings_general" value="General" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Process Exclusions" />
+    <item name="clm_process_exclusion_name" value="File Name" />
+    <item name="clm_process_exclusion_edit" value="Edit" />
+    <item name="clm_process_exclusion_delete" value="Delete" />
+    <item name="btn_process_exclusion_up" value="Move Up Process" />
+    <item name="btn_process_exclusion_down" value="Move Down Process" />
+    <item name="btn_add_process_exclusion" value="Add Process Name" />
     <item name="grpb_start_program" value="Start Program Menu Items" />
     <item name="clm_start_program_title" value="Title" />
     <item name="clm_start_program_path" value="File Name" />
@@ -380,6 +387,13 @@
     <item name="settings_form" value="Einstellungen" />
     <item name="tab_settings_general" value="Gemeinsam" />
     <item name="tab_settings_menu" value="Menü" />
+    <item name="grpb_process_exclusions" value="Programme der Ausnahme" />
+    <item name="clm_process_exclusion_name" value="Dateiname" />
+    <item name="clm_process_exclusion_edit" value="Ändern" />
+    <item name="clm_process_exclusion_delete" value="Löschen" />
+    <item name="btn_process_exclusion_up" value="Oben" />
+    <item name="btn_process_exclusion_down" value="Runter" />
+    <item name="btn_add_process_exclusion" value="Prozeβ hinzufügen" />
     <item name="grpb_start_program" value="Menüeinträge mit dem Programmstart" />
     <item name="clm_start_program_title" value="Titel" />
     <item name="clm_start_program_path" value="Dateiname" />
@@ -622,6 +636,13 @@
     <item name="settings_form" value="设置" />
     <item name="tab_settings_general" value="常规" />
     <item name="tab_settings_menu" value="菜单" />
+    <item name="grpb_process_exclusions" value="进程排除" />
+    <item name="clm_process_exclusion_name" value="文件名称" />
+    <item name="clm_process_exclusion_edit" value="编辑" />
+    <item name="clm_process_exclusion_delete" value="删除" />
+    <item name="btn_process_exclusion_up" value="将进程上移" />
+    <item name="btn_process_exclusion_down" value="将进程下移" />
+    <item name="btn_add_process_exclusion" value="添加进程名称" />
     <item name="grpb_start_program" value="启动程序菜单项" />
     <item name="clm_start_program_title" value="标题" />
     <item name="clm_start_program_path" value="文件名称" />
@@ -864,6 +885,13 @@
     <item name="settings_form" value="設定" />
     <item name="tab_settings_general" value="一般" />
     <item name="tab_settings_menu" value="選單" />
+    <item name="grpb_process_exclusions" value="處理程序排除" />
+    <item name="clm_process_exclusion_name" value="檔案名稱" />
+    <item name="clm_process_exclusion_edit" value="編輯" />
+    <item name="clm_process_exclusion_delete" value="刪除" />
+    <item name="btn_process_exclusion_up" value="將處理程序上移" />
+    <item name="btn_process_exclusion_down" value="將處理程序下移" />
+    <item name="btn_add_process_exclusion" value="加入處理程序名稱" />
     <item name="grpb_start_program" value="啟動程式選單項目" />
     <item name="clm_start_program_title" value="標題" />
     <item name="clm_start_program_path" value="檔案名稱" />
@@ -1106,6 +1134,13 @@
     <item name="settings_form" value="設定" />
     <item name="tab_settings_general" value="全般" />
     <item name="tab_settings_menu" value="メニュー" />
+    <item name="grpb_process_exclusions" value="除外するプロセス" />
+    <item name="clm_process_exclusion_name" value="プロセス名" />
+    <item name="clm_process_exclusion_edit" value="編集" />
+    <item name="clm_process_exclusion_delete" value="削除" />
+    <item name="btn_process_exclusion_up" value="上へ" />
+    <item name="btn_process_exclusion_down" value="下へ" />
+    <item name="btn_add_process_exclusion" value="プロセスの追加" />
     <item name="grpb_start_program" value="プログラム実行のメニュー項目" />
     <item name="clm_start_program_title" value="タイトル" />
     <item name="clm_start_program_path" value="ファイル名" />
@@ -1348,6 +1383,13 @@
     <item name="settings_form" value="설정" />
     <item name="tab_settings_general" value="일반" />
     <item name="tab_settings_menu" value="메뉴" />
+    <item name="grpb_process_exclusions" value="프로세스 제외" />
+    <item name="clm_process_exclusion_name" value="파일 이름" />
+    <item name="clm_process_exclusion_edit" value="편집" />
+    <item name="clm_process_exclusion_delete" value="삭제" />
+    <item name="btn_process_exclusion_up" value="프로세스 위로 이동" />
+    <item name="btn_process_exclusion_down" value="프로세스 아래로 이동" />
+    <item name="btn_add_process_exclusion" value="프로세스 이름 추가" />
     <item name="grpb_start_program" value="프로그램 실행 메뉴 항목" />
     <item name="clm_start_program_title" value="제목" />
     <item name="clm_start_program_path" value="파일 이름" />
@@ -1590,6 +1632,13 @@
     <item name="settings_form" value="Настройки" />
     <item name="tab_settings_general" value="Общее" />
     <item name="tab_settings_menu" value="Меню" />
+    <item name="grpb_process_exclusions" value="Программы исключения" />
+    <item name="clm_process_exclusion_name" value="Имя файла" />
+    <item name="clm_process_exclusion_edit" value="Редактировать" />
+    <item name="clm_process_exclusion_delete" value="Удалить" />
+    <item name="btn_process_exclusion_up" value="Вверх" />
+    <item name="btn_process_exclusion_down" value="Вниз" />
+    <item name="btn_add_process_exclusion" value="Добавить процесс" />
     <item name="grpb_start_program" value="Пункты меню с запуском программ" />
     <item name="clm_start_program_title" value="Заголовок" />
     <item name="clm_start_program_path" value="Имя файла" />
@@ -1832,6 +1881,13 @@
     <item name="settings_form" value="Подешавања" />
     <item name="tab_settings_general" value="Опште" />
     <item name="tab_settings_menu" value="Мени" />
+    <item name="grpb_process_exclusions" value="Изузимања процеса" />
+    <item name="clm_process_exclusion_name" value="Име датотеке" />
+    <item name="clm_process_exclusion_edit" value="Уреди" />
+    <item name="clm_process_exclusion_delete" value="Обриши" />
+    <item name="btn_process_exclusion_up" value="Премести на горе" />
+    <item name="btn_process_exclusion_down" value="Премести на доле" />
+    <item name="btn_add_process_exclusion" value="Додај име процеса" />
     <item name="grpb_start_program" value="Ставке менија покретања" />
     <item name="clm_start_program_title" value="Наслов" />
     <item name="clm_start_program_path" value="Име датотеке" />
@@ -2074,6 +2130,13 @@
     <item name="settings_form" value="Configuração" />
     <item name="tab_settings_general" value="Principal" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Executáveis de Exceção" />
+    <item name="clm_process_exclusion_name" value="Nome do arquivo" />
+    <item name="clm_process_exclusion_edit" value="Editar" />
+    <item name="clm_process_exclusion_delete" value="Apagar" />
+    <item name="btn_process_exclusion_up" value="Subir" />
+    <item name="btn_process_exclusion_down" value="Descer" />
+    <item name="btn_add_process_exclusion" value="Adicionar executável" />
     <item name="grpb_start_program" value="Itens do menu de comandos" />
     <item name="clm_start_program_title" value="Nome" />
     <item name="clm_start_program_path" value="Nome do arquivo" />
@@ -2316,6 +2379,13 @@
     <item name="settings_form" value="Impostazioni" />
     <item name="tab_settings_general" value="Generale" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Processi esclusi" />
+    <item name="clm_process_exclusion_name" value="Nome file" />
+    <item name="clm_process_exclusion_edit" value="Modifica" />
+    <item name="clm_process_exclusion_delete" value="Elimina" />
+    <item name="btn_process_exclusion_up" value="Sposta in alto processo" />
+    <item name="btn_process_exclusion_down" value="Sposta in basso processo" />
+    <item name="btn_add_process_exclusion" value="Aggiungi nome processo" />
     <item name="grpb_start_program" value="Voci di menu avvia programma" />
     <item name="clm_start_program_title" value="Titolo" />
     <item name="clm_start_program_path" value="Nome file" />
@@ -2558,6 +2628,13 @@
     <item name="settings_form" value="Paramètres" />
     <item name="tab_settings_general" value="Général" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Processus exclus" />
+    <item name="clm_process_exclusion_name" value="Nom de fichier" />
+    <item name="clm_process_exclusion_edit" value="Modifier" />
+    <item name="clm_process_exclusion_delete" value="Annuler" />
+    <item name="btn_process_exclusion_up" value="Déplacer le processus vers le haut" />
+    <item name="btn_process_exclusion_down" value="Déplacer le processus vers le bas" />
+    <item name="btn_add_process_exclusion" value="Ajouter un nouveau processus" />
     <item name="grpb_start_program" value="Éléments du menu de démarrage du programme" />
     <item name="clm_start_program_title" value="Titre" />
     <item name="clm_start_program_path" value="Nom de fichier" />
@@ -2800,6 +2877,13 @@
     <item name="settings_form" value="Beállítások" />
     <item name="tab_settings_general" value="Általános" />
     <item name="tab_settings_menu" value="Menü" />
+    <item name="grpb_process_exclusions" value="Folyamat Kizárások" />
+    <item name="clm_process_exclusion_name" value="Fájlnév" />
+    <item name="clm_process_exclusion_edit" value="Szerkesztés" />
+    <item name="clm_process_exclusion_delete" value="Törlés" />
+    <item name="btn_process_exclusion_up" value="Folyamat felfelé mozgatása" />
+    <item name="btn_process_exclusion_down" value="Folyamat lefelé mozgatása" />
+    <item name="btn_add_process_exclusion" value="Folyamat nevének hozzáadása" />
     <item name="grpb_start_program" value="Programindítás hozzáadása" />
     <item name="clm_start_program_title" value="Cím" />
     <item name="clm_start_program_path" value="Fájlnév" />
@@ -3042,6 +3126,13 @@
     <item name="settings_form" value="הגדרות" />
     <item name="tab_settings_general" value="כללי" />
     <item name="tab_settings_menu" value="תפריט" />
+    <item name="grpb_process_exclusions" value="החרגות תהליכים" />
+    <item name="clm_process_exclusion_name" value="שם קובץ" />
+    <item name="clm_process_exclusion_edit" value="ערוך" />
+    <item name="clm_process_exclusion_delete" value="מחק" />
+    <item name="btn_process_exclusion_up" value="הזז תהליך למעלה" />
+    <item name="btn_process_exclusion_down" value="הזז תהליך למטה" />
+    <item name="btn_add_process_exclusion" value="הוסף שם תהליך" />
     <item name="grpb_start_program" value="Start Program Menu Items" />
     <item name="clm_start_program_title" value="שם" />
     <item name="clm_start_program_path" value="שם קובץ" />
@@ -3284,6 +3375,13 @@
     <item name="settings_form" value="Ajustes" />
     <item name="tab_settings_general" value="General" />
     <item name="tab_settings_menu" value="Menú" />
+    <item name="grpb_process_exclusions" value="Exclusión de procesos" />
+    <item name="clm_process_exclusion_name" value="Nombre del archivo" />
+    <item name="clm_process_exclusion_edit" value="Editar" />
+    <item name="clm_process_exclusion_delete" value="Eliminar" />
+    <item name="btn_process_exclusion_up" value="Subir proceso" />
+    <item name="btn_process_exclusion_down" value="Bajar proceso" />
+    <item name="btn_add_process_exclusion" value="Añadir proceso" />
     <item name="grpb_start_program" value="Elementos del menú Inciar programa" />
     <item name="clm_start_program_title" value="Título" />
     <item name="clm_start_program_path" value="Nombre del archivo" />
@@ -3526,6 +3624,13 @@
     <item name="settings_form" value="Nastavitve" />
     <item name="tab_settings_general" value="Splošno" />
     <item name="tab_settings_menu" value="Meni" />
+    <item name="grpb_process_exclusions" value="Izključitve procesov" />
+    <item name="clm_process_exclusion_name" value="Ime datoteke" />
+    <item name="clm_process_exclusion_edit" value="Uredi" />
+    <item name="clm_process_exclusion_delete" value="Izbriši" />
+    <item name="btn_process_exclusion_up" value="Pomakni proces gor" />
+    <item name="btn_process_exclusion_down" value="Pomakni proces dol" />
+    <item name="btn_add_process_exclusion" value="Dodaj ime procesa" />
     <item name="grpb_start_program" value="Postavke menija za zagon programov" />
     <item name="clm_start_program_title" value="Naslov" />
     <item name="clm_start_program_path" value="Ime datoteke" />
@@ -3768,6 +3873,13 @@
     <item name="settings_form" value="அமைப்புகள்" />
     <item name="tab_settings_general" value="பொது" />
     <item name="tab_settings_menu" value="பட்டி" />
+    <item name="grpb_process_exclusions" value="செயல்முறை விலக்குகள்" />
+    <item name="clm_process_exclusion_name" value="கோப்புப் பெயர்" />
+    <item name="clm_process_exclusion_edit" value="திருத்து" />
+    <item name="clm_process_exclusion_delete" value="நீக்கு" />
+    <item name="btn_process_exclusion_up" value="செயல்முறையை மேலே நகர்த்து" />
+    <item name="btn_process_exclusion_down" value="செயல்முறையை கீழே நகர்த்து" />
+    <item name="btn_add_process_exclusion" value="செயல்முறைப் பெயரைச் சேர்" />
     <item name="grpb_start_program" value="நிரலைத் தொடங்கு பட்டி உருப்படிகள்" />
     <item name="clm_start_program_title" value="தலைப்பு" />
     <item name="clm_start_program_path" value="கோப்புப் பெயர்" />
@@ -4010,6 +4122,13 @@
     <item name="settings_form" value="Cài đặt" />
     <item name="tab_settings_general" value="Chung" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Loại trừ tiến trình" />
+    <item name="clm_process_exclusion_name" value="Tên tệp" />
+    <item name="clm_process_exclusion_edit" value="Sửa" />
+    <item name="clm_process_exclusion_delete" value="Xóa" />
+    <item name="btn_process_exclusion_up" value="Chuyển lên" />
+    <item name="btn_process_exclusion_down" value="Chuyển xuống" />
+    <item name="btn_add_process_exclusion" value="Thêm tên tiến trình" />
     <item name="grpb_start_program" value="Các mục menu Khởi động chương trình" />
     <item name="clm_start_program_title" value="Tiêu đề" />
     <item name="clm_start_program_path" value="Tên tệp" />
@@ -4252,6 +4371,13 @@
     <item name="settings_form" value="Pengaturan" />
     <item name="tab_settings_general" value="Umum" />
     <item name="tab_settings_menu" value="Menu" />
+    <item name="grpb_process_exclusions" value="Pengecualian Proses" />
+    <item name="clm_process_exclusion_name" value="Nama File" />
+    <item name="clm_process_exclusion_edit" value="Edit" />
+    <item name="clm_process_exclusion_delete" value="Hapus" />
+    <item name="btn_process_exclusion_up" value="Pindahkan Proses ke Atas" />
+    <item name="btn_process_exclusion_down" value="Pindahkan Proses ke Bawah" />
+    <item name="btn_add_process_exclusion" value="Tambah Nama Proses" />
     <item name="grpb_start_program" value="Item Menu Jalankan Program" />
     <item name="clm_start_program_title" value="Judul" />
     <item name="clm_start_program_path" value="Nama File" />

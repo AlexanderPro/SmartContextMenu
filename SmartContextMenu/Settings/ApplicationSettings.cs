@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SmartContextMenu.Hooks;
 
 namespace SmartContextMenu.Settings
@@ -40,6 +41,8 @@ namespace SmartContextMenu.Settings
 
         public MenuItems MenuItems { get; set; }
 
+        public IList<string> ExcludedProcessItems { get; set; }
+
         public ApplicationSettings()
         {
             Key1 = VirtualKeyModifier.None;
@@ -58,6 +61,7 @@ namespace SmartContextMenu.Settings
             NextMonitor = new KeyboardShortcut();
             PreviousMonitor = new KeyboardShortcut();
             MenuItems = new MenuItems();
+            ExcludedProcessItems = new List<string>();
         }
 
         public object Clone()
@@ -77,6 +81,11 @@ namespace SmartContextMenu.Settings
             foreach (var menuItem in MenuItems.Items)
             {
                 settings.MenuItems.Items.Add((MenuItem)menuItem.Clone());
+            }
+
+            foreach (var processItem in ExcludedProcessItems)
+            {
+                settings.ExcludedProcessItems.Add((string)processItem.Clone());
             }
 
             settings.Key1 = Key1;
@@ -148,6 +157,11 @@ namespace SmartContextMenu.Settings
                 return false;
             }
 
+            if (ExcludedProcessItems.Count != other.ExcludedProcessItems.Count)
+            {
+                return false;
+            }
+
             for (var i = 0; i < MenuItems.WindowSizeItems.Count; i++)
             {
                 if (string.Compare(MenuItems.WindowSizeItems[i].Title, other.MenuItems.WindowSizeItems[i].Title, StringComparison.CurrentCultureIgnoreCase) != 0 ||
@@ -208,6 +222,14 @@ namespace SmartContextMenu.Settings
                     {
                         return false;
                     }
+                }
+            }
+
+            for (var i = 0; i < ExcludedProcessItems.Count; i++)
+            {
+                if (string.Compare(ExcludedProcessItems[i], other.ExcludedProcessItems[i], StringComparison.CurrentCultureIgnoreCase) != 0 )
+                {
+                    return false;
                 }
             }
 
@@ -285,6 +307,11 @@ namespace SmartContextMenu.Settings
                 {
                     hashCode ^= subItem.Show.GetHashCode() ^ subItem.Type.GetHashCode() ^ subItem.Name.GetHashCode() ^ subItem.Shortcut.Key1.GetHashCode() ^ subItem.Shortcut.Key2.GetHashCode() ^ subItem.Shortcut.Key3.GetHashCode();
                 }
+            }
+
+            foreach (var processItem in ExcludedProcessItems)
+            {
+                hashCode ^= processItem.GetHashCode();
             }
 
             hashCode ^= Key1.GetHashCode();

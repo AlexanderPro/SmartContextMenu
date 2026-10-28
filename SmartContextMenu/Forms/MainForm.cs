@@ -140,6 +140,14 @@ namespace SmartContextMenu.Forms
 
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+
+            var fileName = window.Process?.GetMainModuleFileName() ?? string.Empty;
+            fileName = Path.GetFileName(fileName);
+            if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
             MenuItemClick(window, e.MenuItem);
             e.Succeeded = true;
         });
@@ -157,6 +165,14 @@ namespace SmartContextMenu.Forms
 
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+
+            var fileName = window.Process?.GetMainModuleFileName() ?? string.Empty;
+            fileName = Path.GetFileName(fileName);
+            if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
             MenuItemClick(window, e.WindowSizeMenuItem);
             e.Succeeded = true;
         });
@@ -174,6 +190,14 @@ namespace SmartContextMenu.Forms
 
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+
+            var fileName = window.Process?.GetMainModuleFileName() ?? string.Empty;
+            fileName = Path.GetFileName(fileName);
+            if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
             MenuItemClick(window, e.StartProgramMenuItem);
             e.Succeeded = true;
         });
@@ -189,6 +213,16 @@ namespace SmartContextMenu.Forms
             var handle = User32.GetForegroundWindow();
             var parentHandle = WindowUtils.GetParentWindow(handle);
             if (parentHandle == IntPtr.Zero || WindowUtils.IsDesktopWindow(parentHandle))
+            {
+                return;
+            }
+
+            var manager = new LanguageManager(_settings.LanguageName);
+            var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+
+            var fileName = window.Process?.GetMainModuleFileName() ?? string.Empty;
+            fileName = Path.GetFileName(fileName);
+            if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Contains(fileName, StringComparer.OrdinalIgnoreCase))
             {
                 return;
             }
@@ -238,6 +272,14 @@ namespace SmartContextMenu.Forms
 
             var manager = new LanguageManager(_settings.LanguageName);
             var window = _windows.ContainsKey(parentHandle) ? _windows[parentHandle] : new Window(parentHandle, manager);
+
+            var fileName = window.Process?.GetMainModuleFileName() ?? string.Empty;
+            fileName = Path.GetFileName(fileName);
+            if (!string.IsNullOrEmpty(fileName) && _settings.ExcludedProcessItems.Contains(fileName, StringComparer.OrdinalIgnoreCase))
+            {
+                return;
+            }
+
             if (_settings.ShowOnlyOnTitlebar && !(window.GetTitleBarSize(out var titleBarSize)  && titleBarSize.ToRectangle().Contains(cursorPosition)))
             {
                 return;

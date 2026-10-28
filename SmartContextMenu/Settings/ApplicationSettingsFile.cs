@@ -151,6 +151,12 @@ namespace SmartContextMenu.Settings
                 })
                 .ToList();
 
+            settings.ExcludedProcessItems = document
+                .XPathSelectElements("/smartContextMenu/processExclusions/processName")
+                .Where(x => !string.IsNullOrWhiteSpace(x.Value))
+                .Select(x => x.Value)
+                .ToList();
+
             var hotKeysElement = document.XPathSelectElement("/smartContextMenu/hotKeys");
             settings.Key1 = hotKeysElement.Attribute("key1") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key1").Value) ? (VirtualKeyModifier)int.Parse(hotKeysElement.Attribute("key1").Value) : VirtualKeyModifier.None;
             settings.Key2 = hotKeysElement.Attribute("key2") != null && !string.IsNullOrEmpty(hotKeysElement.Attribute("key2").Value) ? (VirtualKeyModifier)int.Parse(hotKeysElement.Attribute("key2").Value) : VirtualKeyModifier.None;
@@ -218,6 +224,7 @@ namespace SmartContextMenu.Settings
         {
             var document = new XDocument();
             document.Add(new XElement("smartContextMenu",
+                                 new XElement("processExclusions", settings.ExcludedProcessItems.Select(x => new XElement("processName", x))),
                                  new XElement("menuItems",
                                      new XElement("items", settings.MenuItems.Items.Select(x => new XElement("item",
                                          new XAttribute("type", x.Type.ToString().ToLower()),

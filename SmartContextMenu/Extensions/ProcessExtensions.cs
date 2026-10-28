@@ -8,20 +8,11 @@ using SmartContextMenu.Native.Enums;
 using SmartContextMenu.Native.Structs;
 using static SmartContextMenu.Native.Kernel32;
 using static SmartContextMenu.Native.Ntdll;
-using static SmartContextMenu.Native.Constants;
 
 namespace SmartContextMenu.Extensions
 {
     static class ProcessExtensions
     {
-        public static IntPtr GetHandle(this Process process)
-        {
-            var hProcess = Environment.OSVersion.Version.Major >= 6 ?
-                OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_SET_INFORMATION, false, process.Id) :
-                OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_SET_INFORMATION, false, process.Id);
-            return hProcess;
-        }
-
         public static string GetMainModuleFileName(this Process process, int buffer = 1024)
         {
             try
@@ -32,7 +23,7 @@ namespace SmartContextMenu.Extensions
             {
                 var fileNameBuilder = new StringBuilder(buffer);
                 var bufferLength = (uint)fileNameBuilder.Capacity + 1;
-                return QueryFullProcessImageName(process.GetHandle(), 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
+                return QueryFullProcessImageName(process.Handle, 0, fileNameBuilder, ref bufferLength) ? fileNameBuilder.ToString() : null;
             }
         }
 
@@ -49,7 +40,7 @@ namespace SmartContextMenu.Extensions
         public static Process GetParentProcess(this Process process)
         {
             var pbi = new ProcessBasicInformation();
-            var status = NtQueryInformationProcess(process.GetHandle(), 0, ref pbi, Marshal.SizeOf(pbi), out _);
+            var status = NtQueryInformationProcess(process.Handle, 0, ref pbi, Marshal.SizeOf(pbi), out _);
             if (status != 0)
             {
                 return null;
@@ -108,7 +99,7 @@ namespace SmartContextMenu.Extensions
                 return Priority.Normal;
             }
 
-            var priorityClass = GetPriorityClass(process.GetHandle());
+            var priorityClass = GetPriorityClass(process.Handle);
             return priorityClass.GetPriority();
         }
     }

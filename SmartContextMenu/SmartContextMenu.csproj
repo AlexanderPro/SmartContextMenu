@@ -117,6 +117,12 @@
     <Compile Include="Forms\ParameterForm.Designer.cs">
       <DependentUpon>ParameterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProcessExclusionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProcessExclusionForm.Designer.cs">
+      <DependentUpon>ProcessExclusionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TitleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParameterForm.resx">
       <DependentUpon>ParameterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProcessExclusionForm.resx">
+      <DependentUpon>ProcessExclusionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TitleForm.resx">
       <DependentUpon>TitleForm.cs</DependentUpon>

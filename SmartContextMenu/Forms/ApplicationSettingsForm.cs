@@ -35,6 +35,7 @@ namespace SmartContextMenu.Forms
             tabpMenu.Text = _languageManager.GetString("tab_settings_menu");
             grpbMouseHotkeys.Text = _languageManager.GetString("grpb_hotkeys");
             grpbLanguage.Text = _languageManager.GetString("grpb_language");
+            grpbProcessExclusions.Text = _languageManager.GetString("grpb_process_exclusions");
             grpbStartProgram.Text = _languageManager.GetString("grpb_start_program");
             grpbWindowSize.Text = _languageManager.GetString("grpb_window_size");
             grpbSizer.Text = _languageManager.GetString("grpb_sizer");
@@ -44,6 +45,9 @@ namespace SmartContextMenu.Forms
             grpbNextHotkeys.Text = _languageManager.GetString("grpb_next_hotkeys");
             grpbPreviousHotkeys.Text = _languageManager.GetString("grpb_previous_hotkeys");
             chkEnableHighDPI.Text = _languageManager.GetString("chk_enable_high_dpi");
+            clmProcessExclusionName.HeaderText = _languageManager.GetString("clm_process_exclusion_name");
+            clmProcessExclusionEdit.ToolTipText = _languageManager.GetString("clm_process_exclusion_edit");
+            clmProcessExclusionDelete.ToolTipText = _languageManager.GetString("clm_process_exclusion_delete");
             clmStartProgramTitle.HeaderText = _languageManager.GetString("clm_start_program_title");
             clmStartProgramPath.HeaderText = _languageManager.GetString("clm_start_program_path");
             clmStartProgramArguments.HeaderText = _languageManager.GetString("clm_start_program_arguments");
@@ -64,6 +68,9 @@ namespace SmartContextMenu.Forms
             lblKey4.Text = _languageManager.GetString("lbl_key4");
             lblMouseButton.Text = _languageManager.GetString("lbl_mouse_button");
             chkShowOnlyOnTitlebar.Text = _languageManager.GetString("chk_show_only_on_titlebar");
+            toolTipAddProcessName.SetToolTip(btnProcessExclusionDown, _languageManager.GetString("btn_process_exclusion_down"));
+            toolTipAddProcessName.SetToolTip(btnProcessExclusionUp, _languageManager.GetString("btn_process_exclusion_up"));
+            toolTipAddProcessName.SetToolTip(btnAddProcessExclusion, _languageManager.GetString("btn_add_process_exclusion"));
             toolTipAddProcessName.SetToolTip(btnAddStartProgram, _languageManager.GetString("btn_add_start_program"));
             toolTipAddProcessName.SetToolTip(btnStartProgramDown, _languageManager.GetString("btn_start_program_down"));
             toolTipAddProcessName.SetToolTip(btnStartProgramUp, _languageManager.GetString("btn_start_program_up"));
@@ -150,9 +157,41 @@ namespace SmartContextMenu.Forms
                 items.Add((Settings.MenuItem)item.Clone());
             }
 
+            foreach (var processItem in _settings.ExcludedProcessItems)
+            {
+                var index = gvProcessExclusions.Rows.Add();
+                var row = gvProcessExclusions.Rows[index];
+                row.Cells[0].Value = processItem;
+                row.Cells[1].ToolTipText = _languageManager.GetString("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = _languageManager.GetString("clm_process_exclusion_delete");
+            }
+
             FillGridViewByItems(gvHotkeys, items);
             FillGridViewByWindowSizeItems(gvWindowSize, _settings.MenuItems.WindowSizeItems);
             FillGridViewByStartProgramItems(gvStartProgram, _settings.MenuItems.StartProgramItems);
+        }
+
+        private void GridViewProcessExclusionsCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+
+            if (grid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == 1)
+                {
+                    var cell = grid.Rows[e.RowIndex].Cells[0];
+                    var dialog = new ProcessExclusionForm(_languageManager, cell.Value.ToString());
+                    if (dialog.ShowDialog(this) == DialogResult.OK)
+                    {
+                        cell.Value = dialog.ProcessName;
+                    }
+                }
+
+                if (e.ColumnIndex == 2)
+                {
+                    grid.Rows.RemoveAt(e.RowIndex);
+                }
+            }
         }
 
         private void GridViewStartProgramCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -213,6 +252,20 @@ namespace SmartContextMenu.Forms
                 if (e.ColumnIndex == 7)
                 {
                     grid.Rows.RemoveAt(e.RowIndex);
+                }
+            }
+        }
+
+        private void GridViewProcessExclusionsCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                var cell = grid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                var dialog = new ProcessExclusionForm(_languageManager, cell.Value.ToString());
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    cell.Value = dialog.ProcessName;
                 }
             }
         }
@@ -303,6 +356,19 @@ namespace SmartContextMenu.Forms
             }
         }
 
+        private void ButtonAddProcessExclusionClick(object sender, EventArgs e)
+        {
+            var dialog = new ProcessExclusionForm(_languageManager, string.Empty);
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                var index = gvProcessExclusions.Rows.Add();
+                var row = gvProcessExclusions.Rows[index];
+                row.Cells[0].Value = dialog.ProcessName;
+                row.Cells[1].ToolTipText = _languageManager.GetString("clm_process_exclusion_edit");
+                row.Cells[2].ToolTipText = _languageManager.GetString("clm_process_exclusion_delete");
+            }
+        }
+
         private void ButtonAddStartProgramClick(object sender, EventArgs e)
         {
             var dialog = new StartProgramForm(_languageManager, null);
@@ -341,7 +407,7 @@ namespace SmartContextMenu.Forms
         private void ButtonArrowUpClick(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            var grid = button.Name == "btnWindowSizeUp" ? gvWindowSize : gvStartProgram;
+            var grid = button.Name == "btnProcessExclusionUp" ? gvProcessExclusions : button.Name == "btnWindowSizeUp" ? gvWindowSize : gvStartProgram;
             if (grid.SelectedRows.Count > 0)
             {
                 var index = grid.SelectedRows[0].Index;
@@ -357,7 +423,7 @@ namespace SmartContextMenu.Forms
         private void ButtonArrowDownClick(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            var grid = button.Name == "btnWindowSizeDown" ? gvWindowSize : gvStartProgram;
+            var grid = button.Name == "btnProcessExclusionDown" ? gvProcessExclusions : button.Name == "btnWindowSizeDown" ? gvWindowSize : gvStartProgram;
             if (grid.SelectedRows.Count > 0)
             {
                 var index = grid.SelectedRows[0].Index;
@@ -485,6 +551,11 @@ namespace SmartContextMenu.Forms
         private void ButtonApplyClick(object sender, EventArgs e)
         {
             var settings = new ApplicationSettings();
+
+            foreach (DataGridViewRow row in gvProcessExclusions.Rows)
+            {
+                settings.ExcludedProcessItems.Add(row.Cells[0].Value.ToString());
+            }
 
             foreach (DataGridViewRow row in gvWindowSize.Rows)
             {
