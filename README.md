@@ -6,7 +6,7 @@
 
 </div>
 
-🌏: [**English**](/) [Русский](/README_RU.md) [中文版](/README_CN.md) [한국어](/README_KO.md)
+🌏: [**English**](/) [Русский](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md)
 
 ---
 
@@ -26,8 +26,6 @@ Available menu items:
 * **Hide.** Allows to hide the current window.
 * **Roll Up.** Allows to roll up and down the current window.
 * **Send To Bottom.** Allows to send to bottom the current window.
-* **Change Icon.** Allows to change the icon of the current window.
-* **Change Title.** Allows to change the text in the title bar.
 * **Save Screenshot.** Allows to save the current window screenshot in a file.
 * **Open File In Explorer.** Allows to open a process file in a File Explorer.
 * **Click Through.** Allows to click through the current window.
@@ -38,7 +36,7 @@ Available menu items:
 * **Transparency.** Allows to change the transparency of the current window.
 * **Priority.** Allows to change the current window's program priority.
 * **Clipboard.** Allows to copy all window texts (including console, ms office products, etc.) to clipboard and clear clipboard.
-* **Buttons.** Allows to disable "Minimize", "Maximize" and "Close" button.
+* **Title Bar.** Allows to change the icon of the current window. Allows to change the text in the title bar. Allows to disable "Minimize", "Maximize" and "Close" button.
 * **System Tray.** Allows to minimize or suspend the current window to the system tray.
 * **System Menu.** Contains System Menu items.
 * **Other Windows.** Allows to close and minimize all windows in the system except the current.
@@ -93,6 +91,7 @@ Command Line Interface
                        close]
    --transparency     [0 ... 100]
    --alwaysontop      [on, off]
+   --darkmode         [on, off]
 -g --aeroglass        [on, off]
    --hide             [on, off]
    --hidealttab       [on, off]
