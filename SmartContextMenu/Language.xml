@@ -4729,6 +4729,5 @@
     <item name="system_menu_maximize" value="تكبير" />
     <item name="system_menu_close" value="إغلاق" />
     <item name="system_menu_available" value="متاح" />
-    <item name="clm_hotkeys_keys" value="مفاتيح الاختصار" />
   </language>
 </languages>

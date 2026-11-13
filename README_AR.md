@@ -2,11 +2,11 @@
 
 <img src="./SmartContextMenu/Images/SmartContextMenuLogo.png" alt="logo" width="128">
 
-# SmartContextMenu (القائمة السياقية الذكية)
+# SmartContextMenu
 
 </div>
 
-🌏: [English](/README.md) [**العربية**](/) [Русский](/README_RU.md) [中文](/README_CN.md) [한국어](/README_KO.md)
+🌏: [English](/README.md) [Русский](/README_RU.md) [**العربية**](/) [中文](/README_CN.md) [한국어](/README_KO.md)
 
 ---
 
