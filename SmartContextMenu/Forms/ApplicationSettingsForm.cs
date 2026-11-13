@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
@@ -134,6 +134,7 @@ namespace SmartContextMenu.Forms
                 new { Text = "Slovenščina", Value = "sl" },
                 new { Text = "Tiếng Việt", Value = "vi" },
                 new { Text = "Bahasa Indonesia", Value = "id" },
+                new { Text = "العربية", Value = "ar" },
                 new { Text = "עִברִית", Value = "he" },
                 new { Text = "தமிழ்", Value = "ta" },
                 new { Text = "简体中文", Value = "zh_cn" },
